@@ -1,0 +1,3103 @@
+[
+  {
+    "finding_id": "V2F-000002",
+    "category_id": "1.2.2.B",
+    "category_name": "State frozen/fast/jitter problem",
+    "issue_type": "low_dim_freeze_run",
+    "issue_name": "Low-dimensional state is nearly unchanged for a long window",
+    "definition": "Low-dimensional sequence is legally structured but has abnormal temporal dynamics such as freezing, fast transition, spike, or jitter.",
+    "decision_rule": "State delta, acceleration, local variance, or unchanged-run length crosses calibrated task/column thresholds.",
+    "object_level": "segment",
+    "modality": "state",
+    "confidence_level": "高置信异常",
+    "illegal": false,
+    "severity_score": 57.5,
+    "quality_penalty": 9.013,
+    "episode_index": 0,
+    "task_index": 0,
+    "view": null,
+    "column": "actions",
+    "frame_start": 0,
+    "frame_end": 9,
+    "evidence": {
+      "run_length": 9,
+      "low_delta_threshold": 1e-08,
+      "median_delta": 0.0
+    },
+    "merged_count": 1
+  },
+  {
+    "finding_id": "V2F-000001",
+    "category_id": "1.2.2.B",
+    "category_name": "State frozen/fast/jitter problem",
+    "issue_type": "low_dim_jitter_or_spike",
+    "issue_name": "Low-dimensional state acceleration is an extreme outlier",
+    "definition": "Low-dimensional sequence is legally structured but has abnormal temporal dynamics such as freezing, fast transition, spike, or jitter.",
+    "decision_rule": "State delta, acceleration, local variance, or unchanged-run length crosses calibrated task/column thresholds.",
+    "object_level": "segment",
+    "modality": "state",
+    "confidence_level": "高置信异常",
+    "illegal": false,
+    "severity_score": 92.68,
+    "quality_penalty": 13.902,
+    "episode_index": 0,
+    "task_index": 0,
+    "view": null,
+    "column": "state",
+    "frame_start": 126,
+    "frame_end": 126,
+    "evidence": {
+      "max_accel": 0.22044345848630129,
+      "accel_threshold": 0.21791229508482574
+    },
+    "merged_count": 1
+  },
+  {
+    "finding_id": "V2F-000003",
+    "category_id": "1.2.2.B",
+    "category_name": "State frozen/fast/jitter problem",
+    "issue_type": "low_dim_jitter_or_spike",
+    "issue_name": "Low-dimensional state acceleration is an extreme outlier",
+    "definition": "Low-dimensional sequence is legally structured but has abnormal temporal dynamics such as freezing, fast transition, spike, or jitter.",
+    "decision_rule": "State delta, acceleration, local variance, or unchanged-run length crosses calibrated task/column thresholds.",
+    "object_level": "segment",
+    "modality": "state",
+    "confidence_level": "高置信异常",
+    "illegal": false,
+    "severity_score": 88.15,
+    "quality_penalty": 13.223,
+    "episode_index": 1,
+    "task_index": 1,
+    "view": null,
+    "column": "state",
+    "frame_start": 87,
+    "frame_end": 87,
+    "evidence": {
+      "max_accel": 0.2319165855212082,
+      "accel_threshold": 0.22874536089740366
+    },
+    "merged_count": 1
+  },
+  {
+    "finding_id": "V2F-000004",
+    "category_id": "1.2.2.B",
+    "category_name": "State frozen/fast/jitter problem",
+    "issue_type": "low_dim_freeze_run",
+    "issue_name": "Low-dimensional state is nearly unchanged for a long window",
+    "definition": "Low-dimensional sequence is legally structured but has abnormal temporal dynamics such as freezing, fast transition, spike, or jitter.",
+    "decision_rule": "State delta, acceleration, local variance, or unchanged-run length crosses calibrated task/column thresholds.",
+    "object_level": "segment",
+    "modality": "state",
+    "confidence_level": "高置信异常",
+    "illegal": false,
+    "severity_score": 90.0,
+    "quality_penalty": 15.0,
+    "episode_index": 1,
+    "task_index": 1,
+    "view": null,
+    "column": "actions",
+    "frame_start": 135,
+    "frame_end": 191,
+    "evidence": {
+      "run_length": 56,
+      "low_delta_threshold": 1e-08,
+      "median_delta": 0.0
+    },
+    "merged_count": 1
+  },
+  {
+    "finding_id": "V2F-000009",
+    "category_id": "1.1.2.D",
+    "category_name": "State-Vision-State consistency problem",
+    "issue_type": "visual_moves_state_static",
+    "issue_name": "Visual motion is strong but low-dimensional state is static",
+    "definition": "Low-dimensional state values or local transitions are inconsistent with visual evidence or neighboring state context.",
+    "decision_rule": "State value/delta/acceleration is a calibrated outlier and visual evidence does not support the same local change.",
+    "object_level": "segment",
+    "modality": "vision-state",
+    "confidence_level": "高置信异常",
+    "illegal": false,
+    "severity_score": 69.0,
+    "quality_penalty": 10.505,
+    "episode_index": 2,
+    "task_index": 0,
+    "view": null,
+    "column": "actions",
+    "frame_start": 127,
+    "frame_end": 130,
+    "evidence": {
+      "max_visual_motion": 18.037414868672688,
+      "median_state_delta": 0.0
+    },
+    "merged_count": 1
+  },
+  {
+    "finding_id": "V2F-000006",
+    "category_id": "1.2.2.A",
+    "category_name": "Vision frozen/fast/jitter problem",
+    "issue_type": "visual_high_frequency_jitter",
+    "issue_name": "Visual motion has high-frequency acceleration spikes",
+    "definition": "Vision sequence is legally structured but has abnormal temporal dynamics such as freezing, sudden fast motion, or jitter.",
+    "decision_rule": "Exact repeated frames, near-zero visual motion, extreme visual motion, or high-frequency visual acceleration persists beyond calibrated window thresholds.",
+    "object_level": "segment",
+    "modality": "vision",
+    "confidence_level": "高置信异常",
+    "illegal": false,
+    "severity_score": 65.0,
+    "quality_penalty": 9.945,
+    "episode_index": 2,
+    "task_index": 0,
+    "view": "image",
+    "column": null,
+    "frame_start": 154,
+    "frame_end": 158,
+    "evidence": {
+      "max_motion_accel": 22.21003532409668,
+      "accel_threshold": 11.466645741462724
+    },
+    "merged_count": 1
+  },
+  {
+    "finding_id": "V2F-000005",
+    "category_id": "1.2.2.A",
+    "category_name": "Vision frozen/fast/jitter problem",
+    "issue_type": "visual_fast_jump",
+    "issue_name": "Visual sequence has an extreme fast jump",
+    "definition": "Vision sequence is legally structured but has abnormal temporal dynamics such as freezing, sudden fast motion, or jitter.",
+    "decision_rule": "Exact repeated frames, near-zero visual motion, extreme visual motion, or high-frequency visual acceleration persists beyond calibrated window thresholds.",
+    "object_level": "segment",
+    "modality": "vision",
+    "confidence_level": "疑似异常",
+    "illegal": false,
+    "severity_score": 41.57,
+    "quality_penalty": 6.298,
+    "episode_index": 2,
+    "task_index": 0,
+    "view": "image",
+    "column": null,
+    "frame_start": 155,
+    "frame_end": 157,
+    "evidence": {
+      "max_motion": 29.39881134033203,
+      "high_motion_threshold": 26.520178327560473
+    },
+    "merged_count": 1
+  },
+  {
+    "finding_id": "V2F-000007",
+    "category_id": "1.2.2.B",
+    "category_name": "State frozen/fast/jitter problem",
+    "issue_type": "low_dim_freeze_run",
+    "issue_name": "Low-dimensional state is nearly unchanged for a long window",
+    "definition": "Low-dimensional sequence is legally structured but has abnormal temporal dynamics such as freezing, fast transition, spike, or jitter.",
+    "decision_rule": "State delta, acceleration, local variance, or unchanged-run length crosses calibrated task/column thresholds.",
+    "object_level": "segment",
+    "modality": "state",
+    "confidence_level": "高置信异常",
+    "illegal": false,
+    "severity_score": 57.5,
+    "quality_penalty": 9.013,
+    "episode_index": 2,
+    "task_index": 0,
+    "view": null,
+    "column": "actions",
+    "frame_start": 0,
+    "frame_end": 9,
+    "evidence": {
+      "run_length": 9,
+      "low_delta_threshold": 1e-08,
+      "median_delta": 0.0
+    },
+    "merged_count": 1
+  },
+  {
+    "finding_id": "V2F-000008",
+    "category_id": "1.2.2.B",
+    "category_name": "State frozen/fast/jitter problem",
+    "issue_type": "low_dim_freeze_run",
+    "issue_name": "Low-dimensional state is nearly unchanged for a long window",
+    "definition": "Low-dimensional sequence is legally structured but has abnormal temporal dynamics such as freezing, fast transition, spike, or jitter.",
+    "decision_rule": "State delta, acceleration, local variance, or unchanged-run length crosses calibrated task/column thresholds.",
+    "object_level": "segment",
+    "modality": "state",
+    "confidence_level": "高置信异常",
+    "illegal": false,
+    "severity_score": 55.0,
+    "quality_penalty": 8.58,
+    "episode_index": 2,
+    "task_index": 0,
+    "view": null,
+    "column": "actions",
+    "frame_start": 127,
+    "frame_end": 135,
+    "evidence": {
+      "run_length": 8,
+      "low_delta_threshold": 1e-08,
+      "median_delta": 0.0
+    },
+    "merged_count": 1
+  },
+  {
+    "finding_id": "V2F-000011",
+    "category_id": "1.2.2.B",
+    "category_name": "State frozen/fast/jitter problem",
+    "issue_type": "low_dim_freeze_run",
+    "issue_name": "Low-dimensional state is nearly unchanged for a long window",
+    "definition": "Low-dimensional sequence is legally structured but has abnormal temporal dynamics such as freezing, fast transition, spike, or jitter.",
+    "decision_rule": "State delta, acceleration, local variance, or unchanged-run length crosses calibrated task/column thresholds.",
+    "object_level": "segment",
+    "modality": "state",
+    "confidence_level": "高置信异常",
+    "illegal": false,
+    "severity_score": 90.0,
+    "quality_penalty": 15.0,
+    "episode_index": 3,
+    "task_index": 1,
+    "view": null,
+    "column": "actions",
+    "frame_start": 140,
+    "frame_end": 188,
+    "evidence": {
+      "run_length": 48,
+      "low_delta_threshold": 1e-08,
+      "median_delta": 0.0
+    },
+    "merged_count": 1
+  },
+  {
+    "finding_id": "V2F-000010",
+    "category_id": "1.2.2.B",
+    "category_name": "State frozen/fast/jitter problem",
+    "issue_type": "low_dim_freeze_run",
+    "issue_name": "Low-dimensional state is nearly unchanged for a long window",
+    "definition": "Low-dimensional sequence is legally structured but has abnormal temporal dynamics such as freezing, fast transition, spike, or jitter.",
+    "decision_rule": "State delta, acceleration, local variance, or unchanged-run length crosses calibrated task/column thresholds.",
+    "object_level": "segment",
+    "modality": "state",
+    "confidence_level": "高置信异常",
+    "illegal": false,
+    "severity_score": 90.0,
+    "quality_penalty": 15.0,
+    "episode_index": 3,
+    "task_index": 1,
+    "view": null,
+    "column": "state",
+    "frame_start": 157,
+    "frame_end": 184,
+    "evidence": {
+      "run_length": 27,
+      "low_delta_threshold": 1e-08,
+      "median_delta": 0.0
+    },
+    "merged_count": 1
+  },
+  {
+    "finding_id": "V2F-000016",
+    "category_id": "1.1.2.C",
+    "category_name": "Vision-State-Vision geometry/scale problem",
+    "issue_type": "state_gated_view_pair_motion_inconsistency",
+    "issue_name": "State-supported overlapping camera pair has weak visual agreement",
+    "definition": "Visual spatial change and low-dimensional state change are inconsistent, suggesting broken geometry, scale, crop, or coarse cross-modal relation.",
+    "decision_rule": "Known camera semantics and robot state first indicate that two views should overlap; only then is weak visual motion correlation used as verification.",
+    "object_level": "episode",
+    "modality": "vision-state",
+    "confidence_level": "分布外样本",
+    "illegal": false,
+    "severity_score": 45.0,
+    "quality_penalty": 6.75,
+    "episode_index": 4,
+    "task_index": 0,
+    "view": "image|right_wrist_image",
+    "column": null,
+    "frame_start": null,
+    "frame_end": null,
+    "evidence": {
+      "correlation": -0.15593185229387446,
+      "pair_baseline": {
+        "count": 12,
+        "median": 0.0550970832123259,
+        "mad": 0.06999370319907497,
+        "mean": 0.06396459807613862,
+        "std": 0.10473611150842652,
+        "p01": -0.14387847889655456,
+        "p05": -0.09566498530727491,
+        "p95": 0.21134023941544525,
+        "p99": 0.2582369342395738,
+        "min": -0.15593185229387446,
+        "max": 0.26996110794560585
+      },
+      "state_gate": {
+        "enabled": true,
+        "reason": "estimated_frustum_overlap",
+        "geometry_column": "state",
+        "left_view_arm": null,
+        "right_view_arm": "right",
+        "overlap_score": 1.0,
+        "hits": 32,
+        "samples_checked": 32,
+        "workspace_center": [
+          0.2731,
+          -0.0074,
+          0.3759
+        ],
+        "workspace_extent": [
+          0.2086,
+          0.7627,
+          0.1462
+        ],
+        "median_shared_target_distance_m": 0.73824115301167,
+        "camera_model": {
+          "robot": "Franka/Panda-like dual-arm state with end-effector pose",
+          "base_camera_offset_from_workspace": [
+            -0.65,
+            0.0,
+            0.35
+          ],
+          "base_fov_degrees": 95.0,
+          "wrist_fov_degrees": 95.0,
+          "wrist_local_optical_axes": {
+            "left": [
+              0.0,
+              -1.0,
+              0.0
+            ],
+            "right": [
+              0.0,
+              1.0,
+              0.0
+            ]
+          },
+          "hand_eye_calibration": "not provided; wrist optical axes are inferred from state/workspace consistency"
+        },
+        "example_pose": {
+          "sample_index": 0,
+          "left_camera": {
+            "kind": "base",
+            "arm": null,
+            "position": [
+              -0.3769,
+              -0.0074,
+              0.7259
+            ],
+            "optical_axis": [
+              0.8805,
+              0.0,
+              -0.4741
+            ],
+            "local_optical_axis": null
+          },
+          "right_camera": {
+            "kind": "wrist",
+            "arm": "right",
+            "position": [
+              0.2765,
+              -0.2136,
+              0.4616
+            ],
+            "optical_axis": [
+              -0.0015,
+              0.9875,
+              -0.1577
+            ],
+            "local_optical_axis": [
+              0.0,
+              1.0,
+              0.0
+            ]
+          },
+          "matched_target": [
+            0.2731,
+            -0.0074,
+            0.3759
+          ]
+        }
+      },
+      "verification_policy": "Visual correlation is used only as weak verification after state-supported overlap."
+    },
+    "merged_count": 1
+  },
+  {
+    "finding_id": "V2F-000013",
+    "category_id": "1.2.2.A",
+    "category_name": "Vision frozen/fast/jitter problem",
+    "issue_type": "low_motion_freeze_run",
+    "issue_name": "Visual motion is near zero for a long window",
+    "definition": "Vision sequence is legally structured but has abnormal temporal dynamics such as freezing, sudden fast motion, or jitter.",
+    "decision_rule": "Exact repeated frames, near-zero visual motion, extreme visual motion, or high-frequency visual acceleration persists beyond calibrated window thresholds.",
+    "object_level": "segment",
+    "modality": "vision",
+    "confidence_level": "高置信异常",
+    "illegal": false,
+    "severity_score": 65.0,
+    "quality_penalty": 10.14,
+    "episode_index": 4,
+    "task_index": 0,
+    "view": "right_wrist_image",
+    "column": null,
+    "frame_start": 5,
+    "frame_end": 13,
+    "evidence": {
+      "run_length": 8,
+      "low_motion_threshold": 0.2,
+      "median_motion": 0.05548469163477421
+    },
+    "merged_count": 1
+  },
+  {
+    "finding_id": "V2F-000012",
+    "category_id": "1.2.2.A",
+    "category_name": "Vision frozen/fast/jitter problem",
+    "issue_type": "visual_high_frequency_jitter",
+    "issue_name": "Visual motion has high-frequency acceleration spikes",
+    "definition": "Vision sequence is legally structured but has abnormal temporal dynamics such as freezing, sudden fast motion, or jitter.",
+    "decision_rule": "Exact repeated frames, near-zero visual motion, extreme visual motion, or high-frequency visual acceleration persists beyond calibrated window thresholds.",
+    "object_level": "segment",
+    "modality": "vision",
+    "confidence_level": "高置信异常",
+    "illegal": false,
+    "severity_score": 65.0,
+    "quality_penalty": 9.945,
+    "episode_index": 4,
+    "task_index": 0,
+    "view": "image",
+    "column": null,
+    "frame_start": 186,
+    "frame_end": 190,
+    "evidence": {
+      "max_motion_accel": 17.492347240447998,
+      "accel_threshold": 11.466645741462724
+    },
+    "merged_count": 1
+  },
+  {
+    "finding_id": "V2F-000014",
+    "category_id": "1.2.2.B",
+    "category_name": "State frozen/fast/jitter problem",
+    "issue_type": "low_dim_freeze_run",
+    "issue_name": "Low-dimensional state is nearly unchanged for a long window",
+    "definition": "Low-dimensional sequence is legally structured but has abnormal temporal dynamics such as freezing, fast transition, spike, or jitter.",
+    "decision_rule": "State delta, acceleration, local variance, or unchanged-run length crosses calibrated task/column thresholds.",
+    "object_level": "segment",
+    "modality": "state",
+    "confidence_level": "高置信异常",
+    "illegal": false,
+    "severity_score": 57.5,
+    "quality_penalty": 9.013,
+    "episode_index": 4,
+    "task_index": 0,
+    "view": null,
+    "column": "state",
+    "frame_start": 0,
+    "frame_end": 9,
+    "evidence": {
+      "run_length": 9,
+      "low_delta_threshold": 1e-08,
+      "median_delta": 0.0
+    },
+    "merged_count": 1
+  },
+  {
+    "finding_id": "V2F-000015",
+    "category_id": "1.2.2.B",
+    "category_name": "State frozen/fast/jitter problem",
+    "issue_type": "low_dim_freeze_run",
+    "issue_name": "Low-dimensional state is nearly unchanged for a long window",
+    "definition": "Low-dimensional sequence is legally structured but has abnormal temporal dynamics such as freezing, fast transition, spike, or jitter.",
+    "decision_rule": "State delta, acceleration, local variance, or unchanged-run length crosses calibrated task/column thresholds.",
+    "object_level": "segment",
+    "modality": "state",
+    "confidence_level": "高置信异常",
+    "illegal": false,
+    "severity_score": 55.0,
+    "quality_penalty": 8.58,
+    "episode_index": 4,
+    "task_index": 0,
+    "view": null,
+    "column": "actions",
+    "frame_start": 0,
+    "frame_end": 8,
+    "evidence": {
+      "run_length": 8,
+      "low_delta_threshold": 1e-08,
+      "median_delta": 0.0
+    },
+    "merged_count": 1
+  },
+  {
+    "finding_id": "V2F-000017",
+    "category_id": "1.2.2.C",
+    "category_name": "Vision-State temporal consistency problem",
+    "issue_type": "low_cross_modal_correlation",
+    "issue_name": "Vision-State motion correlation is lower than reference",
+    "definition": "Vision and low-dimensional state are locally out of sync or show unstable response timing.",
+    "decision_rule": "Best lag between visual motion and state motion deviates from the calibrated reference lag, or the best correlation falls below the reference baseline.",
+    "object_level": "episode",
+    "modality": "vision-state",
+    "confidence_level": "分布外样本",
+    "illegal": false,
+    "severity_score": 45.0,
+    "quality_penalty": 6.75,
+    "episode_index": 4,
+    "task_index": 0,
+    "view": "image",
+    "column": "actions",
+    "frame_start": null,
+    "frame_end": null,
+    "evidence": {
+      "best_lag": 5,
+      "best_correlation": 0.05922710055332973,
+      "correlation_baseline": {
+        "count": 12,
+        "median": 0.13337247788875778,
+        "mad": 0.035321575971976674,
+        "mean": 0.13835234162124502,
+        "std": 0.049496533478842086,
+        "p01": 0.06220899658502571,
+        "p05": 0.07413658071180965,
+        "p95": 0.2244040141158282,
+        "p99": 0.22997325834624902,
+        "min": 0.05922710055332973,
+        "max": 0.23136556940385422
+      }
+    },
+    "merged_count": 1
+  },
+  {
+    "finding_id": "V2F-000018",
+    "category_id": "1.2.2.C",
+    "category_name": "Vision-State temporal consistency problem",
+    "issue_type": "cross_modal_lag_shift",
+    "issue_name": "Vision-State best lag deviates from reference lag",
+    "definition": "Vision and low-dimensional state are locally out of sync or show unstable response timing.",
+    "decision_rule": "Best lag between visual motion and state motion deviates from the calibrated reference lag, or the best correlation falls below the reference baseline.",
+    "object_level": "episode",
+    "modality": "vision-state",
+    "confidence_level": "分布外样本",
+    "illegal": false,
+    "severity_score": 59.0,
+    "quality_penalty": 8.85,
+    "episode_index": 4,
+    "task_index": 0,
+    "view": "right_wrist_image",
+    "column": "actions",
+    "frame_start": null,
+    "frame_end": null,
+    "evidence": {
+      "best_lag": 3,
+      "expected_lag": 5,
+      "lag_baseline": {
+        "count": 12,
+        "median": 5.0,
+        "mad": 0.0,
+        "mean": 4.666666666666667,
+        "std": 0.6236095644623235,
+        "p01": 3.11,
+        "p05": 3.55,
+        "p95": 5.0,
+        "p99": 5.0,
+        "min": 3.0,
+        "max": 5.0
+      }
+    },
+    "merged_count": 1
+  },
+  {
+    "finding_id": "V2F-000022",
+    "category_id": "1.1.2.C",
+    "category_name": "Vision-State-Vision geometry/scale problem",
+    "issue_type": "state_gated_view_pair_motion_inconsistency",
+    "issue_name": "State-supported overlapping camera pair has weak visual agreement",
+    "definition": "Visual spatial change and low-dimensional state change are inconsistent, suggesting broken geometry, scale, crop, or coarse cross-modal relation.",
+    "decision_rule": "Known camera semantics and robot state first indicate that two views should overlap; only then is weak visual motion correlation used as verification.",
+    "object_level": "episode",
+    "modality": "vision-state",
+    "confidence_level": "分布外样本",
+    "illegal": false,
+    "severity_score": 45.0,
+    "quality_penalty": 6.75,
+    "episode_index": 5,
+    "task_index": 0,
+    "view": "image|right_wrist_image",
+    "column": null,
+    "frame_start": null,
+    "frame_end": null,
+    "evidence": {
+      "correlation": -0.04635573050005711,
+      "pair_baseline": {
+        "count": 12,
+        "median": 0.0550970832123259,
+        "mad": 0.06999370319907497,
+        "mean": 0.06396459807613862,
+        "std": 0.10473611150842652,
+        "p01": -0.14387847889655456,
+        "p05": -0.09566498530727491,
+        "p95": 0.21134023941544525,
+        "p99": 0.2582369342395738,
+        "min": -0.15593185229387446,
+        "max": 0.26996110794560585
+      },
+      "state_gate": {
+        "enabled": true,
+        "reason": "estimated_frustum_overlap",
+        "geometry_column": "state",
+        "left_view_arm": null,
+        "right_view_arm": "right",
+        "overlap_score": 1.0,
+        "hits": 32,
+        "samples_checked": 32,
+        "workspace_center": [
+          0.3494,
+          0.001,
+          0.3753
+        ],
+        "workspace_extent": [
+          0.1862,
+          0.7876,
+          0.1395
+        ],
+        "median_shared_target_distance_m": 0.7382411530116699,
+        "camera_model": {
+          "robot": "Franka/Panda-like dual-arm state with end-effector pose",
+          "base_camera_offset_from_workspace": [
+            -0.65,
+            0.0,
+            0.35
+          ],
+          "base_fov_degrees": 95.0,
+          "wrist_fov_degrees": 95.0,
+          "wrist_local_optical_axes": {
+            "left": [
+              0.0,
+              -1.0,
+              0.0
+            ],
+            "right": [
+              0.0,
+              1.0,
+              0.0
+            ]
+          },
+          "hand_eye_calibration": "not provided; wrist optical axes are inferred from state/workspace consistency"
+        },
+        "example_pose": {
+          "sample_index": 0,
+          "left_camera": {
+            "kind": "base",
+            "arm": null,
+            "position": [
+              -0.3006,
+              0.001,
+              0.7253
+            ],
+            "optical_axis": [
+              0.8805,
+              0.0,
+              -0.4741
+            ],
+            "local_optical_axis": null
+          },
+          "right_camera": {
+            "kind": "wrist",
+            "arm": "right",
+            "position": [
+              0.2774,
+              -0.215,
+              0.464
+            ],
+            "optical_axis": [
+              0.0159,
+              0.9876,
+              -0.1563
+            ],
+            "local_optical_axis": [
+              0.0,
+              1.0,
+              0.0
+            ]
+          },
+          "matched_target": [
+            0.3494,
+            0.001,
+            0.3753
+          ]
+        }
+      },
+      "verification_policy": "Visual correlation is used only as weak verification after state-supported overlap."
+    },
+    "merged_count": 1
+  },
+  {
+    "finding_id": "V2F-000023",
+    "category_id": "1.1.2.C",
+    "category_name": "Vision-State-Vision geometry/scale problem",
+    "issue_type": "state_gated_view_pair_motion_inconsistency",
+    "issue_name": "State-supported overlapping camera pair has weak visual agreement",
+    "definition": "Visual spatial change and low-dimensional state change are inconsistent, suggesting broken geometry, scale, crop, or coarse cross-modal relation.",
+    "decision_rule": "Known camera semantics and robot state first indicate that two views should overlap; only then is weak visual motion correlation used as verification.",
+    "object_level": "episode",
+    "modality": "vision-state",
+    "confidence_level": "分布外样本",
+    "illegal": false,
+    "severity_score": 45.0,
+    "quality_penalty": 6.75,
+    "episode_index": 5,
+    "task_index": 0,
+    "view": "left_wrist_image|right_wrist_image",
+    "column": null,
+    "frame_start": null,
+    "frame_end": null,
+    "evidence": {
+      "correlation": -0.14983707124687698,
+      "pair_baseline": {
+        "count": 12,
+        "median": 0.1988011272493096,
+        "mad": 0.13730257264946757,
+        "mean": 0.1477983592622405,
+        "std": 0.19228284700649362,
+        "p01": -0.1555034572725679,
+        "p05": -0.15270209788908026,
+        "p95": 0.38549294110756477,
+        "p99": 0.4160561009965469,
+        "min": -0.15620379711843982,
+        "max": 0.4236968909687924
+      },
+      "state_gate": {
+        "enabled": true,
+        "reason": "estimated_frustum_overlap",
+        "geometry_column": "state",
+        "left_view_arm": "left",
+        "right_view_arm": "right",
+        "overlap_score": 1.0,
+        "hits": 32,
+        "samples_checked": 32,
+        "workspace_center": [
+          0.3494,
+          0.001,
+          0.3753
+        ],
+        "workspace_extent": [
+          0.1862,
+          0.7876,
+          0.1395
+        ],
+        "median_shared_target_distance_m": 0.29228618515572924,
+        "camera_model": {
+          "robot": "Franka/Panda-like dual-arm state with end-effector pose",
+          "base_camera_offset_from_workspace": [
+            -0.65,
+            0.0,
+            0.35
+          ],
+          "base_fov_degrees": 95.0,
+          "wrist_fov_degrees": 95.0,
+          "wrist_local_optical_axes": {
+            "left": [
+              0.0,
+              -1.0,
+              0.0
+            ],
+            "right": [
+              0.0,
+              1.0,
+              0.0
+            ]
+          },
+          "hand_eye_calibration": "not provided; wrist optical axes are inferred from state/workspace consistency"
+        },
+        "example_pose": {
+          "sample_index": 0,
+          "left_camera": {
+            "kind": "wrist",
+            "arm": "left",
+            "position": [
+              0.2773,
+              0.2141,
+              0.4643
+            ],
+            "optical_axis": [
+              0.0042,
+              -0.9879,
+              -0.1548
+            ],
+            "local_optical_axis": [
+              0.0,
+              -1.0,
+              0.0
+            ]
+          },
+          "right_camera": {
+            "kind": "wrist",
+            "arm": "right",
+            "position": [
+              0.2774,
+              -0.215,
+              0.464
+            ],
+            "optical_axis": [
+              0.0159,
+              0.9876,
+              -0.1563
+            ],
+            "local_optical_axis": [
+              0.0,
+              1.0,
+              0.0
+            ]
+          },
+          "matched_target": [
+            0.3494,
+            0.001,
+            0.3753
+          ]
+        }
+      },
+      "verification_policy": "Visual correlation is used only as weak verification after state-supported overlap."
+    },
+    "merged_count": 1
+  },
+  {
+    "finding_id": "V2F-000024",
+    "category_id": "1.1.2.D",
+    "category_name": "State-Vision-State consistency problem",
+    "issue_type": "visual_moves_state_static",
+    "issue_name": "Visual motion is strong but low-dimensional state is static",
+    "definition": "Low-dimensional state values or local transitions are inconsistent with visual evidence or neighboring state context.",
+    "decision_rule": "State value/delta/acceleration is a calibrated outlier and visual evidence does not support the same local change.",
+    "object_level": "segment",
+    "modality": "vision-state",
+    "confidence_level": "高置信异常",
+    "illegal": false,
+    "severity_score": 69.0,
+    "quality_penalty": 10.505,
+    "episode_index": 5,
+    "task_index": 0,
+    "view": null,
+    "column": "actions",
+    "frame_start": 164,
+    "frame_end": 167,
+    "evidence": {
+      "max_visual_motion": 20.833333651224773,
+      "median_state_delta": 0.0
+    },
+    "merged_count": 1
+  },
+  {
+    "finding_id": "V2F-000020",
+    "category_id": "1.2.2.B",
+    "category_name": "State frozen/fast/jitter problem",
+    "issue_type": "low_dim_freeze_run",
+    "issue_name": "Low-dimensional state is nearly unchanged for a long window",
+    "definition": "Low-dimensional sequence is legally structured but has abnormal temporal dynamics such as freezing, fast transition, spike, or jitter.",
+    "decision_rule": "State delta, acceleration, local variance, or unchanged-run length crosses calibrated task/column thresholds.",
+    "object_level": "segment",
+    "modality": "state",
+    "confidence_level": "高置信异常",
+    "illegal": false,
+    "severity_score": 55.0,
+    "quality_penalty": 8.58,
+    "episode_index": 5,
+    "task_index": 0,
+    "view": null,
+    "column": "actions",
+    "frame_start": 0,
+    "frame_end": 8,
+    "evidence": {
+      "run_length": 8,
+      "low_delta_threshold": 1e-08,
+      "median_delta": 0.0
+    },
+    "merged_count": 1
+  },
+  {
+    "finding_id": "V2F-000019",
+    "category_id": "1.2.2.B",
+    "category_name": "State frozen/fast/jitter problem",
+    "issue_type": "low_dim_jitter_or_spike",
+    "issue_name": "Low-dimensional state acceleration is an extreme outlier",
+    "definition": "Low-dimensional sequence is legally structured but has abnormal temporal dynamics such as freezing, fast transition, spike, or jitter.",
+    "decision_rule": "State delta, acceleration, local variance, or unchanged-run length crosses calibrated task/column thresholds.",
+    "object_level": "segment",
+    "modality": "state",
+    "confidence_level": "高置信异常",
+    "illegal": false,
+    "severity_score": 100.0,
+    "quality_penalty": 15.0,
+    "episode_index": 5,
+    "task_index": 0,
+    "view": null,
+    "column": "state",
+    "frame_start": 159,
+    "frame_end": 159,
+    "evidence": {
+      "max_accel": 0.23845992849319728,
+      "accel_threshold": 0.21791229508482574
+    },
+    "merged_count": 1
+  },
+  {
+    "finding_id": "V2F-000021",
+    "category_id": "1.2.2.B",
+    "category_name": "State frozen/fast/jitter problem",
+    "issue_type": "low_dim_jitter_or_spike",
+    "issue_name": "Low-dimensional state acceleration is an extreme outlier",
+    "definition": "Low-dimensional sequence is legally structured but has abnormal temporal dynamics such as freezing, fast transition, spike, or jitter.",
+    "decision_rule": "State delta, acceleration, local variance, or unchanged-run length crosses calibrated task/column thresholds.",
+    "object_level": "segment",
+    "modality": "state",
+    "confidence_level": "高置信异常",
+    "illegal": false,
+    "severity_score": 100.0,
+    "quality_penalty": 15.0,
+    "episode_index": 5,
+    "task_index": 0,
+    "view": null,
+    "column": "actions",
+    "frame_start": 160,
+    "frame_end": 160,
+    "evidence": {
+      "max_accel": 0.3896123242979185,
+      "accel_threshold": 0.31779618683241223
+    },
+    "merged_count": 1
+  },
+  {
+    "finding_id": "V2F-000025",
+    "category_id": "1.2.2.A",
+    "category_name": "Vision frozen/fast/jitter problem",
+    "issue_type": "low_motion_freeze_run",
+    "issue_name": "Visual motion is near zero for a long window",
+    "definition": "Vision sequence is legally structured but has abnormal temporal dynamics such as freezing, sudden fast motion, or jitter.",
+    "decision_rule": "Exact repeated frames, near-zero visual motion, extreme visual motion, or high-frequency visual acceleration persists beyond calibrated window thresholds.",
+    "object_level": "segment",
+    "modality": "vision",
+    "confidence_level": "高置信异常",
+    "illegal": false,
+    "severity_score": 67.5,
+    "quality_penalty": 14.284,
+    "episode_index": 6,
+    "task_index": 1,
+    "view": "left_wrist_image",
+    "column": null,
+    "frame_start": 172,
+    "frame_end": 191,
+    "evidence": {
+      "run_length": 9,
+      "low_motion_threshold": 0.2,
+      "median_motion": 0.03911563754081726,
+      "merged_evidence": [
+        {
+          "run_length": 9,
+          "low_motion_threshold": 0.2,
+          "median_motion": 0.05102028325200081
+        }
+      ]
+    },
+    "merged_count": 2
+  },
+  {
+    "finding_id": "V2F-000028",
+    "category_id": "1.2.2.B",
+    "category_name": "State frozen/fast/jitter problem",
+    "issue_type": "low_dim_freeze_run",
+    "issue_name": "Low-dimensional state is nearly unchanged for a long window",
+    "definition": "Low-dimensional sequence is legally structured but has abnormal temporal dynamics such as freezing, fast transition, spike, or jitter.",
+    "decision_rule": "State delta, acceleration, local variance, or unchanged-run length crosses calibrated task/column thresholds.",
+    "object_level": "segment",
+    "modality": "state",
+    "confidence_level": "高置信异常",
+    "illegal": false,
+    "severity_score": 90.0,
+    "quality_penalty": 15.0,
+    "episode_index": 6,
+    "task_index": 1,
+    "view": null,
+    "column": "actions",
+    "frame_start": 156,
+    "frame_end": 201,
+    "evidence": {
+      "run_length": 45,
+      "low_delta_threshold": 1e-08,
+      "median_delta": 0.0
+    },
+    "merged_count": 1
+  },
+  {
+    "finding_id": "V2F-000027",
+    "category_id": "1.2.2.B",
+    "category_name": "State frozen/fast/jitter problem",
+    "issue_type": "low_dim_freeze_run",
+    "issue_name": "Low-dimensional state is nearly unchanged for a long window",
+    "definition": "Low-dimensional sequence is legally structured but has abnormal temporal dynamics such as freezing, fast transition, spike, or jitter.",
+    "decision_rule": "State delta, acceleration, local variance, or unchanged-run length crosses calibrated task/column thresholds.",
+    "object_level": "segment",
+    "modality": "state",
+    "confidence_level": "高置信异常",
+    "illegal": false,
+    "severity_score": 67.5,
+    "quality_penalty": 10.783,
+    "episode_index": 6,
+    "task_index": 1,
+    "view": null,
+    "column": "state",
+    "frame_start": 172,
+    "frame_end": 185,
+    "evidence": {
+      "run_length": 13,
+      "low_delta_threshold": 1e-08,
+      "median_delta": 0.0
+    },
+    "merged_count": 1
+  },
+  {
+    "finding_id": "V2F-000031",
+    "category_id": "1.1.2.C",
+    "category_name": "Vision-State-Vision geometry/scale problem",
+    "issue_type": "state_gated_view_pair_motion_inconsistency",
+    "issue_name": "State-supported overlapping camera pair has weak visual agreement",
+    "definition": "Visual spatial change and low-dimensional state change are inconsistent, suggesting broken geometry, scale, crop, or coarse cross-modal relation.",
+    "decision_rule": "Known camera semantics and robot state first indicate that two views should overlap; only then is weak visual motion correlation used as verification.",
+    "object_level": "episode",
+    "modality": "vision-state",
+    "confidence_level": "分布外样本",
+    "illegal": false,
+    "severity_score": 45.0,
+    "quality_penalty": 6.75,
+    "episode_index": 7,
+    "task_index": 0,
+    "view": "left_wrist_image|right_wrist_image",
+    "column": null,
+    "frame_start": null,
+    "frame_end": null,
+    "evidence": {
+      "correlation": -0.11190409291265321,
+      "pair_baseline": {
+        "count": 12,
+        "median": 0.1988011272493096,
+        "mad": 0.13730257264946757,
+        "mean": 0.1477983592622405,
+        "std": 0.19228284700649362,
+        "p01": -0.1555034572725679,
+        "p05": -0.15270209788908026,
+        "p95": 0.38549294110756477,
+        "p99": 0.4160561009965469,
+        "min": -0.15620379711843982,
+        "max": 0.4236968909687924
+      },
+      "state_gate": {
+        "enabled": true,
+        "reason": "estimated_frustum_overlap",
+        "geometry_column": "state",
+        "left_view_arm": "left",
+        "right_view_arm": "right",
+        "overlap_score": 1.0,
+        "hits": 32,
+        "samples_checked": 32,
+        "workspace_center": [
+          0.3358,
+          -0.0023,
+          0.377
+        ],
+        "workspace_extent": [
+          0.2114,
+          0.7652,
+          0.1542
+        ],
+        "median_shared_target_distance_m": 0.29273535339656065,
+        "camera_model": {
+          "robot": "Franka/Panda-like dual-arm state with end-effector pose",
+          "base_camera_offset_from_workspace": [
+            -0.65,
+            0.0,
+            0.35
+          ],
+          "base_fov_degrees": 95.0,
+          "wrist_fov_degrees": 95.0,
+          "wrist_local_optical_axes": {
+            "left": [
+              0.0,
+              -1.0,
+              0.0
+            ],
+            "right": [
+              0.0,
+              1.0,
+              0.0
+            ]
+          },
+          "hand_eye_calibration": "not provided; wrist optical axes are inferred from state/workspace consistency"
+        },
+        "example_pose": {
+          "sample_index": 0,
+          "left_camera": {
+            "kind": "wrist",
+            "arm": "left",
+            "position": [
+              0.277,
+              0.2127,
+              0.469
+            ],
+            "optical_axis": [
+              0.0024,
+              -0.9884,
+              -0.152
+            ],
+            "local_optical_axis": [
+              0.0,
+              -1.0,
+              0.0
+            ]
+          },
+          "right_camera": {
+            "kind": "wrist",
+            "arm": "right",
+            "position": [
+              0.277,
+              -0.2132,
+              0.4684
+            ],
+            "optical_axis": [
+              0.0078,
+              0.9883,
+              -0.1523
+            ],
+            "local_optical_axis": [
+              0.0,
+              1.0,
+              0.0
+            ]
+          },
+          "matched_target": [
+            0.3358,
+            -0.0023,
+            0.377
+          ]
+        }
+      },
+      "verification_policy": "Visual correlation is used only as weak verification after state-supported overlap."
+    },
+    "merged_count": 1
+  },
+  {
+    "finding_id": "V2F-000032",
+    "category_id": "1.1.2.D",
+    "category_name": "State-Vision-State consistency problem",
+    "issue_type": "visual_moves_state_static",
+    "issue_name": "Visual motion is strong but low-dimensional state is static",
+    "definition": "Low-dimensional state values or local transitions are inconsistent with visual evidence or neighboring state context.",
+    "decision_rule": "State value/delta/acceleration is a calibrated outlier and visual evidence does not support the same local change.",
+    "object_level": "segment",
+    "modality": "vision-state",
+    "confidence_level": "高置信异常",
+    "illegal": false,
+    "severity_score": 61.0,
+    "quality_penalty": 9.242,
+    "episode_index": 7,
+    "task_index": 0,
+    "view": null,
+    "column": "actions",
+    "frame_start": 163,
+    "frame_end": 165,
+    "evidence": {
+      "max_visual_motion": 20.204081853230793,
+      "median_state_delta": 0.0
+    },
+    "merged_count": 1
+  },
+  {
+    "finding_id": "V2F-000030",
+    "category_id": "1.2.2.B",
+    "category_name": "State frozen/fast/jitter problem",
+    "issue_type": "low_dim_freeze_run",
+    "issue_name": "Low-dimensional state is nearly unchanged for a long window",
+    "definition": "Low-dimensional sequence is legally structured but has abnormal temporal dynamics such as freezing, fast transition, spike, or jitter.",
+    "decision_rule": "State delta, acceleration, local variance, or unchanged-run length crosses calibrated task/column thresholds.",
+    "object_level": "segment",
+    "modality": "state",
+    "confidence_level": "高置信异常",
+    "illegal": false,
+    "severity_score": 55.0,
+    "quality_penalty": 8.58,
+    "episode_index": 7,
+    "task_index": 0,
+    "view": null,
+    "column": "actions",
+    "frame_start": 100,
+    "frame_end": 108,
+    "evidence": {
+      "run_length": 8,
+      "low_delta_threshold": 1e-08,
+      "median_delta": 0.0
+    },
+    "merged_count": 1
+  },
+  {
+    "finding_id": "V2F-000029",
+    "category_id": "1.2.2.B",
+    "category_name": "State frozen/fast/jitter problem",
+    "issue_type": "low_dim_jitter_or_spike",
+    "issue_name": "Low-dimensional state acceleration is an extreme outlier",
+    "definition": "Low-dimensional sequence is legally structured but has abnormal temporal dynamics such as freezing, fast transition, spike, or jitter.",
+    "decision_rule": "State delta, acceleration, local variance, or unchanged-run length crosses calibrated task/column thresholds.",
+    "object_level": "segment",
+    "modality": "state",
+    "confidence_level": "高置信异常",
+    "illegal": false,
+    "severity_score": 95.41,
+    "quality_penalty": 14.311,
+    "episode_index": 7,
+    "task_index": 0,
+    "view": null,
+    "column": "state",
+    "frame_start": 158,
+    "frame_end": 158,
+    "evidence": {
+      "max_accel": 0.22400323591699253,
+      "accel_threshold": 0.21791229508482574
+    },
+    "merged_count": 1
+  },
+  {
+    "finding_id": "V2F-000037",
+    "category_id": "1.1.2.C",
+    "category_name": "Vision-State-Vision geometry/scale problem",
+    "issue_type": "state_gated_view_pair_motion_inconsistency",
+    "issue_name": "State-supported overlapping camera pair has weak visual agreement",
+    "definition": "Visual spatial change and low-dimensional state change are inconsistent, suggesting broken geometry, scale, crop, or coarse cross-modal relation.",
+    "decision_rule": "Known camera semantics and robot state first indicate that two views should overlap; only then is weak visual motion correlation used as verification.",
+    "object_level": "episode",
+    "modality": "vision-state",
+    "confidence_level": "分布外样本",
+    "illegal": false,
+    "severity_score": 35.0,
+    "quality_penalty": 5.25,
+    "episode_index": 8,
+    "task_index": 0,
+    "view": "image|right_wrist_image",
+    "column": null,
+    "frame_start": null,
+    "frame_end": null,
+    "evidence": {
+      "correlation": 0.021491777725611394,
+      "pair_baseline": {
+        "count": 12,
+        "median": 0.0550970832123259,
+        "mad": 0.06999370319907497,
+        "mean": 0.06396459807613862,
+        "std": 0.10473611150842652,
+        "p01": -0.14387847889655456,
+        "p05": -0.09566498530727491,
+        "p95": 0.21134023941544525,
+        "p99": 0.2582369342395738,
+        "min": -0.15593185229387446,
+        "max": 0.26996110794560585
+      },
+      "state_gate": {
+        "enabled": true,
+        "reason": "estimated_frustum_overlap",
+        "geometry_column": "state",
+        "left_view_arm": null,
+        "right_view_arm": "right",
+        "overlap_score": 1.0,
+        "hits": 32,
+        "samples_checked": 32,
+        "workspace_center": [
+          0.3124,
+          -0.0007,
+          0.3824
+        ],
+        "workspace_extent": [
+          0.2478,
+          0.7217,
+          0.1451
+        ],
+        "median_shared_target_distance_m": 0.73824115301167,
+        "camera_model": {
+          "robot": "Franka/Panda-like dual-arm state with end-effector pose",
+          "base_camera_offset_from_workspace": [
+            -0.65,
+            0.0,
+            0.35
+          ],
+          "base_fov_degrees": 95.0,
+          "wrist_fov_degrees": 95.0,
+          "wrist_local_optical_axes": {
+            "left": [
+              0.0,
+              -1.0,
+              0.0
+            ],
+            "right": [
+              0.0,
+              1.0,
+              0.0
+            ]
+          },
+          "hand_eye_calibration": "not provided; wrist optical axes are inferred from state/workspace consistency"
+        },
+        "example_pose": {
+          "sample_index": 0,
+          "left_camera": {
+            "kind": "base",
+            "arm": null,
+            "position": [
+              -0.3376,
+              -0.0007,
+              0.7324
+            ],
+            "optical_axis": [
+              0.8805,
+              0.0,
+              -0.4741
+            ],
+            "local_optical_axis": null
+          },
+          "right_camera": {
+            "kind": "wrist",
+            "arm": "right",
+            "position": [
+              0.2768,
+              -0.215,
+              0.4596
+            ],
+            "optical_axis": [
+              0.0157,
+              0.9887,
+              -0.1493
+            ],
+            "local_optical_axis": [
+              0.0,
+              1.0,
+              0.0
+            ]
+          },
+          "matched_target": [
+            0.3124,
+            -0.0007,
+            0.3824
+          ]
+        }
+      },
+      "verification_policy": "Visual correlation is used only as weak verification after state-supported overlap."
+    },
+    "merged_count": 1
+  },
+  {
+    "finding_id": "V2F-000038",
+    "category_id": "1.1.2.D",
+    "category_name": "State-Vision-State consistency problem",
+    "issue_type": "visual_moves_state_static",
+    "issue_name": "Visual motion is strong but low-dimensional state is static",
+    "definition": "Low-dimensional state values or local transitions are inconsistent with visual evidence or neighboring state context.",
+    "decision_rule": "State value/delta/acceleration is a calibrated outlier and visual evidence does not support the same local change.",
+    "object_level": "segment",
+    "modality": "vision-state",
+    "confidence_level": "高置信异常",
+    "illegal": false,
+    "severity_score": 69.0,
+    "quality_penalty": 10.505,
+    "episode_index": 8,
+    "task_index": 0,
+    "view": null,
+    "column": "actions",
+    "frame_start": 107,
+    "frame_end": 110,
+    "evidence": {
+      "max_visual_motion": 21.482569058736164,
+      "median_state_delta": 0.0
+    },
+    "merged_count": 1
+  },
+  {
+    "finding_id": "V2F-000034",
+    "category_id": "1.2.2.A",
+    "category_name": "Vision frozen/fast/jitter problem",
+    "issue_type": "visual_high_frequency_jitter",
+    "issue_name": "Visual motion has high-frequency acceleration spikes",
+    "definition": "Vision sequence is legally structured but has abnormal temporal dynamics such as freezing, sudden fast motion, or jitter.",
+    "decision_rule": "Exact repeated frames, near-zero visual motion, extreme visual motion, or high-frequency visual acceleration persists beyond calibrated window thresholds.",
+    "object_level": "segment",
+    "modality": "vision",
+    "confidence_level": "高置信异常",
+    "illegal": false,
+    "severity_score": 65.0,
+    "quality_penalty": 9.945,
+    "episode_index": 8,
+    "task_index": 0,
+    "view": "image",
+    "column": null,
+    "frame_start": 153,
+    "frame_end": 157,
+    "evidence": {
+      "max_motion_accel": 14.159014701843262,
+      "accel_threshold": 11.466645741462724
+    },
+    "merged_count": 1
+  },
+  {
+    "finding_id": "V2F-000033",
+    "category_id": "1.2.2.A",
+    "category_name": "Vision frozen/fast/jitter problem",
+    "issue_type": "visual_fast_jump",
+    "issue_name": "Visual sequence has an extreme fast jump",
+    "definition": "Vision sequence is legally structured but has abnormal temporal dynamics such as freezing, sudden fast motion, or jitter.",
+    "decision_rule": "Exact repeated frames, near-zero visual motion, extreme visual motion, or high-frequency visual acceleration persists beyond calibrated window thresholds.",
+    "object_level": "segment",
+    "modality": "vision",
+    "confidence_level": "疑似异常",
+    "illegal": false,
+    "severity_score": 35.0,
+    "quality_penalty": 5.276,
+    "episode_index": 8,
+    "task_index": 0,
+    "view": "image",
+    "column": null,
+    "frame_start": 155,
+    "frame_end": 156,
+    "evidence": {
+      "max_motion": 26.949831008911133,
+      "high_motion_threshold": 26.520178327560473
+    },
+    "merged_count": 1
+  },
+  {
+    "finding_id": "V2F-000035",
+    "category_id": "1.2.2.B",
+    "category_name": "State frozen/fast/jitter problem",
+    "issue_type": "low_dim_freeze_run",
+    "issue_name": "Low-dimensional state is nearly unchanged for a long window",
+    "definition": "Low-dimensional sequence is legally structured but has abnormal temporal dynamics such as freezing, fast transition, spike, or jitter.",
+    "decision_rule": "State delta, acceleration, local variance, or unchanged-run length crosses calibrated task/column thresholds.",
+    "object_level": "segment",
+    "modality": "state",
+    "confidence_level": "高置信异常",
+    "illegal": false,
+    "severity_score": 55.0,
+    "quality_penalty": 8.58,
+    "episode_index": 8,
+    "task_index": 0,
+    "view": null,
+    "column": "actions",
+    "frame_start": 0,
+    "frame_end": 8,
+    "evidence": {
+      "run_length": 8,
+      "low_delta_threshold": 1e-08,
+      "median_delta": 0.0
+    },
+    "merged_count": 1
+  },
+  {
+    "finding_id": "V2F-000036",
+    "category_id": "1.2.2.B",
+    "category_name": "State frozen/fast/jitter problem",
+    "issue_type": "low_dim_freeze_run",
+    "issue_name": "Low-dimensional state is nearly unchanged for a long window",
+    "definition": "Low-dimensional sequence is legally structured but has abnormal temporal dynamics such as freezing, fast transition, spike, or jitter.",
+    "decision_rule": "State delta, acceleration, local variance, or unchanged-run length crosses calibrated task/column thresholds.",
+    "object_level": "segment",
+    "modality": "state",
+    "confidence_level": "高置信异常",
+    "illegal": false,
+    "severity_score": 55.0,
+    "quality_penalty": 8.58,
+    "episode_index": 8,
+    "task_index": 0,
+    "view": null,
+    "column": "actions",
+    "frame_start": 107,
+    "frame_end": 115,
+    "evidence": {
+      "run_length": 8,
+      "low_delta_threshold": 1e-08,
+      "median_delta": 0.0
+    },
+    "merged_count": 1
+  },
+  {
+    "finding_id": "V2F-000041",
+    "category_id": "1.1.2.C",
+    "category_name": "Vision-State-Vision geometry/scale problem",
+    "issue_type": "state_gated_view_pair_motion_inconsistency",
+    "issue_name": "State-supported overlapping camera pair has weak visual agreement",
+    "definition": "Visual spatial change and low-dimensional state change are inconsistent, suggesting broken geometry, scale, crop, or coarse cross-modal relation.",
+    "decision_rule": "Known camera semantics and robot state first indicate that two views should overlap; only then is weak visual motion correlation used as verification.",
+    "object_level": "episode",
+    "modality": "vision-state",
+    "confidence_level": "分布外样本",
+    "illegal": false,
+    "severity_score": 45.0,
+    "quality_penalty": 6.75,
+    "episode_index": 9,
+    "task_index": 0,
+    "view": "left_wrist_image|right_wrist_image",
+    "column": null,
+    "frame_start": null,
+    "frame_end": null,
+    "evidence": {
+      "correlation": -0.15620379711843982,
+      "pair_baseline": {
+        "count": 12,
+        "median": 0.1988011272493096,
+        "mad": 0.13730257264946757,
+        "mean": 0.1477983592622405,
+        "std": 0.19228284700649362,
+        "p01": -0.1555034572725679,
+        "p05": -0.15270209788908026,
+        "p95": 0.38549294110756477,
+        "p99": 0.4160561009965469,
+        "min": -0.15620379711843982,
+        "max": 0.4236968909687924
+      },
+      "state_gate": {
+        "enabled": true,
+        "reason": "estimated_frustum_overlap",
+        "geometry_column": "state",
+        "left_view_arm": "left",
+        "right_view_arm": "right",
+        "overlap_score": 1.0,
+        "hits": 32,
+        "samples_checked": 32,
+        "workspace_center": [
+          0.2959,
+          0.0258,
+          0.3798
+        ],
+        "workspace_extent": [
+          0.2247,
+          0.7586,
+          0.1425
+        ],
+        "median_shared_target_distance_m": 0.2974235471219554,
+        "camera_model": {
+          "robot": "Franka/Panda-like dual-arm state with end-effector pose",
+          "base_camera_offset_from_workspace": [
+            -0.65,
+            0.0,
+            0.35
+          ],
+          "base_fov_degrees": 95.0,
+          "wrist_fov_degrees": 95.0,
+          "wrist_local_optical_axes": {
+            "left": [
+              0.0,
+              -1.0,
+              0.0
+            ],
+            "right": [
+              0.0,
+              1.0,
+              0.0
+            ]
+          },
+          "hand_eye_calibration": "not provided; wrist optical axes are inferred from state/workspace consistency"
+        },
+        "example_pose": {
+          "sample_index": 0,
+          "left_camera": {
+            "kind": "wrist",
+            "arm": "left",
+            "position": [
+              0.2755,
+              0.2136,
+              0.4617
+            ],
+            "optical_axis": [
+              -0.0038,
+              -0.9885,
+              -0.1512
+            ],
+            "local_optical_axis": [
+              0.0,
+              -1.0,
+              0.0
+            ]
+          },
+          "right_camera": {
+            "kind": "wrist",
+            "arm": "right",
+            "position": [
+              0.2763,
+              -0.2114,
+              0.4603
+            ],
+            "optical_axis": [
+              -0.0006,
+              0.9874,
+              -0.158
+            ],
+            "local_optical_axis": [
+              0.0,
+              1.0,
+              0.0
+            ]
+          },
+          "matched_target": [
+            0.2959,
+            0.0258,
+            0.3798
+          ]
+        }
+      },
+      "verification_policy": "Visual correlation is used only as weak verification after state-supported overlap."
+    },
+    "merged_count": 1
+  },
+  {
+    "finding_id": "V2F-000042",
+    "category_id": "1.1.2.D",
+    "category_name": "State-Vision-State consistency problem",
+    "issue_type": "visual_moves_state_static",
+    "issue_name": "Visual motion is strong but low-dimensional state is static",
+    "definition": "Low-dimensional state values or local transitions are inconsistent with visual evidence or neighboring state context.",
+    "decision_rule": "State value/delta/acceleration is a calibrated outlier and visual evidence does not support the same local change.",
+    "object_level": "segment",
+    "modality": "vision-state",
+    "confidence_level": "高置信异常",
+    "illegal": false,
+    "severity_score": 69.0,
+    "quality_penalty": 10.505,
+    "episode_index": 9,
+    "task_index": 0,
+    "view": null,
+    "column": "actions",
+    "frame_start": 130,
+    "frame_end": 133,
+    "evidence": {
+      "max_visual_motion": 17.074546655019123,
+      "median_state_delta": 0.0
+    },
+    "merged_count": 1
+  },
+  {
+    "finding_id": "V2F-000039",
+    "category_id": "1.2.2.B",
+    "category_name": "State frozen/fast/jitter problem",
+    "issue_type": "low_dim_freeze_run",
+    "issue_name": "Low-dimensional state is nearly unchanged for a long window",
+    "definition": "Low-dimensional sequence is legally structured but has abnormal temporal dynamics such as freezing, fast transition, spike, or jitter.",
+    "decision_rule": "State delta, acceleration, local variance, or unchanged-run length crosses calibrated task/column thresholds.",
+    "object_level": "segment",
+    "modality": "state",
+    "confidence_level": "高置信异常",
+    "illegal": false,
+    "severity_score": 57.5,
+    "quality_penalty": 9.013,
+    "episode_index": 9,
+    "task_index": 0,
+    "view": null,
+    "column": "actions",
+    "frame_start": 0,
+    "frame_end": 9,
+    "evidence": {
+      "run_length": 9,
+      "low_delta_threshold": 1e-08,
+      "median_delta": 0.0
+    },
+    "merged_count": 1
+  },
+  {
+    "finding_id": "V2F-000040",
+    "category_id": "1.2.2.B",
+    "category_name": "State frozen/fast/jitter problem",
+    "issue_type": "low_dim_freeze_run",
+    "issue_name": "Low-dimensional state is nearly unchanged for a long window",
+    "definition": "Low-dimensional sequence is legally structured but has abnormal temporal dynamics such as freezing, fast transition, spike, or jitter.",
+    "decision_rule": "State delta, acceleration, local variance, or unchanged-run length crosses calibrated task/column thresholds.",
+    "object_level": "segment",
+    "modality": "state",
+    "confidence_level": "高置信异常",
+    "illegal": false,
+    "severity_score": 60.0,
+    "quality_penalty": 9.45,
+    "episode_index": 9,
+    "task_index": 0,
+    "view": null,
+    "column": "actions",
+    "frame_start": 62,
+    "frame_end": 72,
+    "evidence": {
+      "run_length": 10,
+      "low_delta_threshold": 1e-08,
+      "median_delta": 0.0
+    },
+    "merged_count": 1
+  },
+  {
+    "finding_id": "V2F-000043",
+    "category_id": "1.2.2.A",
+    "category_name": "Vision frozen/fast/jitter problem",
+    "issue_type": "visual_fast_jump",
+    "issue_name": "Visual sequence has an extreme fast jump",
+    "definition": "Vision sequence is legally structured but has abnormal temporal dynamics such as freezing, sudden fast motion, or jitter.",
+    "decision_rule": "Exact repeated frames, near-zero visual motion, extreme visual motion, or high-frequency visual acceleration persists beyond calibrated window thresholds.",
+    "object_level": "segment",
+    "modality": "vision",
+    "confidence_level": "疑似异常",
+    "illegal": false,
+    "severity_score": 35.0,
+    "quality_penalty": 5.303,
+    "episode_index": 10,
+    "task_index": 1,
+    "view": "left_wrist_image",
+    "column": null,
+    "frame_start": 106,
+    "frame_end": 108,
+    "evidence": {
+      "max_motion": 41.425167083740234,
+      "high_motion_threshold": 37.17716883659362
+    },
+    "merged_count": 1
+  },
+  {
+    "finding_id": "V2F-000047",
+    "category_id": "1.2.2.B",
+    "category_name": "State frozen/fast/jitter problem",
+    "issue_type": "low_dim_jitter_or_spike",
+    "issue_name": "Low-dimensional state acceleration is an extreme outlier",
+    "definition": "Low-dimensional sequence is legally structured but has abnormal temporal dynamics such as freezing, fast transition, spike, or jitter.",
+    "decision_rule": "State delta, acceleration, local variance, or unchanged-run length crosses calibrated task/column thresholds.",
+    "object_level": "segment",
+    "modality": "state",
+    "confidence_level": "高置信异常",
+    "illegal": false,
+    "severity_score": 85.24,
+    "quality_penalty": 12.786,
+    "episode_index": 10,
+    "task_index": 1,
+    "view": null,
+    "column": "actions",
+    "frame_start": 98,
+    "frame_end": 98,
+    "evidence": {
+      "max_accel": 0.28308498682856265,
+      "accel_threshold": 0.2711763883083074
+    },
+    "merged_count": 1
+  },
+  {
+    "finding_id": "V2F-000048",
+    "category_id": "1.2.2.B",
+    "category_name": "State frozen/fast/jitter problem",
+    "issue_type": "low_dim_jitter_or_spike",
+    "issue_name": "Low-dimensional state acceleration is an extreme outlier",
+    "definition": "Low-dimensional sequence is legally structured but has abnormal temporal dynamics such as freezing, fast transition, spike, or jitter.",
+    "decision_rule": "State delta, acceleration, local variance, or unchanged-run length crosses calibrated task/column thresholds.",
+    "object_level": "segment",
+    "modality": "state",
+    "confidence_level": "高置信异常",
+    "illegal": false,
+    "severity_score": 85.17,
+    "quality_penalty": 12.776,
+    "episode_index": 10,
+    "task_index": 1,
+    "view": null,
+    "column": "actions",
+    "frame_start": 103,
+    "frame_end": 103,
+    "evidence": {
+      "max_accel": 0.2829712728404918,
+      "accel_threshold": 0.2711763883083074
+    },
+    "merged_count": 1
+  },
+  {
+    "finding_id": "V2F-000046",
+    "category_id": "1.2.2.B",
+    "category_name": "State frozen/fast/jitter problem",
+    "issue_type": "low_dim_freeze_run",
+    "issue_name": "Low-dimensional state is nearly unchanged for a long window",
+    "definition": "Low-dimensional sequence is legally structured but has abnormal temporal dynamics such as freezing, fast transition, spike, or jitter.",
+    "decision_rule": "State delta, acceleration, local variance, or unchanged-run length crosses calibrated task/column thresholds.",
+    "object_level": "segment",
+    "modality": "state",
+    "confidence_level": "高置信异常",
+    "illegal": false,
+    "severity_score": 90.0,
+    "quality_penalty": 15.0,
+    "episode_index": 10,
+    "task_index": 1,
+    "view": null,
+    "column": "actions",
+    "frame_start": 159,
+    "frame_end": 195,
+    "evidence": {
+      "run_length": 36,
+      "low_delta_threshold": 1e-08,
+      "median_delta": 0.0
+    },
+    "merged_count": 1
+  },
+  {
+    "finding_id": "V2F-000044",
+    "category_id": "1.2.2.B",
+    "category_name": "State frozen/fast/jitter problem",
+    "issue_type": "low_dim_freeze_run",
+    "issue_name": "Low-dimensional state is nearly unchanged for a long window",
+    "definition": "Low-dimensional sequence is legally structured but has abnormal temporal dynamics such as freezing, fast transition, spike, or jitter.",
+    "decision_rule": "State delta, acceleration, local variance, or unchanged-run length crosses calibrated task/column thresholds.",
+    "object_level": "segment",
+    "modality": "state",
+    "confidence_level": "高置信异常",
+    "illegal": false,
+    "severity_score": 65.0,
+    "quality_penalty": 13.508,
+    "episode_index": 10,
+    "task_index": 1,
+    "view": null,
+    "column": "state",
+    "frame_start": 168,
+    "frame_end": 193,
+    "evidence": {
+      "run_length": 11,
+      "low_delta_threshold": 1e-08,
+      "median_delta": 0.0,
+      "merged_evidence": [
+        {
+          "run_length": 12,
+          "low_delta_threshold": 1e-08,
+          "median_delta": 0.0
+        }
+      ]
+    },
+    "merged_count": 2
+  },
+  {
+    "finding_id": "V2F-000052",
+    "category_id": "1.1.2.D",
+    "category_name": "State-Vision-State consistency problem",
+    "issue_type": "visual_moves_state_static",
+    "issue_name": "Visual motion is strong but low-dimensional state is static",
+    "definition": "Low-dimensional state values or local transitions are inconsistent with visual evidence or neighboring state context.",
+    "decision_rule": "State value/delta/acceleration is a calibrated outlier and visual evidence does not support the same local change.",
+    "object_level": "segment",
+    "modality": "vision-state",
+    "confidence_level": "高置信异常",
+    "illegal": false,
+    "severity_score": 61.0,
+    "quality_penalty": 9.242,
+    "episode_index": 11,
+    "task_index": 0,
+    "view": null,
+    "column": "actions",
+    "frame_start": 112,
+    "frame_end": 114,
+    "evidence": {
+      "max_visual_motion": 17.898951530456543,
+      "median_state_delta": 0.0
+    },
+    "merged_count": 1
+  },
+  {
+    "finding_id": "V2F-000050",
+    "category_id": "1.2.2.B",
+    "category_name": "State frozen/fast/jitter problem",
+    "issue_type": "low_dim_freeze_run",
+    "issue_name": "Low-dimensional state is nearly unchanged for a long window",
+    "definition": "Low-dimensional sequence is legally structured but has abnormal temporal dynamics such as freezing, fast transition, spike, or jitter.",
+    "decision_rule": "State delta, acceleration, local variance, or unchanged-run length crosses calibrated task/column thresholds.",
+    "object_level": "segment",
+    "modality": "state",
+    "confidence_level": "高置信异常",
+    "illegal": false,
+    "severity_score": 72.5,
+    "quality_penalty": 11.691,
+    "episode_index": 11,
+    "task_index": 0,
+    "view": null,
+    "column": "actions",
+    "frame_start": 0,
+    "frame_end": 15,
+    "evidence": {
+      "run_length": 15,
+      "low_delta_threshold": 1e-08,
+      "median_delta": 0.0
+    },
+    "merged_count": 1
+  },
+  {
+    "finding_id": "V2F-000049",
+    "category_id": "1.2.2.B",
+    "category_name": "State frozen/fast/jitter problem",
+    "issue_type": "low_dim_jitter_or_spike",
+    "issue_name": "Low-dimensional state acceleration is an extreme outlier",
+    "definition": "Low-dimensional sequence is legally structured but has abnormal temporal dynamics such as freezing, fast transition, spike, or jitter.",
+    "decision_rule": "State delta, acceleration, local variance, or unchanged-run length crosses calibrated task/column thresholds.",
+    "object_level": "segment",
+    "modality": "state",
+    "confidence_level": "高置信异常",
+    "illegal": false,
+    "severity_score": 95.27,
+    "quality_penalty": 14.29,
+    "episode_index": 11,
+    "task_index": 0,
+    "view": null,
+    "column": "state",
+    "frame_start": 112,
+    "frame_end": 112,
+    "evidence": {
+      "max_accel": 0.22382229597976203,
+      "accel_threshold": 0.21791229508482574
+    },
+    "merged_count": 1
+  },
+  {
+    "finding_id": "V2F-000051",
+    "category_id": "1.2.2.B",
+    "category_name": "State frozen/fast/jitter problem",
+    "issue_type": "low_dim_freeze_run",
+    "issue_name": "Low-dimensional state is nearly unchanged for a long window",
+    "definition": "Low-dimensional sequence is legally structured but has abnormal temporal dynamics such as freezing, fast transition, spike, or jitter.",
+    "decision_rule": "State delta, acceleration, local variance, or unchanged-run length crosses calibrated task/column thresholds.",
+    "object_level": "segment",
+    "modality": "state",
+    "confidence_level": "高置信异常",
+    "illegal": false,
+    "severity_score": 62.5,
+    "quality_penalty": 9.891,
+    "episode_index": 11,
+    "task_index": 0,
+    "view": null,
+    "column": "actions",
+    "frame_start": 112,
+    "frame_end": 123,
+    "evidence": {
+      "run_length": 11,
+      "low_delta_threshold": 1e-08,
+      "median_delta": 0.0
+    },
+    "merged_count": 1
+  },
+  {
+    "finding_id": "V2F-000053",
+    "category_id": "1.2.2.A",
+    "category_name": "Vision frozen/fast/jitter problem",
+    "issue_type": "visual_fast_jump",
+    "issue_name": "Visual sequence has an extreme fast jump",
+    "definition": "Vision sequence is legally structured but has abnormal temporal dynamics such as freezing, sudden fast motion, or jitter.",
+    "decision_rule": "Exact repeated frames, near-zero visual motion, extreme visual motion, or high-frequency visual acceleration persists beyond calibrated window thresholds.",
+    "object_level": "segment",
+    "modality": "vision",
+    "confidence_level": "疑似异常",
+    "illegal": false,
+    "severity_score": 38.1,
+    "quality_penalty": 5.744,
+    "episode_index": 12,
+    "task_index": 1,
+    "view": "right_wrist_image",
+    "column": null,
+    "frame_start": 87,
+    "frame_end": 88,
+    "evidence": {
+      "max_motion": 45.862674713134766,
+      "high_motion_threshold": 42.87129990577697
+    },
+    "merged_count": 1
+  },
+  {
+    "finding_id": "V2F-000056",
+    "category_id": "1.2.2.B",
+    "category_name": "State frozen/fast/jitter problem",
+    "issue_type": "low_dim_jitter_or_spike",
+    "issue_name": "Low-dimensional state acceleration is an extreme outlier",
+    "definition": "Low-dimensional sequence is legally structured but has abnormal temporal dynamics such as freezing, fast transition, spike, or jitter.",
+    "decision_rule": "State delta, acceleration, local variance, or unchanged-run length crosses calibrated task/column thresholds.",
+    "object_level": "segment",
+    "modality": "state",
+    "confidence_level": "高置信异常",
+    "illegal": false,
+    "severity_score": 86.54,
+    "quality_penalty": 12.981,
+    "episode_index": 12,
+    "task_index": 1,
+    "view": null,
+    "column": "state",
+    "frame_start": 84,
+    "frame_end": 84,
+    "evidence": {
+      "max_accel": 0.22962043640446553,
+      "accel_threshold": 0.22874536089740366
+    },
+    "merged_count": 1
+  },
+  {
+    "finding_id": "V2F-000057",
+    "category_id": "1.2.2.B",
+    "category_name": "State frozen/fast/jitter problem",
+    "issue_type": "low_dim_freeze_run",
+    "issue_name": "Low-dimensional state is nearly unchanged for a long window",
+    "definition": "Low-dimensional sequence is legally structured but has abnormal temporal dynamics such as freezing, fast transition, spike, or jitter.",
+    "decision_rule": "State delta, acceleration, local variance, or unchanged-run length crosses calibrated task/column thresholds.",
+    "object_level": "segment",
+    "modality": "state",
+    "confidence_level": "高置信异常",
+    "illegal": false,
+    "severity_score": 90.0,
+    "quality_penalty": 15.0,
+    "episode_index": 12,
+    "task_index": 1,
+    "view": null,
+    "column": "actions",
+    "frame_start": 128,
+    "frame_end": 171,
+    "evidence": {
+      "run_length": 43,
+      "low_delta_threshold": 1e-08,
+      "median_delta": 0.0
+    },
+    "merged_count": 1
+  },
+  {
+    "finding_id": "V2F-000054",
+    "category_id": "1.2.2.B",
+    "category_name": "State frozen/fast/jitter problem",
+    "issue_type": "low_dim_freeze_run",
+    "issue_name": "Low-dimensional state is nearly unchanged for a long window",
+    "definition": "Low-dimensional sequence is legally structured but has abnormal temporal dynamics such as freezing, fast transition, spike, or jitter.",
+    "decision_rule": "State delta, acceleration, local variance, or unchanged-run length crosses calibrated task/column thresholds.",
+    "object_level": "segment",
+    "modality": "state",
+    "confidence_level": "高置信异常",
+    "illegal": false,
+    "severity_score": 75.0,
+    "quality_penalty": 15.0,
+    "episode_index": 12,
+    "task_index": 1,
+    "view": null,
+    "column": "state",
+    "frame_start": 140,
+    "frame_end": 171,
+    "evidence": {
+      "run_length": 16,
+      "low_delta_threshold": 1e-08,
+      "median_delta": 0.0,
+      "merged_evidence": [
+        {
+          "run_length": 13,
+          "low_delta_threshold": 1e-08,
+          "median_delta": 0.0
+        }
+      ]
+    },
+    "merged_count": 2
+  },
+  {
+    "finding_id": "V2F-000060",
+    "category_id": "1.1.2.D",
+    "category_name": "State-Vision-State consistency problem",
+    "issue_type": "visual_moves_state_static",
+    "issue_name": "Visual motion is strong but low-dimensional state is static",
+    "definition": "Low-dimensional state values or local transitions are inconsistent with visual evidence or neighboring state context.",
+    "decision_rule": "State value/delta/acceleration is a calibrated outlier and visual evidence does not support the same local change.",
+    "object_level": "segment",
+    "modality": "vision-state",
+    "confidence_level": "高置信异常",
+    "illegal": false,
+    "severity_score": 69.0,
+    "quality_penalty": 10.505,
+    "episode_index": 13,
+    "task_index": 0,
+    "view": null,
+    "column": "actions",
+    "frame_start": 119,
+    "frame_end": 122,
+    "evidence": {
+      "max_visual_motion": 17.333192984263103,
+      "median_state_delta": 0.0
+    },
+    "merged_count": 1
+  },
+  {
+    "finding_id": "V2F-000059",
+    "category_id": "1.2.2.A",
+    "category_name": "Vision frozen/fast/jitter problem",
+    "issue_type": "visual_high_frequency_jitter",
+    "issue_name": "Visual motion has high-frequency acceleration spikes",
+    "definition": "Vision sequence is legally structured but has abnormal temporal dynamics such as freezing, sudden fast motion, or jitter.",
+    "decision_rule": "Exact repeated frames, near-zero visual motion, extreme visual motion, or high-frequency visual acceleration persists beyond calibrated window thresholds.",
+    "object_level": "segment",
+    "modality": "vision",
+    "confidence_level": "高置信异常",
+    "illegal": false,
+    "severity_score": 65.0,
+    "quality_penalty": 9.945,
+    "episode_index": 13,
+    "task_index": 0,
+    "view": "image",
+    "column": null,
+    "frame_start": 140,
+    "frame_end": 144,
+    "evidence": {
+      "max_motion_accel": 20.60501766204834,
+      "accel_threshold": 11.466645741462724
+    },
+    "merged_count": 1
+  },
+  {
+    "finding_id": "V2F-000058",
+    "category_id": "1.2.2.A",
+    "category_name": "Vision frozen/fast/jitter problem",
+    "issue_type": "visual_fast_jump",
+    "issue_name": "Visual sequence has an extreme fast jump",
+    "definition": "Vision sequence is legally structured but has abnormal temporal dynamics such as freezing, sudden fast motion, or jitter.",
+    "decision_rule": "Exact repeated frames, near-zero visual motion, extreme visual motion, or high-frequency visual acceleration persists beyond calibrated window thresholds.",
+    "object_level": "segment",
+    "modality": "vision",
+    "confidence_level": "高置信异常",
+    "illegal": false,
+    "severity_score": 53.57,
+    "quality_penalty": 8.116,
+    "episode_index": 13,
+    "task_index": 0,
+    "view": "image",
+    "column": null,
+    "frame_start": 141,
+    "frame_end": 143,
+    "evidence": {
+      "max_motion": 32.26105499267578,
+      "high_motion_threshold": 26.520178327560473
+    },
+    "merged_count": 1
+  },
+  {
+    "finding_id": "V2F-000063",
+    "category_id": "1.1.2.C",
+    "category_name": "Vision-State-Vision geometry/scale problem",
+    "issue_type": "state_gated_view_pair_motion_inconsistency",
+    "issue_name": "State-supported overlapping camera pair has weak visual agreement",
+    "definition": "Visual spatial change and low-dimensional state change are inconsistent, suggesting broken geometry, scale, crop, or coarse cross-modal relation.",
+    "decision_rule": "Known camera semantics and robot state first indicate that two views should overlap; only then is weak visual motion correlation used as verification.",
+    "object_level": "episode",
+    "modality": "vision-state",
+    "confidence_level": "分布外样本",
+    "illegal": false,
+    "severity_score": 35.0,
+    "quality_penalty": 5.25,
+    "episode_index": 14,
+    "task_index": 0,
+    "view": "image|right_wrist_image",
+    "column": null,
+    "frame_start": null,
+    "frame_end": null,
+    "evidence": {
+      "correlation": 0.04816073816281042,
+      "pair_baseline": {
+        "count": 12,
+        "median": 0.0550970832123259,
+        "mad": 0.06999370319907497,
+        "mean": 0.06396459807613862,
+        "std": 0.10473611150842652,
+        "p01": -0.14387847889655456,
+        "p05": -0.09566498530727491,
+        "p95": 0.21134023941544525,
+        "p99": 0.2582369342395738,
+        "min": -0.15593185229387446,
+        "max": 0.26996110794560585
+      },
+      "state_gate": {
+        "enabled": true,
+        "reason": "estimated_frustum_overlap",
+        "geometry_column": "state",
+        "left_view_arm": null,
+        "right_view_arm": "right",
+        "overlap_score": 1.0,
+        "hits": 32,
+        "samples_checked": 32,
+        "workspace_center": [
+          0.3224,
+          -0.0133,
+          0.3796
+        ],
+        "workspace_extent": [
+          0.1678,
+          0.7709,
+          0.1512
+        ],
+        "median_shared_target_distance_m": 0.73824115301167,
+        "camera_model": {
+          "robot": "Franka/Panda-like dual-arm state with end-effector pose",
+          "base_camera_offset_from_workspace": [
+            -0.65,
+            0.0,
+            0.35
+          ],
+          "base_fov_degrees": 95.0,
+          "wrist_fov_degrees": 95.0,
+          "wrist_local_optical_axes": {
+            "left": [
+              0.0,
+              -1.0,
+              0.0
+            ],
+            "right": [
+              0.0,
+              1.0,
+              0.0
+            ]
+          },
+          "hand_eye_calibration": "not provided; wrist optical axes are inferred from state/workspace consistency"
+        },
+        "example_pose": {
+          "sample_index": 0,
+          "left_camera": {
+            "kind": "base",
+            "arm": null,
+            "position": [
+              -0.3276,
+              -0.0133,
+              0.7296
+            ],
+            "optical_axis": [
+              0.8805,
+              0.0,
+              -0.4741
+            ],
+            "local_optical_axis": null
+          },
+          "right_camera": {
+            "kind": "wrist",
+            "arm": "right",
+            "position": [
+              0.2777,
+              -0.2143,
+              0.465
+            ],
+            "optical_axis": [
+              0.0007,
+              0.9877,
+              -0.1563
+            ],
+            "local_optical_axis": [
+              0.0,
+              1.0,
+              0.0
+            ]
+          },
+          "matched_target": [
+            0.3224,
+            -0.0133,
+            0.3796
+          ]
+        }
+      },
+      "verification_policy": "Visual correlation is used only as weak verification after state-supported overlap."
+    },
+    "merged_count": 1
+  },
+  {
+    "finding_id": "V2F-000064",
+    "category_id": "1.1.2.D",
+    "category_name": "State-Vision-State consistency problem",
+    "issue_type": "visual_moves_state_static",
+    "issue_name": "Visual motion is strong but low-dimensional state is static",
+    "definition": "Low-dimensional state values or local transitions are inconsistent with visual evidence or neighboring state context.",
+    "decision_rule": "State value/delta/acceleration is a calibrated outlier and visual evidence does not support the same local change.",
+    "object_level": "segment",
+    "modality": "vision-state",
+    "confidence_level": "高置信异常",
+    "illegal": false,
+    "severity_score": 69.0,
+    "quality_penalty": 10.505,
+    "episode_index": 14,
+    "task_index": 0,
+    "view": null,
+    "column": "actions",
+    "frame_start": 164,
+    "frame_end": 167,
+    "evidence": {
+      "max_visual_motion": 17.29847017923991,
+      "median_state_delta": 0.0
+    },
+    "merged_count": 1
+  },
+  {
+    "finding_id": "V2F-000062",
+    "category_id": "1.2.2.B",
+    "category_name": "State frozen/fast/jitter problem",
+    "issue_type": "low_dim_freeze_run",
+    "issue_name": "Low-dimensional state is nearly unchanged for a long window",
+    "definition": "Low-dimensional sequence is legally structured but has abnormal temporal dynamics such as freezing, fast transition, spike, or jitter.",
+    "decision_rule": "State delta, acceleration, local variance, or unchanged-run length crosses calibrated task/column thresholds.",
+    "object_level": "segment",
+    "modality": "state",
+    "confidence_level": "高置信异常",
+    "illegal": false,
+    "severity_score": 55.0,
+    "quality_penalty": 8.58,
+    "episode_index": 14,
+    "task_index": 0,
+    "view": null,
+    "column": "actions",
+    "frame_start": 0,
+    "frame_end": 8,
+    "evidence": {
+      "run_length": 8,
+      "low_delta_threshold": 1e-08,
+      "median_delta": 0.0
+    },
+    "merged_count": 1
+  },
+  {
+    "finding_id": "V2F-000061",
+    "category_id": "1.2.2.B",
+    "category_name": "State frozen/fast/jitter problem",
+    "issue_type": "low_dim_jitter_or_spike",
+    "issue_name": "Low-dimensional state acceleration is an extreme outlier",
+    "definition": "Low-dimensional sequence is legally structured but has abnormal temporal dynamics such as freezing, fast transition, spike, or jitter.",
+    "decision_rule": "State delta, acceleration, local variance, or unchanged-run length crosses calibrated task/column thresholds.",
+    "object_level": "segment",
+    "modality": "state",
+    "confidence_level": "高置信异常",
+    "illegal": false,
+    "severity_score": 100.0,
+    "quality_penalty": 15.0,
+    "episode_index": 14,
+    "task_index": 0,
+    "view": null,
+    "column": "state",
+    "frame_start": 142,
+    "frame_end": 142,
+    "evidence": {
+      "max_accel": 0.24844999418724648,
+      "accel_threshold": 0.21791229508482574
+    },
+    "merged_count": 1
+  },
+  {
+    "finding_id": "V2F-000065",
+    "category_id": "1.2.2.C",
+    "category_name": "Vision-State temporal consistency problem",
+    "issue_type": "low_cross_modal_correlation",
+    "issue_name": "Vision-State motion correlation is lower than reference",
+    "definition": "Vision and low-dimensional state are locally out of sync or show unstable response timing.",
+    "decision_rule": "Best lag between visual motion and state motion deviates from the calibrated reference lag, or the best correlation falls below the reference baseline.",
+    "object_level": "episode",
+    "modality": "vision-state",
+    "confidence_level": "分布外样本",
+    "illegal": false,
+    "severity_score": 45.0,
+    "quality_penalty": 6.75,
+    "episode_index": 14,
+    "task_index": 0,
+    "view": "image",
+    "column": "actions",
+    "frame_start": null,
+    "frame_end": null,
+    "evidence": {
+      "best_lag": 5,
+      "best_correlation": 0.08875830411543924,
+      "correlation_baseline": {
+        "count": 12,
+        "median": 0.13337247788875778,
+        "mad": 0.035321575971976674,
+        "mean": 0.13835234162124502,
+        "std": 0.049496533478842086,
+        "p01": 0.06220899658502571,
+        "p05": 0.07413658071180965,
+        "p95": 0.2244040141158282,
+        "p99": 0.22997325834624902,
+        "min": 0.05922710055332973,
+        "max": 0.23136556940385422
+      }
+    },
+    "merged_count": 1
+  },
+  {
+    "finding_id": "V2F-000067",
+    "category_id": "1.2.2.B",
+    "category_name": "State frozen/fast/jitter problem",
+    "issue_type": "low_dim_freeze_run",
+    "issue_name": "Low-dimensional state is nearly unchanged for a long window",
+    "definition": "Low-dimensional sequence is legally structured but has abnormal temporal dynamics such as freezing, fast transition, spike, or jitter.",
+    "decision_rule": "State delta, acceleration, local variance, or unchanged-run length crosses calibrated task/column thresholds.",
+    "object_level": "segment",
+    "modality": "state",
+    "confidence_level": "高置信异常",
+    "illegal": false,
+    "severity_score": 90.0,
+    "quality_penalty": 15.0,
+    "episode_index": 15,
+    "task_index": 1,
+    "view": null,
+    "column": "actions",
+    "frame_start": 144,
+    "frame_end": 180,
+    "evidence": {
+      "run_length": 36,
+      "low_delta_threshold": 1e-08,
+      "median_delta": 0.0
+    },
+    "merged_count": 1
+  },
+  {
+    "finding_id": "V2F-000066",
+    "category_id": "1.2.2.B",
+    "category_name": "State frozen/fast/jitter problem",
+    "issue_type": "low_dim_freeze_run",
+    "issue_name": "Low-dimensional state is nearly unchanged for a long window",
+    "definition": "Low-dimensional sequence is legally structured but has abnormal temporal dynamics such as freezing, fast transition, spike, or jitter.",
+    "decision_rule": "State delta, acceleration, local variance, or unchanged-run length crosses calibrated task/column thresholds.",
+    "object_level": "segment",
+    "modality": "state",
+    "confidence_level": "高置信异常",
+    "illegal": false,
+    "severity_score": 75.0,
+    "quality_penalty": 12.15,
+    "episode_index": 15,
+    "task_index": 1,
+    "view": null,
+    "column": "state",
+    "frame_start": 164,
+    "frame_end": 180,
+    "evidence": {
+      "run_length": 16,
+      "low_delta_threshold": 1e-08,
+      "median_delta": 0.0
+    },
+    "merged_count": 1
+  },
+  {
+    "finding_id": "V2F-000068",
+    "category_id": "1.2.2.A",
+    "category_name": "Vision frozen/fast/jitter problem",
+    "issue_type": "low_motion_freeze_run",
+    "issue_name": "Visual motion is near zero for a long window",
+    "definition": "Vision sequence is legally structured but has abnormal temporal dynamics such as freezing, sudden fast motion, or jitter.",
+    "decision_rule": "Exact repeated frames, near-zero visual motion, extreme visual motion, or high-frequency visual acceleration persists beyond calibrated window thresholds.",
+    "object_level": "segment",
+    "modality": "vision",
+    "confidence_level": "高置信异常",
+    "illegal": false,
+    "severity_score": 67.5,
+    "quality_penalty": 10.581,
+    "episode_index": 16,
+    "task_index": 1,
+    "view": "image",
+    "column": null,
+    "frame_start": 168,
+    "frame_end": 177,
+    "evidence": {
+      "run_length": 9,
+      "low_motion_threshold": 0.2,
+      "median_motion": 0.0960884690284729
+    },
+    "merged_count": 1
+  },
+  {
+    "finding_id": "V2F-000073",
+    "category_id": "1.2.2.B",
+    "category_name": "State frozen/fast/jitter problem",
+    "issue_type": "low_dim_jitter_or_spike",
+    "issue_name": "Low-dimensional state acceleration is an extreme outlier",
+    "definition": "Low-dimensional sequence is legally structured but has abnormal temporal dynamics such as freezing, fast transition, spike, or jitter.",
+    "decision_rule": "State delta, acceleration, local variance, or unchanged-run length crosses calibrated task/column thresholds.",
+    "object_level": "segment",
+    "modality": "state",
+    "confidence_level": "高置信异常",
+    "illegal": false,
+    "severity_score": 86.32,
+    "quality_penalty": 12.948,
+    "episode_index": 16,
+    "task_index": 1,
+    "view": null,
+    "column": "actions",
+    "frame_start": 86,
+    "frame_end": 86,
+    "evidence": {
+      "max_accel": 0.28505258949894474,
+      "accel_threshold": 0.2711763883083074
+    },
+    "merged_count": 1
+  },
+  {
+    "finding_id": "V2F-000074",
+    "category_id": "1.2.2.B",
+    "category_name": "State frozen/fast/jitter problem",
+    "issue_type": "low_dim_jitter_or_spike",
+    "issue_name": "Low-dimensional state acceleration is an extreme outlier",
+    "definition": "Low-dimensional sequence is legally structured but has abnormal temporal dynamics such as freezing, fast transition, spike, or jitter.",
+    "decision_rule": "State delta, acceleration, local variance, or unchanged-run length crosses calibrated task/column thresholds.",
+    "object_level": "segment",
+    "modality": "state",
+    "confidence_level": "高置信异常",
+    "illegal": false,
+    "severity_score": 92.58,
+    "quality_penalty": 13.887,
+    "episode_index": 16,
+    "task_index": 1,
+    "view": null,
+    "column": "actions",
+    "frame_start": 91,
+    "frame_end": 91,
+    "evidence": {
+      "max_accel": 0.29645337303619507,
+      "accel_threshold": 0.2711763883083074
+    },
+    "merged_count": 1
+  },
+  {
+    "finding_id": "V2F-000071",
+    "category_id": "1.2.2.B",
+    "category_name": "State frozen/fast/jitter problem",
+    "issue_type": "low_dim_jitter_or_spike",
+    "issue_name": "Low-dimensional state acceleration is an extreme outlier",
+    "definition": "Low-dimensional sequence is legally structured but has abnormal temporal dynamics such as freezing, fast transition, spike, or jitter.",
+    "decision_rule": "State delta, acceleration, local variance, or unchanged-run length crosses calibrated task/column thresholds.",
+    "object_level": "segment",
+    "modality": "state",
+    "confidence_level": "高置信异常",
+    "illegal": false,
+    "severity_score": 91.54,
+    "quality_penalty": 13.731,
+    "episode_index": 16,
+    "task_index": 1,
+    "view": null,
+    "column": "state",
+    "frame_start": 92,
+    "frame_end": 92,
+    "evidence": {
+      "max_accel": 0.236734957509417,
+      "accel_threshold": 0.22874536089740366
+    },
+    "merged_count": 1
+  },
+  {
+    "finding_id": "V2F-000072",
+    "category_id": "1.2.2.B",
+    "category_name": "State frozen/fast/jitter problem",
+    "issue_type": "low_dim_freeze_run",
+    "issue_name": "Low-dimensional state is nearly unchanged for a long window",
+    "definition": "Low-dimensional sequence is legally structured but has abnormal temporal dynamics such as freezing, fast transition, spike, or jitter.",
+    "decision_rule": "State delta, acceleration, local variance, or unchanged-run length crosses calibrated task/column thresholds.",
+    "object_level": "segment",
+    "modality": "state",
+    "confidence_level": "高置信异常",
+    "illegal": false,
+    "severity_score": 90.0,
+    "quality_penalty": 15.0,
+    "episode_index": 16,
+    "task_index": 1,
+    "view": null,
+    "column": "actions",
+    "frame_start": 140,
+    "frame_end": 179,
+    "evidence": {
+      "run_length": 39,
+      "low_delta_threshold": 1e-08,
+      "median_delta": 0.0
+    },
+    "merged_count": 1
+  },
+  {
+    "finding_id": "V2F-000069",
+    "category_id": "1.2.2.B",
+    "category_name": "State frozen/fast/jitter problem",
+    "issue_type": "low_dim_freeze_run",
+    "issue_name": "Low-dimensional state is nearly unchanged for a long window",
+    "definition": "Low-dimensional sequence is legally structured but has abnormal temporal dynamics such as freezing, fast transition, spike, or jitter.",
+    "decision_rule": "State delta, acceleration, local variance, or unchanged-run length crosses calibrated task/column thresholds.",
+    "object_level": "segment",
+    "modality": "state",
+    "confidence_level": "高置信异常",
+    "illegal": false,
+    "severity_score": 62.5,
+    "quality_penalty": 9.891,
+    "episode_index": 16,
+    "task_index": 1,
+    "view": null,
+    "column": "state",
+    "frame_start": 149,
+    "frame_end": 160,
+    "evidence": {
+      "run_length": 11,
+      "low_delta_threshold": 1e-08,
+      "median_delta": 0.0
+    },
+    "merged_count": 1
+  },
+  {
+    "finding_id": "V2F-000070",
+    "category_id": "1.2.2.B",
+    "category_name": "State frozen/fast/jitter problem",
+    "issue_type": "low_dim_freeze_run",
+    "issue_name": "Low-dimensional state is nearly unchanged for a long window",
+    "definition": "Low-dimensional sequence is legally structured but has abnormal temporal dynamics such as freezing, fast transition, spike, or jitter.",
+    "decision_rule": "State delta, acceleration, local variance, or unchanged-run length crosses calibrated task/column thresholds.",
+    "object_level": "segment",
+    "modality": "state",
+    "confidence_level": "高置信异常",
+    "illegal": false,
+    "severity_score": 55.0,
+    "quality_penalty": 8.58,
+    "episode_index": 16,
+    "task_index": 1,
+    "view": null,
+    "column": "state",
+    "frame_start": 169,
+    "frame_end": 177,
+    "evidence": {
+      "run_length": 8,
+      "low_delta_threshold": 1e-08,
+      "median_delta": 0.0
+    },
+    "merged_count": 1
+  },
+  {
+    "finding_id": "V2F-000077",
+    "category_id": "1.2.2.B",
+    "category_name": "State frozen/fast/jitter problem",
+    "issue_type": "low_dim_freeze_run",
+    "issue_name": "Low-dimensional state is nearly unchanged for a long window",
+    "definition": "Low-dimensional sequence is legally structured but has abnormal temporal dynamics such as freezing, fast transition, spike, or jitter.",
+    "decision_rule": "State delta, acceleration, local variance, or unchanged-run length crosses calibrated task/column thresholds.",
+    "object_level": "segment",
+    "modality": "state",
+    "confidence_level": "高置信异常",
+    "illegal": false,
+    "severity_score": 90.0,
+    "quality_penalty": 15.0,
+    "episode_index": 17,
+    "task_index": 1,
+    "view": null,
+    "column": "actions",
+    "frame_start": 119,
+    "frame_end": 169,
+    "evidence": {
+      "run_length": 50,
+      "low_delta_threshold": 1e-08,
+      "median_delta": 0.0
+    },
+    "merged_count": 1
+  },
+  {
+    "finding_id": "V2F-000075",
+    "category_id": "1.2.2.B",
+    "category_name": "State frozen/fast/jitter problem",
+    "issue_type": "low_dim_freeze_run",
+    "issue_name": "Low-dimensional state is nearly unchanged for a long window",
+    "definition": "Low-dimensional sequence is legally structured but has abnormal temporal dynamics such as freezing, fast transition, spike, or jitter.",
+    "decision_rule": "State delta, acceleration, local variance, or unchanged-run length crosses calibrated task/column thresholds.",
+    "object_level": "segment",
+    "modality": "state",
+    "confidence_level": "高置信异常",
+    "illegal": false,
+    "severity_score": 90.0,
+    "quality_penalty": 15.0,
+    "episode_index": 17,
+    "task_index": 1,
+    "view": null,
+    "column": "state",
+    "frame_start": 132,
+    "frame_end": 168,
+    "evidence": {
+      "run_length": 24,
+      "low_delta_threshold": 1e-08,
+      "median_delta": 0.0,
+      "merged_evidence": [
+        {
+          "run_length": 10,
+          "low_delta_threshold": 1e-08,
+          "median_delta": 0.0
+        }
+      ]
+    },
+    "merged_count": 2
+  },
+  {
+    "finding_id": "V2F-000080",
+    "category_id": "1.1.2.C",
+    "category_name": "Vision-State-Vision geometry/scale problem",
+    "issue_type": "state_gated_view_pair_motion_inconsistency",
+    "issue_name": "State-supported overlapping camera pair has weak visual agreement",
+    "definition": "Visual spatial change and low-dimensional state change are inconsistent, suggesting broken geometry, scale, crop, or coarse cross-modal relation.",
+    "decision_rule": "Known camera semantics and robot state first indicate that two views should overlap; only then is weak visual motion correlation used as verification.",
+    "object_level": "episode",
+    "modality": "vision-state",
+    "confidence_level": "分布外样本",
+    "illegal": false,
+    "severity_score": 45.0,
+    "quality_penalty": 6.75,
+    "episode_index": 18,
+    "task_index": 0,
+    "view": "image|right_wrist_image",
+    "column": null,
+    "frame_start": null,
+    "frame_end": null,
+    "evidence": {
+      "correlation": -0.012820893014153381,
+      "pair_baseline": {
+        "count": 12,
+        "median": 0.0550970832123259,
+        "mad": 0.06999370319907497,
+        "mean": 0.06396459807613862,
+        "std": 0.10473611150842652,
+        "p01": -0.14387847889655456,
+        "p05": -0.09566498530727491,
+        "p95": 0.21134023941544525,
+        "p99": 0.2582369342395738,
+        "min": -0.15593185229387446,
+        "max": 0.26996110794560585
+      },
+      "state_gate": {
+        "enabled": true,
+        "reason": "estimated_frustum_overlap",
+        "geometry_column": "state",
+        "left_view_arm": null,
+        "right_view_arm": "right",
+        "overlap_score": 1.0,
+        "hits": 32,
+        "samples_checked": 32,
+        "workspace_center": [
+          0.3076,
+          -0.0066,
+          0.3783
+        ],
+        "workspace_extent": [
+          0.1414,
+          0.8056,
+          0.1512
+        ],
+        "median_shared_target_distance_m": 0.73824115301167,
+        "camera_model": {
+          "robot": "Franka/Panda-like dual-arm state with end-effector pose",
+          "base_camera_offset_from_workspace": [
+            -0.65,
+            0.0,
+            0.35
+          ],
+          "base_fov_degrees": 95.0,
+          "wrist_fov_degrees": 95.0,
+          "wrist_local_optical_axes": {
+            "left": [
+              0.0,
+              -1.0,
+              0.0
+            ],
+            "right": [
+              0.0,
+              1.0,
+              0.0
+            ]
+          },
+          "hand_eye_calibration": "not provided; wrist optical axes are inferred from state/workspace consistency"
+        },
+        "example_pose": {
+          "sample_index": 0,
+          "left_camera": {
+            "kind": "base",
+            "arm": null,
+            "position": [
+              -0.3424,
+              -0.0066,
+              0.7283
+            ],
+            "optical_axis": [
+              0.8805,
+              0.0,
+              -0.4741
+            ],
+            "local_optical_axis": null
+          },
+          "right_camera": {
+            "kind": "wrist",
+            "arm": "right",
+            "position": [
+              0.2775,
+              -0.2133,
+              0.4635
+            ],
+            "optical_axis": [
+              -0.0088,
+              0.9893,
+              -0.1456
+            ],
+            "local_optical_axis": [
+              0.0,
+              1.0,
+              0.0
+            ]
+          },
+          "matched_target": [
+            0.3076,
+            -0.0066,
+            0.3783
+          ]
+        }
+      },
+      "verification_policy": "Visual correlation is used only as weak verification after state-supported overlap."
+    },
+    "merged_count": 1
+  },
+  {
+    "finding_id": "V2F-000081",
+    "category_id": "1.1.2.C",
+    "category_name": "Vision-State-Vision geometry/scale problem",
+    "issue_type": "state_gated_view_pair_motion_inconsistency",
+    "issue_name": "State-supported overlapping camera pair has weak visual agreement",
+    "definition": "Visual spatial change and low-dimensional state change are inconsistent, suggesting broken geometry, scale, crop, or coarse cross-modal relation.",
+    "decision_rule": "Known camera semantics and robot state first indicate that two views should overlap; only then is weak visual motion correlation used as verification.",
+    "object_level": "episode",
+    "modality": "vision-state",
+    "confidence_level": "分布外样本",
+    "illegal": false,
+    "severity_score": 35.0,
+    "quality_penalty": 5.25,
+    "episode_index": 18,
+    "task_index": 0,
+    "view": "left_wrist_image|right_wrist_image",
+    "column": null,
+    "frame_start": null,
+    "frame_end": null,
+    "evidence": {
+      "correlation": 0.01825887512045641,
+      "pair_baseline": {
+        "count": 12,
+        "median": 0.1988011272493096,
+        "mad": 0.13730257264946757,
+        "mean": 0.1477983592622405,
+        "std": 0.19228284700649362,
+        "p01": -0.1555034572725679,
+        "p05": -0.15270209788908026,
+        "p95": 0.38549294110756477,
+        "p99": 0.4160561009965469,
+        "min": -0.15620379711843982,
+        "max": 0.4236968909687924
+      },
+      "state_gate": {
+        "enabled": true,
+        "reason": "estimated_frustum_overlap",
+        "geometry_column": "state",
+        "left_view_arm": "left",
+        "right_view_arm": "right",
+        "overlap_score": 1.0,
+        "hits": 32,
+        "samples_checked": 32,
+        "workspace_center": [
+          0.3076,
+          -0.0066,
+          0.3783
+        ],
+        "workspace_extent": [
+          0.1414,
+          0.8056,
+          0.1512
+        ],
+        "median_shared_target_distance_m": 0.2812465648829534,
+        "camera_model": {
+          "robot": "Franka/Panda-like dual-arm state with end-effector pose",
+          "base_camera_offset_from_workspace": [
+            -0.65,
+            0.0,
+            0.35
+          ],
+          "base_fov_degrees": 95.0,
+          "wrist_fov_degrees": 95.0,
+          "wrist_local_optical_axes": {
+            "left": [
+              0.0,
+              -1.0,
+              0.0
+            ],
+            "right": [
+              0.0,
+              1.0,
+              0.0
+            ]
+          },
+          "hand_eye_calibration": "not provided; wrist optical axes are inferred from state/workspace consistency"
+        },
+        "example_pose": {
+          "sample_index": 0,
+          "left_camera": {
+            "kind": "wrist",
+            "arm": "left",
+            "position": [
+              0.2777,
+              0.2122,
+              0.4644
+            ],
+            "optical_axis": [
+              0.0054,
+              -0.9896,
+              -0.1436
+            ],
+            "local_optical_axis": [
+              0.0,
+              -1.0,
+              0.0
+            ]
+          },
+          "right_camera": {
+            "kind": "wrist",
+            "arm": "right",
+            "position": [
+              0.2775,
+              -0.2133,
+              0.4635
+            ],
+            "optical_axis": [
+              -0.0088,
+              0.9893,
+              -0.1456
+            ],
+            "local_optical_axis": [
+              0.0,
+              1.0,
+              0.0
+            ]
+          },
+          "matched_target": [
+            0.3076,
+            -0.0066,
+            0.3783
+          ]
+        }
+      },
+      "verification_policy": "Visual correlation is used only as weak verification after state-supported overlap."
+    },
+    "merged_count": 1
+  },
+  {
+    "finding_id": "V2F-000082",
+    "category_id": "1.1.2.D",
+    "category_name": "State-Vision-State consistency problem",
+    "issue_type": "visual_moves_state_static",
+    "issue_name": "Visual motion is strong but low-dimensional state is static",
+    "definition": "Low-dimensional state values or local transitions are inconsistent with visual evidence or neighboring state context.",
+    "decision_rule": "State value/delta/acceleration is a calibrated outlier and visual evidence does not support the same local change.",
+    "object_level": "segment",
+    "modality": "vision-state",
+    "confidence_level": "高置信异常",
+    "illegal": false,
+    "severity_score": 69.0,
+    "quality_penalty": 10.505,
+    "episode_index": 18,
+    "task_index": 0,
+    "view": null,
+    "column": "actions",
+    "frame_start": 128,
+    "frame_end": 131,
+    "evidence": {
+      "max_visual_motion": 18.94486935933431,
+      "median_state_delta": 0.0
+    },
+    "merged_count": 1
+  },
+  {
+    "finding_id": "V2F-000079",
+    "category_id": "1.2.2.B",
+    "category_name": "State frozen/fast/jitter problem",
+    "issue_type": "low_dim_freeze_run",
+    "issue_name": "Low-dimensional state is nearly unchanged for a long window",
+    "definition": "Low-dimensional sequence is legally structured but has abnormal temporal dynamics such as freezing, fast transition, spike, or jitter.",
+    "decision_rule": "State delta, acceleration, local variance, or unchanged-run length crosses calibrated task/column thresholds.",
+    "object_level": "segment",
+    "modality": "state",
+    "confidence_level": "高置信异常",
+    "illegal": false,
+    "severity_score": 55.0,
+    "quality_penalty": 8.58,
+    "episode_index": 18,
+    "task_index": 0,
+    "view": null,
+    "column": "actions",
+    "frame_start": 0,
+    "frame_end": 8,
+    "evidence": {
+      "run_length": 8,
+      "low_delta_threshold": 1e-08,
+      "median_delta": 0.0
+    },
+    "merged_count": 1
+  },
+  {
+    "finding_id": "V2F-000078",
+    "category_id": "1.2.2.B",
+    "category_name": "State frozen/fast/jitter problem",
+    "issue_type": "low_dim_jitter_or_spike",
+    "issue_name": "Low-dimensional state acceleration is an extreme outlier",
+    "definition": "Low-dimensional sequence is legally structured but has abnormal temporal dynamics such as freezing, fast transition, spike, or jitter.",
+    "decision_rule": "State delta, acceleration, local variance, or unchanged-run length crosses calibrated task/column thresholds.",
+    "object_level": "segment",
+    "modality": "state",
+    "confidence_level": "高置信异常",
+    "illegal": false,
+    "severity_score": 96.47,
+    "quality_penalty": 14.47,
+    "episode_index": 18,
+    "task_index": 0,
+    "view": null,
+    "column": "state",
+    "frame_start": 128,
+    "frame_end": 128,
+    "evidence": {
+      "max_accel": 0.2253822516178003,
+      "accel_threshold": 0.21791229508482574
+    },
+    "merged_count": 1
+  },
+  {
+    "finding_id": "V2F-000083",
+    "category_id": "1.2.2.C",
+    "category_name": "Vision-State temporal consistency problem",
+    "issue_type": "low_cross_modal_correlation",
+    "issue_name": "Vision-State motion correlation is lower than reference",
+    "definition": "Vision and low-dimensional state are locally out of sync or show unstable response timing.",
+    "decision_rule": "Best lag between visual motion and state motion deviates from the calibrated reference lag, or the best correlation falls below the reference baseline.",
+    "object_level": "episode",
+    "modality": "vision-state",
+    "confidence_level": "分布外样本",
+    "illegal": false,
+    "severity_score": 45.0,
+    "quality_penalty": 6.75,
+    "episode_index": 18,
+    "task_index": 0,
+    "view": "image",
+    "column": "actions",
+    "frame_start": null,
+    "frame_end": null,
+    "evidence": {
+      "best_lag": 5,
+      "best_correlation": 0.08633524629602048,
+      "correlation_baseline": {
+        "count": 12,
+        "median": 0.13337247788875778,
+        "mad": 0.035321575971976674,
+        "mean": 0.13835234162124502,
+        "std": 0.049496533478842086,
+        "p01": 0.06220899658502571,
+        "p05": 0.07413658071180965,
+        "p95": 0.2244040141158282,
+        "p99": 0.22997325834624902,
+        "min": 0.05922710055332973,
+        "max": 0.23136556940385422
+      }
+    },
+    "merged_count": 1
+  },
+  {
+    "finding_id": "V2F-000084",
+    "category_id": "1.1.2.D",
+    "category_name": "State-Vision-State consistency problem",
+    "issue_type": "visual_moves_state_static",
+    "issue_name": "Visual motion is strong but low-dimensional state is static",
+    "definition": "Low-dimensional state values or local transitions are inconsistent with visual evidence or neighboring state context.",
+    "decision_rule": "State value/delta/acceleration is a calibrated outlier and visual evidence does not support the same local change.",
+    "object_level": "segment",
+    "modality": "vision-state",
+    "confidence_level": "高置信异常",
+    "illegal": false,
+    "severity_score": 69.0,
+    "quality_penalty": 10.505,
+    "episode_index": 19,
+    "task_index": 0,
+    "view": null,
+    "column": "actions",
+    "frame_start": 92,
+    "frame_end": 95,
+    "evidence": {
+      "max_visual_motion": 18.664116541544598,
+      "median_state_delta": 0.0
+    },
+    "merged_count": 1
+  }
+]

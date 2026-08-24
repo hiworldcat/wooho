@@ -1,0 +1,124 @@
+{
+  "injected_defects": [
+    "timestamp_gap",
+    "state_spike",
+    "black_screen",
+    "frozen_image_run"
+  ],
+  "structural_findings": [
+    {
+      "episode_index": 0,
+      "issue_type": "timestamp_anomaly",
+      "severity": "high",
+      "frame_start": 49,
+      "frame_end": 50,
+      "evidence": {
+        "previous_timestamp": 4.900000095367432,
+        "current_timestamp": 5.700000286102295,
+        "delta": 0.8000001907348633,
+        "expected_delta": 0.10000014305114746
+      }
+    },
+    {
+      "episode_index": 0,
+      "issue_type": "timestamp_anomaly",
+      "severity": "high",
+      "frame_start": 50,
+      "frame_end": 51,
+      "evidence": {
+        "previous_timestamp": 5.700000286102295,
+        "current_timestamp": 5.099999904632568,
+        "delta": -0.6000003814697266,
+        "expected_delta": 0.10000014305114746
+      }
+    },
+    {
+      "episode_index": 0,
+      "issue_type": "state_continuity_spike",
+      "severity": "medium",
+      "frame_start": 79,
+      "frame_end": 79,
+      "evidence": {
+        "second_delta_norm": 5.0001765214668765,
+        "baseline_median": 0.012158720960380986,
+        "threshold": 0.25
+      }
+    },
+    {
+      "episode_index": 0,
+      "issue_type": "state_continuity_spike",
+      "severity": "medium",
+      "frame_start": 80,
+      "frame_end": 80,
+      "evidence": {
+        "second_delta_norm": 10.000254446842668,
+        "baseline_median": 0.012158720960380986,
+        "threshold": 0.25
+      }
+    },
+    {
+      "episode_index": 0,
+      "issue_type": "state_continuity_spike",
+      "severity": "medium",
+      "frame_start": 81,
+      "frame_end": 81,
+      "evidence": {
+        "second_delta_norm": 4.99993283277363,
+        "baseline_median": 0.012158720960380986,
+        "threshold": 0.25
+      }
+    }
+  ],
+  "image_findings": [
+    {
+      "episode_index": 0,
+      "view": "image",
+      "issue_type": "black_screen",
+      "severity": "high",
+      "frame_start": 100,
+      "frame_end": 100,
+      "evidence": {
+        "mean": 0.0,
+        "std": 0.0,
+        "sharpness": 0.0,
+        "black_fraction": 1.0,
+        "white_fraction": 0.0,
+        "entropy": 0.37576199991954295
+      }
+    },
+    {
+      "episode_index": 0,
+      "view": "image",
+      "issue_type": "frozen_image_run",
+      "severity": "medium",
+      "frame_start": 120,
+      "frame_end": 129,
+      "evidence": {
+        "run_length": 10
+      }
+    }
+  ],
+  "image_summary": {
+    "frames": 222,
+    "decoded_frames": 222,
+    "mean_median": 99.36823654174805,
+    "mean_min": 0.0,
+    "mean_max": 104.84832763671875,
+    "std_median": 76.45466613769531,
+    "std_min": 0.0,
+    "std_max": 78.0398941040039,
+    "sharpness_median": 2691.62890625,
+    "sharpness_min": 0.0,
+    "sharpness_max": 3369.64794921875,
+    "black_fraction_median": 0.0014150191326530613,
+    "black_fraction_min": 3.985969387755102e-05,
+    "black_fraction_max": 1.0,
+    "white_fraction_median": 0.01771763392857143,
+    "white_fraction_min": 0.0,
+    "white_fraction_max": 0.03067203443877551,
+    "entropy_median": 0.9665662205555442,
+    "entropy_min": 0.37576199991954295,
+    "entropy_max": 0.9784495970270127,
+    "finding_count": 2
+  }
+}
