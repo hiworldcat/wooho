@@ -1,0 +1,165 @@
+{
+  "sample_count": 8,
+  "episodes": [
+    {
+      "episode_index": 0,
+      "task_index": 0,
+      "task_label": "Material retrieval",
+      "length": 222,
+      "board_path": "C:\\Tongji\\各种竞赛\\woohu\\outputs\\trajectory_boards\\episode-00\\board.png",
+      "samples": []
+    },
+    {
+      "episode_index": 1,
+      "task_index": 1,
+      "task_label": "Assembly",
+      "length": 192,
+      "board_path": "C:\\Tongji\\各种竞赛\\woohu\\outputs\\trajectory_boards\\episode-01\\board.png",
+      "samples": []
+    },
+    {
+      "episode_index": 2,
+      "task_index": 0,
+      "task_label": "Material retrieval",
+      "length": 202,
+      "board_path": "C:\\Tongji\\各种竞赛\\woohu\\outputs\\trajectory_boards\\episode-02\\board.png",
+      "samples": []
+    },
+    {
+      "episode_index": 3,
+      "task_index": 1,
+      "task_label": "Assembly",
+      "length": 189,
+      "board_path": "C:\\Tongji\\各种竞赛\\woohu\\outputs\\trajectory_boards\\episode-03\\board.png",
+      "samples": []
+    },
+    {
+      "episode_index": 4,
+      "task_index": 0,
+      "task_label": "Material retrieval",
+      "length": 212,
+      "board_path": "C:\\Tongji\\各种竞赛\\woohu\\outputs\\trajectory_boards\\episode-04\\board.png",
+      "samples": []
+    },
+    {
+      "episode_index": 5,
+      "task_index": 0,
+      "task_label": "Material retrieval",
+      "length": 247,
+      "board_path": "C:\\Tongji\\各种竞赛\\woohu\\outputs\\trajectory_boards\\episode-05\\board.png",
+      "samples": []
+    },
+    {
+      "episode_index": 6,
+      "task_index": 1,
+      "task_label": "Assembly",
+      "length": 202,
+      "board_path": "C:\\Tongji\\各种竞赛\\woohu\\outputs\\trajectory_boards\\episode-06\\board.png",
+      "samples": []
+    },
+    {
+      "episode_index": 7,
+      "task_index": 0,
+      "task_label": "Material retrieval",
+      "length": 236,
+      "board_path": "C:\\Tongji\\各种竞赛\\woohu\\outputs\\trajectory_boards\\episode-07\\board.png",
+      "samples": []
+    },
+    {
+      "episode_index": 8,
+      "task_index": 0,
+      "task_label": "Material retrieval",
+      "length": 191,
+      "board_path": "C:\\Tongji\\各种竞赛\\woohu\\outputs\\trajectory_boards\\episode-08\\board.png",
+      "samples": []
+    },
+    {
+      "episode_index": 9,
+      "task_index": 0,
+      "task_label": "Material retrieval",
+      "length": 195,
+      "board_path": "C:\\Tongji\\各种竞赛\\woohu\\outputs\\trajectory_boards\\episode-09\\board.png",
+      "samples": []
+    },
+    {
+      "episode_index": 10,
+      "task_index": 1,
+      "task_label": "Assembly",
+      "length": 196,
+      "board_path": "C:\\Tongji\\各种竞赛\\woohu\\outputs\\trajectory_boards\\episode-10\\board.png",
+      "samples": []
+    },
+    {
+      "episode_index": 11,
+      "task_index": 0,
+      "task_label": "Material retrieval",
+      "length": 202,
+      "board_path": "C:\\Tongji\\各种竞赛\\woohu\\outputs\\trajectory_boards\\episode-11\\board.png",
+      "samples": []
+    },
+    {
+      "episode_index": 12,
+      "task_index": 1,
+      "task_label": "Assembly",
+      "length": 172,
+      "board_path": "C:\\Tongji\\各种竞赛\\woohu\\outputs\\trajectory_boards\\episode-12\\board.png",
+      "samples": []
+    },
+    {
+      "episode_index": 13,
+      "task_index": 0,
+      "task_label": "Material retrieval",
+      "length": 304,
+      "board_path": "C:\\Tongji\\各种竞赛\\woohu\\outputs\\trajectory_boards\\episode-13\\board.png",
+      "samples": []
+    },
+    {
+      "episode_index": 14,
+      "task_index": 0,
+      "task_label": "Material retrieval",
+      "length": 268,
+      "board_path": "C:\\Tongji\\各种竞赛\\woohu\\outputs\\trajectory_boards\\episode-14\\board.png",
+      "samples": []
+    },
+    {
+      "episode_index": 15,
+      "task_index": 1,
+      "task_label": "Assembly",
+      "length": 181,
+      "board_path": "C:\\Tongji\\各种竞赛\\woohu\\outputs\\trajectory_boards\\episode-15\\board.png",
+      "samples": []
+    },
+    {
+      "episode_index": 16,
+      "task_index": 1,
+      "task_label": "Assembly",
+      "length": 180,
+      "board_path": "C:\\Tongji\\各种竞赛\\woohu\\outputs\\trajectory_boards\\episode-16\\board.png",
+      "samples": []
+    },
+    {
+      "episode_index": 17,
+      "task_index": 1,
+      "task_label": "Assembly",
+      "length": 170,
+      "board_path": "C:\\Tongji\\各种竞赛\\woohu\\outputs\\trajectory_boards\\episode-17\\board.png",
+      "samples": []
+    },
+    {
+      "episode_index": 18,
+      "task_index": 0,
+      "task_label": "Material retrieval",
+      "length": 217,
+      "board_path": "C:\\Tongji\\各种竞赛\\woohu\\outputs\\trajectory_boards\\episode-18\\board.png",
+      "samples": []
+    },
+    {
+      "episode_index": 19,
+      "task_index": 0,
+      "task_label": "Material retrieval",
+      "length": 164,
+      "board_path": "C:\\Tongji\\各种竞赛\\woohu\\outputs\\trajectory_boards\\episode-19\\board.png",
+      "samples": []
+    }
+  ]
+}
