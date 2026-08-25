@@ -273,6 +273,40 @@ def apply_action_response_delay(df: pd.DataFrame, context: dict[str, Any], rng: 
     return delay_column(df, ["actions"], 5)
 
 
+def high_frequency_jitter(df: pd.DataFrame, column: str, length: int, strength: float) -> dict[str, Any]:
+    start, end = segment(df, length, anchor=0.30)
+    matrix = np.stack([np.asarray(value, dtype=np.float64).reshape(-1) for value in df[column]])
+    dims = [dim for dim in [0, 1, 2, 10, 11, 12] if dim < matrix.shape[1]]
+    if not dims:
+        dims = list(range(min(6, matrix.shape[1])))
+    spread = np.quantile(matrix[:, dims], 0.95, axis=0) - np.quantile(matrix[:, dims], 0.05, axis=0)
+    std = np.std(matrix[:, dims], axis=0)
+    amplitude = np.maximum.reduce([spread * strength, std * strength * 2.0, np.full(len(dims), 0.02)])
+    for local_index, row in enumerate(range(start, end)):
+        values = np.asarray(df.at[row, column], dtype=np.float64).copy()
+        sign = -1.0 if local_index % 2 else 1.0
+        values[dims] = values[dims] + sign * amplitude
+        df.at[row, column] = values.astype(np.float32).tolist()
+    return {
+        "column": column,
+        "dimensions": dims,
+        "frame_start": start,
+        "frame_end": end - 1,
+        "frames": end - start,
+        "pattern": "alternating_sign_high_frequency",
+        "strength": strength,
+        "amplitude_by_dimension": {str(dim): round(float(value), 6) for dim, value in zip(dims, amplitude)},
+    }
+
+
+def apply_state_high_freq_jitter(df: pd.DataFrame, context: dict[str, Any], rng: np.random.Generator) -> dict[str, Any]:
+    return high_frequency_jitter(df, "state", 60, 0.22)
+
+
+def apply_action_high_freq_jitter(df: pd.DataFrame, context: dict[str, Any], rng: np.random.Generator) -> dict[str, Any]:
+    return high_frequency_jitter(df, "actions", 60, 0.22)
+
+
 ISSUES: list[IssueSpec] = [
     IssueSpec("black_screen", "non_temporal", "hard", "vision_illegal_or_single", "image", "基座相机的一段图像替换为纯黑帧。", "vision_single", apply_black_screen),
     IssueSpec("white_screen", "non_temporal", "hard", "vision_illegal_or_single", "image", "基座相机的一段图像替换为纯白帧。", "vision_single", apply_white_screen),
@@ -295,6 +329,8 @@ ISSUES: list[IssueSpec] = [
     IssueSpec("video_signal_delay_small", "temporal", "soft", "vision_state_temporal", "image", "小延迟视频信号问题：三路相机相对 state 延迟 3 帧。", "vision_state_temporal", apply_video_signal_delay_small),
     IssueSpec("video_signal_delay_large", "temporal", "soft", "vision_state_temporal", "image", "大延迟视频信号问题：三路相机相对 state 延迟 10 帧。", "vision_state_temporal", apply_video_signal_delay_large),
     IssueSpec("action_response_delay", "temporal", "soft", "state_temporal", "actions", "动作响应延迟：actions 相对观测 state 延迟 5 帧。", "state_temporal", apply_action_response_delay),
+    IssueSpec("state_high_freq_jitter", "temporal", "soft", "state_temporal", "state", "state 连续片段加入交替正负的高频抖动增强。", "state_temporal", apply_state_high_freq_jitter),
+    IssueSpec("action_high_freq_jitter", "temporal", "soft", "state_temporal", "actions", "actions 连续片段加入交替正负的高频抖动增强。", "state_temporal", apply_action_high_freq_jitter),
 ]
 
 

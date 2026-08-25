@@ -460,6 +460,80 @@
         "frame_start": 0,
         "frame_end": 221
       }
+    },
+    {
+      "issue_id": "state_high_freq_jitter",
+      "axis": "temporal",
+      "hardness": "soft",
+      "category": "state_temporal",
+      "target": "state",
+      "description": "state 连续片段加入交替正负的高频抖动增强。",
+      "expected_detector_family": "state_temporal",
+      "source_episode_index": 0,
+      "source_episode_path": "初赛数据\\鍒濊禌鏁版嵁\\鍙傝€冮泦\\data\\chunk-000\\episode_000000.parquet",
+      "case_path": "outputs\\ablations\\single_issue_cases\\state_high_freq_jitter\\episode_000000_state_high_freq_jitter.parquet",
+      "rows": 222,
+      "evidence": {
+        "column": "state",
+        "dimensions": [
+          0,
+          1,
+          2,
+          10,
+          11,
+          12
+        ],
+        "frame_start": 66,
+        "frame_end": 125,
+        "frames": 60,
+        "pattern": "alternating_sign_high_frequency",
+        "strength": 0.22,
+        "amplitude_by_dimension": {
+          "0": 0.02,
+          "1": 0.041417,
+          "2": 0.02981,
+          "10": 0.03208,
+          "11": 0.03476,
+          "12": 0.030086
+        }
+      }
+    },
+    {
+      "issue_id": "action_high_freq_jitter",
+      "axis": "temporal",
+      "hardness": "soft",
+      "category": "state_temporal",
+      "target": "actions",
+      "description": "actions 连续片段加入交替正负的高频抖动增强。",
+      "expected_detector_family": "state_temporal",
+      "source_episode_index": 0,
+      "source_episode_path": "初赛数据\\鍒濊禌鏁版嵁\\鍙傝€冮泦\\data\\chunk-000\\episode_000000.parquet",
+      "case_path": "outputs\\ablations\\single_issue_cases\\action_high_freq_jitter\\episode_000000_action_high_freq_jitter.parquet",
+      "rows": 222,
+      "evidence": {
+        "column": "actions",
+        "dimensions": [
+          0,
+          1,
+          2,
+          10,
+          11,
+          12
+        ],
+        "frame_start": 66,
+        "frame_end": 125,
+        "frames": 60,
+        "pattern": "alternating_sign_high_frequency",
+        "strength": 0.22,
+        "amplitude_by_dimension": {
+          "0": 0.02,
+          "1": 0.039879,
+          "2": 0.028409,
+          "10": 0.032388,
+          "11": 0.03602,
+          "12": 0.0283
+        }
+      }
     }
   ]
 }

@@ -27,6 +27,8 @@
 | video_signal_delay_small | 时序 | 软性 | image | vision_state_temporal | 小延迟视频信号问题：三路相机相对 state 延迟 3 帧。 |
 | video_signal_delay_large | 时序 | 软性 | image | vision_state_temporal | 大延迟视频信号问题：三路相机相对 state 延迟 10 帧。 |
 | action_response_delay | 时序 | 软性 | actions | state_temporal | 动作响应延迟：actions 相对观测 state 延迟 5 帧。 |
+| state_high_freq_jitter | 时序 | 软性 | state | state_temporal | state 连续片段加入交替正负的高频抖动增强。 |
+| action_high_freq_jitter | 时序 | 软性 | actions | state_temporal | actions 连续片段加入交替正负的高频抖动增强。 |
 
 ## 消融试验设计
 
