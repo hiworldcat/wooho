@@ -1,0 +1,22 @@
+{
+  "issue_id": "action_response_delay",
+  "axis": "temporal",
+  "hardness": "soft",
+  "category": "state_temporal",
+  "target": "actions",
+  "description": "动作响应延迟：actions 相对观测 state 延迟 5 帧。",
+  "expected_detector_family": "state_temporal",
+  "source_episode_index": 0,
+  "source_episode_path": "初赛数据\\鍒濊禌鏁版嵁\\鍙傝€冮泦\\data\\chunk-000\\episode_000000.parquet",
+  "case_path": "outputs\\ablations\\single_issue_cases\\action_response_delay\\episode_000000_action_response_delay.parquet",
+  "rows": 222,
+  "evidence": {
+    "columns": [
+      "actions"
+    ],
+    "delay_frames": 5,
+    "delay_seconds": 0.5,
+    "frame_start": 0,
+    "frame_end": 221
+  }
+}

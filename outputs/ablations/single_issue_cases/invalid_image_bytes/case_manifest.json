@@ -1,0 +1,19 @@
+{
+  "issue_id": "invalid_image_bytes",
+  "axis": "non_temporal",
+  "hardness": "hard",
+  "category": "vision_illegal",
+  "target": "image",
+  "description": "图像 bytes 替换为不可解码 payload。",
+  "expected_detector_family": "vision_illegal",
+  "source_episode_index": 0,
+  "source_episode_path": "初赛数据\\鍒濊禌鏁版嵁\\鍙傝€冮泦\\data\\chunk-000\\episode_000000.parquet",
+  "case_path": "outputs\\ablations\\single_issue_cases\\invalid_image_bytes\\episode_000000_invalid_image_bytes.parquet",
+  "rows": 222,
+  "evidence": {
+    "view": "image",
+    "frame_start": 77,
+    "frame_end": 80,
+    "frames": 4
+  }
+}

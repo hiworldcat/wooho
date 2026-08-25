@@ -1,0 +1,20 @@
+{
+  "issue_id": "state_inf",
+  "axis": "non_temporal",
+  "hardness": "hard",
+  "category": "state_illegal",
+  "target": "state",
+  "description": "state 某一维在短片段内写入 Inf。",
+  "expected_detector_family": "state_illegal",
+  "source_episode_index": 0,
+  "source_episode_path": "初赛数据\\鍒濊禌鏁版嵁\\鍙傝€冮泦\\data\\chunk-000\\episode_000000.parquet",
+  "case_path": "outputs\\ablations\\single_issue_cases\\state_inf\\episode_000000_state_inf.parquet",
+  "rows": 222,
+  "evidence": {
+    "column": "state",
+    "dimension": 0,
+    "frame_start": 77,
+    "frame_end": 80,
+    "frames": 4
+  }
+}

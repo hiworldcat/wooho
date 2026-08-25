@@ -26,14 +26,14 @@
   "vision_state_vision": {
     "category_id": "1.1.2.C",
     "category_name": "Vision-State-Vision geometry/scale problem",
-    "definition": "Visual spatial change and low-dimensional state change are inconsistent, suggesting broken geometry, scale, crop, or coarse cross-modal relation.",
+    "definition": "Visual spatial change and robot state geometry are inconsistent, suggesting broken geometry, scale, crop, or coarse cross-modal relation.",
     "decision_rule": "Known camera semantics and robot state first indicate that two views should overlap; only then is weak visual motion correlation used as verification."
   },
   "state_vision_state": {
     "category_id": "1.1.2.D",
     "category_name": "State-Vision-State consistency problem",
-    "definition": "Low-dimensional state values or local transitions are inconsistent with visual evidence or neighboring state context.",
-    "decision_rule": "State value/delta/acceleration is a calibrated outlier and visual evidence does not support the same local change."
+    "definition": "Robot state values or local transitions are inconsistent with visual evidence or neighboring state context.",
+    "decision_rule": "Robot state value/delta/acceleration is a calibrated outlier and visual evidence does not support the same local change."
   },
   "temporal_illegal": {
     "category_id": "1.2.1",
@@ -56,7 +56,7 @@
   "vision_state_temporal": {
     "category_id": "1.2.2.C",
     "category_name": "Vision-State temporal consistency problem",
-    "definition": "Vision and low-dimensional state are locally out of sync or show unstable response timing.",
-    "decision_rule": "Best lag between visual motion and state motion deviates from the calibrated reference lag, or the best correlation falls below the reference baseline."
+    "definition": "Vision and robot state are locally out of sync or show unstable response timing.",
+    "decision_rule": "Best lag between visual motion and robot state motion deviates from the calibrated reference lag, or the best correlation falls below the reference baseline."
   }
 }

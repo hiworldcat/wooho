@@ -1,0 +1,20 @@
+{
+  "issue_id": "timestamp_non_monotonic",
+  "axis": "temporal",
+  "hardness": "hard",
+  "category": "temporal_illegal",
+  "target": "timestamp",
+  "description": "单个 timestamp 被改成向后倒退。",
+  "expected_detector_family": "temporal_illegal",
+  "source_episode_index": 0,
+  "source_episode_path": "初赛数据\\鍒濊禌鏁版嵁\\鍙傝€冮泦\\data\\chunk-000\\episode_000000.parquet",
+  "case_path": "outputs\\ablations\\single_issue_cases\\timestamp_non_monotonic\\episode_000000_timestamp_non_monotonic.parquet",
+  "rows": 222,
+  "evidence": {
+    "column": "timestamp",
+    "frame_start": 77,
+    "frame_end": 77,
+    "old_value": 7.699999809265137,
+    "new_value": 7.5
+  }
+}

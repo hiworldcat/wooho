@@ -1,0 +1,20 @@
+{
+  "issue_id": "state_wrong_dim",
+  "axis": "non_temporal",
+  "hardness": "hard",
+  "category": "state_illegal",
+  "target": "state",
+  "description": "单个 state 行被改成非法向量长度。",
+  "expected_detector_family": "state_illegal",
+  "source_episode_index": 0,
+  "source_episode_path": "初赛数据\\鍒濊禌鏁版嵁\\鍙傝€冮泦\\data\\chunk-000\\episode_000000.parquet",
+  "case_path": "outputs\\ablations\\single_issue_cases\\state_wrong_dim\\episode_000000_state_wrong_dim.parquet",
+  "rows": 222,
+  "evidence": {
+    "column": "state",
+    "frame_start": 77,
+    "frame_end": 77,
+    "original_dim": 20,
+    "new_dim": 19
+  }
+}

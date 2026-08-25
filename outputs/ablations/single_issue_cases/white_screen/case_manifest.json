@@ -1,0 +1,20 @@
+{
+  "issue_id": "white_screen",
+  "axis": "non_temporal",
+  "hardness": "hard",
+  "category": "vision_illegal_or_single",
+  "target": "image",
+  "description": "基座相机的一段图像替换为纯白帧。",
+  "expected_detector_family": "vision_single",
+  "source_episode_index": 0,
+  "source_episode_path": "初赛数据\\鍒濊禌鏁版嵁\\鍙傝€冮泦\\data\\chunk-000\\episode_000000.parquet",
+  "case_path": "outputs\\ablations\\single_issue_cases\\white_screen\\episode_000000_white_screen.parquet",
+  "rows": 222,
+  "evidence": {
+    "view": "image",
+    "frame_start": 77,
+    "frame_end": 88,
+    "value": 255,
+    "frames": 12
+  }
+}

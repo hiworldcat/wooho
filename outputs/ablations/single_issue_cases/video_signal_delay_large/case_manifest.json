@@ -1,0 +1,24 @@
+{
+  "issue_id": "video_signal_delay_large",
+  "axis": "temporal",
+  "hardness": "soft",
+  "category": "vision_state_temporal",
+  "target": "image",
+  "description": "大延迟视频信号问题：三路相机相对 state 延迟 10 帧。",
+  "expected_detector_family": "vision_state_temporal",
+  "source_episode_index": 0,
+  "source_episode_path": "初赛数据\\鍒濊禌鏁版嵁\\鍙傝€冮泦\\data\\chunk-000\\episode_000000.parquet",
+  "case_path": "outputs\\ablations\\single_issue_cases\\video_signal_delay_large\\episode_000000_video_signal_delay_large.parquet",
+  "rows": 222,
+  "evidence": {
+    "columns": [
+      "image",
+      "left_wrist_image",
+      "right_wrist_image"
+    ],
+    "delay_frames": 10,
+    "delay_seconds": 1.0,
+    "frame_start": 0,
+    "frame_end": 221
+  }
+}

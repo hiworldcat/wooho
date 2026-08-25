@@ -1,0 +1,340 @@
+[
+  {
+    "finding_id": "V2F-000004",
+    "episode": 2,
+    "issue_frames": [
+      127,
+      130
+    ],
+    "clip_frames": [
+      97,
+      160
+    ],
+    "clip_seconds": [
+      9.7,
+      16.0
+    ],
+    "repeated_actions_in_issue": true,
+    "action_static_threshold": 1e-08,
+    "visual_high_threshold": 14.926353685061136,
+    "issue_combined_vision_motion_max": 18.037414868672688,
+    "issue_combined_vision_motion_median": 14.568593899408977,
+    "issue_state_delta_max": 0.02927111965688842,
+    "issue_state_delta_median": 0.005402674375113339,
+    "issue_actions_delta_max": 0.0,
+    "issue_actions_delta_median": 0.0,
+    "per_view_issue_motion": {
+      "image": {
+        "max": 13.249573707580566,
+        "median": 7.617771863937378
+      },
+      "left_wrist_image": {
+        "max": 24.329933166503906,
+        "median": 22.65688705444336
+      },
+      "right_wrist_image": {
+        "max": 16.532737731933594,
+        "median": 13.431122779846191
+      }
+    },
+    "key_frames": [
+      {
+        "frame": 97,
+        "time_s": 9.7,
+        "transition": "97->98",
+        "combined_vision_motion": 6.337726751963298,
+        "state_delta": 0.023421939576318117,
+        "actions_delta": 0.018046813387787568,
+        "left_pos": [
+          0.39199,
+          0.31181,
+          0.33491
+        ],
+        "right_pos": [
+          0.36095,
+          -0.33085,
+          0.3545
+        ]
+      },
+      {
+        "frame": 126,
+        "time_s": 12.6,
+        "transition": "126->127",
+        "combined_vision_motion": 19.145408789316814,
+        "state_delta": 0.2277829403408931,
+        "actions_delta": 0.07071069497739416,
+        "left_pos": [
+          0.37978,
+          0.33409,
+          0.33859
+        ],
+        "right_pos": [
+          0.38586,
+          -0.32363,
+          0.33726
+        ]
+      },
+      {
+        "frame": 127,
+        "time_s": 12.7,
+        "transition": "127->128",
+        "combined_vision_motion": 14.722647190093994,
+        "state_delta": 0.02927111965688842,
+        "actions_delta": 0.0,
+        "left_pos": [
+          0.37778,
+          0.33469,
+          0.33737
+        ],
+        "right_pos": [
+          0.38288,
+          -0.32312,
+          0.33408
+        ]
+      },
+      {
+        "frame": 129,
+        "time_s": 12.9,
+        "transition": "129->130",
+        "combined_vision_motion": 18.037414868672688,
+        "state_delta": 0.00396629645293096,
+        "actions_delta": 0.0,
+        "left_pos": [
+          0.37595,
+          0.33424,
+          0.33495
+        ],
+        "right_pos": [
+          0.38478,
+          -0.32273,
+          0.33827
+        ]
+      },
+      {
+        "frame": 130,
+        "time_s": 13.0,
+        "transition": "130->131",
+        "combined_vision_motion": 9.673894564310709,
+        "state_delta": 0.0014931252905330044,
+        "actions_delta": 0.0,
+        "left_pos": [
+          0.37593,
+          0.3342,
+          0.33518
+        ],
+        "right_pos": [
+          0.38454,
+          -0.32286,
+          0.33826
+        ]
+      },
+      {
+        "frame": 131,
+        "time_s": 13.1,
+        "transition": "131->132",
+        "combined_vision_motion": 8.362669626871744,
+        "state_delta": 0.0007703106138247722,
+        "actions_delta": 0.0,
+        "left_pos": [
+          0.37567,
+          0.33426,
+          0.33485
+        ],
+        "right_pos": [
+          0.38457,
+          -0.32279,
+          0.33849
+        ]
+      },
+      {
+        "frame": 160,
+        "time_s": 16.0,
+        "transition": "160->161",
+        "combined_vision_motion": 5.393990834554036,
+        "state_delta": 0.031134097337622214,
+        "actions_delta": 0.02393015428801932,
+        "left_pos": [
+          0.28715,
+          0.3618,
+          0.38144
+        ],
+        "right_pos": [
+          0.29996,
+          -0.29041,
+          0.39885
+        ]
+      }
+    ],
+    "avi": "C:\\Tongji\\各种竞赛\\woohu\\outputs\\v2\\episode_02_05_focus\\episode-02_V2F-000004_focus_frames-0127-0130.avi",
+    "gif": "C:\\Tongji\\各种竞赛\\woohu\\outputs\\v2\\episode_02_05_focus\\episode-02_V2F-000004_focus_frames-0127-0130.gif"
+  },
+  {
+    "finding_id": "V2F-000015",
+    "episode": 5,
+    "issue_frames": [
+      164,
+      167
+    ],
+    "clip_frames": [
+      134,
+      197
+    ],
+    "clip_seconds": [
+      13.4,
+      19.7
+    ],
+    "repeated_actions_in_issue": true,
+    "action_static_threshold": 1e-08,
+    "visual_high_threshold": 10.812663181622824,
+    "issue_combined_vision_motion_max": 20.833333651224773,
+    "issue_combined_vision_motion_median": 16.100056489308674,
+    "issue_state_delta_max": 0.10443168755501307,
+    "issue_state_delta_median": 0.0023455087845198246,
+    "issue_actions_delta_max": 0.0,
+    "issue_actions_delta_median": 0.0,
+    "per_view_issue_motion": {
+      "image": {
+        "max": 8.542943000793457,
+        "median": 6.367559432983398
+      },
+      "left_wrist_image": {
+        "max": 30.840560913085938,
+        "median": 24.859694480895996
+      },
+      "right_wrist_image": {
+        "max": 23.116497039794922,
+        "median": 18.693876266479492
+      }
+    },
+    "key_frames": [
+      {
+        "frame": 134,
+        "time_s": 13.4,
+        "transition": "134->135",
+        "combined_vision_motion": 6.816609938939412,
+        "state_delta": 0.03408941562131463,
+        "actions_delta": 0.03996563699170888,
+        "left_pos": [
+          0.40586,
+          0.2836,
+          0.33453
+        ],
+        "right_pos": [
+          0.3812,
+          -0.38802,
+          0.35068
+        ]
+      },
+      {
+        "frame": 163,
+        "time_s": 16.3,
+        "transition": "163->164",
+        "combined_vision_motion": 10.791099389394125,
+        "state_delta": 0.2527679450022072,
+        "actions_delta": 0.11180342553099698,
+        "left_pos": [
+          0.39,
+          0.29582,
+          0.32722
+        ],
+        "right_pos": [
+          0.37712,
+          -0.36443,
+          0.32708
+        ]
+      },
+      {
+        "frame": 164,
+        "time_s": 16.4,
+        "transition": "164->165",
+        "combined_vision_motion": 17.0215425491333,
+        "state_delta": 0.10443168755501307,
+        "actions_delta": 0.0,
+        "left_pos": [
+          0.38973,
+          0.29534,
+          0.32718
+        ],
+        "right_pos": [
+          0.37607,
+          -0.36396,
+          0.32857
+        ]
+      },
+      {
+        "frame": 166,
+        "time_s": 16.6,
+        "transition": "166->167",
+        "combined_vision_motion": 15.178570429484049,
+        "state_delta": 0.0022538069841882406,
+        "actions_delta": 0.0,
+        "left_pos": [
+          0.38892,
+          0.29553,
+          0.32689
+        ],
+        "right_pos": [
+          0.37417,
+          -0.36321,
+          0.32884
+        ]
+      },
+      {
+        "frame": 167,
+        "time_s": 16.7,
+        "transition": "167->168",
+        "combined_vision_motion": 7.959041595458984,
+        "state_delta": 0.0018702240905056889,
+        "actions_delta": 0.0,
+        "left_pos": [
+          0.38862,
+          0.29561,
+          0.32645
+        ],
+        "right_pos": [
+          0.37396,
+          -0.36317,
+          0.32915
+        ]
+      },
+      {
+        "frame": 168,
+        "time_s": 16.8,
+        "transition": "168->169",
+        "combined_vision_motion": 5.309523820877075,
+        "state_delta": 0.0029610677369260084,
+        "actions_delta": 0.0,
+        "left_pos": [
+          0.38862,
+          0.29563,
+          0.32646
+        ],
+        "right_pos": [
+          0.37402,
+          -0.36306,
+          0.32982
+        ]
+      },
+      {
+        "frame": 197,
+        "time_s": 19.7,
+        "transition": "197->198",
+        "combined_vision_motion": 5.417942047119141,
+        "state_delta": 0.011133277006996041,
+        "actions_delta": 0.023124435624009062,
+        "left_pos": [
+          0.34091,
+          0.34592,
+          0.39991
+        ],
+        "right_pos": [
+          0.32079,
+          -0.31214,
+          0.40002
+        ]
+      }
+    ],
+    "avi": "C:\\Tongji\\各种竞赛\\woohu\\outputs\\v2\\episode_02_05_focus\\episode-05_V2F-000015_focus_frames-0164-0167.avi",
+    "gif": "C:\\Tongji\\各种竞赛\\woohu\\outputs\\v2\\episode_02_05_focus\\episode-05_V2F-000015_focus_frames-0164-0167.gif"
+  }
+]

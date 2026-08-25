@@ -1,0 +1,22 @@
+{
+  "issue_id": "state_sensor_delay_small",
+  "axis": "temporal",
+  "hardness": "soft",
+  "category": "state_vision_temporal",
+  "target": "state",
+  "description": "小延迟传感器问题：state 相对图像延迟 3 帧。",
+  "expected_detector_family": "vision_state_temporal",
+  "source_episode_index": 0,
+  "source_episode_path": "初赛数据\\鍒濊禌鏁版嵁\\鍙傝€冮泦\\data\\chunk-000\\episode_000000.parquet",
+  "case_path": "outputs\\ablations\\single_issue_cases\\state_sensor_delay_small\\episode_000000_state_sensor_delay_small.parquet",
+  "rows": 222,
+  "evidence": {
+    "columns": [
+      "state"
+    ],
+    "delay_frames": 3,
+    "delay_seconds": 0.3,
+    "frame_start": 0,
+    "frame_end": 221
+  }
+}

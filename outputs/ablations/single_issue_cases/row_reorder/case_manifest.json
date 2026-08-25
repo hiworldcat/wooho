@@ -1,0 +1,18 @@
+{
+  "issue_id": "row_reorder",
+  "axis": "temporal",
+  "hardness": "hard",
+  "category": "temporal_illegal",
+  "target": "row",
+  "description": "交换两个相邻行，破坏时间顺序。",
+  "expected_detector_family": "temporal_illegal",
+  "source_episode_index": 0,
+  "source_episode_path": "初赛数据\\鍒濊禌鏁版嵁\\鍙傝€冮泦\\data\\chunk-000\\episode_000000.parquet",
+  "case_path": "outputs\\ablations\\single_issue_cases\\row_reorder\\episode_000000_row_reorder.parquet",
+  "rows": 222,
+  "evidence": {
+    "frame_start": 77,
+    "frame_end": 78,
+    "operation": "swap_adjacent_rows"
+  }
+}

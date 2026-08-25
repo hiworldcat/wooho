@@ -1,0 +1,19 @@
+{
+  "issue_id": "frame_index_skip",
+  "axis": "temporal",
+  "hardness": "hard",
+  "category": "temporal_illegal",
+  "target": "frame_index",
+  "description": "frame_index 从局部位置开始整体跳号，但行仍保留。",
+  "expected_detector_family": "temporal_illegal",
+  "source_episode_index": 0,
+  "source_episode_path": "初赛数据\\鍒濊禌鏁版嵁\\鍙傝€冮泦\\data\\chunk-000\\episode_000000.parquet",
+  "case_path": "outputs\\ablations\\single_issue_cases\\frame_index_skip\\episode_000000_frame_index_skip.parquet",
+  "rows": 222,
+  "evidence": {
+    "column": "frame_index",
+    "frame_start": 77,
+    "frame_end": 221,
+    "skip": 3
+  }
+}

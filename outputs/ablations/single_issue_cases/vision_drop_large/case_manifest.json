@@ -1,0 +1,21 @@
+{
+  "issue_id": "vision_drop_large",
+  "axis": "temporal",
+  "hardness": "soft",
+  "category": "vision_temporal",
+  "target": "image",
+  "description": "大面积丢帧：用上一帧图像掩盖长片段缺帧。",
+  "expected_detector_family": "vision_temporal",
+  "source_episode_index": 0,
+  "source_episode_path": "初赛数据\\鍒濊禌鏁版嵁\\鍙傝€冮泦\\data\\chunk-000\\episode_000000.parquet",
+  "case_path": "outputs\\ablations\\single_issue_cases\\vision_drop_large\\episode_000000_vision_drop_large.parquet",
+  "rows": 222,
+  "evidence": {
+    "views": [
+      "image"
+    ],
+    "frame_start": 77,
+    "frame_end": 106,
+    "frames": 30
+  }
+}

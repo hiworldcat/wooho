@@ -1,0 +1,465 @@
+{
+  "generator": "scripts\\generate_single_issue_ablation_data.py",
+  "seed": 20260825,
+  "source_dataset": {
+    "codebase_version": "v2.1",
+    "robot_type": "panda",
+    "fps": 10,
+    "total_episodes": 20,
+    "total_frames": 4142,
+    "tasks": [
+      {
+        "task_index": 0,
+        "task": "Material Retrieval Stage: Grasp the photovoltaic panel with both hands, lift it from the current supporting surface, and hold it steadily."
+      },
+      {
+        "task_index": 1,
+        "task": "Assembly Stage: Move the held photovoltaic panel to the designated installation position, align it, then lower and release it."
+      }
+    ],
+    "episode_meta_count": 20
+  },
+  "policy": {
+    "granularity": "one parquet case per issue type",
+    "mixed_issues": false,
+    "original_dataset_modified": false
+  },
+  "cases": [
+    {
+      "issue_id": "black_screen",
+      "axis": "non_temporal",
+      "hardness": "hard",
+      "category": "vision_illegal_or_single",
+      "target": "image",
+      "description": "基座相机的一段图像替换为纯黑帧。",
+      "expected_detector_family": "vision_single",
+      "source_episode_index": 0,
+      "source_episode_path": "初赛数据\\鍒濊禌鏁版嵁\\鍙傝€冮泦\\data\\chunk-000\\episode_000000.parquet",
+      "case_path": "outputs\\ablations\\single_issue_cases\\black_screen\\episode_000000_black_screen.parquet",
+      "rows": 222,
+      "evidence": {
+        "view": "image",
+        "frame_start": 77,
+        "frame_end": 88,
+        "value": 0,
+        "frames": 12
+      }
+    },
+    {
+      "issue_id": "white_screen",
+      "axis": "non_temporal",
+      "hardness": "hard",
+      "category": "vision_illegal_or_single",
+      "target": "image",
+      "description": "基座相机的一段图像替换为纯白帧。",
+      "expected_detector_family": "vision_single",
+      "source_episode_index": 0,
+      "source_episode_path": "初赛数据\\鍒濊禌鏁版嵁\\鍙傝€冮泦\\data\\chunk-000\\episode_000000.parquet",
+      "case_path": "outputs\\ablations\\single_issue_cases\\white_screen\\episode_000000_white_screen.parquet",
+      "rows": 222,
+      "evidence": {
+        "view": "image",
+        "frame_start": 77,
+        "frame_end": 88,
+        "value": 255,
+        "frames": 12
+      }
+    },
+    {
+      "issue_id": "flower_screen",
+      "axis": "non_temporal",
+      "hardness": "hard",
+      "category": "vision_illegal_or_single",
+      "target": "image",
+      "description": "基座相机的一段图像替换为块状随机彩色花屏。",
+      "expected_detector_family": "vision_single",
+      "source_episode_index": 0,
+      "source_episode_path": "初赛数据\\鍒濊禌鏁版嵁\\鍙傝€冮泦\\data\\chunk-000\\episode_000000.parquet",
+      "case_path": "outputs\\ablations\\single_issue_cases\\flower_screen\\episode_000000_flower_screen.parquet",
+      "rows": 222,
+      "evidence": {
+        "view": "image",
+        "frame_start": 77,
+        "frame_end": 88,
+        "frames": 12,
+        "block_size": 8
+      }
+    },
+    {
+      "issue_id": "invalid_image_bytes",
+      "axis": "non_temporal",
+      "hardness": "hard",
+      "category": "vision_illegal",
+      "target": "image",
+      "description": "图像 bytes 替换为不可解码 payload。",
+      "expected_detector_family": "vision_illegal",
+      "source_episode_index": 0,
+      "source_episode_path": "初赛数据\\鍒濊禌鏁版嵁\\鍙傝€冮泦\\data\\chunk-000\\episode_000000.parquet",
+      "case_path": "outputs\\ablations\\single_issue_cases\\invalid_image_bytes\\episode_000000_invalid_image_bytes.parquet",
+      "rows": 222,
+      "evidence": {
+        "view": "image",
+        "frame_start": 77,
+        "frame_end": 80,
+        "frames": 4
+      }
+    },
+    {
+      "issue_id": "state_nan",
+      "axis": "non_temporal",
+      "hardness": "hard",
+      "category": "state_illegal",
+      "target": "state",
+      "description": "state 某一维在短片段内写入 NaN。",
+      "expected_detector_family": "state_illegal",
+      "source_episode_index": 0,
+      "source_episode_path": "初赛数据\\鍒濊禌鏁版嵁\\鍙傝€冮泦\\data\\chunk-000\\episode_000000.parquet",
+      "case_path": "outputs\\ablations\\single_issue_cases\\state_nan\\episode_000000_state_nan.parquet",
+      "rows": 222,
+      "evidence": {
+        "column": "state",
+        "dimension": 0,
+        "frame_start": 77,
+        "frame_end": 80,
+        "frames": 4
+      }
+    },
+    {
+      "issue_id": "state_inf",
+      "axis": "non_temporal",
+      "hardness": "hard",
+      "category": "state_illegal",
+      "target": "state",
+      "description": "state 某一维在短片段内写入 Inf。",
+      "expected_detector_family": "state_illegal",
+      "source_episode_index": 0,
+      "source_episode_path": "初赛数据\\鍒濊禌鏁版嵁\\鍙傝€冮泦\\data\\chunk-000\\episode_000000.parquet",
+      "case_path": "outputs\\ablations\\single_issue_cases\\state_inf\\episode_000000_state_inf.parquet",
+      "rows": 222,
+      "evidence": {
+        "column": "state",
+        "dimension": 0,
+        "frame_start": 77,
+        "frame_end": 80,
+        "frames": 4
+      }
+    },
+    {
+      "issue_id": "action_nan",
+      "axis": "non_temporal",
+      "hardness": "hard",
+      "category": "state_illegal",
+      "target": "actions",
+      "description": "actions 某一维在短片段内写入 NaN。",
+      "expected_detector_family": "state_illegal",
+      "source_episode_index": 0,
+      "source_episode_path": "初赛数据\\鍒濊禌鏁版嵁\\鍙傝€冮泦\\data\\chunk-000\\episode_000000.parquet",
+      "case_path": "outputs\\ablations\\single_issue_cases\\action_nan\\episode_000000_action_nan.parquet",
+      "rows": 222,
+      "evidence": {
+        "column": "actions",
+        "dimension": 0,
+        "frame_start": 77,
+        "frame_end": 80,
+        "frames": 4
+      }
+    },
+    {
+      "issue_id": "state_wrong_dim",
+      "axis": "non_temporal",
+      "hardness": "hard",
+      "category": "state_illegal",
+      "target": "state",
+      "description": "单个 state 行被改成非法向量长度。",
+      "expected_detector_family": "state_illegal",
+      "source_episode_index": 0,
+      "source_episode_path": "初赛数据\\鍒濊禌鏁版嵁\\鍙傝€冮泦\\data\\chunk-000\\episode_000000.parquet",
+      "case_path": "outputs\\ablations\\single_issue_cases\\state_wrong_dim\\episode_000000_state_wrong_dim.parquet",
+      "rows": 222,
+      "evidence": {
+        "column": "state",
+        "frame_start": 77,
+        "frame_end": 77,
+        "original_dim": 20,
+        "new_dim": 19
+      }
+    },
+    {
+      "issue_id": "timestamp_non_monotonic",
+      "axis": "temporal",
+      "hardness": "hard",
+      "category": "temporal_illegal",
+      "target": "timestamp",
+      "description": "单个 timestamp 被改成向后倒退。",
+      "expected_detector_family": "temporal_illegal",
+      "source_episode_index": 0,
+      "source_episode_path": "初赛数据\\鍒濊禌鏁版嵁\\鍙傝€冮泦\\data\\chunk-000\\episode_000000.parquet",
+      "case_path": "outputs\\ablations\\single_issue_cases\\timestamp_non_monotonic\\episode_000000_timestamp_non_monotonic.parquet",
+      "rows": 222,
+      "evidence": {
+        "column": "timestamp",
+        "frame_start": 77,
+        "frame_end": 77,
+        "old_value": 7.699999809265137,
+        "new_value": 7.5
+      }
+    },
+    {
+      "issue_id": "frame_index_duplicate",
+      "axis": "temporal",
+      "hardness": "hard",
+      "category": "temporal_illegal",
+      "target": "frame_index",
+      "description": "单个 frame_index 与前一帧重复。",
+      "expected_detector_family": "temporal_illegal",
+      "source_episode_index": 0,
+      "source_episode_path": "初赛数据\\鍒濊禌鏁版嵁\\鍙傝€冮泦\\data\\chunk-000\\episode_000000.parquet",
+      "case_path": "outputs\\ablations\\single_issue_cases\\frame_index_duplicate\\episode_000000_frame_index_duplicate.parquet",
+      "rows": 222,
+      "evidence": {
+        "column": "frame_index",
+        "frame_start": 77,
+        "frame_end": 77,
+        "old_value": 77,
+        "new_value": 76
+      }
+    },
+    {
+      "issue_id": "frame_index_skip",
+      "axis": "temporal",
+      "hardness": "hard",
+      "category": "temporal_illegal",
+      "target": "frame_index",
+      "description": "frame_index 从局部位置开始整体跳号，但行仍保留。",
+      "expected_detector_family": "temporal_illegal",
+      "source_episode_index": 0,
+      "source_episode_path": "初赛数据\\鍒濊禌鏁版嵁\\鍙傝€冮泦\\data\\chunk-000\\episode_000000.parquet",
+      "case_path": "outputs\\ablations\\single_issue_cases\\frame_index_skip\\episode_000000_frame_index_skip.parquet",
+      "rows": 222,
+      "evidence": {
+        "column": "frame_index",
+        "frame_start": 77,
+        "frame_end": 221,
+        "skip": 3
+      }
+    },
+    {
+      "issue_id": "row_reorder",
+      "axis": "temporal",
+      "hardness": "hard",
+      "category": "temporal_illegal",
+      "target": "row",
+      "description": "交换两个相邻行，破坏时间顺序。",
+      "expected_detector_family": "temporal_illegal",
+      "source_episode_index": 0,
+      "source_episode_path": "初赛数据\\鍒濊禌鏁版嵁\\鍙傝€冮泦\\data\\chunk-000\\episode_000000.parquet",
+      "case_path": "outputs\\ablations\\single_issue_cases\\row_reorder\\episode_000000_row_reorder.parquet",
+      "rows": 222,
+      "evidence": {
+        "frame_start": 77,
+        "frame_end": 78,
+        "operation": "swap_adjacent_rows"
+      }
+    },
+    {
+      "issue_id": "vision_drop_small",
+      "axis": "temporal",
+      "hardness": "soft",
+      "category": "vision_temporal",
+      "target": "image",
+      "description": "小面积丢帧：用上一帧图像掩盖短片段缺帧。",
+      "expected_detector_family": "vision_temporal",
+      "source_episode_index": 0,
+      "source_episode_path": "初赛数据\\鍒濊禌鏁版嵁\\鍙傝€冮泦\\data\\chunk-000\\episode_000000.parquet",
+      "case_path": "outputs\\ablations\\single_issue_cases\\vision_drop_small\\episode_000000_vision_drop_small.parquet",
+      "rows": 222,
+      "evidence": {
+        "views": [
+          "image"
+        ],
+        "frame_start": 77,
+        "frame_end": 80,
+        "frames": 4
+      }
+    },
+    {
+      "issue_id": "vision_drop_large",
+      "axis": "temporal",
+      "hardness": "soft",
+      "category": "vision_temporal",
+      "target": "image",
+      "description": "大面积丢帧：用上一帧图像掩盖长片段缺帧。",
+      "expected_detector_family": "vision_temporal",
+      "source_episode_index": 0,
+      "source_episode_path": "初赛数据\\鍒濊禌鏁版嵁\\鍙傝€冮泦\\data\\chunk-000\\episode_000000.parquet",
+      "case_path": "outputs\\ablations\\single_issue_cases\\vision_drop_large\\episode_000000_vision_drop_large.parquet",
+      "rows": 222,
+      "evidence": {
+        "views": [
+          "image"
+        ],
+        "frame_start": 77,
+        "frame_end": 106,
+        "frames": 30
+      }
+    },
+    {
+      "issue_id": "vision_jump_small",
+      "axis": "temporal",
+      "hardness": "soft",
+      "category": "vision_temporal",
+      "target": "image",
+      "description": "小面积跳帧：短片段使用未来视觉帧，造成局部画面跳变。",
+      "expected_detector_family": "vision_temporal",
+      "source_episode_index": 0,
+      "source_episode_path": "初赛数据\\鍒濊禌鏁版嵁\\鍙傝€冮泦\\data\\chunk-000\\episode_000000.parquet",
+      "case_path": "outputs\\ablations\\single_issue_cases\\vision_jump_small\\episode_000000_vision_jump_small.parquet",
+      "rows": 222,
+      "evidence": {
+        "views": [
+          "image"
+        ],
+        "frame_start": 55,
+        "frame_end": 58,
+        "frames": 4,
+        "source_offset_frames": 12
+      }
+    },
+    {
+      "issue_id": "vision_jump_large",
+      "axis": "temporal",
+      "hardness": "soft",
+      "category": "vision_temporal",
+      "target": "image",
+      "description": "大面积跳帧：长片段使用未来视觉帧，造成持续画面跳变。",
+      "expected_detector_family": "vision_temporal",
+      "source_episode_index": 0,
+      "source_episode_path": "初赛数据\\鍒濊禌鏁版嵁\\鍙傝€冮泦\\data\\chunk-000\\episode_000000.parquet",
+      "case_path": "outputs\\ablations\\single_issue_cases\\vision_jump_large\\episode_000000_vision_jump_large.parquet",
+      "rows": 222,
+      "evidence": {
+        "views": [
+          "image"
+        ],
+        "frame_start": 55,
+        "frame_end": 84,
+        "frames": 30,
+        "source_offset_frames": 24
+      }
+    },
+    {
+      "issue_id": "state_sensor_delay_small",
+      "axis": "temporal",
+      "hardness": "soft",
+      "category": "state_vision_temporal",
+      "target": "state",
+      "description": "小延迟传感器问题：state 相对图像延迟 3 帧。",
+      "expected_detector_family": "vision_state_temporal",
+      "source_episode_index": 0,
+      "source_episode_path": "初赛数据\\鍒濊禌鏁版嵁\\鍙傝€冮泦\\data\\chunk-000\\episode_000000.parquet",
+      "case_path": "outputs\\ablations\\single_issue_cases\\state_sensor_delay_small\\episode_000000_state_sensor_delay_small.parquet",
+      "rows": 222,
+      "evidence": {
+        "columns": [
+          "state"
+        ],
+        "delay_frames": 3,
+        "delay_seconds": 0.3,
+        "frame_start": 0,
+        "frame_end": 221
+      }
+    },
+    {
+      "issue_id": "state_sensor_delay_large",
+      "axis": "temporal",
+      "hardness": "soft",
+      "category": "state_vision_temporal",
+      "target": "state",
+      "description": "大延迟传感器问题：state 相对图像延迟 10 帧。",
+      "expected_detector_family": "vision_state_temporal",
+      "source_episode_index": 0,
+      "source_episode_path": "初赛数据\\鍒濊禌鏁版嵁\\鍙傝€冮泦\\data\\chunk-000\\episode_000000.parquet",
+      "case_path": "outputs\\ablations\\single_issue_cases\\state_sensor_delay_large\\episode_000000_state_sensor_delay_large.parquet",
+      "rows": 222,
+      "evidence": {
+        "columns": [
+          "state"
+        ],
+        "delay_frames": 10,
+        "delay_seconds": 1.0,
+        "frame_start": 0,
+        "frame_end": 221
+      }
+    },
+    {
+      "issue_id": "video_signal_delay_small",
+      "axis": "temporal",
+      "hardness": "soft",
+      "category": "vision_state_temporal",
+      "target": "image",
+      "description": "小延迟视频信号问题：三路相机相对 state 延迟 3 帧。",
+      "expected_detector_family": "vision_state_temporal",
+      "source_episode_index": 0,
+      "source_episode_path": "初赛数据\\鍒濊禌鏁版嵁\\鍙傝€冮泦\\data\\chunk-000\\episode_000000.parquet",
+      "case_path": "outputs\\ablations\\single_issue_cases\\video_signal_delay_small\\episode_000000_video_signal_delay_small.parquet",
+      "rows": 222,
+      "evidence": {
+        "columns": [
+          "image",
+          "left_wrist_image",
+          "right_wrist_image"
+        ],
+        "delay_frames": 3,
+        "delay_seconds": 0.3,
+        "frame_start": 0,
+        "frame_end": 221
+      }
+    },
+    {
+      "issue_id": "video_signal_delay_large",
+      "axis": "temporal",
+      "hardness": "soft",
+      "category": "vision_state_temporal",
+      "target": "image",
+      "description": "大延迟视频信号问题：三路相机相对 state 延迟 10 帧。",
+      "expected_detector_family": "vision_state_temporal",
+      "source_episode_index": 0,
+      "source_episode_path": "初赛数据\\鍒濊禌鏁版嵁\\鍙傝€冮泦\\data\\chunk-000\\episode_000000.parquet",
+      "case_path": "outputs\\ablations\\single_issue_cases\\video_signal_delay_large\\episode_000000_video_signal_delay_large.parquet",
+      "rows": 222,
+      "evidence": {
+        "columns": [
+          "image",
+          "left_wrist_image",
+          "right_wrist_image"
+        ],
+        "delay_frames": 10,
+        "delay_seconds": 1.0,
+        "frame_start": 0,
+        "frame_end": 221
+      }
+    },
+    {
+      "issue_id": "action_response_delay",
+      "axis": "temporal",
+      "hardness": "soft",
+      "category": "state_temporal",
+      "target": "actions",
+      "description": "动作响应延迟：actions 相对观测 state 延迟 5 帧。",
+      "expected_detector_family": "state_temporal",
+      "source_episode_index": 0,
+      "source_episode_path": "初赛数据\\鍒濊禌鏁版嵁\\鍙傝€冮泦\\data\\chunk-000\\episode_000000.parquet",
+      "case_path": "outputs\\ablations\\single_issue_cases\\action_response_delay\\episode_000000_action_response_delay.parquet",
+      "rows": 222,
+      "evidence": {
+        "columns": [
+          "actions"
+        ],
+        "delay_frames": 5,
+        "delay_seconds": 0.5,
+        "frame_start": 0,
+        "frame_end": 221
+      }
+    }
+  ]
+}

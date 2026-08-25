@@ -1,0 +1,20 @@
+{
+  "issue_id": "frame_index_duplicate",
+  "axis": "temporal",
+  "hardness": "hard",
+  "category": "temporal_illegal",
+  "target": "frame_index",
+  "description": "单个 frame_index 与前一帧重复。",
+  "expected_detector_family": "temporal_illegal",
+  "source_episode_index": 0,
+  "source_episode_path": "初赛数据\\鍒濊禌鏁版嵁\\鍙傝€冮泦\\data\\chunk-000\\episode_000000.parquet",
+  "case_path": "outputs\\ablations\\single_issue_cases\\frame_index_duplicate\\episode_000000_frame_index_duplicate.parquet",
+  "rows": 222,
+  "evidence": {
+    "column": "frame_index",
+    "frame_start": 77,
+    "frame_end": 77,
+    "old_value": 77,
+    "new_value": 76
+  }
+}

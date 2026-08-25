@@ -1,0 +1,302 @@
+[
+  {
+    "finding_id": "V2F-000004",
+    "episode_index": 2,
+    "task_index": 0,
+    "column": "actions",
+    "issue_frames": [
+      127,
+      130
+    ],
+    "clip_frames": [
+      97,
+      160
+    ],
+    "clip_seconds": [
+      9.7,
+      16.0
+    ],
+    "fps": 10,
+    "avi_path": "C:\\Tongji\\各种竞赛\\woohu\\outputs\\v2\\vision_state_static_clips\\V2F-000004_episode-02_frames-0127-0130.avi",
+    "gif_path": "C:\\Tongji\\各种竞赛\\woohu\\outputs\\v2\\vision_state_static_clips\\V2F-000004_episode-02_frames-0127-0130.gif",
+    "state_low_threshold": 1e-08,
+    "visual_high_threshold": 14.414540608723959,
+    "issue_max_visual_motion": 19.145408789316814,
+    "issue_median_state_delta": 0.01805508597709207,
+    "issue_median_actions_delta": 0.0,
+    "input_evidence": {
+      "max_visual_motion": 18.037414868672688,
+      "median_state_delta": 0.0
+    }
+  },
+  {
+    "finding_id": "V2F-000015",
+    "episode_index": 5,
+    "task_index": 0,
+    "column": "actions",
+    "issue_frames": [
+      164,
+      167
+    ],
+    "clip_frames": [
+      134,
+      197
+    ],
+    "clip_seconds": [
+      13.4,
+      19.7
+    ],
+    "fps": 10,
+    "avi_path": "C:\\Tongji\\各种竞赛\\woohu\\outputs\\v2\\vision_state_static_clips\\V2F-000015_episode-05_frames-0164-0167.avi",
+    "gif_path": "C:\\Tongji\\各种竞赛\\woohu\\outputs\\v2\\vision_state_static_clips\\V2F-000015_episode-05_frames-0164-0167.gif",
+    "state_low_threshold": 1e-08,
+    "visual_high_threshold": 11.398950934410095,
+    "issue_max_visual_motion": 20.833333651224773,
+    "issue_median_state_delta": 0.05343444906993224,
+    "issue_median_actions_delta": 0.0,
+    "input_evidence": {
+      "max_visual_motion": 20.833333651224773,
+      "median_state_delta": 0.0
+    }
+  },
+  {
+    "finding_id": "V2F-000020",
+    "episode_index": 7,
+    "task_index": 0,
+    "column": "actions",
+    "issue_frames": [
+      163,
+      165
+    ],
+    "clip_frames": [
+      133,
+      195
+    ],
+    "clip_seconds": [
+      13.3,
+      19.5
+    ],
+    "fps": 10,
+    "avi_path": "C:\\Tongji\\各种竞赛\\woohu\\outputs\\v2\\vision_state_static_clips\\V2F-000020_episode-07_frames-0163-0165.avi",
+    "gif_path": "C:\\Tongji\\各种竞赛\\woohu\\outputs\\v2\\vision_state_static_clips\\V2F-000020_episode-07_frames-0163-0165.gif",
+    "state_low_threshold": 1e-08,
+    "visual_high_threshold": 12.190391079584757,
+    "issue_max_visual_motion": 20.204081853230793,
+    "issue_median_state_delta": 0.0989938113933983,
+    "issue_median_actions_delta": 0.0,
+    "input_evidence": {
+      "max_visual_motion": 20.204081853230793,
+      "median_state_delta": 0.0
+    }
+  },
+  {
+    "finding_id": "V2F-000023",
+    "episode_index": 8,
+    "task_index": 0,
+    "column": "actions",
+    "issue_frames": [
+      107,
+      110
+    ],
+    "clip_frames": [
+      77,
+      140
+    ],
+    "clip_seconds": [
+      7.7,
+      14.0
+    ],
+    "fps": 10,
+    "avi_path": "C:\\Tongji\\各种竞赛\\woohu\\outputs\\v2\\vision_state_static_clips\\V2F-000023_episode-08_frames-0107-0110.avi",
+    "gif_path": "C:\\Tongji\\各种竞赛\\woohu\\outputs\\v2\\vision_state_static_clips\\V2F-000023_episode-08_frames-0107-0110.gif",
+    "state_low_threshold": 1e-08,
+    "visual_high_threshold": 14.359382088979082,
+    "issue_max_visual_motion": 21.482569058736164,
+    "issue_median_state_delta": 0.15551471231961414,
+    "issue_median_actions_delta": 0.0,
+    "input_evidence": {
+      "max_visual_motion": 21.482569058736164,
+      "median_state_delta": 0.0
+    }
+  },
+  {
+    "finding_id": "V2F-000025",
+    "episode_index": 9,
+    "task_index": 0,
+    "column": "actions",
+    "issue_frames": [
+      130,
+      133
+    ],
+    "clip_frames": [
+      100,
+      163
+    ],
+    "clip_seconds": [
+      10.0,
+      16.3
+    ],
+    "fps": 10,
+    "avi_path": "C:\\Tongji\\各种竞赛\\woohu\\outputs\\v2\\vision_state_static_clips\\V2F-000025_episode-09_frames-0130-0133.avi",
+    "gif_path": "C:\\Tongji\\各种竞赛\\woohu\\outputs\\v2\\vision_state_static_clips\\V2F-000025_episode-09_frames-0130-0133.gif",
+    "state_low_threshold": 1e-08,
+    "visual_high_threshold": 13.719118626912435,
+    "issue_max_visual_motion": 17.074546655019123,
+    "issue_median_state_delta": 0.025398467718438962,
+    "issue_median_actions_delta": 0.0,
+    "input_evidence": {
+      "max_visual_motion": 17.074546655019123,
+      "median_state_delta": 0.0
+    }
+  },
+  {
+    "finding_id": "V2F-000033",
+    "episode_index": 11,
+    "task_index": 0,
+    "column": "actions",
+    "issue_frames": [
+      112,
+      114
+    ],
+    "clip_frames": [
+      82,
+      144
+    ],
+    "clip_seconds": [
+      8.2,
+      14.4
+    ],
+    "fps": 10,
+    "avi_path": "C:\\Tongji\\各种竞赛\\woohu\\outputs\\v2\\vision_state_static_clips\\V2F-000033_episode-11_frames-0112-0114.avi",
+    "gif_path": "C:\\Tongji\\各种竞赛\\woohu\\outputs\\v2\\vision_state_static_clips\\V2F-000033_episode-11_frames-0112-0114.gif",
+    "state_low_threshold": 1e-08,
+    "visual_high_threshold": 14.273526191711426,
+    "issue_max_visual_motion": 18.04223330815633,
+    "issue_median_state_delta": 0.01275445875513446,
+    "issue_median_actions_delta": 0.0,
+    "input_evidence": {
+      "max_visual_motion": 17.898951530456543,
+      "median_state_delta": 0.0
+    }
+  },
+  {
+    "finding_id": "V2F-000039",
+    "episode_index": 13,
+    "task_index": 0,
+    "column": "actions",
+    "issue_frames": [
+      119,
+      122
+    ],
+    "clip_frames": [
+      89,
+      152
+    ],
+    "clip_seconds": [
+      8.9,
+      15.2
+    ],
+    "fps": 10,
+    "avi_path": "C:\\Tongji\\各种竞赛\\woohu\\outputs\\v2\\vision_state_static_clips\\V2F-000039_episode-13_frames-0119-0122.avi",
+    "gif_path": "C:\\Tongji\\各种竞赛\\woohu\\outputs\\v2\\vision_state_static_clips\\V2F-000039_episode-13_frames-0119-0122.gif",
+    "state_low_threshold": 1e-08,
+    "visual_high_threshold": 12.993962383270258,
+    "issue_max_visual_motion": 17.333192984263103,
+    "issue_median_state_delta": 0.028270417233858952,
+    "issue_median_actions_delta": 0.0,
+    "input_evidence": {
+      "max_visual_motion": 17.333192984263103,
+      "median_state_delta": 0.0
+    }
+  },
+  {
+    "finding_id": "V2F-000042",
+    "episode_index": 14,
+    "task_index": 0,
+    "column": "actions",
+    "issue_frames": [
+      164,
+      167
+    ],
+    "clip_frames": [
+      134,
+      197
+    ],
+    "clip_seconds": [
+      13.4,
+      19.7
+    ],
+    "fps": 10,
+    "avi_path": "C:\\Tongji\\各种竞赛\\woohu\\outputs\\v2\\vision_state_static_clips\\V2F-000042_episode-14_frames-0164-0167.avi",
+    "gif_path": "C:\\Tongji\\各种竞赛\\woohu\\outputs\\v2\\vision_state_static_clips\\V2F-000042_episode-14_frames-0164-0167.gif",
+    "state_low_threshold": 1e-08,
+    "visual_high_threshold": 12.870479408899941,
+    "issue_max_visual_motion": 17.29847017923991,
+    "issue_median_state_delta": 0.03283891114510597,
+    "issue_median_actions_delta": 0.0,
+    "input_evidence": {
+      "max_visual_motion": 17.29847017923991,
+      "median_state_delta": 0.0
+    }
+  },
+  {
+    "finding_id": "V2F-000053",
+    "episode_index": 18,
+    "task_index": 0,
+    "column": "actions",
+    "issue_frames": [
+      128,
+      131
+    ],
+    "clip_frames": [
+      98,
+      161
+    ],
+    "clip_seconds": [
+      9.8,
+      16.1
+    ],
+    "fps": 10,
+    "avi_path": "C:\\Tongji\\各种竞赛\\woohu\\outputs\\v2\\vision_state_static_clips\\V2F-000053_episode-18_frames-0128-0131.avi",
+    "gif_path": "C:\\Tongji\\各种竞赛\\woohu\\outputs\\v2\\vision_state_static_clips\\V2F-000053_episode-18_frames-0128-0131.gif",
+    "state_low_threshold": 1e-08,
+    "visual_high_threshold": 13.293403069178263,
+    "issue_max_visual_motion": 18.94486935933431,
+    "issue_median_state_delta": 0.020940688903396447,
+    "issue_median_actions_delta": 0.0,
+    "input_evidence": {
+      "max_visual_motion": 18.94486935933431,
+      "median_state_delta": 0.0
+    }
+  },
+  {
+    "finding_id": "V2F-000055",
+    "episode_index": 19,
+    "task_index": 0,
+    "column": "actions",
+    "issue_frames": [
+      92,
+      95
+    ],
+    "clip_frames": [
+      62,
+      125
+    ],
+    "clip_seconds": [
+      6.2,
+      12.5
+    ],
+    "fps": 10,
+    "avi_path": "C:\\Tongji\\各种竞赛\\woohu\\outputs\\v2\\vision_state_static_clips\\V2F-000055_episode-19_frames-0092-0095.avi",
+    "gif_path": "C:\\Tongji\\各种竞赛\\woohu\\outputs\\v2\\vision_state_static_clips\\V2F-000055_episode-19_frames-0092-0095.gif",
+    "state_low_threshold": 1e-08,
+    "visual_high_threshold": 13.170082314809164,
+    "issue_max_visual_motion": 18.664116541544598,
+    "issue_median_state_delta": 0.009777069004741217,
+    "issue_median_actions_delta": 0.0,
+    "input_evidence": {
+      "max_visual_motion": 18.664116541544598,
+      "median_state_delta": 0.0
+    }
+  }
+]

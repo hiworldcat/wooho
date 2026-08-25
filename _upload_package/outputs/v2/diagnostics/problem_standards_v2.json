@@ -1,0 +1,62 @@
+{
+  "vision_illegal": {
+    "category_id": "1.1.1.A",
+    "category_name": "Vision data illegal problem",
+    "definition": "Vision data violates file, schema, decoding, shape, channel, dtype, coverage, or frame alignment constraints.",
+    "decision_rule": "Any required view is missing, any image cell cannot be decoded, decoded shape does not match metadata, or image frame coverage cannot align with the trajectory frame."
+  },
+  "state_illegal": {
+    "category_id": "1.1.1.B",
+    "category_name": "State data illegal problem",
+    "definition": "Low-dimensional state data violates schema, shape, finite-value, length, or index constraints.",
+    "decision_rule": "Any low-dimensional field is missing, has inconsistent row shape, contains NaN/Inf, or cannot align with the episode frame count."
+  },
+  "vision_single": {
+    "category_id": "1.1.2.A",
+    "category_name": "Vision single-frame quality problem",
+    "definition": "A decodable single image has abnormal visual quality or content distribution.",
+    "decision_rule": "Brightness, contrast, sharpness, black/white ratio, entropy, or reference-set deviation crosses calibrated thresholds for the same camera."
+  },
+  "vision_vision": {
+    "category_id": "1.1.2.B",
+    "category_name": "Vision-Vision consistency problem",
+    "definition": "Multiple camera views at the same time are mutually inconsistent in quality, motion, synchronization, or coarse scene relation.",
+    "decision_rule": "Reserved for hard multi-camera calibration metadata. The v2 detector does not directly compare camera pixels without a state-supported overlap gate."
+  },
+  "vision_state_vision": {
+    "category_id": "1.1.2.C",
+    "category_name": "Vision-State-Vision geometry/scale problem",
+    "definition": "Visual spatial change and low-dimensional state change are inconsistent, suggesting broken geometry, scale, crop, or coarse cross-modal relation.",
+    "decision_rule": "Known camera semantics and robot state first indicate that two views should overlap; only then is weak visual motion correlation used as verification."
+  },
+  "state_vision_state": {
+    "category_id": "1.1.2.D",
+    "category_name": "State-Vision-State consistency problem",
+    "definition": "Low-dimensional state values or local transitions are inconsistent with visual evidence or neighboring state context.",
+    "decision_rule": "State value/delta/acceleration is a calibrated outlier and visual evidence does not support the same local change."
+  },
+  "temporal_illegal": {
+    "category_id": "1.2.1",
+    "category_name": "Temporal illegal problem",
+    "definition": "Trajectory order, timestamp, index, episode boundary, or modal length violates hard temporal constraints.",
+    "decision_rule": "Frame index is duplicated, skipped, or reordered; timestamp is non-monotonic; episode/task index is inconsistent; metadata length disagrees with parquet rows."
+  },
+  "vision_temporal": {
+    "category_id": "1.2.2.A",
+    "category_name": "Vision frozen/fast/jitter problem",
+    "definition": "Vision sequence is legally structured but has abnormal temporal dynamics such as freezing, sudden fast motion, or jitter.",
+    "decision_rule": "Exact repeated frames, near-zero visual motion, extreme visual motion, or high-frequency visual acceleration persists beyond calibrated window thresholds."
+  },
+  "state_temporal": {
+    "category_id": "1.2.2.B",
+    "category_name": "State frozen/fast/jitter problem",
+    "definition": "Low-dimensional sequence is legally structured but has abnormal temporal dynamics such as freezing, fast transition, spike, or jitter.",
+    "decision_rule": "State delta, acceleration, local variance, or unchanged-run length crosses calibrated task/column thresholds."
+  },
+  "vision_state_temporal": {
+    "category_id": "1.2.2.C",
+    "category_name": "Vision-State temporal consistency problem",
+    "definition": "Vision and low-dimensional state are locally out of sync or show unstable response timing.",
+    "decision_rule": "Best lag between visual motion and state motion deviates from the calibrated reference lag, or the best correlation falls below the reference baseline."
+  }
+}

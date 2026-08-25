@@ -5,43 +5,34 @@
 - episodes: 20
 - frames: 4142
 - FPS: 10
-- dataset quality score: **78.46/100**
+- dataset quality score: **98.62/100**
 
 ## Detection Framework
 
-The v2 pipeline combines hard legality checks, single-view image quality, low-dimensional state checks, temporal checks, and cross-modal consistency checks.
-Direct Vision-Vision findings are disabled. Multi-view visual agreement is checked only after a state-supported overlap gate, and those findings are categorized as Vision-State-Vision.
+The v2 pipeline combines hard legality checks, single-view image quality, low-dimensional state/action temporal checks, and state-only cross-modal consistency checks.
+Direct Vision-Vision findings are disabled. Multi-view visual agreement is checked only after a state-supported overlap gate; actions are excluded from consistency checks because commands can naturally lead or lag observed state and vision.
 
 | dimension | max_points | current_mean |
 |---|---:|---:|
 | structural | 25 | 25.0 |
-| vision_single | 20 | 20.0 |
+| vision_single | 20 | 19.72 |
 | vision_vision | 10 | 10.0 |
 | state | 15 | 15.0 |
-| temporal | 15 | 0.75 |
-| cross_modal | 15 | 7.71 |
+| temporal | 15 | 14.24 |
+| cross_modal | 15 | 14.66 |
 
 ## Finding Summary
 
-- merged findings: 80
+- merged findings: 0
 - critical: 0
-- high confidence: 63
-- suspicious: 4
-- out of distribution: 13
+- high confidence: 0
+- suspicious: 0
+- out of distribution: 0
 
 ## Top 10 Issue Types
 
 | issue_type | count |
 |---|---:|
-| low_dim_freeze_run | 31 |
-| low_dim_jitter_or_spike | 14 |
-| visual_moves_state_static | 10 |
-| state_gated_view_pair_motion_inconsistency | 9 |
-| visual_fast_jump | 5 |
-| visual_high_frequency_jitter | 4 |
-| low_motion_freeze_run | 3 |
-| low_cross_modal_correlation | 3 |
-| cross_modal_lag_shift | 1 |
 
 ## Output Files
 
