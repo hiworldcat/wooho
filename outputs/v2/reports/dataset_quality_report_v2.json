@@ -16,7 +16,7 @@
         "task": "Assembly Stage: Move the held photovoltaic panel to the designated installation position, align it, then lower and release it."
       }
     ],
-    "dataset_quality_score": 98.62
+    "dataset_quality_score": 98.95
   },
   "scoring": {
     "dimension_points": {
@@ -41,12 +41,12 @@
     "by_issue": {},
     "by_confidence": {},
     "by_category": {},
-    "episode_score_min": 97.78,
-    "episode_score_max": 99.18,
-    "soft_penalty_mean": 1.381,
-    "soft_penalty_max": 2.219,
+    "episode_score_min": 98.38,
+    "episode_score_max": 99.33,
+    "soft_penalty_mean": 1.045,
+    "soft_penalty_max": 1.619,
     "soft_penalty_by_dimension": {
-      "cross_modal": 0.337,
+      "cross_modal": 0.0,
       "temporal": 0.761,
       "vision_single": 0.284,
       "vision_vision": 0.0
@@ -58,18 +58,17 @@
       "task_index": 0,
       "length": 222,
       "file": "C:\\Tongji\\各种竞赛\\woohu\\初赛数据\\鍒濊禌鏁版嵁\\鍙傝€冮泦\\data\\chunk-000\\episode_000000.parquet",
-      "score_total": 99.01,
+      "score_total": 99.21,
       "score_structural": 25.0,
       "score_vision_single": 19.77,
       "score_vision_vision": 10.0,
       "score_state": 15.0,
       "score_temporal": 14.44,
-      "score_cross_modal": 14.8,
-      "soft_penalty_total": 0.985,
+      "score_cross_modal": 15.0,
+      "soft_penalty_total": 0.785,
       "soft_penalties": {
         "vision_single": 0.229,
-        "temporal": 0.556,
-        "cross_modal": 0.2
+        "temporal": 0.556
       },
       "finding_count": 0,
       "critical_count": 0,
@@ -92,8 +91,7 @@
       "soft_penalty_total": 1.187,
       "soft_penalties": {
         "vision_single": 0.533,
-        "temporal": 0.654,
-        "cross_modal": 0.0
+        "temporal": 0.654
       },
       "finding_count": 0,
       "critical_count": 0,
@@ -106,18 +104,17 @@
       "task_index": 0,
       "length": 202,
       "file": "C:\\Tongji\\各种竞赛\\woohu\\初赛数据\\鍒濊禌鏁版嵁\\鍙傝€冮泦\\data\\chunk-000\\episode_000002.parquet",
-      "score_total": 98.93,
+      "score_total": 99.13,
       "score_structural": 25.0,
       "score_vision_single": 19.91,
       "score_vision_vision": 10.0,
       "score_state": 15.0,
       "score_temporal": 14.22,
-      "score_cross_modal": 14.8,
-      "soft_penalty_total": 1.067,
+      "score_cross_modal": 15.0,
+      "soft_penalty_total": 0.867,
       "soft_penalties": {
         "vision_single": 0.09,
-        "temporal": 0.777,
-        "cross_modal": 0.2
+        "temporal": 0.777
       },
       "finding_count": 0,
       "critical_count": 0,
@@ -130,18 +127,17 @@
       "task_index": 1,
       "length": 189,
       "file": "C:\\Tongji\\各种竞赛\\woohu\\初赛数据\\鍒濊禌鏁版嵁\\鍙傝€冮泦\\data\\chunk-000\\episode_000003.parquet",
-      "score_total": 97.99,
+      "score_total": 98.59,
       "score_structural": 25.0,
       "score_vision_single": 19.43,
       "score_vision_vision": 10.0,
       "score_state": 15.0,
       "score_temporal": 14.16,
-      "score_cross_modal": 14.4,
-      "soft_penalty_total": 2.009,
+      "score_cross_modal": 15.0,
+      "soft_penalty_total": 1.409,
       "soft_penalties": {
         "vision_single": 0.565,
-        "temporal": 0.844,
-        "cross_modal": 0.6
+        "temporal": 0.844
       },
       "finding_count": 0,
       "critical_count": 0,
@@ -154,18 +150,17 @@
       "task_index": 0,
       "length": 212,
       "file": "C:\\Tongji\\各种竞赛\\woohu\\初赛数据\\鍒濊禌鏁版嵁\\鍙傝€冮泦\\data\\chunk-000\\episode_000004.parquet",
-      "score_total": 98.34,
+      "score_total": 98.81,
       "score_structural": 25.0,
       "score_vision_single": 19.64,
       "score_vision_vision": 10.0,
       "score_state": 15.0,
       "score_temporal": 14.17,
-      "score_cross_modal": 14.53,
-      "soft_penalty_total": 1.654,
+      "score_cross_modal": 15.0,
+      "soft_penalty_total": 1.187,
       "soft_penalties": {
         "vision_single": 0.36,
-        "temporal": 0.827,
-        "cross_modal": 0.467
+        "temporal": 0.827
       },
       "finding_count": 0,
       "critical_count": 0,
@@ -178,18 +173,17 @@
       "task_index": 0,
       "length": 247,
       "file": "C:\\Tongji\\各种竞赛\\woohu\\初赛数据\\鍒濊禌鏁版嵁\\鍙傝€冮泦\\data\\chunk-000\\episode_000005.parquet",
-      "score_total": 98.83,
+      "score_total": 99.23,
       "score_structural": 25.0,
       "score_vision_single": 19.91,
       "score_vision_vision": 10.0,
       "score_state": 15.0,
       "score_temporal": 14.32,
-      "score_cross_modal": 14.6,
-      "soft_penalty_total": 1.169,
+      "score_cross_modal": 15.0,
+      "soft_penalty_total": 0.769,
       "soft_penalties": {
         "vision_single": 0.088,
-        "temporal": 0.681,
-        "cross_modal": 0.4
+        "temporal": 0.681
       },
       "finding_count": 0,
       "critical_count": 0,
@@ -212,8 +206,7 @@
       "soft_penalty_total": 1.437,
       "soft_penalties": {
         "vision_single": 0.499,
-        "temporal": 0.938,
-        "cross_modal": 0.0
+        "temporal": 0.938
       },
       "finding_count": 0,
       "critical_count": 0,
@@ -226,18 +219,17 @@
       "task_index": 0,
       "length": 236,
       "file": "C:\\Tongji\\各种竞赛\\woohu\\初赛数据\\鍒濊禌鏁版嵁\\鍙傝€冮泦\\data\\chunk-000\\episode_000007.parquet",
-      "score_total": 98.42,
+      "score_total": 98.82,
       "score_structural": 25.0,
       "score_vision_single": 19.8,
       "score_vision_vision": 10.0,
       "score_state": 15.0,
       "score_temporal": 14.02,
-      "score_cross_modal": 14.6,
-      "soft_penalty_total": 1.58,
+      "score_cross_modal": 15.0,
+      "soft_penalty_total": 1.18,
       "soft_penalties": {
         "vision_single": 0.197,
-        "temporal": 0.983,
-        "cross_modal": 0.4
+        "temporal": 0.983
       },
       "finding_count": 0,
       "critical_count": 0,
@@ -250,18 +242,17 @@
       "task_index": 0,
       "length": 191,
       "file": "C:\\Tongji\\各种竞赛\\woohu\\初赛数据\\鍒濊禌鏁版嵁\\鍙傝€冮泦\\data\\chunk-000\\episode_000008.parquet",
-      "score_total": 98.46,
+      "score_total": 98.93,
       "score_structural": 25.0,
       "score_vision_single": 19.62,
       "score_vision_vision": 10.0,
       "score_state": 15.0,
       "score_temporal": 14.31,
-      "score_cross_modal": 14.53,
-      "soft_penalty_total": 1.54,
+      "score_cross_modal": 15.0,
+      "soft_penalty_total": 1.073,
       "soft_penalties": {
         "vision_single": 0.383,
-        "temporal": 0.69,
-        "cross_modal": 0.467
+        "temporal": 0.69
       },
       "finding_count": 0,
       "critical_count": 0,
@@ -274,18 +265,17 @@
       "task_index": 0,
       "length": 195,
       "file": "C:\\Tongji\\各种竞赛\\woohu\\初赛数据\\鍒濊禌鏁版嵁\\鍙傝€冮泦\\data\\chunk-000\\episode_000009.parquet",
-      "score_total": 98.61,
+      "score_total": 99.21,
       "score_structural": 25.0,
       "score_vision_single": 19.74,
       "score_vision_vision": 10.0,
       "score_state": 15.0,
       "score_temporal": 14.47,
-      "score_cross_modal": 14.4,
-      "soft_penalty_total": 1.395,
+      "score_cross_modal": 15.0,
+      "soft_penalty_total": 0.795,
       "soft_penalties": {
         "vision_single": 0.261,
-        "temporal": 0.534,
-        "cross_modal": 0.6
+        "temporal": 0.534
       },
       "finding_count": 0,
       "critical_count": 0,
@@ -308,8 +298,7 @@
       "soft_penalty_total": 1.42,
       "soft_penalties": {
         "vision_single": 0.215,
-        "temporal": 1.205,
-        "cross_modal": 0.0
+        "temporal": 1.205
       },
       "finding_count": 0,
       "critical_count": 0,
@@ -322,18 +311,17 @@
       "task_index": 0,
       "length": 202,
       "file": "C:\\Tongji\\各种竞赛\\woohu\\初赛数据\\鍒濊禌鏁版嵁\\鍙傝€冮泦\\data\\chunk-000\\episode_000011.parquet",
-      "score_total": 98.41,
+      "score_total": 98.81,
       "score_structural": 25.0,
       "score_vision_single": 19.55,
       "score_vision_vision": 10.0,
       "score_state": 15.0,
       "score_temporal": 14.26,
-      "score_cross_modal": 14.6,
-      "soft_penalty_total": 1.588,
+      "score_cross_modal": 15.0,
+      "soft_penalty_total": 1.188,
       "soft_penalties": {
         "vision_single": 0.447,
-        "temporal": 0.741,
-        "cross_modal": 0.4
+        "temporal": 0.741
       },
       "finding_count": 0,
       "critical_count": 0,
@@ -346,18 +334,17 @@
       "task_index": 1,
       "length": 172,
       "file": "C:\\Tongji\\各种竞赛\\woohu\\初赛数据\\鍒濊禌鏁版嵁\\鍙傝€冮泦\\data\\chunk-000\\episode_000012.parquet",
-      "score_total": 97.78,
+      "score_total": 98.38,
       "score_structural": 25.0,
       "score_vision_single": 19.66,
       "score_vision_vision": 10.0,
       "score_state": 15.0,
       "score_temporal": 13.72,
-      "score_cross_modal": 14.4,
-      "soft_penalty_total": 2.219,
+      "score_cross_modal": 15.0,
+      "soft_penalty_total": 1.619,
       "soft_penalties": {
         "vision_single": 0.344,
-        "temporal": 1.275,
-        "cross_modal": 0.6
+        "temporal": 1.275
       },
       "finding_count": 0,
       "critical_count": 0,
@@ -370,18 +357,17 @@
       "task_index": 0,
       "length": 304,
       "file": "C:\\Tongji\\各种竞赛\\woohu\\初赛数据\\鍒濊禌鏁版嵁\\鍙傝€冮泦\\data\\chunk-000\\episode_000013.parquet",
-      "score_total": 98.48,
+      "score_total": 99.08,
       "score_structural": 25.0,
       "score_vision_single": 19.87,
       "score_vision_vision": 10.0,
       "score_state": 15.0,
       "score_temporal": 14.21,
-      "score_cross_modal": 14.4,
-      "soft_penalty_total": 1.511,
+      "score_cross_modal": 15.0,
+      "soft_penalty_total": 0.911,
       "soft_penalties": {
         "vision_single": 0.126,
-        "temporal": 0.785,
-        "cross_modal": 0.6
+        "temporal": 0.785
       },
       "finding_count": 0,
       "critical_count": 0,
@@ -394,18 +380,17 @@
       "task_index": 0,
       "length": 268,
       "file": "C:\\Tongji\\各种竞赛\\woohu\\初赛数据\\鍒濊禌鏁版嵁\\鍙傝€冮泦\\data\\chunk-000\\episode_000014.parquet",
-      "score_total": 98.76,
+      "score_total": 98.96,
       "score_structural": 25.0,
       "score_vision_single": 19.68,
       "score_vision_vision": 10.0,
       "score_state": 15.0,
       "score_temporal": 14.28,
-      "score_cross_modal": 14.8,
-      "soft_penalty_total": 1.248,
+      "score_cross_modal": 15.0,
+      "soft_penalty_total": 1.048,
       "soft_penalties": {
         "vision_single": 0.324,
-        "temporal": 0.724,
-        "cross_modal": 0.2
+        "temporal": 0.724
       },
       "finding_count": 0,
       "critical_count": 0,
@@ -428,8 +413,7 @@
       "soft_penalty_total": 0.815,
       "soft_penalties": {
         "vision_single": 0.207,
-        "temporal": 0.608,
-        "cross_modal": 0.0
+        "temporal": 0.608
       },
       "finding_count": 0,
       "critical_count": 0,
@@ -442,18 +426,17 @@
       "task_index": 1,
       "length": 180,
       "file": "C:\\Tongji\\各种竞赛\\woohu\\初赛数据\\鍒濊禌鏁版嵁\\鍙傝€冮泦\\data\\chunk-000\\episode_000016.parquet",
-      "score_total": 98.66,
+      "score_total": 99.26,
       "score_structural": 25.0,
       "score_vision_single": 19.92,
       "score_vision_vision": 10.0,
       "score_state": 15.0,
       "score_temporal": 14.34,
-      "score_cross_modal": 14.4,
-      "soft_penalty_total": 1.343,
+      "score_cross_modal": 15.0,
+      "soft_penalty_total": 0.743,
       "soft_penalties": {
         "vision_single": 0.079,
-        "temporal": 0.664,
-        "cross_modal": 0.6
+        "temporal": 0.664
       },
       "finding_count": 0,
       "critical_count": 0,
@@ -476,8 +459,7 @@
       "soft_penalty_total": 1.018,
       "soft_penalties": {
         "vision_single": 0.378,
-        "temporal": 0.64,
-        "cross_modal": 0.0
+        "temporal": 0.64
       },
       "finding_count": 0,
       "critical_count": 0,
@@ -490,18 +472,17 @@
       "task_index": 0,
       "length": 217,
       "file": "C:\\Tongji\\各种竞赛\\woohu\\初赛数据\\鍒濊禌鏁版嵁\\鍙傝€冮泦\\data\\chunk-000\\episode_000018.parquet",
-      "score_total": 98.73,
+      "score_total": 99.33,
       "score_structural": 25.0,
       "score_vision_single": 19.85,
       "score_vision_vision": 10.0,
       "score_state": 15.0,
       "score_temporal": 14.48,
-      "score_cross_modal": 14.4,
-      "soft_penalty_total": 1.272,
+      "score_cross_modal": 15.0,
+      "soft_penalty_total": 0.672,
       "soft_penalties": {
         "vision_single": 0.153,
-        "temporal": 0.519,
-        "cross_modal": 0.6
+        "temporal": 0.519
       },
       "finding_count": 0,
       "critical_count": 0,
@@ -514,18 +495,17 @@
       "task_index": 0,
       "length": 164,
       "file": "C:\\Tongji\\各种竞赛\\woohu\\初赛数据\\鍒濊禌鏁版嵁\\鍙傝€冮泦\\data\\chunk-000\\episode_000019.parquet",
-      "score_total": 98.83,
+      "score_total": 99.23,
       "score_structural": 25.0,
       "score_vision_single": 19.8,
       "score_vision_vision": 10.0,
       "score_state": 15.0,
       "score_temporal": 14.43,
-      "score_cross_modal": 14.6,
-      "soft_penalty_total": 1.168,
+      "score_cross_modal": 15.0,
+      "soft_penalty_total": 0.768,
       "soft_penalties": {
         "vision_single": 0.198,
-        "temporal": 0.57,
-        "cross_modal": 0.4
+        "temporal": 0.57
       },
       "finding_count": 0,
       "critical_count": 0,

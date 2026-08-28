@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import argparse
 import csv
 import hashlib
 import io
@@ -11,8 +12,17 @@ from pathlib import Path
 from typing import Any
 
 import numpy as np
-import pyarrow.parquet as pq
+try:
+    import pyarrow.parquet as pq  # type: ignore
+except Exception:  # pragma: no cover - optional fallback when pyarrow is unavailable
+    pq = None
+try:
+    import fastparquet  # type: ignore
+except Exception:  # pragma: no cover - optional fallback when fastparquet is unavailable
+    fastparquet = None
 from PIL import Image
+
+import geometry_constraints
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -21,6 +31,22 @@ DIAG_ROOT = OUTPUT_ROOT / "diagnostics"
 REPORT_ROOT = OUTPUT_ROOT / "reports"
 DIAG_ROOT.mkdir(parents=True, exist_ok=True)
 REPORT_ROOT.mkdir(parents=True, exist_ok=True)
+
+def parquet_column_names(path: Path) -> list[str]:
+    if pq is not None:
+        return list(pq.read_schema(path).names)
+    if fastparquet is not None:
+        return list(fastparquet.ParquetFile(path).columns)
+    raise ImportError("No parquet engine available")
+
+def read_parquet_frame(path: Path, columns: list[str] | None = None) -> Any:
+    if pq is not None:
+        table = pq.read_table(path, columns=columns)
+        return table.to_pandas()
+    if fastparquet is not None:
+        parquet_file = fastparquet.ParquetFile(path)
+        return parquet_file.to_pandas(columns=columns)
+    raise ImportError("No parquet engine available")
 
 DEFAULT_IMAGE_VIEWS = ["image", "left_wrist_image", "right_wrist_image"]
 LOW_DIM_COLUMNS = ["state", "actions"]
@@ -32,7 +58,6 @@ FREEZE_MILD_FRAMES = 50
 FREEZE_SEVERE_FRAMES = 100
 MIN_FREEZE_REPORT_SEVERITY = 55.0
 REFERENCE_ENVELOPE_MARGIN = 1.05
-REFERENCE_CORRELATION_MARGIN = 0.02
 REFERENCE_SOFT_DIM_CAPS = {
     "vision_single": 0.8,
     "vision_vision": 0.6,
@@ -46,29 +71,6 @@ VISION_JITTER_MAD_MULTIPLIER = 10.0
 STATE_JITTER_MIN_CLUSTER = 2
 STATE_JITTER_CLUSTER_GAP = 2
 STATE_JITTER_SINGLE_SPIKE_MIN_SCORE = 95.0
-CROSS_MODAL_STATIC_MIN_RUN_FRAMES = 11
-MAX_LAG = 5
-ARM_POSITION_SLICES = {
-    "left": slice(0, 3),
-    "right": slice(10, 13),
-}
-ARM_ROTATION_6D_SLICES = {
-    "left": slice(3, 9),
-    "right": slice(13, 19),
-}
-WRIST_CAMERA_LOCAL_OPTICAL_AXIS = {
-    # In this dataset the wrist cameras overlap the shared workspace when the
-    # left wrist looks along local -Y and the right wrist along local +Y.
-    # Real hand-eye extrinsics should replace this assumption if available.
-    "left": np.array([0.0, -1.0, 0.0], dtype=np.float64),
-    "right": np.array([0.0, 1.0, 0.0], dtype=np.float64),
-}
-BASE_CAMERA_OFFSET_FROM_WORKSPACE = np.array([-0.65, 0.0, 0.35], dtype=np.float64)
-BASE_CAMERA_FOV_DEGREES = 95.0
-WRIST_CAMERA_FOV_DEGREES = 95.0
-BASE_CAMERA_MAX_RANGE_M = 2.0
-WRIST_CAMERA_MAX_RANGE_M = 0.9
-GEOMETRY_OVERLAP_MIN_SCORE = 0.10
 
 
 @dataclass
@@ -209,24 +211,36 @@ def is_real_path(path: Path) -> bool:
     return path.is_file() and not path.name.startswith("._") and "__MACOSX" not in str(path)
 
 
-def find_meta_root() -> Path:
-    for info_path in ROOT.rglob("info.json"):
-        if is_real_path(info_path):
-            return info_path.parent
-    raise FileNotFoundError("Could not find LeRobot info.json under workspace")
+def find_meta_root(search_root: Path | None = None) -> Path:
+    root = (search_root or ROOT).resolve()
+    candidates: list[Path] = []
+    for info_path in root.rglob("info.json"):
+        if not is_real_path(info_path):
+            continue
+        if "outputs" in info_path.parts:
+            continue
+        candidates.append(info_path.parent)
+    unique_candidates = sorted({candidate.resolve() for candidate in candidates})
+    if len(unique_candidates) == 1:
+        return unique_candidates[0]
+    if not unique_candidates:
+        raise FileNotFoundError(f"Could not find LeRobot info.json under {root}")
+    raise FileNotFoundError(
+        f"Multiple info.json candidates under {root}; pass --reference-root and --target-root explicitly."
+    )
 
 
 def load_jsonl(path: Path) -> list[dict[str, Any]]:
     return [json.loads(line) for line in path.read_text(encoding="utf-8").splitlines() if line.strip()]
 
 
-def load_dataset() -> tuple[dict[str, Any], list[dict[str, Any]], list[dict[str, Any]], list[Path]]:
-    meta_root = find_meta_root()
+def load_dataset(dataset_root: Path | None = None) -> tuple[dict[str, Any], list[dict[str, Any]], list[dict[str, Any]], list[Path]]:
+    meta_root = find_meta_root(dataset_root)
     info = json.loads((meta_root / "info.json").read_text(encoding="utf-8"))
     tasks = load_jsonl(meta_root / "tasks.jsonl")
     episodes = load_jsonl(meta_root / "episodes.jsonl")
     data_root = meta_root.parent
-    parquet_files = sorted(path for path in data_root.rglob("*.parquet") if is_real_path(path))
+    parquet_files = sorted(path for path in data_root.rglob("*.parquet") if is_real_path(path) and "outputs" not in path.parts)
     if not parquet_files:
         raise FileNotFoundError(f"No parquet episodes found under {data_root}")
     return info, tasks, episodes, parquet_files
@@ -508,42 +522,6 @@ class FindingFactory:
         )
 
 
-def lagged_correlation(a: np.ndarray, b: np.ndarray, lag: int) -> float | None:
-    if lag > 0:
-        left, right = a[lag:], b[:-lag]
-    elif lag < 0:
-        left, right = a[:lag], b[-lag:]
-    else:
-        left, right = a, b
-    if len(left) < 8 or len(right) < 8:
-        return None
-    if np.std(left) < 1e-12 or np.std(right) < 1e-12:
-        return None
-    value = float(np.corrcoef(left, right)[0, 1])
-    return value if np.isfinite(value) else None
-
-
-def best_lag(a: np.ndarray, b: np.ndarray, max_lag: int = MAX_LAG) -> dict[str, Any]:
-    a = np.asarray(a, dtype=np.float64)
-    b = np.asarray(b, dtype=np.float64)
-    if a.size == 0 or b.size == 0:
-        return {"best_lag": None, "best_correlation": None, "correlations": {}}
-    a = (a - np.median(a)) / max(float(np.std(a)), 1e-12)
-    b = (b - np.median(b)) / max(float(np.std(b)), 1e-12)
-    correlations: dict[str, float] = {}
-    for lag in range(-max_lag, max_lag + 1):
-        corr = lagged_correlation(a, b, lag)
-        if corr is not None:
-            correlations[str(lag)] = corr
-    if not correlations:
-        return {"best_lag": None, "best_correlation": None, "correlations": {}}
-    lag_key = max(correlations, key=correlations.get)
-    return {
-        "best_lag": int(lag_key),
-        "best_correlation": float(correlations[lag_key]),
-        "correlations": correlations,
-    }
-
 
 def collect_reference_baselines(
     info: dict[str, Any],
@@ -557,9 +535,6 @@ def collect_reference_baselines(
     state_values: dict[str, list[float]] = defaultdict(list)
     state_delta: dict[str, list[float]] = defaultdict(list)
     state_accel: dict[str, list[float]] = defaultdict(list)
-    sync_corr: dict[str, list[float]] = defaultdict(list)
-    sync_lag: dict[str, list[float]] = defaultdict(list)
-    view_pair_corr: dict[str, list[float]] = defaultdict(list)
 
     expected_shape_by_view = {
         name: tuple(info.get("features", {}).get(name, {}).get("shape", [224, 224, 3]))
@@ -569,8 +544,8 @@ def collect_reference_baselines(
     for path in parquet_files:
         columns = [column for column in set(views + LOW_DIM_COLUMNS + ["frame_index", "task_index"]) if column]
         try:
-            table = pq.read_table(path, columns=[c for c in columns if c in pq.read_schema(path).names])
-            df = table.to_pandas()
+            column_names = parquet_column_names(path)
+            df = read_parquet_frame(path, [c for c in columns if c in column_names])
         except Exception:
             continue
         if len(df) == 0:
@@ -610,15 +585,6 @@ def collect_reference_baselines(
                     image_accel[f"global|{view}"].extend(accel.tolist())
                     image_accel[f"{task_key}|{view}"].extend(accel.tolist())
 
-        for left_i, left in enumerate(views):
-            for right in views[left_i + 1 :]:
-                if left in visual_motions and right in visual_motions:
-                    length = min(len(visual_motions[left]), len(visual_motions[right]))
-                    if length >= 8 and np.std(visual_motions[left][:length]) > 1e-12 and np.std(visual_motions[right][:length]) > 1e-12:
-                        corr = float(np.corrcoef(visual_motions[left][:length], visual_motions[right][:length])[0, 1])
-                        if np.isfinite(corr):
-                            view_pair_corr[f"global|{left}|{right}"].append(corr)
-                            view_pair_corr[f"{task_key}|{left}|{right}"].append(corr)
 
         state_motion: dict[str, np.ndarray] = {}
         for column in LOW_DIM_COLUMNS:
@@ -639,23 +605,6 @@ def collect_reference_baselines(
                 state_accel[f"global|{column}"].extend(accel.tolist())
                 state_accel[f"{task_key}|{column}"].extend(accel.tolist())
 
-        for view, visual_signal in visual_motions.items():
-            for column in CONSISTENCY_LOW_DIM_COLUMNS:
-                low_signal = state_motion.get(column)
-                if low_signal is None:
-                    continue
-                length = min(len(visual_signal), len(low_signal))
-                if length < 8:
-                    continue
-                lag = best_lag(visual_signal[:length], low_signal[:length])
-                if lag["best_correlation"] is not None:
-                    key_global = f"global|{view}|{column}"
-                    key_task = f"{task_key}|{view}|{column}"
-                    sync_corr[key_global].append(float(lag["best_correlation"]))
-                    sync_corr[key_task].append(float(lag["best_correlation"]))
-                    if lag["best_lag"] is not None:
-                        sync_lag[key_global].append(float(lag["best_lag"]))
-                        sync_lag[key_task].append(float(lag["best_lag"]))
 
     return {
         "image_metrics": {
@@ -667,9 +616,6 @@ def collect_reference_baselines(
         "state_values": {key: robust_stats(values) for key, values in state_values.items()},
         "state_delta": {key: robust_stats(values) for key, values in state_delta.items()},
         "state_accel": {key: robust_stats(values) for key, values in state_accel.items()},
-        "sync_corr": {key: robust_stats(values) for key, values in sync_corr.items()},
-        "sync_lag": {key: robust_stats(values) for key, values in sync_lag.items()},
-        "view_pair_corr": {key: robust_stats(values) for key, values in view_pair_corr.items()},
         "expected_image_shape": {key: list(value) for key, value in expected_shape_by_view.items()},
         "reference_policy": {
             "baseline_layers": ["task+view/column", "global+view/column"],
@@ -744,8 +690,7 @@ def inspect_episode(
     }
 
     try:
-        table = pq.read_table(path)
-        df = table.to_pandas()
+        df = read_parquet_frame(path)
     except Exception as exc:
         episode_from_path = safe_episode_from_path(path)
         findings.append(
@@ -824,8 +769,18 @@ def inspect_episode(
     inspect_indices(df, frames, episode, task_index, findings, factory, info)
     image_context = inspect_images(df, frames, episode, task_index, views, expected_shapes, baselines, findings, factory)
     state_context = inspect_low_dimensional(df, frames, episode, task_index, baselines, findings, factory)
-    inspect_state_gated_vision(frames, episode, task_index, views, image_context, state_context, baselines, findings, factory)
-    inspect_cross_modal(frames, episode, task_index, views, image_context, state_context, baselines, findings, factory)
+    geometry_result = geometry_constraints.inspect_episode_geometry(
+        df=df,
+        frames=frames,
+        episode=episode,
+        task_index=task_index,
+        views=views,
+        image_context=image_context,
+        reference=baselines.get("geometry_constraints", {}),
+        config=baselines.get("geometry_config", geometry_constraints.default_geometry_config(info)),
+        factory=factory,
+    )
+    findings.extend(geometry_result["findings"])
     soft_penalties = reference_soft_penalties(task_index, views, image_context, state_context, baselines)
 
     return {
@@ -834,6 +789,7 @@ def inspect_episode(
         "length": length,
         "file": str(path),
         "soft_penalties": soft_penalties,
+        "geometry_constraints": geometry_result["diagnostics"],
     }, findings
 
 
@@ -1493,483 +1449,6 @@ def inspect_state_temporal(
             )
 
 
-def view_arm_hint(view: str) -> str | None:
-    lowered = view.lower()
-    if "left" in lowered:
-        return "left"
-    if "right" in lowered:
-        return "right"
-    return None
-
-
-def normalize_vector(vector: np.ndarray) -> np.ndarray:
-    vector = np.asarray(vector, dtype=np.float64)
-    norm = float(np.linalg.norm(vector))
-    if norm < 1e-12 or not np.isfinite(norm):
-        return np.zeros_like(vector, dtype=np.float64)
-    return vector / norm
-
-
-def rotation_6d_to_matrix(rotation_6d: np.ndarray) -> np.ndarray | None:
-    values = np.asarray(rotation_6d, dtype=np.float64).reshape(-1)
-    if values.size < 6 or not np.isfinite(values[:6]).all():
-        return None
-    x_axis = normalize_vector(values[:3])
-    y_raw = values[3:6]
-    y_axis = normalize_vector(y_raw - float(np.dot(x_axis, y_raw)) * x_axis)
-    if np.linalg.norm(x_axis) < 1e-12 or np.linalg.norm(y_axis) < 1e-12:
-        return None
-    z_axis = normalize_vector(np.cross(x_axis, y_axis))
-    if np.linalg.norm(z_axis) < 1e-12:
-        return None
-    return np.stack([x_axis, y_axis, z_axis], axis=1)
-
-
-def geometry_state_matrix(state_context: dict[str, dict[str, Any]]) -> tuple[str | None, np.ndarray | None]:
-    item = state_context.get("state")
-    matrix = item.get("matrix") if isinstance(item, dict) else None
-    if matrix is None:
-        return None, None
-    matrix = np.asarray(matrix, dtype=np.float64)
-    if matrix.ndim == 2 and matrix.shape[1] >= 13 and np.isfinite(matrix).all():
-        return "state", matrix
-    return None, None
-
-
-def arm_position_motion(matrix: np.ndarray, arm: str) -> tuple[np.ndarray | None, np.ndarray]:
-    position_slice = ARM_POSITION_SLICES.get(arm)
-    if position_slice is None or matrix.shape[1] < position_slice.stop:
-        return None, np.array([], dtype=np.float64)
-    positions = matrix[:, position_slice]
-    if len(positions) < 2:
-        return positions, np.array([], dtype=np.float64)
-    motion = np.linalg.norm(np.diff(positions, axis=0), axis=1)
-    return positions, motion
-
-
-def active_motion_summary(motion: np.ndarray) -> dict[str, float]:
-    motion = np.asarray(motion, dtype=np.float64)
-    motion = motion[np.isfinite(motion)]
-    if motion.size == 0:
-        return {"threshold": 0.0, "active_fraction": 0.0, "median": 0.0, "max": 0.0}
-    threshold = max(1e-6, float(np.quantile(motion, 0.75)))
-    active_fraction = float(np.mean(motion > threshold))
-    return {
-        "threshold": threshold,
-        "active_fraction": active_fraction,
-        "median": float(np.median(motion)),
-        "max": float(np.max(motion)),
-    }
-
-
-def workspace_geometry(matrix: np.ndarray) -> dict[str, Any]:
-    arm_positions = []
-    for arm in ["left", "right"]:
-        positions, _ = arm_position_motion(matrix, arm)
-        if positions is not None and len(positions) > 0:
-            arm_positions.append(positions)
-    if not arm_positions:
-        return {"center": None, "extent": None}
-    points = np.vstack(arm_positions)
-    return {
-        "center": np.mean(points, axis=0),
-        "extent": np.ptp(points, axis=0),
-    }
-
-
-def camera_pose_for_view(
-    view: str,
-    row: np.ndarray,
-    workspace_center: np.ndarray,
-) -> dict[str, Any] | None:
-    arm = view_arm_hint(view)
-    if arm is None:
-        position = workspace_center + BASE_CAMERA_OFFSET_FROM_WORKSPACE
-        optical_axis = normalize_vector(workspace_center - position)
-        return {
-            "kind": "base",
-            "arm": None,
-            "position": position,
-            "optical_axis": optical_axis,
-            "fov_degrees": BASE_CAMERA_FOV_DEGREES,
-            "max_range_m": BASE_CAMERA_MAX_RANGE_M,
-            "local_optical_axis": None,
-        }
-
-    position_slice = ARM_POSITION_SLICES.get(arm)
-    rotation_slice = ARM_ROTATION_6D_SLICES.get(arm)
-    local_axis = WRIST_CAMERA_LOCAL_OPTICAL_AXIS.get(arm)
-    if position_slice is None or rotation_slice is None or local_axis is None:
-        return None
-    if row.size < max(position_slice.stop, rotation_slice.stop):
-        return None
-    rotation = rotation_6d_to_matrix(row[rotation_slice])
-    if rotation is None:
-        return None
-    position = np.asarray(row[position_slice], dtype=np.float64)
-    optical_axis = normalize_vector(rotation @ local_axis)
-    if np.linalg.norm(optical_axis) < 1e-12:
-        return None
-    return {
-        "kind": "wrist",
-        "arm": arm,
-        "position": position,
-        "optical_axis": optical_axis,
-        "fov_degrees": WRIST_CAMERA_FOV_DEGREES,
-        "max_range_m": WRIST_CAMERA_MAX_RANGE_M,
-        "local_optical_axis": local_axis.tolist(),
-    }
-
-
-def point_in_camera_cone(point: np.ndarray, pose: dict[str, Any]) -> bool:
-    point = np.asarray(point, dtype=np.float64)
-    position = np.asarray(pose["position"], dtype=np.float64)
-    optical_axis = normalize_vector(np.asarray(pose["optical_axis"], dtype=np.float64))
-    vector = point - position
-    distance = float(np.linalg.norm(vector))
-    if distance < 0.02 or distance > float(pose["max_range_m"]):
-        return False
-    direction = vector / distance
-    cos_limit = math.cos(math.radians(float(pose["fov_degrees"]) * 0.5))
-    return float(np.dot(direction, optical_axis)) >= cos_limit
-
-
-def shared_geometry_targets(row: np.ndarray, workspace_center: np.ndarray) -> list[np.ndarray]:
-    targets = [np.asarray(workspace_center, dtype=np.float64)]
-    left_position = row[ARM_POSITION_SLICES["left"]] if row.size >= ARM_POSITION_SLICES["left"].stop else None
-    right_position = row[ARM_POSITION_SLICES["right"]] if row.size >= ARM_POSITION_SLICES["right"].stop else None
-    if left_position is not None and right_position is not None:
-        targets.append((np.asarray(left_position, dtype=np.float64) + np.asarray(right_position, dtype=np.float64)) * 0.5)
-    return targets
-
-
-def estimate_camera_overlap(
-    left: str,
-    right: str,
-    matrix: np.ndarray,
-) -> dict[str, Any]:
-    geometry = workspace_geometry(matrix)
-    workspace_center = geometry.get("center")
-    if workspace_center is None:
-        return {"enabled": False, "reason": "workspace_geometry_unavailable"}
-
-    sample_count = min(32, len(matrix))
-    if sample_count < 8:
-        return {"enabled": False, "reason": "too_few_pose_samples", "sample_count": sample_count}
-    sample_indices = np.unique(np.linspace(0, len(matrix) - 1, sample_count).astype(int))
-    hits = 0
-    checked = 0
-    shared_distances: list[float] = []
-    example_pose: dict[str, Any] | None = None
-
-    for index in sample_indices:
-        row = np.asarray(matrix[index], dtype=np.float64)
-        left_pose = camera_pose_for_view(left, row, workspace_center)
-        right_pose = camera_pose_for_view(right, row, workspace_center)
-        if left_pose is None or right_pose is None:
-            continue
-        checked += 1
-        targets = shared_geometry_targets(row, workspace_center)
-        matched_target = None
-        for target in targets:
-            if point_in_camera_cone(target, left_pose) and point_in_camera_cone(target, right_pose):
-                matched_target = target
-                break
-        if matched_target is not None:
-            hits += 1
-            shared_distances.append(float(np.linalg.norm(matched_target - np.asarray(left_pose["position"], dtype=np.float64))))
-            if example_pose is None:
-                example_pose = {
-                    "sample_index": int(index),
-                    "left_camera": {
-                        "kind": left_pose["kind"],
-                        "arm": left_pose["arm"],
-                        "position": np.asarray(left_pose["position"]).round(4).tolist(),
-                        "optical_axis": np.asarray(left_pose["optical_axis"]).round(4).tolist(),
-                        "local_optical_axis": left_pose["local_optical_axis"],
-                    },
-                    "right_camera": {
-                        "kind": right_pose["kind"],
-                        "arm": right_pose["arm"],
-                        "position": np.asarray(right_pose["position"]).round(4).tolist(),
-                        "optical_axis": np.asarray(right_pose["optical_axis"]).round(4).tolist(),
-                        "local_optical_axis": right_pose["local_optical_axis"],
-                    },
-                    "matched_target": np.asarray(matched_target).round(4).tolist(),
-                }
-
-    overlap_score = float(hits / checked) if checked else 0.0
-    return {
-        "enabled": overlap_score >= GEOMETRY_OVERLAP_MIN_SCORE,
-        "reason": "estimated_frustum_overlap" if overlap_score >= GEOMETRY_OVERLAP_MIN_SCORE else "estimated_frustum_overlap_too_small",
-        "overlap_score": overlap_score,
-        "hits": int(hits),
-        "samples_checked": int(checked),
-        "workspace_center": np.asarray(workspace_center).round(4).tolist(),
-        "workspace_extent": np.asarray(geometry.get("extent")).round(4).tolist() if geometry.get("extent") is not None else None,
-        "median_shared_target_distance_m": float(np.median(shared_distances)) if shared_distances else None,
-        "camera_model": {
-            "robot": "Franka/Panda-like dual-arm state with end-effector pose",
-            "base_camera_offset_from_workspace": BASE_CAMERA_OFFSET_FROM_WORKSPACE.tolist(),
-            "base_fov_degrees": BASE_CAMERA_FOV_DEGREES,
-            "wrist_fov_degrees": WRIST_CAMERA_FOV_DEGREES,
-            "wrist_local_optical_axes": {key: value.tolist() for key, value in WRIST_CAMERA_LOCAL_OPTICAL_AXIS.items()},
-            "hand_eye_calibration": "not provided; wrist optical axes are inferred from state/workspace consistency",
-        },
-        "example_pose": example_pose,
-    }
-
-
-def state_overlap_gate(
-    left: str,
-    right: str,
-    state_context: dict[str, dict[str, Any]],
-) -> dict[str, Any]:
-    geometry_column, matrix = geometry_state_matrix(state_context)
-    left_arm = view_arm_hint(left)
-    right_arm = view_arm_hint(right)
-    evidence: dict[str, Any] = {
-        "enabled": False,
-        "reason": "state_geometry_unavailable",
-        "geometry_column": geometry_column,
-        "left_view_arm": left_arm,
-        "right_view_arm": right_arm,
-    }
-    if matrix is None:
-        return evidence
-
-    overlap = estimate_camera_overlap(left, right, matrix)
-    evidence.update(overlap)
-    return evidence
-
-
-def inspect_state_gated_vision(
-    frames: np.ndarray,
-    episode: int | None,
-    task_index: int | None,
-    views: list[str],
-    image_context: dict[str, dict[str, Any]],
-    state_context: dict[str, dict[str, Any]],
-    baselines: dict[str, Any],
-    findings: list[Finding],
-    factory: FindingFactory,
-) -> None:
-    gated_pairs: list[tuple[str, str, dict[str, Any]]] = []
-    for left_i, left in enumerate(views):
-        for right in views[left_i + 1 :]:
-            if left not in image_context or right not in image_context:
-                continue
-            gate = state_overlap_gate(left, right, state_context)
-            if not gate.get("enabled"):
-                continue
-            gated_pairs.append((left, right, gate))
-            left_motion = image_context[left]["motion"]
-            right_motion = image_context[right]["motion"]
-            length = min(len(left_motion), len(right_motion))
-            if length < 8 or np.std(left_motion[:length]) < 1e-12 or np.std(right_motion[:length]) < 1e-12:
-                continue
-            corr = float(np.corrcoef(left_motion[:length], right_motion[:length])[0, 1])
-            pair_stats = baseline_lookup(baselines, "view_pair_corr", task_index, left, right)
-            if corr >= stat_value(pair_stats, "min", -1.0) - REFERENCE_CORRELATION_MARGIN:
-                continue
-            score = 100.0 * lower_outlier_score(corr, pair_stats, weak_z=3.0, strong_z=6.0)
-            if corr < 0.0:
-                score = max(score, 45.0)
-            elif corr < 0.05:
-                score = max(score, 35.0)
-            if score >= 30:
-                findings.append(
-                    factory.make(
-                        "vision_state_vision",
-                        "state_gated_view_pair_motion_inconsistency",
-                        "State-supported overlapping camera pair has weak visual agreement",
-                        "episode",
-                        "vision-state",
-                        score,
-                        ood=score < 55,
-                        episode_index=episode,
-                        task_index=task_index,
-                        view=f"{left}|{right}",
-                        evidence={
-                            "correlation": corr,
-                            "pair_baseline": pair_stats,
-                            "state_gate": gate,
-                            "verification_policy": "Visual correlation is used only as weak verification after state-supported overlap.",
-                        },
-                    )
-                )
-
-    per_view_mean_motion = {
-        view: float(np.median(ctx["motion"])) for view, ctx in image_context.items() if len(ctx["motion"]) > 0
-    }
-    gated_views = {view for pair in gated_pairs for view in pair[:2]}
-    gated_motion = {view: value for view, value in per_view_mean_motion.items() if view in gated_views}
-    if len(gated_motion) >= 2:
-        values = np.asarray(list(gated_motion.values()), dtype=np.float64)
-        if np.min(values) >= 0:
-            ratio = float(np.max(values) / max(np.min(values), 1e-6))
-            if ratio > 10.0:
-                culprit = max(gated_motion, key=gated_motion.get)
-                supporting_gates = [
-                    gate for left, right, gate in gated_pairs if culprit in {left, right}
-                ]
-                findings.append(
-                    factory.make(
-                        "vision_state_vision",
-                        "state_gated_view_motion_scale_mismatch",
-                        "State-supported overlapping camera group has a large visual motion scale mismatch",
-                        "episode",
-                        "vision-state",
-                        min(90.0, 35.0 + ratio),
-                        ood=ratio < 20.0,
-                        episode_index=episode,
-                        task_index=task_index,
-                        view=culprit,
-                        evidence={
-                            "per_view_median_motion": gated_motion,
-                            "max_min_ratio": ratio,
-                            "state_gates": supporting_gates,
-                            "verification_policy": "Motion scale comparison is limited to state-supported overlapping views.",
-                        },
-                    )
-                )
-
-
-def inspect_cross_modal(
-    frames: np.ndarray,
-    episode: int | None,
-    task_index: int | None,
-    views: list[str],
-    image_context: dict[str, dict[str, Any]],
-    state_context: dict[str, dict[str, Any]],
-    baselines: dict[str, Any],
-    findings: list[Finding],
-    factory: FindingFactory,
-) -> None:
-    visual_combined = None
-    available_visual = [ctx["motion"] for ctx in image_context.values() if len(ctx["motion"]) > 0]
-    if available_visual:
-        min_len = min(len(item) for item in available_visual)
-        visual_combined = np.mean(np.stack([item[:min_len] for item in available_visual]), axis=0)
-
-    for column in CONSISTENCY_LOW_DIM_COLUMNS:
-        state_item = state_context.get(column)
-        if not isinstance(state_item, dict):
-            continue
-        delta = state_item.get("delta", np.array([]))
-        if visual_combined is not None and len(delta) > 0:
-            length = min(len(visual_combined), len(delta))
-            visual = visual_combined[:length]
-            low_dim = delta[:length]
-            if length >= 8:
-                visual_stats = robust_stats(visual.tolist())
-                state_stats = baseline_lookup(baselines, "state_delta", task_index, column)
-                visual_low = visual <= max(0.2, stat_value(visual_stats, "p05", 0.2) * 0.5)
-                visual_high = visual >= stat_value(visual_stats, "p99", float(np.max(visual)))
-                state_high_threshold = stat_value(state_stats, "p99", float(np.max(low_dim)))
-                state_high = low_dim >= state_high_threshold
-                state_low = low_dim <= max(1e-8, stat_value(state_stats, "p01", 1e-8) * 0.5)
-
-                for start, end in contiguous_ranges(np.where(state_high & visual_low)[0], max_gap=1):
-                    if end - start + 1 >= CROSS_MODAL_STATIC_MIN_RUN_FRAMES:
-                        findings.append(
-                            factory.make(
-                                "vision_state_vision",
-                                "state_moves_visual_static",
-                                "State changes strongly but visual motion is static",
-                                "segment",
-                                "vision-state",
-                                min(90.0, 45.0 + 8.0 * (end - start + 1)),
-                                episode_index=episode,
-                                task_index=task_index,
-                                column=column,
-                                frame_start=int(frames[start]),
-                                frame_end=int(frames[min(end + 1, len(frames) - 1)]),
-                                evidence={
-                                    "max_state_delta": float(np.max(low_dim[start : end + 1])),
-                                    "median_visual_motion": float(np.median(visual[start : end + 1])),
-                                    "state_high_threshold": state_high_threshold,
-                                },
-                            )
-                        )
-
-                for start, end in contiguous_ranges(np.where(visual_high & state_low)[0], max_gap=1):
-                    if end - start + 1 >= CROSS_MODAL_STATIC_MIN_RUN_FRAMES:
-                        findings.append(
-                            factory.make(
-                                "state_vision_state",
-                                "visual_moves_state_static",
-                                "Visual motion is strong but low-dimensional state is static",
-                                "segment",
-                                "vision-state",
-                                min(90.0, 45.0 + 8.0 * (end - start + 1)),
-                                episode_index=episode,
-                                task_index=task_index,
-                                column=column,
-                                frame_start=int(frames[start]),
-                                frame_end=int(frames[min(end + 1, len(frames) - 1)]),
-                                evidence={
-                                    "max_visual_motion": float(np.max(visual[start : end + 1])),
-                                    "median_state_delta": float(np.median(low_dim[start : end + 1])),
-                                },
-                            )
-                        )
-
-        for view in views:
-            if view not in image_context or len(image_context[view]["motion"]) == 0 or len(delta) == 0:
-                continue
-            visual = image_context[view]["motion"]
-            length = min(len(visual), len(delta))
-            if length < 8:
-                continue
-            lag = best_lag(visual[:length], delta[:length])
-            corr = lag["best_correlation"]
-            best = lag["best_lag"]
-            corr_stats = baseline_lookup(baselines, "sync_corr", task_index, view, column)
-            lag_stats = baseline_lookup(baselines, "sync_lag", task_index, view, column)
-            if corr is not None and corr < stat_value(corr_stats, "min", -1.0) - REFERENCE_CORRELATION_MARGIN:
-                corr_score = 100.0 * lower_outlier_score(float(corr), corr_stats, weak_z=3.0, strong_z=6.0)
-                if corr < 0.1:
-                    corr_score = max(corr_score, 45.0)
-                if corr_score >= 30:
-                    findings.append(
-                        factory.make(
-                            "vision_state_temporal",
-                            "low_cross_modal_correlation",
-                            "Vision-State motion correlation is lower than reference",
-                            "episode",
-                            "vision-state",
-                            corr_score,
-                            ood=corr_score < 55,
-                            episode_index=episode,
-                            task_index=task_index,
-                            view=view,
-                            column=column,
-                            evidence={"best_lag": best, "best_correlation": corr, "correlation_baseline": corr_stats},
-                        )
-                    )
-            if best is not None and lag_stats.get("count", 0) >= 5:
-                expected_lag = round(stat_value(lag_stats, "median", float(best)))
-                lag_min = stat_value(lag_stats, "min", float(best))
-                lag_max = stat_value(lag_stats, "max", float(best))
-                if int(best) < lag_min or int(best) > lag_max:
-                    findings.append(
-                        factory.make(
-                            "vision_state_temporal",
-                            "cross_modal_lag_shift",
-                            "Vision-State best lag deviates from reference lag",
-                            "episode",
-                            "vision-state",
-                            min(85.0, 35.0 + 12.0 * min(abs(int(best) - lag_min), abs(int(best) - lag_max))),
-                            ood=True,
-                            episode_index=episode,
-                            task_index=task_index,
-                            view=view,
-                            column=column,
-                            evidence={"best_lag": best, "expected_lag": expected_lag, "allowed_lag_range": [lag_min, lag_max], "lag_baseline": lag_stats},
-                        )
-                    )
-
 
 def capped_soft_penalty(values: list[float], cap: float) -> float:
     finite = [float(value) for value in values if np.isfinite(value) and value > 0]
@@ -2032,23 +1511,6 @@ def reference_soft_penalties(
             accel_stats = baseline_lookup(baselines, "state_accel", task_index, column)
             pressures["temporal"].append(upper_tail_pressure(float(np.max(accel)), accel_stats, start_key="p99") * 0.75)
 
-    for view in views:
-        visual = np.asarray(image_context.get(view, {}).get("motion", []), dtype=np.float64)
-        state = np.asarray(state_context.get("state", {}).get("delta", []), dtype=np.float64)
-        length = min(len(visual), len(state))
-        if length < 8:
-            continue
-        lag = best_lag(visual[:length], state[:length])
-        corr = lag["best_correlation"]
-        best = lag["best_lag"]
-        if corr is not None:
-            corr_stats = baseline_lookup(baselines, "sync_corr", task_index, view, "state")
-            pressures["cross_modal"].append(lower_tail_pressure(float(corr), corr_stats, start_key="p25"))
-        if best is not None:
-            lag_stats = baseline_lookup(baselines, "sync_lag", task_index, view, "state")
-            expected_lag = stat_value(lag_stats, "median", float(best))
-            max_dev = max(abs(stat_value(lag_stats, "min", expected_lag) - expected_lag), abs(stat_value(lag_stats, "max", expected_lag) - expected_lag), 1.0)
-            pressures["cross_modal"].append(min(1.0, abs(float(best) - expected_lag) / max_dev) * 0.5)
 
     return {
         dimension: capped_soft_penalty(values, REFERENCE_SOFT_DIM_CAPS[dimension])
@@ -2408,16 +1870,45 @@ def write_reports(
     )
 
 
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description="Run the v2 quality pipeline.")
+    parser.add_argument("--reference-root", type=Path, default=None)
+    parser.add_argument("--target-root", type=Path, default=None)
+    parser.add_argument("--geometry-config", type=Path, default=None)
+    return parser.parse_args()
+
+
 def main() -> None:
-    info, tasks, episodes, parquet_files = load_dataset()
+    args = parse_args()
+    reference_root = args.reference_root
+    target_root = args.target_root
+    if reference_root is None and target_root is None:
+        reference_root = ROOT
+        target_root = ROOT
+    elif reference_root is None:
+        reference_root = target_root
+    elif target_root is None:
+        target_root = reference_root
+
+    assert reference_root is not None and target_root is not None
+
+    reference_info, reference_tasks, reference_episodes, reference_parquet_files = load_dataset(reference_root)
+    target_info, tasks, episodes, parquet_files = load_dataset(target_root)
+    reference_episodes_meta = {int(row["episode_index"]): row for row in reference_episodes}
     episodes_meta = {int(row["episode_index"]): row for row in episodes}
-    views = image_views_from_info(info)
+    views = image_views_from_info(target_info)
+    reference_views = image_views_from_info(reference_info)
     factory = FindingFactory()
 
-    baselines = collect_reference_baselines(info, episodes_meta, parquet_files, views)
+    baselines = collect_reference_baselines(reference_info, reference_episodes_meta, reference_parquet_files, reference_views)
+    geometry_config = geometry_constraints.default_geometry_config(reference_info)
+    if args.geometry_config is not None:
+        geometry_config = geometry_constraints.load_geometry_config(args.geometry_config, geometry_config)
+    baselines["geometry_config"] = geometry_config
+    baselines["geometry_constraints"] = geometry_constraints.fit_geometry_reference(reference_parquet_files, geometry_config)
     expected_low_dim_shape = {}
     for column in LOW_DIM_COLUMNS:
-        spec = info.get("features", {}).get(column)
+        spec = target_info.get("features", {}).get(column)
         if spec and spec.get("shape"):
             expected_low_dim_shape[column] = int(spec["shape"][0])
     baselines["expected_low_dim_shape"] = expected_low_dim_shape
@@ -2427,7 +1918,7 @@ def main() -> None:
     for path in parquet_files:
         episode_from_path = safe_episode_from_path(path)
         expected_meta = episodes_meta.get(episode_from_path) if episode_from_path is not None else None
-        episode_meta, findings = inspect_episode(path, info, expected_meta, views, baselines, factory)
+        episode_meta, findings = inspect_episode(path, target_info, expected_meta, views, baselines, factory)
         if episode_meta["episode_index"] is None and episode_from_path is not None:
             episode_meta["episode_index"] = episode_from_path
         episode_metas.append(episode_meta)
@@ -2435,7 +1926,9 @@ def main() -> None:
 
     merged_findings = merge_findings(all_findings)
     episode_results = [score_episode(meta, merged_findings) for meta in sorted(episode_metas, key=lambda item: item["episode_index"])]
-    write_reports(info, tasks, baselines, merged_findings, episode_results)
+    geometry_payload = [meta.get("geometry_constraints", {}) for meta in sorted(episode_metas, key=lambda item: item["episode_index"])]
+    (DIAG_ROOT / "geometry_constraints_v2.json").write_text(json.dumps(geometry_payload, ensure_ascii=False, indent=2), encoding="utf-8")
+    write_reports(target_info, tasks, baselines, merged_findings, episode_results)
 
     dataset_score = round(float(np.mean([item.score_total for item in episode_results])) if episode_results else 0.0, 2)
     print(f"v2 episodes_checked: {len(episode_results)}")
@@ -2447,3 +1940,8 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+
+
+
+
+

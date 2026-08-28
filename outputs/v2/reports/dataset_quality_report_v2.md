@@ -5,7 +5,7 @@
 - episodes: 20
 - frames: 4142
 - FPS: 10
-- dataset quality score: **98.62/100**
+- dataset quality score: **98.95/100**
 
 ## Detection Framework
 
@@ -19,7 +19,7 @@ Direct Vision-Vision findings are disabled. Multi-view visual agreement is check
 | vision_vision | 10 | 10.0 |
 | state | 15 | 15.0 |
 | temporal | 15 | 14.24 |
-| cross_modal | 15 | 14.66 |
+| cross_modal | 15 | 15.0 |
 
 ## Finding Summary
 

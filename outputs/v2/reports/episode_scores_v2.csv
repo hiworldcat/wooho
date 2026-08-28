@@ -1,21 +1,21 @@
 ﻿episode_index,task_index,length,file,score_total,score_structural,score_vision_single,score_vision_vision,score_state,score_temporal,score_cross_modal,soft_penalty_total,soft_penalties,finding_count,critical_count,high_confidence_count,suspicious_count,ood_count
-0,0,222,C:\Tongji\各种竞赛\woohu\初赛数据\鍒濊禌鏁版嵁\鍙傝€冮泦\data\chunk-000\episode_000000.parquet,99.01,25.0,19.77,10.0,15.0,14.44,14.8,0.985,"{'vision_single': 0.229, 'temporal': 0.556, 'cross_modal': 0.2}",0,0,0,0,0
-1,1,192,C:\Tongji\各种竞赛\woohu\初赛数据\鍒濊禌鏁版嵁\鍙傝€冮泦\data\chunk-000\episode_000001.parquet,98.82,25.0,19.47,10.0,15.0,14.35,15.0,1.187,"{'vision_single': 0.533, 'temporal': 0.654, 'cross_modal': 0.0}",0,0,0,0,0
-2,0,202,C:\Tongji\各种竞赛\woohu\初赛数据\鍒濊禌鏁版嵁\鍙傝€冮泦\data\chunk-000\episode_000002.parquet,98.93,25.0,19.91,10.0,15.0,14.22,14.8,1.067,"{'vision_single': 0.09, 'temporal': 0.777, 'cross_modal': 0.2}",0,0,0,0,0
-3,1,189,C:\Tongji\各种竞赛\woohu\初赛数据\鍒濊禌鏁版嵁\鍙傝€冮泦\data\chunk-000\episode_000003.parquet,97.99,25.0,19.43,10.0,15.0,14.16,14.4,2.009,"{'vision_single': 0.565, 'temporal': 0.844, 'cross_modal': 0.6}",0,0,0,0,0
-4,0,212,C:\Tongji\各种竞赛\woohu\初赛数据\鍒濊禌鏁版嵁\鍙傝€冮泦\data\chunk-000\episode_000004.parquet,98.34,25.0,19.64,10.0,15.0,14.17,14.53,1.654,"{'vision_single': 0.36, 'temporal': 0.827, 'cross_modal': 0.467}",0,0,0,0,0
-5,0,247,C:\Tongji\各种竞赛\woohu\初赛数据\鍒濊禌鏁版嵁\鍙傝€冮泦\data\chunk-000\episode_000005.parquet,98.83,25.0,19.91,10.0,15.0,14.32,14.6,1.169,"{'vision_single': 0.088, 'temporal': 0.681, 'cross_modal': 0.4}",0,0,0,0,0
-6,1,202,C:\Tongji\各种竞赛\woohu\初赛数据\鍒濊禌鏁版嵁\鍙傝€冮泦\data\chunk-000\episode_000006.parquet,98.56,25.0,19.5,10.0,15.0,14.06,15.0,1.437,"{'vision_single': 0.499, 'temporal': 0.938, 'cross_modal': 0.0}",0,0,0,0,0
-7,0,236,C:\Tongji\各种竞赛\woohu\初赛数据\鍒濊禌鏁版嵁\鍙傝€冮泦\data\chunk-000\episode_000007.parquet,98.42,25.0,19.8,10.0,15.0,14.02,14.6,1.58,"{'vision_single': 0.197, 'temporal': 0.983, 'cross_modal': 0.4}",0,0,0,0,0
-8,0,191,C:\Tongji\各种竞赛\woohu\初赛数据\鍒濊禌鏁版嵁\鍙傝€冮泦\data\chunk-000\episode_000008.parquet,98.46,25.0,19.62,10.0,15.0,14.31,14.53,1.54,"{'vision_single': 0.383, 'temporal': 0.69, 'cross_modal': 0.467}",0,0,0,0,0
-9,0,195,C:\Tongji\各种竞赛\woohu\初赛数据\鍒濊禌鏁版嵁\鍙傝€冮泦\data\chunk-000\episode_000009.parquet,98.61,25.0,19.74,10.0,15.0,14.47,14.4,1.395,"{'vision_single': 0.261, 'temporal': 0.534, 'cross_modal': 0.6}",0,0,0,0,0
-10,1,196,C:\Tongji\各种竞赛\woohu\初赛数据\鍒濊禌鏁版嵁\鍙傝€冮泦\data\chunk-000\episode_000010.parquet,98.58,25.0,19.79,10.0,15.0,13.79,15.0,1.42,"{'vision_single': 0.215, 'temporal': 1.205, 'cross_modal': 0.0}",0,0,0,0,0
-11,0,202,C:\Tongji\各种竞赛\woohu\初赛数据\鍒濊禌鏁版嵁\鍙傝€冮泦\data\chunk-000\episode_000011.parquet,98.41,25.0,19.55,10.0,15.0,14.26,14.6,1.588,"{'vision_single': 0.447, 'temporal': 0.741, 'cross_modal': 0.4}",0,0,0,0,0
-12,1,172,C:\Tongji\各种竞赛\woohu\初赛数据\鍒濊禌鏁版嵁\鍙傝€冮泦\data\chunk-000\episode_000012.parquet,97.78,25.0,19.66,10.0,15.0,13.72,14.4,2.219,"{'vision_single': 0.344, 'temporal': 1.275, 'cross_modal': 0.6}",0,0,0,0,0
-13,0,304,C:\Tongji\各种竞赛\woohu\初赛数据\鍒濊禌鏁版嵁\鍙傝€冮泦\data\chunk-000\episode_000013.parquet,98.48,25.0,19.87,10.0,15.0,14.21,14.4,1.511,"{'vision_single': 0.126, 'temporal': 0.785, 'cross_modal': 0.6}",0,0,0,0,0
-14,0,268,C:\Tongji\各种竞赛\woohu\初赛数据\鍒濊禌鏁版嵁\鍙傝€冮泦\data\chunk-000\episode_000014.parquet,98.76,25.0,19.68,10.0,15.0,14.28,14.8,1.248,"{'vision_single': 0.324, 'temporal': 0.724, 'cross_modal': 0.2}",0,0,0,0,0
-15,1,181,C:\Tongji\各种竞赛\woohu\初赛数据\鍒濊禌鏁版嵁\鍙傝€冮泦\data\chunk-000\episode_000015.parquet,99.18,25.0,19.79,10.0,15.0,14.39,15.0,0.815,"{'vision_single': 0.207, 'temporal': 0.608, 'cross_modal': 0.0}",0,0,0,0,0
-16,1,180,C:\Tongji\各种竞赛\woohu\初赛数据\鍒濊禌鏁版嵁\鍙傝€冮泦\data\chunk-000\episode_000016.parquet,98.66,25.0,19.92,10.0,15.0,14.34,14.4,1.343,"{'vision_single': 0.079, 'temporal': 0.664, 'cross_modal': 0.6}",0,0,0,0,0
-17,1,170,C:\Tongji\各种竞赛\woohu\初赛数据\鍒濊禌鏁版嵁\鍙傝€冮泦\data\chunk-000\episode_000017.parquet,98.98,25.0,19.62,10.0,15.0,14.36,15.0,1.018,"{'vision_single': 0.378, 'temporal': 0.64, 'cross_modal': 0.0}",0,0,0,0,0
-18,0,217,C:\Tongji\各种竞赛\woohu\初赛数据\鍒濊禌鏁版嵁\鍙傝€冮泦\data\chunk-000\episode_000018.parquet,98.73,25.0,19.85,10.0,15.0,14.48,14.4,1.272,"{'vision_single': 0.153, 'temporal': 0.519, 'cross_modal': 0.6}",0,0,0,0,0
-19,0,164,C:\Tongji\各种竞赛\woohu\初赛数据\鍒濊禌鏁版嵁\鍙傝€冮泦\data\chunk-000\episode_000019.parquet,98.83,25.0,19.8,10.0,15.0,14.43,14.6,1.168,"{'vision_single': 0.198, 'temporal': 0.57, 'cross_modal': 0.4}",0,0,0,0,0
+0,0,222,C:\Tongji\各种竞赛\woohu\初赛数据\鍒濊禌鏁版嵁\鍙傝€冮泦\data\chunk-000\episode_000000.parquet,99.21,25.0,19.77,10.0,15.0,14.44,15.0,0.785,"{'vision_single': 0.229, 'temporal': 0.556}",0,0,0,0,0
+1,1,192,C:\Tongji\各种竞赛\woohu\初赛数据\鍒濊禌鏁版嵁\鍙傝€冮泦\data\chunk-000\episode_000001.parquet,98.82,25.0,19.47,10.0,15.0,14.35,15.0,1.187,"{'vision_single': 0.533, 'temporal': 0.654}",0,0,0,0,0
+2,0,202,C:\Tongji\各种竞赛\woohu\初赛数据\鍒濊禌鏁版嵁\鍙傝€冮泦\data\chunk-000\episode_000002.parquet,99.13,25.0,19.91,10.0,15.0,14.22,15.0,0.867,"{'vision_single': 0.09, 'temporal': 0.777}",0,0,0,0,0
+3,1,189,C:\Tongji\各种竞赛\woohu\初赛数据\鍒濊禌鏁版嵁\鍙傝€冮泦\data\chunk-000\episode_000003.parquet,98.59,25.0,19.43,10.0,15.0,14.16,15.0,1.409,"{'vision_single': 0.565, 'temporal': 0.844}",0,0,0,0,0
+4,0,212,C:\Tongji\各种竞赛\woohu\初赛数据\鍒濊禌鏁版嵁\鍙傝€冮泦\data\chunk-000\episode_000004.parquet,98.81,25.0,19.64,10.0,15.0,14.17,15.0,1.187,"{'vision_single': 0.36, 'temporal': 0.827}",0,0,0,0,0
+5,0,247,C:\Tongji\各种竞赛\woohu\初赛数据\鍒濊禌鏁版嵁\鍙傝€冮泦\data\chunk-000\episode_000005.parquet,99.23,25.0,19.91,10.0,15.0,14.32,15.0,0.769,"{'vision_single': 0.088, 'temporal': 0.681}",0,0,0,0,0
+6,1,202,C:\Tongji\各种竞赛\woohu\初赛数据\鍒濊禌鏁版嵁\鍙傝€冮泦\data\chunk-000\episode_000006.parquet,98.56,25.0,19.5,10.0,15.0,14.06,15.0,1.437,"{'vision_single': 0.499, 'temporal': 0.938}",0,0,0,0,0
+7,0,236,C:\Tongji\各种竞赛\woohu\初赛数据\鍒濊禌鏁版嵁\鍙傝€冮泦\data\chunk-000\episode_000007.parquet,98.82,25.0,19.8,10.0,15.0,14.02,15.0,1.18,"{'vision_single': 0.197, 'temporal': 0.983}",0,0,0,0,0
+8,0,191,C:\Tongji\各种竞赛\woohu\初赛数据\鍒濊禌鏁版嵁\鍙傝€冮泦\data\chunk-000\episode_000008.parquet,98.93,25.0,19.62,10.0,15.0,14.31,15.0,1.073,"{'vision_single': 0.383, 'temporal': 0.69}",0,0,0,0,0
+9,0,195,C:\Tongji\各种竞赛\woohu\初赛数据\鍒濊禌鏁版嵁\鍙傝€冮泦\data\chunk-000\episode_000009.parquet,99.21,25.0,19.74,10.0,15.0,14.47,15.0,0.795,"{'vision_single': 0.261, 'temporal': 0.534}",0,0,0,0,0
+10,1,196,C:\Tongji\各种竞赛\woohu\初赛数据\鍒濊禌鏁版嵁\鍙傝€冮泦\data\chunk-000\episode_000010.parquet,98.58,25.0,19.79,10.0,15.0,13.79,15.0,1.42,"{'vision_single': 0.215, 'temporal': 1.205}",0,0,0,0,0
+11,0,202,C:\Tongji\各种竞赛\woohu\初赛数据\鍒濊禌鏁版嵁\鍙傝€冮泦\data\chunk-000\episode_000011.parquet,98.81,25.0,19.55,10.0,15.0,14.26,15.0,1.188,"{'vision_single': 0.447, 'temporal': 0.741}",0,0,0,0,0
+12,1,172,C:\Tongji\各种竞赛\woohu\初赛数据\鍒濊禌鏁版嵁\鍙傝€冮泦\data\chunk-000\episode_000012.parquet,98.38,25.0,19.66,10.0,15.0,13.72,15.0,1.619,"{'vision_single': 0.344, 'temporal': 1.275}",0,0,0,0,0
+13,0,304,C:\Tongji\各种竞赛\woohu\初赛数据\鍒濊禌鏁版嵁\鍙傝€冮泦\data\chunk-000\episode_000013.parquet,99.08,25.0,19.87,10.0,15.0,14.21,15.0,0.911,"{'vision_single': 0.126, 'temporal': 0.785}",0,0,0,0,0
+14,0,268,C:\Tongji\各种竞赛\woohu\初赛数据\鍒濊禌鏁版嵁\鍙傝€冮泦\data\chunk-000\episode_000014.parquet,98.96,25.0,19.68,10.0,15.0,14.28,15.0,1.048,"{'vision_single': 0.324, 'temporal': 0.724}",0,0,0,0,0
+15,1,181,C:\Tongji\各种竞赛\woohu\初赛数据\鍒濊禌鏁版嵁\鍙傝€冮泦\data\chunk-000\episode_000015.parquet,99.18,25.0,19.79,10.0,15.0,14.39,15.0,0.815,"{'vision_single': 0.207, 'temporal': 0.608}",0,0,0,0,0
+16,1,180,C:\Tongji\各种竞赛\woohu\初赛数据\鍒濊禌鏁版嵁\鍙傝€冮泦\data\chunk-000\episode_000016.parquet,99.26,25.0,19.92,10.0,15.0,14.34,15.0,0.743,"{'vision_single': 0.079, 'temporal': 0.664}",0,0,0,0,0
+17,1,170,C:\Tongji\各种竞赛\woohu\初赛数据\鍒濊禌鏁版嵁\鍙傝€冮泦\data\chunk-000\episode_000017.parquet,98.98,25.0,19.62,10.0,15.0,14.36,15.0,1.018,"{'vision_single': 0.378, 'temporal': 0.64}",0,0,0,0,0
+18,0,217,C:\Tongji\各种竞赛\woohu\初赛数据\鍒濊禌鏁版嵁\鍙傝€冮泦\data\chunk-000\episode_000018.parquet,99.33,25.0,19.85,10.0,15.0,14.48,15.0,0.672,"{'vision_single': 0.153, 'temporal': 0.519}",0,0,0,0,0
+19,0,164,C:\Tongji\各种竞赛\woohu\初赛数据\鍒濊禌鏁版嵁\鍙傝€冮泦\data\chunk-000\episode_000019.parquet,99.23,25.0,19.8,10.0,15.0,14.43,15.0,0.768,"{'vision_single': 0.198, 'temporal': 0.57}",0,0,0,0,0

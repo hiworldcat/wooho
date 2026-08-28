@@ -1,0 +1,1162 @@
+[
+  {
+    "episode_index": 0,
+    "task_index": 0,
+    "status": "ok",
+    "gates": {
+      "rotation6d_layout": "unknown",
+      "state_frame_mode": "unknown",
+      "calibration_mode": "none",
+      "position_unit": "unknown",
+      "temporal_alignment": "performed_in_geometry_module",
+      "strict_calibrated_geometry": false
+    },
+    "arms": {
+      "left": {
+        "rotation6d_legal_fraction": 1.0,
+        "median_step": 0.0016795105180450608,
+        "median_speed": 0.016795105180450607,
+        "median_angular_speed": null
+      },
+      "right": {
+        "rotation6d_legal_fraction": 1.0,
+        "median_step": 0.002463878885062003,
+        "median_speed": 0.024638788850620028,
+        "median_angular_speed": null
+      }
+    },
+    "bimanual": {
+      "status": "unavailable",
+      "reason": "state_frame_mode_unknown",
+      "state_frame_mode": "unknown"
+    },
+    "state_vision": {
+      "left": {
+        "view": "left_wrist_image",
+        "visual_motion_status": "unavailable",
+        "visual_motion_reason": "opencv_unavailable",
+        "duplicate_frame_fraction": 0.0,
+        "lag": {
+          "status": "unavailable",
+          "reason": "too_few_valid_samples"
+        },
+        "status": "unavailable",
+        "reason": "opencv_unavailable"
+      },
+      "right": {
+        "view": "right_wrist_image",
+        "visual_motion_status": "unavailable",
+        "visual_motion_reason": "opencv_unavailable",
+        "duplicate_frame_fraction": 0.0,
+        "lag": {
+          "status": "unavailable",
+          "reason": "too_few_valid_samples"
+        },
+        "status": "unavailable",
+        "reason": "opencv_unavailable"
+      }
+    }
+  },
+  {
+    "episode_index": 1,
+    "task_index": 1,
+    "status": "ok",
+    "gates": {
+      "rotation6d_layout": "unknown",
+      "state_frame_mode": "unknown",
+      "calibration_mode": "none",
+      "position_unit": "unknown",
+      "temporal_alignment": "performed_in_geometry_module",
+      "strict_calibrated_geometry": false
+    },
+    "arms": {
+      "left": {
+        "rotation6d_legal_fraction": 1.0,
+        "median_step": 0.00358377620516094,
+        "median_speed": 0.0358377620516094,
+        "median_angular_speed": null
+      },
+      "right": {
+        "rotation6d_legal_fraction": 1.0,
+        "median_step": 0.0026413263979877975,
+        "median_speed": 0.026413263979877977,
+        "median_angular_speed": null
+      }
+    },
+    "bimanual": {
+      "status": "unavailable",
+      "reason": "state_frame_mode_unknown",
+      "state_frame_mode": "unknown"
+    },
+    "state_vision": {
+      "left": {
+        "view": "left_wrist_image",
+        "visual_motion_status": "unavailable",
+        "visual_motion_reason": "opencv_unavailable",
+        "duplicate_frame_fraction": 0.0,
+        "lag": {
+          "status": "unavailable",
+          "reason": "too_few_valid_samples"
+        },
+        "status": "unavailable",
+        "reason": "opencv_unavailable"
+      },
+      "right": {
+        "view": "right_wrist_image",
+        "visual_motion_status": "unavailable",
+        "visual_motion_reason": "opencv_unavailable",
+        "duplicate_frame_fraction": 0.0,
+        "lag": {
+          "status": "unavailable",
+          "reason": "too_few_valid_samples"
+        },
+        "status": "unavailable",
+        "reason": "opencv_unavailable"
+      }
+    }
+  },
+  {
+    "episode_index": 2,
+    "task_index": 0,
+    "status": "ok",
+    "gates": {
+      "rotation6d_layout": "unknown",
+      "state_frame_mode": "unknown",
+      "calibration_mode": "none",
+      "position_unit": "unknown",
+      "temporal_alignment": "performed_in_geometry_module",
+      "strict_calibrated_geometry": false
+    },
+    "arms": {
+      "left": {
+        "rotation6d_legal_fraction": 1.0,
+        "median_step": 0.00210765467199491,
+        "median_speed": 0.0210765467199491,
+        "median_angular_speed": null
+      },
+      "right": {
+        "rotation6d_legal_fraction": 1.0,
+        "median_step": 0.002406670169046558,
+        "median_speed": 0.02406670169046558,
+        "median_angular_speed": null
+      }
+    },
+    "bimanual": {
+      "status": "unavailable",
+      "reason": "state_frame_mode_unknown",
+      "state_frame_mode": "unknown"
+    },
+    "state_vision": {
+      "left": {
+        "view": "left_wrist_image",
+        "visual_motion_status": "unavailable",
+        "visual_motion_reason": "opencv_unavailable",
+        "duplicate_frame_fraction": 0.0,
+        "lag": {
+          "status": "unavailable",
+          "reason": "too_few_valid_samples"
+        },
+        "status": "unavailable",
+        "reason": "opencv_unavailable"
+      },
+      "right": {
+        "view": "right_wrist_image",
+        "visual_motion_status": "unavailable",
+        "visual_motion_reason": "opencv_unavailable",
+        "duplicate_frame_fraction": 0.0,
+        "lag": {
+          "status": "unavailable",
+          "reason": "too_few_valid_samples"
+        },
+        "status": "unavailable",
+        "reason": "opencv_unavailable"
+      }
+    }
+  },
+  {
+    "episode_index": 3,
+    "task_index": 1,
+    "status": "ok",
+    "gates": {
+      "rotation6d_layout": "unknown",
+      "state_frame_mode": "unknown",
+      "calibration_mode": "none",
+      "position_unit": "unknown",
+      "temporal_alignment": "performed_in_geometry_module",
+      "strict_calibrated_geometry": false
+    },
+    "arms": {
+      "left": {
+        "rotation6d_legal_fraction": 1.0,
+        "median_step": 0.003109800692397824,
+        "median_speed": 0.031098006923978242,
+        "median_angular_speed": null
+      },
+      "right": {
+        "rotation6d_legal_fraction": 1.0,
+        "median_step": 0.0022355249725280356,
+        "median_speed": 0.022355249725280354,
+        "median_angular_speed": null
+      }
+    },
+    "bimanual": {
+      "status": "unavailable",
+      "reason": "state_frame_mode_unknown",
+      "state_frame_mode": "unknown"
+    },
+    "state_vision": {
+      "left": {
+        "view": "left_wrist_image",
+        "visual_motion_status": "unavailable",
+        "visual_motion_reason": "opencv_unavailable",
+        "duplicate_frame_fraction": 0.0,
+        "lag": {
+          "status": "unavailable",
+          "reason": "too_few_valid_samples"
+        },
+        "status": "unavailable",
+        "reason": "opencv_unavailable"
+      },
+      "right": {
+        "view": "right_wrist_image",
+        "visual_motion_status": "unavailable",
+        "visual_motion_reason": "opencv_unavailable",
+        "duplicate_frame_fraction": 0.0,
+        "lag": {
+          "status": "unavailable",
+          "reason": "too_few_valid_samples"
+        },
+        "status": "unavailable",
+        "reason": "opencv_unavailable"
+      }
+    }
+  },
+  {
+    "episode_index": 4,
+    "task_index": 0,
+    "status": "ok",
+    "gates": {
+      "rotation6d_layout": "unknown",
+      "state_frame_mode": "unknown",
+      "calibration_mode": "none",
+      "position_unit": "unknown",
+      "temporal_alignment": "performed_in_geometry_module",
+      "strict_calibrated_geometry": false
+    },
+    "arms": {
+      "left": {
+        "rotation6d_legal_fraction": 1.0,
+        "median_step": 0.002469737139739982,
+        "median_speed": 0.024697371397399817,
+        "median_angular_speed": null
+      },
+      "right": {
+        "rotation6d_legal_fraction": 1.0,
+        "median_step": 0.0031439167293010784,
+        "median_speed": 0.031439167293010786,
+        "median_angular_speed": null
+      }
+    },
+    "bimanual": {
+      "status": "unavailable",
+      "reason": "state_frame_mode_unknown",
+      "state_frame_mode": "unknown"
+    },
+    "state_vision": {
+      "left": {
+        "view": "left_wrist_image",
+        "visual_motion_status": "unavailable",
+        "visual_motion_reason": "opencv_unavailable",
+        "duplicate_frame_fraction": 0.0,
+        "lag": {
+          "status": "unavailable",
+          "reason": "too_few_valid_samples"
+        },
+        "status": "unavailable",
+        "reason": "opencv_unavailable"
+      },
+      "right": {
+        "view": "right_wrist_image",
+        "visual_motion_status": "unavailable",
+        "visual_motion_reason": "opencv_unavailable",
+        "duplicate_frame_fraction": 0.0,
+        "lag": {
+          "status": "unavailable",
+          "reason": "too_few_valid_samples"
+        },
+        "status": "unavailable",
+        "reason": "opencv_unavailable"
+      }
+    }
+  },
+  {
+    "episode_index": 5,
+    "task_index": 0,
+    "status": "ok",
+    "gates": {
+      "rotation6d_layout": "unknown",
+      "state_frame_mode": "unknown",
+      "calibration_mode": "none",
+      "position_unit": "unknown",
+      "temporal_alignment": "performed_in_geometry_module",
+      "strict_calibrated_geometry": false
+    },
+    "arms": {
+      "left": {
+        "rotation6d_legal_fraction": 1.0,
+        "median_step": 0.0016103257816429848,
+        "median_speed": 0.016103257816429847,
+        "median_angular_speed": null
+      },
+      "right": {
+        "rotation6d_legal_fraction": 1.0,
+        "median_step": 0.0022367513381080723,
+        "median_speed": 0.022367513381080725,
+        "median_angular_speed": null
+      }
+    },
+    "bimanual": {
+      "status": "unavailable",
+      "reason": "state_frame_mode_unknown",
+      "state_frame_mode": "unknown"
+    },
+    "state_vision": {
+      "left": {
+        "view": "left_wrist_image",
+        "visual_motion_status": "unavailable",
+        "visual_motion_reason": "opencv_unavailable",
+        "duplicate_frame_fraction": 0.0,
+        "lag": {
+          "status": "unavailable",
+          "reason": "too_few_valid_samples"
+        },
+        "status": "unavailable",
+        "reason": "opencv_unavailable"
+      },
+      "right": {
+        "view": "right_wrist_image",
+        "visual_motion_status": "unavailable",
+        "visual_motion_reason": "opencv_unavailable",
+        "duplicate_frame_fraction": 0.0,
+        "lag": {
+          "status": "unavailable",
+          "reason": "too_few_valid_samples"
+        },
+        "status": "unavailable",
+        "reason": "opencv_unavailable"
+      }
+    }
+  },
+  {
+    "episode_index": 6,
+    "task_index": 1,
+    "status": "ok",
+    "gates": {
+      "rotation6d_layout": "unknown",
+      "state_frame_mode": "unknown",
+      "calibration_mode": "none",
+      "position_unit": "unknown",
+      "temporal_alignment": "performed_in_geometry_module",
+      "strict_calibrated_geometry": false
+    },
+    "arms": {
+      "left": {
+        "rotation6d_legal_fraction": 1.0,
+        "median_step": 0.0024849635488130685,
+        "median_speed": 0.024849635488130684,
+        "median_angular_speed": null
+      },
+      "right": {
+        "rotation6d_legal_fraction": 1.0,
+        "median_step": 0.002439973668575003,
+        "median_speed": 0.024399736685750028,
+        "median_angular_speed": null
+      }
+    },
+    "bimanual": {
+      "status": "unavailable",
+      "reason": "state_frame_mode_unknown",
+      "state_frame_mode": "unknown"
+    },
+    "state_vision": {
+      "left": {
+        "view": "left_wrist_image",
+        "visual_motion_status": "unavailable",
+        "visual_motion_reason": "opencv_unavailable",
+        "duplicate_frame_fraction": 0.0,
+        "lag": {
+          "status": "unavailable",
+          "reason": "too_few_valid_samples"
+        },
+        "status": "unavailable",
+        "reason": "opencv_unavailable"
+      },
+      "right": {
+        "view": "right_wrist_image",
+        "visual_motion_status": "unavailable",
+        "visual_motion_reason": "opencv_unavailable",
+        "duplicate_frame_fraction": 0.0,
+        "lag": {
+          "status": "unavailable",
+          "reason": "too_few_valid_samples"
+        },
+        "status": "unavailable",
+        "reason": "opencv_unavailable"
+      }
+    }
+  },
+  {
+    "episode_index": 7,
+    "task_index": 0,
+    "status": "ok",
+    "gates": {
+      "rotation6d_layout": "unknown",
+      "state_frame_mode": "unknown",
+      "calibration_mode": "none",
+      "position_unit": "unknown",
+      "temporal_alignment": "performed_in_geometry_module",
+      "strict_calibrated_geometry": false
+    },
+    "arms": {
+      "left": {
+        "rotation6d_legal_fraction": 1.0,
+        "median_step": 0.0023527970437381544,
+        "median_speed": 0.023527970437381543,
+        "median_angular_speed": null
+      },
+      "right": {
+        "rotation6d_legal_fraction": 1.0,
+        "median_step": 0.0015754681585834383,
+        "median_speed": 0.015754681585834384,
+        "median_angular_speed": null
+      }
+    },
+    "bimanual": {
+      "status": "unavailable",
+      "reason": "state_frame_mode_unknown",
+      "state_frame_mode": "unknown"
+    },
+    "state_vision": {
+      "left": {
+        "view": "left_wrist_image",
+        "visual_motion_status": "unavailable",
+        "visual_motion_reason": "opencv_unavailable",
+        "duplicate_frame_fraction": 0.0,
+        "lag": {
+          "status": "unavailable",
+          "reason": "too_few_valid_samples"
+        },
+        "status": "unavailable",
+        "reason": "opencv_unavailable"
+      },
+      "right": {
+        "view": "right_wrist_image",
+        "visual_motion_status": "unavailable",
+        "visual_motion_reason": "opencv_unavailable",
+        "duplicate_frame_fraction": 0.0,
+        "lag": {
+          "status": "unavailable",
+          "reason": "too_few_valid_samples"
+        },
+        "status": "unavailable",
+        "reason": "opencv_unavailable"
+      }
+    }
+  },
+  {
+    "episode_index": 8,
+    "task_index": 0,
+    "status": "ok",
+    "gates": {
+      "rotation6d_layout": "unknown",
+      "state_frame_mode": "unknown",
+      "calibration_mode": "none",
+      "position_unit": "unknown",
+      "temporal_alignment": "performed_in_geometry_module",
+      "strict_calibrated_geometry": false
+    },
+    "arms": {
+      "left": {
+        "rotation6d_legal_fraction": 1.0,
+        "median_step": 0.0019372836563745222,
+        "median_speed": 0.01937283656374522,
+        "median_angular_speed": null
+      },
+      "right": {
+        "rotation6d_legal_fraction": 1.0,
+        "median_step": 0.002041962853329915,
+        "median_speed": 0.02041962853329915,
+        "median_angular_speed": null
+      }
+    },
+    "bimanual": {
+      "status": "unavailable",
+      "reason": "state_frame_mode_unknown",
+      "state_frame_mode": "unknown"
+    },
+    "state_vision": {
+      "left": {
+        "view": "left_wrist_image",
+        "visual_motion_status": "unavailable",
+        "visual_motion_reason": "opencv_unavailable",
+        "duplicate_frame_fraction": 0.0,
+        "lag": {
+          "status": "unavailable",
+          "reason": "too_few_valid_samples"
+        },
+        "status": "unavailable",
+        "reason": "opencv_unavailable"
+      },
+      "right": {
+        "view": "right_wrist_image",
+        "visual_motion_status": "unavailable",
+        "visual_motion_reason": "opencv_unavailable",
+        "duplicate_frame_fraction": 0.0,
+        "lag": {
+          "status": "unavailable",
+          "reason": "too_few_valid_samples"
+        },
+        "status": "unavailable",
+        "reason": "opencv_unavailable"
+      }
+    }
+  },
+  {
+    "episode_index": 9,
+    "task_index": 0,
+    "status": "ok",
+    "gates": {
+      "rotation6d_layout": "unknown",
+      "state_frame_mode": "unknown",
+      "calibration_mode": "none",
+      "position_unit": "unknown",
+      "temporal_alignment": "performed_in_geometry_module",
+      "strict_calibrated_geometry": false
+    },
+    "arms": {
+      "left": {
+        "rotation6d_legal_fraction": 1.0,
+        "median_step": 0.0019426785918687118,
+        "median_speed": 0.019426785918687118,
+        "median_angular_speed": null
+      },
+      "right": {
+        "rotation6d_legal_fraction": 1.0,
+        "median_step": 0.0014434715409602976,
+        "median_speed": 0.014434715409602977,
+        "median_angular_speed": null
+      }
+    },
+    "bimanual": {
+      "status": "unavailable",
+      "reason": "state_frame_mode_unknown",
+      "state_frame_mode": "unknown"
+    },
+    "state_vision": {
+      "left": {
+        "view": "left_wrist_image",
+        "visual_motion_status": "unavailable",
+        "visual_motion_reason": "opencv_unavailable",
+        "duplicate_frame_fraction": 0.0,
+        "lag": {
+          "status": "unavailable",
+          "reason": "too_few_valid_samples"
+        },
+        "status": "unavailable",
+        "reason": "opencv_unavailable"
+      },
+      "right": {
+        "view": "right_wrist_image",
+        "visual_motion_status": "unavailable",
+        "visual_motion_reason": "opencv_unavailable",
+        "duplicate_frame_fraction": 0.0,
+        "lag": {
+          "status": "unavailable",
+          "reason": "too_few_valid_samples"
+        },
+        "status": "unavailable",
+        "reason": "opencv_unavailable"
+      }
+    }
+  },
+  {
+    "episode_index": 10,
+    "task_index": 1,
+    "status": "ok",
+    "gates": {
+      "rotation6d_layout": "unknown",
+      "state_frame_mode": "unknown",
+      "calibration_mode": "none",
+      "position_unit": "unknown",
+      "temporal_alignment": "performed_in_geometry_module",
+      "strict_calibrated_geometry": false
+    },
+    "arms": {
+      "left": {
+        "rotation6d_legal_fraction": 1.0,
+        "median_step": 0.0027760817357653377,
+        "median_speed": 0.027760817357653376,
+        "median_angular_speed": null
+      },
+      "right": {
+        "rotation6d_legal_fraction": 1.0,
+        "median_step": 0.0018920438999793204,
+        "median_speed": 0.018920438999793204,
+        "median_angular_speed": null
+      }
+    },
+    "bimanual": {
+      "status": "unavailable",
+      "reason": "state_frame_mode_unknown",
+      "state_frame_mode": "unknown"
+    },
+    "state_vision": {
+      "left": {
+        "view": "left_wrist_image",
+        "visual_motion_status": "unavailable",
+        "visual_motion_reason": "opencv_unavailable",
+        "duplicate_frame_fraction": 0.0,
+        "lag": {
+          "status": "unavailable",
+          "reason": "too_few_valid_samples"
+        },
+        "status": "unavailable",
+        "reason": "opencv_unavailable"
+      },
+      "right": {
+        "view": "right_wrist_image",
+        "visual_motion_status": "unavailable",
+        "visual_motion_reason": "opencv_unavailable",
+        "duplicate_frame_fraction": 0.0,
+        "lag": {
+          "status": "unavailable",
+          "reason": "too_few_valid_samples"
+        },
+        "status": "unavailable",
+        "reason": "opencv_unavailable"
+      }
+    }
+  },
+  {
+    "episode_index": 11,
+    "task_index": 0,
+    "status": "ok",
+    "gates": {
+      "rotation6d_layout": "unknown",
+      "state_frame_mode": "unknown",
+      "calibration_mode": "none",
+      "position_unit": "unknown",
+      "temporal_alignment": "performed_in_geometry_module",
+      "strict_calibrated_geometry": false
+    },
+    "arms": {
+      "left": {
+        "rotation6d_legal_fraction": 1.0,
+        "median_step": 0.002645676091416908,
+        "median_speed": 0.02645676091416908,
+        "median_angular_speed": null
+      },
+      "right": {
+        "rotation6d_legal_fraction": 1.0,
+        "median_step": 0.0027812783720081616,
+        "median_speed": 0.027812783720081617,
+        "median_angular_speed": null
+      }
+    },
+    "bimanual": {
+      "status": "unavailable",
+      "reason": "state_frame_mode_unknown",
+      "state_frame_mode": "unknown"
+    },
+    "state_vision": {
+      "left": {
+        "view": "left_wrist_image",
+        "visual_motion_status": "unavailable",
+        "visual_motion_reason": "opencv_unavailable",
+        "duplicate_frame_fraction": 0.0,
+        "lag": {
+          "status": "unavailable",
+          "reason": "too_few_valid_samples"
+        },
+        "status": "unavailable",
+        "reason": "opencv_unavailable"
+      },
+      "right": {
+        "view": "right_wrist_image",
+        "visual_motion_status": "unavailable",
+        "visual_motion_reason": "opencv_unavailable",
+        "duplicate_frame_fraction": 0.0,
+        "lag": {
+          "status": "unavailable",
+          "reason": "too_few_valid_samples"
+        },
+        "status": "unavailable",
+        "reason": "opencv_unavailable"
+      }
+    }
+  },
+  {
+    "episode_index": 12,
+    "task_index": 1,
+    "status": "ok",
+    "gates": {
+      "rotation6d_layout": "unknown",
+      "state_frame_mode": "unknown",
+      "calibration_mode": "none",
+      "position_unit": "unknown",
+      "temporal_alignment": "performed_in_geometry_module",
+      "strict_calibrated_geometry": false
+    },
+    "arms": {
+      "left": {
+        "rotation6d_legal_fraction": 1.0,
+        "median_step": 0.002974825660880613,
+        "median_speed": 0.02974825660880613,
+        "median_angular_speed": null
+      },
+      "right": {
+        "rotation6d_legal_fraction": 1.0,
+        "median_step": 0.002244836635150988,
+        "median_speed": 0.022448366351509878,
+        "median_angular_speed": null
+      }
+    },
+    "bimanual": {
+      "status": "unavailable",
+      "reason": "state_frame_mode_unknown",
+      "state_frame_mode": "unknown"
+    },
+    "state_vision": {
+      "left": {
+        "view": "left_wrist_image",
+        "visual_motion_status": "unavailable",
+        "visual_motion_reason": "opencv_unavailable",
+        "duplicate_frame_fraction": 0.0,
+        "lag": {
+          "status": "unavailable",
+          "reason": "too_few_valid_samples"
+        },
+        "status": "unavailable",
+        "reason": "opencv_unavailable"
+      },
+      "right": {
+        "view": "right_wrist_image",
+        "visual_motion_status": "unavailable",
+        "visual_motion_reason": "opencv_unavailable",
+        "duplicate_frame_fraction": 0.0,
+        "lag": {
+          "status": "unavailable",
+          "reason": "too_few_valid_samples"
+        },
+        "status": "unavailable",
+        "reason": "opencv_unavailable"
+      }
+    }
+  },
+  {
+    "episode_index": 13,
+    "task_index": 0,
+    "status": "ok",
+    "gates": {
+      "rotation6d_layout": "unknown",
+      "state_frame_mode": "unknown",
+      "calibration_mode": "none",
+      "position_unit": "unknown",
+      "temporal_alignment": "performed_in_geometry_module",
+      "strict_calibrated_geometry": false
+    },
+    "arms": {
+      "left": {
+        "rotation6d_legal_fraction": 1.0,
+        "median_step": 0.0010673895932067352,
+        "median_speed": 0.010673895932067353,
+        "median_angular_speed": null
+      },
+      "right": {
+        "rotation6d_legal_fraction": 1.0,
+        "median_step": 0.00122313129284346,
+        "median_speed": 0.0122313129284346,
+        "median_angular_speed": null
+      }
+    },
+    "bimanual": {
+      "status": "unavailable",
+      "reason": "state_frame_mode_unknown",
+      "state_frame_mode": "unknown"
+    },
+    "state_vision": {
+      "left": {
+        "view": "left_wrist_image",
+        "visual_motion_status": "unavailable",
+        "visual_motion_reason": "opencv_unavailable",
+        "duplicate_frame_fraction": 0.0,
+        "lag": {
+          "status": "unavailable",
+          "reason": "too_few_valid_samples"
+        },
+        "status": "unavailable",
+        "reason": "opencv_unavailable"
+      },
+      "right": {
+        "view": "right_wrist_image",
+        "visual_motion_status": "unavailable",
+        "visual_motion_reason": "opencv_unavailable",
+        "duplicate_frame_fraction": 0.0,
+        "lag": {
+          "status": "unavailable",
+          "reason": "too_few_valid_samples"
+        },
+        "status": "unavailable",
+        "reason": "opencv_unavailable"
+      }
+    }
+  },
+  {
+    "episode_index": 14,
+    "task_index": 0,
+    "status": "ok",
+    "gates": {
+      "rotation6d_layout": "unknown",
+      "state_frame_mode": "unknown",
+      "calibration_mode": "none",
+      "position_unit": "unknown",
+      "temporal_alignment": "performed_in_geometry_module",
+      "strict_calibrated_geometry": false
+    },
+    "arms": {
+      "left": {
+        "rotation6d_legal_fraction": 1.0,
+        "median_step": 0.0021518957221122706,
+        "median_speed": 0.021518957221122705,
+        "median_angular_speed": null
+      },
+      "right": {
+        "rotation6d_legal_fraction": 1.0,
+        "median_step": 0.0019944713723741487,
+        "median_speed": 0.019944713723741486,
+        "median_angular_speed": null
+      }
+    },
+    "bimanual": {
+      "status": "unavailable",
+      "reason": "state_frame_mode_unknown",
+      "state_frame_mode": "unknown"
+    },
+    "state_vision": {
+      "left": {
+        "view": "left_wrist_image",
+        "visual_motion_status": "unavailable",
+        "visual_motion_reason": "opencv_unavailable",
+        "duplicate_frame_fraction": 0.0,
+        "lag": {
+          "status": "unavailable",
+          "reason": "too_few_valid_samples"
+        },
+        "status": "unavailable",
+        "reason": "opencv_unavailable"
+      },
+      "right": {
+        "view": "right_wrist_image",
+        "visual_motion_status": "unavailable",
+        "visual_motion_reason": "opencv_unavailable",
+        "duplicate_frame_fraction": 0.0,
+        "lag": {
+          "status": "unavailable",
+          "reason": "too_few_valid_samples"
+        },
+        "status": "unavailable",
+        "reason": "opencv_unavailable"
+      }
+    }
+  },
+  {
+    "episode_index": 15,
+    "task_index": 1,
+    "status": "ok",
+    "gates": {
+      "rotation6d_layout": "unknown",
+      "state_frame_mode": "unknown",
+      "calibration_mode": "none",
+      "position_unit": "unknown",
+      "temporal_alignment": "performed_in_geometry_module",
+      "strict_calibrated_geometry": false
+    },
+    "arms": {
+      "left": {
+        "rotation6d_legal_fraction": 1.0,
+        "median_step": 0.002405766473627749,
+        "median_speed": 0.024057664736277493,
+        "median_angular_speed": null
+      },
+      "right": {
+        "rotation6d_legal_fraction": 1.0,
+        "median_step": 0.002125217783187059,
+        "median_speed": 0.02125217783187059,
+        "median_angular_speed": null
+      }
+    },
+    "bimanual": {
+      "status": "unavailable",
+      "reason": "state_frame_mode_unknown",
+      "state_frame_mode": "unknown"
+    },
+    "state_vision": {
+      "left": {
+        "view": "left_wrist_image",
+        "visual_motion_status": "unavailable",
+        "visual_motion_reason": "opencv_unavailable",
+        "duplicate_frame_fraction": 0.0,
+        "lag": {
+          "status": "unavailable",
+          "reason": "too_few_valid_samples"
+        },
+        "status": "unavailable",
+        "reason": "opencv_unavailable"
+      },
+      "right": {
+        "view": "right_wrist_image",
+        "visual_motion_status": "unavailable",
+        "visual_motion_reason": "opencv_unavailable",
+        "duplicate_frame_fraction": 0.0,
+        "lag": {
+          "status": "unavailable",
+          "reason": "too_few_valid_samples"
+        },
+        "status": "unavailable",
+        "reason": "opencv_unavailable"
+      }
+    }
+  },
+  {
+    "episode_index": 16,
+    "task_index": 1,
+    "status": "ok",
+    "gates": {
+      "rotation6d_layout": "unknown",
+      "state_frame_mode": "unknown",
+      "calibration_mode": "none",
+      "position_unit": "unknown",
+      "temporal_alignment": "performed_in_geometry_module",
+      "strict_calibrated_geometry": false
+    },
+    "arms": {
+      "left": {
+        "rotation6d_legal_fraction": 1.0,
+        "median_step": 0.0026008102986224153,
+        "median_speed": 0.026008102986224153,
+        "median_angular_speed": null
+      },
+      "right": {
+        "rotation6d_legal_fraction": 1.0,
+        "median_step": 0.0026995966117156545,
+        "median_speed": 0.026995966117156545,
+        "median_angular_speed": null
+      }
+    },
+    "bimanual": {
+      "status": "unavailable",
+      "reason": "state_frame_mode_unknown",
+      "state_frame_mode": "unknown"
+    },
+    "state_vision": {
+      "left": {
+        "view": "left_wrist_image",
+        "visual_motion_status": "unavailable",
+        "visual_motion_reason": "opencv_unavailable",
+        "duplicate_frame_fraction": 0.0,
+        "lag": {
+          "status": "unavailable",
+          "reason": "too_few_valid_samples"
+        },
+        "status": "unavailable",
+        "reason": "opencv_unavailable"
+      },
+      "right": {
+        "view": "right_wrist_image",
+        "visual_motion_status": "unavailable",
+        "visual_motion_reason": "opencv_unavailable",
+        "duplicate_frame_fraction": 0.0,
+        "lag": {
+          "status": "unavailable",
+          "reason": "too_few_valid_samples"
+        },
+        "status": "unavailable",
+        "reason": "opencv_unavailable"
+      }
+    }
+  },
+  {
+    "episode_index": 17,
+    "task_index": 1,
+    "status": "ok",
+    "gates": {
+      "rotation6d_layout": "unknown",
+      "state_frame_mode": "unknown",
+      "calibration_mode": "none",
+      "position_unit": "unknown",
+      "temporal_alignment": "performed_in_geometry_module",
+      "strict_calibrated_geometry": false
+    },
+    "arms": {
+      "left": {
+        "rotation6d_legal_fraction": 1.0,
+        "median_step": 0.002584887070199486,
+        "median_speed": 0.02584887070199486,
+        "median_angular_speed": null
+      },
+      "right": {
+        "rotation6d_legal_fraction": 1.0,
+        "median_step": 0.0016294821564504529,
+        "median_speed": 0.016294821564504527,
+        "median_angular_speed": null
+      }
+    },
+    "bimanual": {
+      "status": "unavailable",
+      "reason": "state_frame_mode_unknown",
+      "state_frame_mode": "unknown"
+    },
+    "state_vision": {
+      "left": {
+        "view": "left_wrist_image",
+        "visual_motion_status": "unavailable",
+        "visual_motion_reason": "opencv_unavailable",
+        "duplicate_frame_fraction": 0.0,
+        "lag": {
+          "status": "unavailable",
+          "reason": "too_few_valid_samples"
+        },
+        "status": "unavailable",
+        "reason": "opencv_unavailable"
+      },
+      "right": {
+        "view": "right_wrist_image",
+        "visual_motion_status": "unavailable",
+        "visual_motion_reason": "opencv_unavailable",
+        "duplicate_frame_fraction": 0.0,
+        "lag": {
+          "status": "unavailable",
+          "reason": "too_few_valid_samples"
+        },
+        "status": "unavailable",
+        "reason": "opencv_unavailable"
+      }
+    }
+  },
+  {
+    "episode_index": 18,
+    "task_index": 0,
+    "status": "ok",
+    "gates": {
+      "rotation6d_layout": "unknown",
+      "state_frame_mode": "unknown",
+      "calibration_mode": "none",
+      "position_unit": "unknown",
+      "temporal_alignment": "performed_in_geometry_module",
+      "strict_calibrated_geometry": false
+    },
+    "arms": {
+      "left": {
+        "rotation6d_legal_fraction": 1.0,
+        "median_step": 0.0014270183081962875,
+        "median_speed": 0.014270183081962873,
+        "median_angular_speed": null
+      },
+      "right": {
+        "rotation6d_legal_fraction": 1.0,
+        "median_step": 0.002260280901738414,
+        "median_speed": 0.02260280901738414,
+        "median_angular_speed": null
+      }
+    },
+    "bimanual": {
+      "status": "unavailable",
+      "reason": "state_frame_mode_unknown",
+      "state_frame_mode": "unknown"
+    },
+    "state_vision": {
+      "left": {
+        "view": "left_wrist_image",
+        "visual_motion_status": "unavailable",
+        "visual_motion_reason": "opencv_unavailable",
+        "duplicate_frame_fraction": 0.0,
+        "lag": {
+          "status": "unavailable",
+          "reason": "too_few_valid_samples"
+        },
+        "status": "unavailable",
+        "reason": "opencv_unavailable"
+      },
+      "right": {
+        "view": "right_wrist_image",
+        "visual_motion_status": "unavailable",
+        "visual_motion_reason": "opencv_unavailable",
+        "duplicate_frame_fraction": 0.0,
+        "lag": {
+          "status": "unavailable",
+          "reason": "too_few_valid_samples"
+        },
+        "status": "unavailable",
+        "reason": "opencv_unavailable"
+      }
+    }
+  },
+  {
+    "episode_index": 19,
+    "task_index": 0,
+    "status": "ok",
+    "gates": {
+      "rotation6d_layout": "unknown",
+      "state_frame_mode": "unknown",
+      "calibration_mode": "none",
+      "position_unit": "unknown",
+      "temporal_alignment": "performed_in_geometry_module",
+      "strict_calibrated_geometry": false
+    },
+    "arms": {
+      "left": {
+        "rotation6d_legal_fraction": 1.0,
+        "median_step": 0.002587863399211826,
+        "median_speed": 0.02587863399211826,
+        "median_angular_speed": null
+      },
+      "right": {
+        "rotation6d_legal_fraction": 1.0,
+        "median_step": 0.002192587513083565,
+        "median_speed": 0.02192587513083565,
+        "median_angular_speed": null
+      }
+    },
+    "bimanual": {
+      "status": "unavailable",
+      "reason": "state_frame_mode_unknown",
+      "state_frame_mode": "unknown"
+    },
+    "state_vision": {
+      "left": {
+        "view": "left_wrist_image",
+        "visual_motion_status": "unavailable",
+        "visual_motion_reason": "opencv_unavailable",
+        "duplicate_frame_fraction": 0.0,
+        "lag": {
+          "status": "unavailable",
+          "reason": "too_few_valid_samples"
+        },
+        "status": "unavailable",
+        "reason": "opencv_unavailable"
+      },
+      "right": {
+        "view": "right_wrist_image",
+        "visual_motion_status": "unavailable",
+        "visual_motion_reason": "opencv_unavailable",
+        "duplicate_frame_fraction": 0.0,
+        "lag": {
+          "status": "unavailable",
+          "reason": "too_few_valid_samples"
+        },
+        "status": "unavailable",
+        "reason": "opencv_unavailable"
+      }
+    }
+  }
+]
