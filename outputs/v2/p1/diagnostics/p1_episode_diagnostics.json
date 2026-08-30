@@ -1,0 +1,2282 @@
+[
+  {
+    "episode_index": 0,
+    "task_index": 0,
+    "status": "ok",
+    "main_camera": {
+      "status": "ok",
+      "reason": "downsampled_frame_difference",
+      "duplicate_frame_fraction": 0.0,
+      "median_background_motion": 2.9321587085723877
+    },
+    "panel_proxy": {
+      "status": "unavailable",
+      "reason": "insufficient_panel_proxy_support",
+      "valid_fraction": 0.0,
+      "median_area": NaN,
+      "median_aspect_ratio": NaN,
+      "median_center_delta": NaN
+    },
+    "overlap_gates": {
+      "status": "ok",
+      "pairs": {
+        "image->left_wrist_image": {
+          "status": "unavailable",
+          "reason": "opencv_required_for_feature_overlap",
+          "sampled_frames": 32,
+          "ok_frames": 0,
+          "ok_fraction": 0.0,
+          "median_matches": 0.0,
+          "median_inliers": 0.0,
+          "median_coverage": 0.0,
+          "median_correlation": 0.053957254458270175
+        },
+        "image->right_wrist_image": {
+          "status": "unavailable",
+          "reason": "opencv_required_for_feature_overlap",
+          "sampled_frames": 32,
+          "ok_frames": 0,
+          "ok_fraction": 0.0,
+          "median_matches": 0.0,
+          "median_inliers": 0.0,
+          "median_coverage": 0.0,
+          "median_correlation": 0.1554351974086181
+        },
+        "left_wrist_image->right_wrist_image": {
+          "status": "unavailable",
+          "reason": "opencv_required_for_feature_overlap",
+          "sampled_frames": 32,
+          "ok_frames": 0,
+          "ok_fraction": 0.0,
+          "median_matches": 0.0,
+          "median_inliers": 0.0,
+          "median_coverage": 0.0,
+          "median_correlation": -0.1362733080108537
+        }
+      },
+      "comparable_pairs": [],
+      "comparable_pair_count": 0,
+      "not_comparable_pairs": [
+        "image->left_wrist_image",
+        "image->right_wrist_image",
+        "left_wrist_image->right_wrist_image"
+      ],
+      "all_pairs_unavailable": true
+    },
+    "motion_coupling": {
+      "status": "ok",
+      "reason": "state_visual_motion_coupling",
+      "sample_count": 221,
+      "zero_lag_correlation": 0.412543,
+      "best_lag": 3,
+      "best_abs_correlation": 0.604683,
+      "best_signed_correlation": 0.604683,
+      "lag_correlations": {
+        "-5": 0.21287,
+        "-4": 0.238704,
+        "-3": 0.27179,
+        "-2": 0.316025,
+        "-1": 0.357269,
+        "0": 0.412543,
+        "1": 0.48467,
+        "2": 0.562428,
+        "3": 0.604683,
+        "4": 0.583565,
+        "5": 0.489692
+      },
+      "state_active_visual_quiet_fraction": 0.04072398190045249,
+      "visual_active_state_quiet_fraction": 0.027149321266968326,
+      "reference_corr_floor": 0.32786949,
+      "reference_state_active_visual_quiet_ceiling": 0.12,
+      "reference_visual_active_state_quiet_ceiling": 0.12
+    },
+    "bimanual_rigidity": {
+      "status": "unavailable",
+      "reason": "state_frame_mode_unknown",
+      "state_frame_mode": "unknown",
+      "constraint_level": "disabled_by_gate"
+    },
+    "root_cause_windows": [
+      {
+        "type": "not_comparable",
+        "reason": "pairwise_overlap_gate_failed"
+      }
+    ],
+    "summary": {
+      "finding_count": 0,
+      "comparable_pair_count": 0,
+      "panel_valid_fraction": 0.0,
+      "motion_coupling_status": "ok",
+      "motion_coupling_best_lag": 3,
+      "motion_coupling_best_abs_correlation": 0.604683,
+      "state_active_visual_quiet_fraction": 0.04072398190045249,
+      "visual_active_state_quiet_fraction": 0.027149321266968326
+    }
+  },
+  {
+    "episode_index": 1,
+    "task_index": 1,
+    "status": "ok",
+    "main_camera": {
+      "status": "ok",
+      "reason": "downsampled_frame_difference",
+      "duplicate_frame_fraction": 0.0,
+      "median_background_motion": 4.072943210601807
+    },
+    "panel_proxy": {
+      "status": "unavailable",
+      "reason": "insufficient_panel_proxy_support",
+      "valid_fraction": 0.0,
+      "median_area": NaN,
+      "median_aspect_ratio": NaN,
+      "median_center_delta": NaN
+    },
+    "overlap_gates": {
+      "status": "ok",
+      "pairs": {
+        "image->left_wrist_image": {
+          "status": "unavailable",
+          "reason": "opencv_required_for_feature_overlap",
+          "sampled_frames": 32,
+          "ok_frames": 0,
+          "ok_fraction": 0.0,
+          "median_matches": 0.0,
+          "median_inliers": 0.0,
+          "median_coverage": 0.0,
+          "median_correlation": 0.22545739313869734
+        },
+        "image->right_wrist_image": {
+          "status": "unavailable",
+          "reason": "opencv_required_for_feature_overlap",
+          "sampled_frames": 32,
+          "ok_frames": 0,
+          "ok_fraction": 0.0,
+          "median_matches": 0.0,
+          "median_inliers": 0.0,
+          "median_coverage": 0.0,
+          "median_correlation": 0.12552632915675696
+        },
+        "left_wrist_image->right_wrist_image": {
+          "status": "unavailable",
+          "reason": "opencv_required_for_feature_overlap",
+          "sampled_frames": 32,
+          "ok_frames": 0,
+          "ok_fraction": 0.0,
+          "median_matches": 0.0,
+          "median_inliers": 0.0,
+          "median_coverage": 0.0,
+          "median_correlation": 0.02798284132426405
+        }
+      },
+      "comparable_pairs": [],
+      "comparable_pair_count": 0,
+      "not_comparable_pairs": [
+        "image->left_wrist_image",
+        "image->right_wrist_image",
+        "left_wrist_image->right_wrist_image"
+      ],
+      "all_pairs_unavailable": true
+    },
+    "motion_coupling": {
+      "status": "ok",
+      "reason": "state_visual_motion_coupling",
+      "sample_count": 191,
+      "zero_lag_correlation": 0.381991,
+      "best_lag": 4,
+      "best_abs_correlation": 0.583632,
+      "best_signed_correlation": 0.583632,
+      "lag_correlations": {
+        "-5": 0.342296,
+        "-4": 0.350605,
+        "-3": 0.359554,
+        "-2": 0.366181,
+        "-1": 0.358305,
+        "0": 0.381991,
+        "1": 0.43214,
+        "2": 0.454406,
+        "3": 0.51787,
+        "4": 0.583632,
+        "5": 0.532158
+      },
+      "state_active_visual_quiet_fraction": 0.0,
+      "visual_active_state_quiet_fraction": 0.0,
+      "reference_corr_floor": 0.32786949,
+      "reference_state_active_visual_quiet_ceiling": 0.12,
+      "reference_visual_active_state_quiet_ceiling": 0.12
+    },
+    "bimanual_rigidity": {
+      "status": "unavailable",
+      "reason": "state_frame_mode_unknown",
+      "state_frame_mode": "unknown",
+      "constraint_level": "disabled_by_gate"
+    },
+    "root_cause_windows": [
+      {
+        "type": "not_comparable",
+        "reason": "pairwise_overlap_gate_failed"
+      }
+    ],
+    "summary": {
+      "finding_count": 0,
+      "comparable_pair_count": 0,
+      "panel_valid_fraction": 0.0,
+      "motion_coupling_status": "ok",
+      "motion_coupling_best_lag": 4,
+      "motion_coupling_best_abs_correlation": 0.583632,
+      "state_active_visual_quiet_fraction": 0.0,
+      "visual_active_state_quiet_fraction": 0.0
+    }
+  },
+  {
+    "episode_index": 2,
+    "task_index": 0,
+    "status": "ok",
+    "main_camera": {
+      "status": "ok",
+      "reason": "downsampled_frame_difference",
+      "duplicate_frame_fraction": 0.0,
+      "median_background_motion": 3.603395938873291
+    },
+    "panel_proxy": {
+      "status": "unavailable",
+      "reason": "insufficient_panel_proxy_support",
+      "valid_fraction": 0.0,
+      "median_area": NaN,
+      "median_aspect_ratio": NaN,
+      "median_center_delta": NaN
+    },
+    "overlap_gates": {
+      "status": "ok",
+      "pairs": {
+        "image->left_wrist_image": {
+          "status": "unavailable",
+          "reason": "opencv_required_for_feature_overlap",
+          "sampled_frames": 34,
+          "ok_frames": 0,
+          "ok_fraction": 0.0,
+          "median_matches": 0.0,
+          "median_inliers": 0.0,
+          "median_coverage": 0.0,
+          "median_correlation": -0.00386425989829415
+        },
+        "image->right_wrist_image": {
+          "status": "unavailable",
+          "reason": "opencv_required_for_feature_overlap",
+          "sampled_frames": 34,
+          "ok_frames": 0,
+          "ok_fraction": 0.0,
+          "median_matches": 0.0,
+          "median_inliers": 0.0,
+          "median_coverage": 0.0,
+          "median_correlation": 0.10040592734270118
+        },
+        "left_wrist_image->right_wrist_image": {
+          "status": "unavailable",
+          "reason": "opencv_required_for_feature_overlap",
+          "sampled_frames": 34,
+          "ok_frames": 0,
+          "ok_fraction": 0.0,
+          "median_matches": 0.0,
+          "median_inliers": 0.0,
+          "median_coverage": 0.0,
+          "median_correlation": -0.1754894330995595
+        }
+      },
+      "comparable_pairs": [],
+      "comparable_pair_count": 0,
+      "not_comparable_pairs": [
+        "image->left_wrist_image",
+        "image->right_wrist_image",
+        "left_wrist_image->right_wrist_image"
+      ],
+      "all_pairs_unavailable": true
+    },
+    "motion_coupling": {
+      "status": "ok",
+      "reason": "state_visual_motion_coupling",
+      "sample_count": 201,
+      "zero_lag_correlation": 0.310948,
+      "best_lag": 4,
+      "best_abs_correlation": 0.754845,
+      "best_signed_correlation": 0.754845,
+      "lag_correlations": {
+        "-5": 0.143999,
+        "-4": 0.139425,
+        "-3": 0.14458,
+        "-2": 0.181335,
+        "-1": 0.234537,
+        "0": 0.310948,
+        "1": 0.416091,
+        "2": 0.434028,
+        "3": 0.572253,
+        "4": 0.754845,
+        "5": 0.578271
+      },
+      "state_active_visual_quiet_fraction": 0.03482587064676617,
+      "visual_active_state_quiet_fraction": 0.024875621890547265,
+      "reference_corr_floor": 0.32786949,
+      "reference_state_active_visual_quiet_ceiling": 0.12,
+      "reference_visual_active_state_quiet_ceiling": 0.12
+    },
+    "bimanual_rigidity": {
+      "status": "unavailable",
+      "reason": "state_frame_mode_unknown",
+      "state_frame_mode": "unknown",
+      "constraint_level": "disabled_by_gate"
+    },
+    "root_cause_windows": [
+      {
+        "type": "not_comparable",
+        "reason": "pairwise_overlap_gate_failed"
+      }
+    ],
+    "summary": {
+      "finding_count": 0,
+      "comparable_pair_count": 0,
+      "panel_valid_fraction": 0.0,
+      "motion_coupling_status": "ok",
+      "motion_coupling_best_lag": 4,
+      "motion_coupling_best_abs_correlation": 0.754845,
+      "state_active_visual_quiet_fraction": 0.03482587064676617,
+      "visual_active_state_quiet_fraction": 0.024875621890547265
+    }
+  },
+  {
+    "episode_index": 3,
+    "task_index": 1,
+    "status": "ok",
+    "main_camera": {
+      "status": "ok",
+      "reason": "downsampled_frame_difference",
+      "duplicate_frame_fraction": 0.0,
+      "median_background_motion": 4.603356122970581
+    },
+    "panel_proxy": {
+      "status": "unavailable",
+      "reason": "insufficient_panel_proxy_support",
+      "valid_fraction": 0.0,
+      "median_area": NaN,
+      "median_aspect_ratio": NaN,
+      "median_center_delta": NaN
+    },
+    "overlap_gates": {
+      "status": "ok",
+      "pairs": {
+        "image->left_wrist_image": {
+          "status": "unavailable",
+          "reason": "opencv_required_for_feature_overlap",
+          "sampled_frames": 32,
+          "ok_frames": 0,
+          "ok_fraction": 0.0,
+          "median_matches": 0.0,
+          "median_inliers": 0.0,
+          "median_coverage": 0.0,
+          "median_correlation": 0.21188655963470635
+        },
+        "image->right_wrist_image": {
+          "status": "unavailable",
+          "reason": "opencv_required_for_feature_overlap",
+          "sampled_frames": 32,
+          "ok_frames": 0,
+          "ok_fraction": 0.0,
+          "median_matches": 0.0,
+          "median_inliers": 0.0,
+          "median_coverage": 0.0,
+          "median_correlation": 0.20174124584293868
+        },
+        "left_wrist_image->right_wrist_image": {
+          "status": "unavailable",
+          "reason": "opencv_required_for_feature_overlap",
+          "sampled_frames": 32,
+          "ok_frames": 0,
+          "ok_fraction": 0.0,
+          "median_matches": 0.0,
+          "median_inliers": 0.0,
+          "median_coverage": 0.0,
+          "median_correlation": 0.044133366289044955
+        }
+      },
+      "comparable_pairs": [],
+      "comparable_pair_count": 0,
+      "not_comparable_pairs": [
+        "image->left_wrist_image",
+        "image->right_wrist_image",
+        "left_wrist_image->right_wrist_image"
+      ],
+      "all_pairs_unavailable": true
+    },
+    "motion_coupling": {
+      "status": "ok",
+      "reason": "state_visual_motion_coupling",
+      "sample_count": 188,
+      "zero_lag_correlation": 0.44834,
+      "best_lag": 4,
+      "best_abs_correlation": 0.582103,
+      "best_signed_correlation": 0.582103,
+      "lag_correlations": {
+        "-5": 0.281323,
+        "-4": 0.308077,
+        "-3": 0.35173,
+        "-2": 0.389297,
+        "-1": 0.409001,
+        "0": 0.44834,
+        "1": 0.473202,
+        "2": 0.440028,
+        "3": 0.529511,
+        "4": 0.582103,
+        "5": 0.487325
+      },
+      "state_active_visual_quiet_fraction": 0.005319148936170213,
+      "visual_active_state_quiet_fraction": 0.005319148936170213,
+      "reference_corr_floor": 0.32786949,
+      "reference_state_active_visual_quiet_ceiling": 0.12,
+      "reference_visual_active_state_quiet_ceiling": 0.12
+    },
+    "bimanual_rigidity": {
+      "status": "unavailable",
+      "reason": "state_frame_mode_unknown",
+      "state_frame_mode": "unknown",
+      "constraint_level": "disabled_by_gate"
+    },
+    "root_cause_windows": [
+      {
+        "type": "not_comparable",
+        "reason": "pairwise_overlap_gate_failed"
+      }
+    ],
+    "summary": {
+      "finding_count": 0,
+      "comparable_pair_count": 0,
+      "panel_valid_fraction": 0.0,
+      "motion_coupling_status": "ok",
+      "motion_coupling_best_lag": 4,
+      "motion_coupling_best_abs_correlation": 0.582103,
+      "state_active_visual_quiet_fraction": 0.005319148936170213,
+      "visual_active_state_quiet_fraction": 0.005319148936170213
+    }
+  },
+  {
+    "episode_index": 4,
+    "task_index": 0,
+    "status": "ok",
+    "main_camera": {
+      "status": "ok",
+      "reason": "downsampled_frame_difference",
+      "duplicate_frame_fraction": 0.0,
+      "median_background_motion": 3.8294005393981934
+    },
+    "panel_proxy": {
+      "status": "unavailable",
+      "reason": "insufficient_panel_proxy_support",
+      "valid_fraction": 0.0,
+      "median_area": NaN,
+      "median_aspect_ratio": NaN,
+      "median_center_delta": NaN
+    },
+    "overlap_gates": {
+      "status": "ok",
+      "pairs": {
+        "image->left_wrist_image": {
+          "status": "unavailable",
+          "reason": "opencv_required_for_feature_overlap",
+          "sampled_frames": 31,
+          "ok_frames": 0,
+          "ok_fraction": 0.0,
+          "median_matches": 0.0,
+          "median_inliers": 0.0,
+          "median_coverage": 0.0,
+          "median_correlation": -0.027028346449013897
+        },
+        "image->right_wrist_image": {
+          "status": "unavailable",
+          "reason": "opencv_required_for_feature_overlap",
+          "sampled_frames": 31,
+          "ok_frames": 0,
+          "ok_fraction": 0.0,
+          "median_matches": 0.0,
+          "median_inliers": 0.0,
+          "median_coverage": 0.0,
+          "median_correlation": 0.2230773556583006
+        },
+        "left_wrist_image->right_wrist_image": {
+          "status": "unavailable",
+          "reason": "opencv_required_for_feature_overlap",
+          "sampled_frames": 31,
+          "ok_frames": 0,
+          "ok_fraction": 0.0,
+          "median_matches": 0.0,
+          "median_inliers": 0.0,
+          "median_coverage": 0.0,
+          "median_correlation": -0.16889414661499355
+        }
+      },
+      "comparable_pairs": [],
+      "comparable_pair_count": 0,
+      "not_comparable_pairs": [
+        "image->left_wrist_image",
+        "image->right_wrist_image",
+        "left_wrist_image->right_wrist_image"
+      ],
+      "all_pairs_unavailable": true
+    },
+    "motion_coupling": {
+      "status": "ok",
+      "reason": "state_visual_motion_coupling",
+      "sample_count": 211,
+      "zero_lag_correlation": 0.231215,
+      "best_lag": 4,
+      "best_abs_correlation": 0.512875,
+      "best_signed_correlation": 0.512875,
+      "lag_correlations": {
+        "-5": 0.11064,
+        "-4": 0.157829,
+        "-3": 0.154006,
+        "-2": 0.152428,
+        "-1": 0.189848,
+        "0": 0.231215,
+        "1": 0.231397,
+        "2": 0.307384,
+        "3": 0.486963,
+        "4": 0.512875,
+        "5": 0.369822
+      },
+      "state_active_visual_quiet_fraction": 0.03317535545023697,
+      "visual_active_state_quiet_fraction": 0.037914691943127965,
+      "reference_corr_floor": 0.32786949,
+      "reference_state_active_visual_quiet_ceiling": 0.12,
+      "reference_visual_active_state_quiet_ceiling": 0.12
+    },
+    "bimanual_rigidity": {
+      "status": "unavailable",
+      "reason": "state_frame_mode_unknown",
+      "state_frame_mode": "unknown",
+      "constraint_level": "disabled_by_gate"
+    },
+    "root_cause_windows": [
+      {
+        "type": "not_comparable",
+        "reason": "pairwise_overlap_gate_failed"
+      }
+    ],
+    "summary": {
+      "finding_count": 0,
+      "comparable_pair_count": 0,
+      "panel_valid_fraction": 0.0,
+      "motion_coupling_status": "ok",
+      "motion_coupling_best_lag": 4,
+      "motion_coupling_best_abs_correlation": 0.512875,
+      "state_active_visual_quiet_fraction": 0.03317535545023697,
+      "visual_active_state_quiet_fraction": 0.037914691943127965
+    }
+  },
+  {
+    "episode_index": 5,
+    "task_index": 0,
+    "status": "ok",
+    "main_camera": {
+      "status": "ok",
+      "reason": "downsampled_frame_difference",
+      "duplicate_frame_fraction": 0.0,
+      "median_background_motion": 3.2227758169174194
+    },
+    "panel_proxy": {
+      "status": "unavailable",
+      "reason": "insufficient_panel_proxy_support",
+      "valid_fraction": 0.0,
+      "median_area": NaN,
+      "median_aspect_ratio": NaN,
+      "median_center_delta": NaN
+    },
+    "overlap_gates": {
+      "status": "ok",
+      "pairs": {
+        "image->left_wrist_image": {
+          "status": "unavailable",
+          "reason": "opencv_required_for_feature_overlap",
+          "sampled_frames": 31,
+          "ok_frames": 0,
+          "ok_fraction": 0.0,
+          "median_matches": 0.0,
+          "median_inliers": 0.0,
+          "median_coverage": 0.0,
+          "median_correlation": -0.06177299010305779
+        },
+        "image->right_wrist_image": {
+          "status": "unavailable",
+          "reason": "opencv_required_for_feature_overlap",
+          "sampled_frames": 31,
+          "ok_frames": 0,
+          "ok_fraction": 0.0,
+          "median_matches": 0.0,
+          "median_inliers": 0.0,
+          "median_coverage": 0.0,
+          "median_correlation": 0.13496922666673178
+        },
+        "left_wrist_image->right_wrist_image": {
+          "status": "unavailable",
+          "reason": "opencv_required_for_feature_overlap",
+          "sampled_frames": 31,
+          "ok_frames": 0,
+          "ok_fraction": 0.0,
+          "median_matches": 0.0,
+          "median_inliers": 0.0,
+          "median_coverage": 0.0,
+          "median_correlation": -0.07617639536962652
+        }
+      },
+      "comparable_pairs": [],
+      "comparable_pair_count": 0,
+      "not_comparable_pairs": [
+        "image->left_wrist_image",
+        "image->right_wrist_image",
+        "left_wrist_image->right_wrist_image"
+      ],
+      "all_pairs_unavailable": true
+    },
+    "motion_coupling": {
+      "status": "ok",
+      "reason": "state_visual_motion_coupling",
+      "sample_count": 246,
+      "zero_lag_correlation": 0.327943,
+      "best_lag": 3,
+      "best_abs_correlation": 0.585306,
+      "best_signed_correlation": 0.585306,
+      "lag_correlations": {
+        "-5": 0.16233,
+        "-4": 0.184823,
+        "-3": 0.204536,
+        "-2": 0.237716,
+        "-1": 0.272272,
+        "0": 0.327943,
+        "1": 0.372205,
+        "2": 0.473852,
+        "3": 0.585306,
+        "4": 0.583904,
+        "5": 0.46264
+      },
+      "state_active_visual_quiet_fraction": 0.028455284552845527,
+      "visual_active_state_quiet_fraction": 0.012195121951219513,
+      "reference_corr_floor": 0.32786949,
+      "reference_state_active_visual_quiet_ceiling": 0.12,
+      "reference_visual_active_state_quiet_ceiling": 0.12
+    },
+    "bimanual_rigidity": {
+      "status": "unavailable",
+      "reason": "state_frame_mode_unknown",
+      "state_frame_mode": "unknown",
+      "constraint_level": "disabled_by_gate"
+    },
+    "root_cause_windows": [
+      {
+        "type": "not_comparable",
+        "reason": "pairwise_overlap_gate_failed"
+      }
+    ],
+    "summary": {
+      "finding_count": 0,
+      "comparable_pair_count": 0,
+      "panel_valid_fraction": 0.0,
+      "motion_coupling_status": "ok",
+      "motion_coupling_best_lag": 3,
+      "motion_coupling_best_abs_correlation": 0.585306,
+      "state_active_visual_quiet_fraction": 0.028455284552845527,
+      "visual_active_state_quiet_fraction": 0.012195121951219513
+    }
+  },
+  {
+    "episode_index": 6,
+    "task_index": 1,
+    "status": "ok",
+    "main_camera": {
+      "status": "ok",
+      "reason": "downsampled_frame_difference",
+      "duplicate_frame_fraction": 0.0,
+      "median_background_motion": 4.980947017669678
+    },
+    "panel_proxy": {
+      "status": "unavailable",
+      "reason": "insufficient_panel_proxy_support",
+      "valid_fraction": 0.0,
+      "median_area": NaN,
+      "median_aspect_ratio": NaN,
+      "median_center_delta": NaN
+    },
+    "overlap_gates": {
+      "status": "ok",
+      "pairs": {
+        "image->left_wrist_image": {
+          "status": "unavailable",
+          "reason": "opencv_required_for_feature_overlap",
+          "sampled_frames": 34,
+          "ok_frames": 0,
+          "ok_fraction": 0.0,
+          "median_matches": 0.0,
+          "median_inliers": 0.0,
+          "median_coverage": 0.0,
+          "median_correlation": 0.22247651953765799
+        },
+        "image->right_wrist_image": {
+          "status": "unavailable",
+          "reason": "opencv_required_for_feature_overlap",
+          "sampled_frames": 34,
+          "ok_frames": 0,
+          "ok_fraction": 0.0,
+          "median_matches": 0.0,
+          "median_inliers": 0.0,
+          "median_coverage": 0.0,
+          "median_correlation": 0.11107410340340339
+        },
+        "left_wrist_image->right_wrist_image": {
+          "status": "unavailable",
+          "reason": "opencv_required_for_feature_overlap",
+          "sampled_frames": 34,
+          "ok_frames": 0,
+          "ok_fraction": 0.0,
+          "median_matches": 0.0,
+          "median_inliers": 0.0,
+          "median_coverage": 0.0,
+          "median_correlation": -0.23332070932819304
+        }
+      },
+      "comparable_pairs": [],
+      "comparable_pair_count": 0,
+      "not_comparable_pairs": [
+        "image->left_wrist_image",
+        "image->right_wrist_image",
+        "left_wrist_image->right_wrist_image"
+      ],
+      "all_pairs_unavailable": true
+    },
+    "motion_coupling": {
+      "status": "ok",
+      "reason": "state_visual_motion_coupling",
+      "sample_count": 201,
+      "zero_lag_correlation": 0.390576,
+      "best_lag": 4,
+      "best_abs_correlation": 0.580769,
+      "best_signed_correlation": 0.580769,
+      "lag_correlations": {
+        "-5": 0.302759,
+        "-4": 0.320685,
+        "-3": 0.340124,
+        "-2": 0.336417,
+        "-1": 0.338548,
+        "0": 0.390576,
+        "1": 0.421594,
+        "2": 0.391354,
+        "3": 0.459503,
+        "4": 0.580769,
+        "5": 0.486155
+      },
+      "state_active_visual_quiet_fraction": 0.0,
+      "visual_active_state_quiet_fraction": 0.0,
+      "reference_corr_floor": 0.32786949,
+      "reference_state_active_visual_quiet_ceiling": 0.12,
+      "reference_visual_active_state_quiet_ceiling": 0.12
+    },
+    "bimanual_rigidity": {
+      "status": "unavailable",
+      "reason": "state_frame_mode_unknown",
+      "state_frame_mode": "unknown",
+      "constraint_level": "disabled_by_gate"
+    },
+    "root_cause_windows": [
+      {
+        "type": "not_comparable",
+        "reason": "pairwise_overlap_gate_failed"
+      }
+    ],
+    "summary": {
+      "finding_count": 0,
+      "comparable_pair_count": 0,
+      "panel_valid_fraction": 0.0,
+      "motion_coupling_status": "ok",
+      "motion_coupling_best_lag": 4,
+      "motion_coupling_best_abs_correlation": 0.580769,
+      "state_active_visual_quiet_fraction": 0.0,
+      "visual_active_state_quiet_fraction": 0.0
+    }
+  },
+  {
+    "episode_index": 7,
+    "task_index": 0,
+    "status": "ok",
+    "main_camera": {
+      "status": "ok",
+      "reason": "downsampled_frame_difference",
+      "duplicate_frame_fraction": 0.0,
+      "median_background_motion": 4.101961135864258
+    },
+    "panel_proxy": {
+      "status": "unavailable",
+      "reason": "insufficient_panel_proxy_support",
+      "valid_fraction": 0.0,
+      "median_area": NaN,
+      "median_aspect_ratio": NaN,
+      "median_center_delta": NaN
+    },
+    "overlap_gates": {
+      "status": "ok",
+      "pairs": {
+        "image->left_wrist_image": {
+          "status": "unavailable",
+          "reason": "opencv_required_for_feature_overlap",
+          "sampled_frames": 34,
+          "ok_frames": 0,
+          "ok_fraction": 0.0,
+          "median_matches": 0.0,
+          "median_inliers": 0.0,
+          "median_coverage": 0.0,
+          "median_correlation": 0.011693846670213203
+        },
+        "image->right_wrist_image": {
+          "status": "unavailable",
+          "reason": "opencv_required_for_feature_overlap",
+          "sampled_frames": 34,
+          "ok_frames": 0,
+          "ok_fraction": 0.0,
+          "median_matches": 0.0,
+          "median_inliers": 0.0,
+          "median_coverage": 0.0,
+          "median_correlation": 0.1515666216309535
+        },
+        "left_wrist_image->right_wrist_image": {
+          "status": "unavailable",
+          "reason": "opencv_required_for_feature_overlap",
+          "sampled_frames": 34,
+          "ok_frames": 0,
+          "ok_fraction": 0.0,
+          "median_matches": 0.0,
+          "median_inliers": 0.0,
+          "median_coverage": 0.0,
+          "median_correlation": -0.07557481268983061
+        }
+      },
+      "comparable_pairs": [],
+      "comparable_pair_count": 0,
+      "not_comparable_pairs": [
+        "image->left_wrist_image",
+        "image->right_wrist_image",
+        "left_wrist_image->right_wrist_image"
+      ],
+      "all_pairs_unavailable": true
+    },
+    "motion_coupling": {
+      "status": "ok",
+      "reason": "state_visual_motion_coupling",
+      "sample_count": 235,
+      "zero_lag_correlation": 0.309946,
+      "best_lag": 3,
+      "best_abs_correlation": 0.571658,
+      "best_signed_correlation": 0.571658,
+      "lag_correlations": {
+        "-5": 0.17217,
+        "-4": 0.173094,
+        "-3": 0.200157,
+        "-2": 0.252097,
+        "-1": 0.281673,
+        "0": 0.309946,
+        "1": 0.366584,
+        "2": 0.481671,
+        "3": 0.571658,
+        "4": 0.550852,
+        "5": 0.462796
+      },
+      "state_active_visual_quiet_fraction": 0.03404255319148936,
+      "visual_active_state_quiet_fraction": 0.02553191489361702,
+      "reference_corr_floor": 0.32786949,
+      "reference_state_active_visual_quiet_ceiling": 0.12,
+      "reference_visual_active_state_quiet_ceiling": 0.12
+    },
+    "bimanual_rigidity": {
+      "status": "unavailable",
+      "reason": "state_frame_mode_unknown",
+      "state_frame_mode": "unknown",
+      "constraint_level": "disabled_by_gate"
+    },
+    "root_cause_windows": [
+      {
+        "type": "not_comparable",
+        "reason": "pairwise_overlap_gate_failed"
+      }
+    ],
+    "summary": {
+      "finding_count": 0,
+      "comparable_pair_count": 0,
+      "panel_valid_fraction": 0.0,
+      "motion_coupling_status": "ok",
+      "motion_coupling_best_lag": 3,
+      "motion_coupling_best_abs_correlation": 0.571658,
+      "state_active_visual_quiet_fraction": 0.03404255319148936,
+      "visual_active_state_quiet_fraction": 0.02553191489361702
+    }
+  },
+  {
+    "episode_index": 8,
+    "task_index": 0,
+    "status": "ok",
+    "main_camera": {
+      "status": "ok",
+      "reason": "downsampled_frame_difference",
+      "duplicate_frame_fraction": 0.0,
+      "median_background_motion": 4.349968194961548
+    },
+    "panel_proxy": {
+      "status": "unavailable",
+      "reason": "insufficient_panel_proxy_support",
+      "valid_fraction": 0.0,
+      "median_area": NaN,
+      "median_aspect_ratio": NaN,
+      "median_center_delta": NaN
+    },
+    "overlap_gates": {
+      "status": "ok",
+      "pairs": {
+        "image->left_wrist_image": {
+          "status": "unavailable",
+          "reason": "opencv_required_for_feature_overlap",
+          "sampled_frames": 32,
+          "ok_frames": 0,
+          "ok_fraction": 0.0,
+          "median_matches": 0.0,
+          "median_inliers": 0.0,
+          "median_coverage": 0.0,
+          "median_correlation": -0.051757333625033784
+        },
+        "image->right_wrist_image": {
+          "status": "unavailable",
+          "reason": "opencv_required_for_feature_overlap",
+          "sampled_frames": 32,
+          "ok_frames": 0,
+          "ok_fraction": 0.0,
+          "median_matches": 0.0,
+          "median_inliers": 0.0,
+          "median_coverage": 0.0,
+          "median_correlation": 0.18852284412585424
+        },
+        "left_wrist_image->right_wrist_image": {
+          "status": "unavailable",
+          "reason": "opencv_required_for_feature_overlap",
+          "sampled_frames": 32,
+          "ok_frames": 0,
+          "ok_fraction": 0.0,
+          "median_matches": 0.0,
+          "median_inliers": 0.0,
+          "median_coverage": 0.0,
+          "median_correlation": -0.12128030595860481
+        }
+      },
+      "comparable_pairs": [],
+      "comparable_pair_count": 0,
+      "not_comparable_pairs": [
+        "image->left_wrist_image",
+        "image->right_wrist_image",
+        "left_wrist_image->right_wrist_image"
+      ],
+      "all_pairs_unavailable": true
+    },
+    "motion_coupling": {
+      "status": "ok",
+      "reason": "state_visual_motion_coupling",
+      "sample_count": 190,
+      "zero_lag_correlation": 0.371719,
+      "best_lag": 3,
+      "best_abs_correlation": 0.711433,
+      "best_signed_correlation": 0.711433,
+      "lag_correlations": {
+        "-5": 0.209342,
+        "-4": 0.232234,
+        "-3": 0.255181,
+        "-2": 0.261207,
+        "-1": 0.29724,
+        "0": 0.371719,
+        "1": 0.421265,
+        "2": 0.564451,
+        "3": 0.711433,
+        "4": 0.65683,
+        "5": 0.496119
+      },
+      "state_active_visual_quiet_fraction": 0.03684210526315789,
+      "visual_active_state_quiet_fraction": 0.010526315789473684,
+      "reference_corr_floor": 0.32786949,
+      "reference_state_active_visual_quiet_ceiling": 0.12,
+      "reference_visual_active_state_quiet_ceiling": 0.12
+    },
+    "bimanual_rigidity": {
+      "status": "unavailable",
+      "reason": "state_frame_mode_unknown",
+      "state_frame_mode": "unknown",
+      "constraint_level": "disabled_by_gate"
+    },
+    "root_cause_windows": [
+      {
+        "type": "not_comparable",
+        "reason": "pairwise_overlap_gate_failed"
+      }
+    ],
+    "summary": {
+      "finding_count": 0,
+      "comparable_pair_count": 0,
+      "panel_valid_fraction": 0.0,
+      "motion_coupling_status": "ok",
+      "motion_coupling_best_lag": 3,
+      "motion_coupling_best_abs_correlation": 0.711433,
+      "state_active_visual_quiet_fraction": 0.03684210526315789,
+      "visual_active_state_quiet_fraction": 0.010526315789473684
+    }
+  },
+  {
+    "episode_index": 9,
+    "task_index": 0,
+    "status": "ok",
+    "main_camera": {
+      "status": "ok",
+      "reason": "downsampled_frame_difference",
+      "duplicate_frame_fraction": 0.0,
+      "median_background_motion": 3.3648756742477417
+    },
+    "panel_proxy": {
+      "status": "unavailable",
+      "reason": "insufficient_panel_proxy_support",
+      "valid_fraction": 0.0,
+      "median_area": NaN,
+      "median_aspect_ratio": NaN,
+      "median_center_delta": NaN
+    },
+    "overlap_gates": {
+      "status": "ok",
+      "pairs": {
+        "image->left_wrist_image": {
+          "status": "unavailable",
+          "reason": "opencv_required_for_feature_overlap",
+          "sampled_frames": 33,
+          "ok_frames": 0,
+          "ok_fraction": 0.0,
+          "median_matches": 0.0,
+          "median_inliers": 0.0,
+          "median_coverage": 0.0,
+          "median_correlation": 0.06907742836964484
+        },
+        "image->right_wrist_image": {
+          "status": "unavailable",
+          "reason": "opencv_required_for_feature_overlap",
+          "sampled_frames": 33,
+          "ok_frames": 0,
+          "ok_fraction": 0.0,
+          "median_matches": 0.0,
+          "median_inliers": 0.0,
+          "median_coverage": 0.0,
+          "median_correlation": 0.13172283252706138
+        },
+        "left_wrist_image->right_wrist_image": {
+          "status": "unavailable",
+          "reason": "opencv_required_for_feature_overlap",
+          "sampled_frames": 33,
+          "ok_frames": 0,
+          "ok_fraction": 0.0,
+          "median_matches": 0.0,
+          "median_inliers": 0.0,
+          "median_coverage": 0.0,
+          "median_correlation": -0.1231829652917189
+        }
+      },
+      "comparable_pairs": [],
+      "comparable_pair_count": 0,
+      "not_comparable_pairs": [
+        "image->left_wrist_image",
+        "image->right_wrist_image",
+        "left_wrist_image->right_wrist_image"
+      ],
+      "all_pairs_unavailable": true
+    },
+    "motion_coupling": {
+      "status": "ok",
+      "reason": "state_visual_motion_coupling",
+      "sample_count": 194,
+      "zero_lag_correlation": 0.26196,
+      "best_lag": 5,
+      "best_abs_correlation": 0.554724,
+      "best_signed_correlation": 0.554724,
+      "lag_correlations": {
+        "-5": 0.17941,
+        "-4": 0.204776,
+        "-3": 0.21157,
+        "-2": 0.213901,
+        "-1": 0.236446,
+        "0": 0.26196,
+        "1": 0.298838,
+        "2": 0.379056,
+        "3": 0.464953,
+        "4": 0.543825,
+        "5": 0.554724
+      },
+      "state_active_visual_quiet_fraction": 0.03608247422680412,
+      "visual_active_state_quiet_fraction": 0.020618556701030927,
+      "reference_corr_floor": 0.32786949,
+      "reference_state_active_visual_quiet_ceiling": 0.12,
+      "reference_visual_active_state_quiet_ceiling": 0.12
+    },
+    "bimanual_rigidity": {
+      "status": "unavailable",
+      "reason": "state_frame_mode_unknown",
+      "state_frame_mode": "unknown",
+      "constraint_level": "disabled_by_gate"
+    },
+    "root_cause_windows": [
+      {
+        "type": "not_comparable",
+        "reason": "pairwise_overlap_gate_failed"
+      }
+    ],
+    "summary": {
+      "finding_count": 0,
+      "comparable_pair_count": 0,
+      "panel_valid_fraction": 0.0,
+      "motion_coupling_status": "ok",
+      "motion_coupling_best_lag": 5,
+      "motion_coupling_best_abs_correlation": 0.554724,
+      "state_active_visual_quiet_fraction": 0.03608247422680412,
+      "visual_active_state_quiet_fraction": 0.020618556701030927
+    }
+  },
+  {
+    "episode_index": 10,
+    "task_index": 1,
+    "status": "ok",
+    "main_camera": {
+      "status": "ok",
+      "reason": "downsampled_frame_difference",
+      "duplicate_frame_fraction": 0.0,
+      "median_background_motion": 4.564253807067871
+    },
+    "panel_proxy": {
+      "status": "unavailable",
+      "reason": "insufficient_panel_proxy_support",
+      "valid_fraction": 0.0,
+      "median_area": NaN,
+      "median_aspect_ratio": NaN,
+      "median_center_delta": NaN
+    },
+    "overlap_gates": {
+      "status": "ok",
+      "pairs": {
+        "image->left_wrist_image": {
+          "status": "unavailable",
+          "reason": "opencv_required_for_feature_overlap",
+          "sampled_frames": 33,
+          "ok_frames": 0,
+          "ok_fraction": 0.0,
+          "median_matches": 0.0,
+          "median_inliers": 0.0,
+          "median_coverage": 0.0,
+          "median_correlation": 0.23899214214441286
+        },
+        "image->right_wrist_image": {
+          "status": "unavailable",
+          "reason": "opencv_required_for_feature_overlap",
+          "sampled_frames": 33,
+          "ok_frames": 0,
+          "ok_fraction": 0.0,
+          "median_matches": 0.0,
+          "median_inliers": 0.0,
+          "median_coverage": 0.0,
+          "median_correlation": 0.12098896930700742
+        },
+        "left_wrist_image->right_wrist_image": {
+          "status": "unavailable",
+          "reason": "opencv_required_for_feature_overlap",
+          "sampled_frames": 33,
+          "ok_frames": 0,
+          "ok_fraction": 0.0,
+          "median_matches": 0.0,
+          "median_inliers": 0.0,
+          "median_coverage": 0.0,
+          "median_correlation": -0.07952801585013133
+        }
+      },
+      "comparable_pairs": [],
+      "comparable_pair_count": 0,
+      "not_comparable_pairs": [
+        "image->left_wrist_image",
+        "image->right_wrist_image",
+        "left_wrist_image->right_wrist_image"
+      ],
+      "all_pairs_unavailable": true
+    },
+    "motion_coupling": {
+      "status": "ok",
+      "reason": "state_visual_motion_coupling",
+      "sample_count": 195,
+      "zero_lag_correlation": 0.253847,
+      "best_lag": 4,
+      "best_abs_correlation": 0.588335,
+      "best_signed_correlation": 0.588335,
+      "lag_correlations": {
+        "-5": 0.257402,
+        "-4": 0.277786,
+        "-3": 0.260904,
+        "-2": 0.246226,
+        "-1": 0.257293,
+        "0": 0.253847,
+        "1": 0.325809,
+        "2": 0.369006,
+        "3": 0.417552,
+        "4": 0.588335,
+        "5": 0.518652
+      },
+      "state_active_visual_quiet_fraction": 0.035897435897435895,
+      "visual_active_state_quiet_fraction": 0.005128205128205128,
+      "reference_corr_floor": 0.32786949,
+      "reference_state_active_visual_quiet_ceiling": 0.12,
+      "reference_visual_active_state_quiet_ceiling": 0.12
+    },
+    "bimanual_rigidity": {
+      "status": "unavailable",
+      "reason": "state_frame_mode_unknown",
+      "state_frame_mode": "unknown",
+      "constraint_level": "disabled_by_gate"
+    },
+    "root_cause_windows": [
+      {
+        "type": "not_comparable",
+        "reason": "pairwise_overlap_gate_failed"
+      }
+    ],
+    "summary": {
+      "finding_count": 0,
+      "comparable_pair_count": 0,
+      "panel_valid_fraction": 0.0,
+      "motion_coupling_status": "ok",
+      "motion_coupling_best_lag": 4,
+      "motion_coupling_best_abs_correlation": 0.588335,
+      "state_active_visual_quiet_fraction": 0.035897435897435895,
+      "visual_active_state_quiet_fraction": 0.005128205128205128
+    }
+  },
+  {
+    "episode_index": 11,
+    "task_index": 0,
+    "status": "ok",
+    "main_camera": {
+      "status": "ok",
+      "reason": "downsampled_frame_difference",
+      "duplicate_frame_fraction": 0.0,
+      "median_background_motion": 5.074617385864258
+    },
+    "panel_proxy": {
+      "status": "unavailable",
+      "reason": "insufficient_panel_proxy_support",
+      "valid_fraction": 0.0,
+      "median_area": NaN,
+      "median_aspect_ratio": NaN,
+      "median_center_delta": NaN
+    },
+    "overlap_gates": {
+      "status": "ok",
+      "pairs": {
+        "image->left_wrist_image": {
+          "status": "unavailable",
+          "reason": "opencv_required_for_feature_overlap",
+          "sampled_frames": 34,
+          "ok_frames": 0,
+          "ok_fraction": 0.0,
+          "median_matches": 0.0,
+          "median_inliers": 0.0,
+          "median_coverage": 0.0,
+          "median_correlation": -0.04823859262300619
+        },
+        "image->right_wrist_image": {
+          "status": "unavailable",
+          "reason": "opencv_required_for_feature_overlap",
+          "sampled_frames": 34,
+          "ok_frames": 0,
+          "ok_fraction": 0.0,
+          "median_matches": 0.0,
+          "median_inliers": 0.0,
+          "median_coverage": 0.0,
+          "median_correlation": 0.10908432280674762
+        },
+        "left_wrist_image->right_wrist_image": {
+          "status": "unavailable",
+          "reason": "opencv_required_for_feature_overlap",
+          "sampled_frames": 34,
+          "ok_frames": 0,
+          "ok_fraction": 0.0,
+          "median_matches": 0.0,
+          "median_inliers": 0.0,
+          "median_coverage": 0.0,
+          "median_correlation": -0.10580132435896789
+        }
+      },
+      "comparable_pairs": [],
+      "comparable_pair_count": 0,
+      "not_comparable_pairs": [
+        "image->left_wrist_image",
+        "image->right_wrist_image",
+        "left_wrist_image->right_wrist_image"
+      ],
+      "all_pairs_unavailable": true
+    },
+    "motion_coupling": {
+      "status": "ok",
+      "reason": "state_visual_motion_coupling",
+      "sample_count": 201,
+      "zero_lag_correlation": 0.483004,
+      "best_lag": 3,
+      "best_abs_correlation": 0.657666,
+      "best_signed_correlation": 0.657666,
+      "lag_correlations": {
+        "-5": 0.24634,
+        "-4": 0.297299,
+        "-3": 0.3384,
+        "-2": 0.400247,
+        "-1": 0.435956,
+        "0": 0.483004,
+        "1": 0.528055,
+        "2": 0.573341,
+        "3": 0.657666,
+        "4": 0.642139,
+        "5": 0.5563
+      },
+      "state_active_visual_quiet_fraction": 0.01990049751243781,
+      "visual_active_state_quiet_fraction": 0.0,
+      "reference_corr_floor": 0.32786949,
+      "reference_state_active_visual_quiet_ceiling": 0.12,
+      "reference_visual_active_state_quiet_ceiling": 0.12
+    },
+    "bimanual_rigidity": {
+      "status": "unavailable",
+      "reason": "state_frame_mode_unknown",
+      "state_frame_mode": "unknown",
+      "constraint_level": "disabled_by_gate"
+    },
+    "root_cause_windows": [
+      {
+        "type": "not_comparable",
+        "reason": "pairwise_overlap_gate_failed"
+      }
+    ],
+    "summary": {
+      "finding_count": 0,
+      "comparable_pair_count": 0,
+      "panel_valid_fraction": 0.0,
+      "motion_coupling_status": "ok",
+      "motion_coupling_best_lag": 3,
+      "motion_coupling_best_abs_correlation": 0.657666,
+      "state_active_visual_quiet_fraction": 0.01990049751243781,
+      "visual_active_state_quiet_fraction": 0.0
+    }
+  },
+  {
+    "episode_index": 12,
+    "task_index": 1,
+    "status": "ok",
+    "main_camera": {
+      "status": "ok",
+      "reason": "downsampled_frame_difference",
+      "duplicate_frame_fraction": 0.0,
+      "median_background_motion": 5.455436706542969
+    },
+    "panel_proxy": {
+      "status": "unavailable",
+      "reason": "insufficient_panel_proxy_support",
+      "valid_fraction": 0.0,
+      "median_area": NaN,
+      "median_aspect_ratio": NaN,
+      "median_center_delta": NaN
+    },
+    "overlap_gates": {
+      "status": "ok",
+      "pairs": {
+        "image->left_wrist_image": {
+          "status": "unavailable",
+          "reason": "opencv_required_for_feature_overlap",
+          "sampled_frames": 35,
+          "ok_frames": 0,
+          "ok_fraction": 0.0,
+          "median_matches": 0.0,
+          "median_inliers": 0.0,
+          "median_coverage": 0.0,
+          "median_correlation": 0.26792539504865237
+        },
+        "image->right_wrist_image": {
+          "status": "unavailable",
+          "reason": "opencv_required_for_feature_overlap",
+          "sampled_frames": 35,
+          "ok_frames": 0,
+          "ok_fraction": 0.0,
+          "median_matches": 0.0,
+          "median_inliers": 0.0,
+          "median_coverage": 0.0,
+          "median_correlation": 0.12431562822461287
+        },
+        "left_wrist_image->right_wrist_image": {
+          "status": "unavailable",
+          "reason": "opencv_required_for_feature_overlap",
+          "sampled_frames": 35,
+          "ok_frames": 0,
+          "ok_fraction": 0.0,
+          "median_matches": 0.0,
+          "median_inliers": 0.0,
+          "median_coverage": 0.0,
+          "median_correlation": -0.035746126186093304
+        }
+      },
+      "comparable_pairs": [],
+      "comparable_pair_count": 0,
+      "not_comparable_pairs": [
+        "image->left_wrist_image",
+        "image->right_wrist_image",
+        "left_wrist_image->right_wrist_image"
+      ],
+      "all_pairs_unavailable": true
+    },
+    "motion_coupling": {
+      "status": "ok",
+      "reason": "state_visual_motion_coupling",
+      "sample_count": 171,
+      "zero_lag_correlation": 0.270385,
+      "best_lag": 4,
+      "best_abs_correlation": 0.586786,
+      "best_signed_correlation": 0.586786,
+      "lag_correlations": {
+        "-5": 0.344818,
+        "-4": 0.329657,
+        "-3": 0.29206,
+        "-2": 0.263961,
+        "-1": 0.233256,
+        "0": 0.270385,
+        "1": 0.325979,
+        "2": 0.379291,
+        "3": 0.491887,
+        "4": 0.586786,
+        "5": 0.47671
+      },
+      "state_active_visual_quiet_fraction": 0.029239766081871343,
+      "visual_active_state_quiet_fraction": 0.011695906432748537,
+      "reference_corr_floor": 0.32786949,
+      "reference_state_active_visual_quiet_ceiling": 0.12,
+      "reference_visual_active_state_quiet_ceiling": 0.12
+    },
+    "bimanual_rigidity": {
+      "status": "unavailable",
+      "reason": "state_frame_mode_unknown",
+      "state_frame_mode": "unknown",
+      "constraint_level": "disabled_by_gate"
+    },
+    "root_cause_windows": [
+      {
+        "type": "not_comparable",
+        "reason": "pairwise_overlap_gate_failed"
+      }
+    ],
+    "summary": {
+      "finding_count": 0,
+      "comparable_pair_count": 0,
+      "panel_valid_fraction": 0.0,
+      "motion_coupling_status": "ok",
+      "motion_coupling_best_lag": 4,
+      "motion_coupling_best_abs_correlation": 0.586786,
+      "state_active_visual_quiet_fraction": 0.029239766081871343,
+      "visual_active_state_quiet_fraction": 0.011695906432748537
+    }
+  },
+  {
+    "episode_index": 13,
+    "task_index": 0,
+    "status": "ok",
+    "main_camera": {
+      "status": "ok",
+      "reason": "downsampled_frame_difference",
+      "duplicate_frame_fraction": 0.0,
+      "median_background_motion": 3.1728315353393555
+    },
+    "panel_proxy": {
+      "status": "unavailable",
+      "reason": "insufficient_panel_proxy_support",
+      "valid_fraction": 0.0,
+      "median_area": NaN,
+      "median_aspect_ratio": NaN,
+      "median_center_delta": NaN
+    },
+    "overlap_gates": {
+      "status": "ok",
+      "pairs": {
+        "image->left_wrist_image": {
+          "status": "unavailable",
+          "reason": "opencv_required_for_feature_overlap",
+          "sampled_frames": 31,
+          "ok_frames": 0,
+          "ok_fraction": 0.0,
+          "median_matches": 0.0,
+          "median_inliers": 0.0,
+          "median_coverage": 0.0,
+          "median_correlation": 0.06761709788384448
+        },
+        "image->right_wrist_image": {
+          "status": "unavailable",
+          "reason": "opencv_required_for_feature_overlap",
+          "sampled_frames": 31,
+          "ok_frames": 0,
+          "ok_fraction": 0.0,
+          "median_matches": 0.0,
+          "median_inliers": 0.0,
+          "median_coverage": 0.0,
+          "median_correlation": 0.21684494338614477
+        },
+        "left_wrist_image->right_wrist_image": {
+          "status": "unavailable",
+          "reason": "opencv_required_for_feature_overlap",
+          "sampled_frames": 31,
+          "ok_frames": 0,
+          "ok_fraction": 0.0,
+          "median_matches": 0.0,
+          "median_inliers": 0.0,
+          "median_coverage": 0.0,
+          "median_correlation": -0.15461173399498312
+        }
+      },
+      "comparable_pairs": [],
+      "comparable_pair_count": 0,
+      "not_comparable_pairs": [
+        "image->left_wrist_image",
+        "image->right_wrist_image",
+        "left_wrist_image->right_wrist_image"
+      ],
+      "all_pairs_unavailable": true
+    },
+    "motion_coupling": {
+      "status": "ok",
+      "reason": "state_visual_motion_coupling",
+      "sample_count": 303,
+      "zero_lag_correlation": 0.366,
+      "best_lag": 5,
+      "best_abs_correlation": 0.725754,
+      "best_signed_correlation": 0.725754,
+      "lag_correlations": {
+        "-5": 0.080644,
+        "-4": 0.111855,
+        "-3": 0.173529,
+        "-2": 0.257547,
+        "-1": 0.302254,
+        "0": 0.366,
+        "1": 0.467279,
+        "2": 0.551631,
+        "3": 0.588211,
+        "4": 0.698131,
+        "5": 0.725754
+      },
+      "state_active_visual_quiet_fraction": 0.033003300330033,
+      "visual_active_state_quiet_fraction": 0.0231023102310231,
+      "reference_corr_floor": 0.32786949,
+      "reference_state_active_visual_quiet_ceiling": 0.12,
+      "reference_visual_active_state_quiet_ceiling": 0.12
+    },
+    "bimanual_rigidity": {
+      "status": "unavailable",
+      "reason": "state_frame_mode_unknown",
+      "state_frame_mode": "unknown",
+      "constraint_level": "disabled_by_gate"
+    },
+    "root_cause_windows": [
+      {
+        "type": "not_comparable",
+        "reason": "pairwise_overlap_gate_failed"
+      }
+    ],
+    "summary": {
+      "finding_count": 0,
+      "comparable_pair_count": 0,
+      "panel_valid_fraction": 0.0,
+      "motion_coupling_status": "ok",
+      "motion_coupling_best_lag": 5,
+      "motion_coupling_best_abs_correlation": 0.725754,
+      "state_active_visual_quiet_fraction": 0.033003300330033,
+      "visual_active_state_quiet_fraction": 0.0231023102310231
+    }
+  },
+  {
+    "episode_index": 14,
+    "task_index": 0,
+    "status": "ok",
+    "main_camera": {
+      "status": "ok",
+      "reason": "downsampled_frame_difference",
+      "duplicate_frame_fraction": 0.0,
+      "median_background_motion": 3.8017377853393555
+    },
+    "panel_proxy": {
+      "status": "unavailable",
+      "reason": "insufficient_panel_proxy_support",
+      "valid_fraction": 0.0,
+      "median_area": NaN,
+      "median_aspect_ratio": NaN,
+      "median_center_delta": NaN
+    },
+    "overlap_gates": {
+      "status": "ok",
+      "pairs": {
+        "image->left_wrist_image": {
+          "status": "unavailable",
+          "reason": "opencv_required_for_feature_overlap",
+          "sampled_frames": 34,
+          "ok_frames": 0,
+          "ok_fraction": 0.0,
+          "median_matches": 0.0,
+          "median_inliers": 0.0,
+          "median_coverage": 0.0,
+          "median_correlation": -0.02819456296737633
+        },
+        "image->right_wrist_image": {
+          "status": "unavailable",
+          "reason": "opencv_required_for_feature_overlap",
+          "sampled_frames": 34,
+          "ok_frames": 0,
+          "ok_fraction": 0.0,
+          "median_matches": 0.0,
+          "median_inliers": 0.0,
+          "median_coverage": 0.0,
+          "median_correlation": 0.19901006930626702
+        },
+        "left_wrist_image->right_wrist_image": {
+          "status": "unavailable",
+          "reason": "opencv_required_for_feature_overlap",
+          "sampled_frames": 34,
+          "ok_frames": 0,
+          "ok_fraction": 0.0,
+          "median_matches": 0.0,
+          "median_inliers": 0.0,
+          "median_coverage": 0.0,
+          "median_correlation": -0.22596085150693096
+        }
+      },
+      "comparable_pairs": [],
+      "comparable_pair_count": 0,
+      "not_comparable_pairs": [
+        "image->left_wrist_image",
+        "image->right_wrist_image",
+        "left_wrist_image->right_wrist_image"
+      ],
+      "all_pairs_unavailable": true
+    },
+    "motion_coupling": {
+      "status": "ok",
+      "reason": "state_visual_motion_coupling",
+      "sample_count": 267,
+      "zero_lag_correlation": 0.253595,
+      "best_lag": 4,
+      "best_abs_correlation": 0.600911,
+      "best_signed_correlation": 0.600911,
+      "lag_correlations": {
+        "-5": 0.104723,
+        "-4": 0.168543,
+        "-3": 0.185333,
+        "-2": 0.178504,
+        "-1": 0.212472,
+        "0": 0.253595,
+        "1": 0.29736,
+        "2": 0.368305,
+        "3": 0.515464,
+        "4": 0.600911,
+        "5": 0.433539
+      },
+      "state_active_visual_quiet_fraction": 0.0449438202247191,
+      "visual_active_state_quiet_fraction": 0.04868913857677903,
+      "reference_corr_floor": 0.32786949,
+      "reference_state_active_visual_quiet_ceiling": 0.12,
+      "reference_visual_active_state_quiet_ceiling": 0.12
+    },
+    "bimanual_rigidity": {
+      "status": "unavailable",
+      "reason": "state_frame_mode_unknown",
+      "state_frame_mode": "unknown",
+      "constraint_level": "disabled_by_gate"
+    },
+    "root_cause_windows": [
+      {
+        "type": "not_comparable",
+        "reason": "pairwise_overlap_gate_failed"
+      }
+    ],
+    "summary": {
+      "finding_count": 0,
+      "comparable_pair_count": 0,
+      "panel_valid_fraction": 0.0,
+      "motion_coupling_status": "ok",
+      "motion_coupling_best_lag": 4,
+      "motion_coupling_best_abs_correlation": 0.600911,
+      "state_active_visual_quiet_fraction": 0.0449438202247191,
+      "visual_active_state_quiet_fraction": 0.04868913857677903
+    }
+  },
+  {
+    "episode_index": 15,
+    "task_index": 1,
+    "status": "ok",
+    "main_camera": {
+      "status": "ok",
+      "reason": "downsampled_frame_difference",
+      "duplicate_frame_fraction": 0.0,
+      "median_background_motion": 4.768694162368774
+    },
+    "panel_proxy": {
+      "status": "unavailable",
+      "reason": "insufficient_panel_proxy_support",
+      "valid_fraction": 0.0,
+      "median_area": NaN,
+      "median_aspect_ratio": NaN,
+      "median_center_delta": NaN
+    },
+    "overlap_gates": {
+      "status": "ok",
+      "pairs": {
+        "image->left_wrist_image": {
+          "status": "unavailable",
+          "reason": "opencv_required_for_feature_overlap",
+          "sampled_frames": 31,
+          "ok_frames": 0,
+          "ok_fraction": 0.0,
+          "median_matches": 0.0,
+          "median_inliers": 0.0,
+          "median_coverage": 0.0,
+          "median_correlation": 0.1995488459054026
+        },
+        "image->right_wrist_image": {
+          "status": "unavailable",
+          "reason": "opencv_required_for_feature_overlap",
+          "sampled_frames": 31,
+          "ok_frames": 0,
+          "ok_fraction": 0.0,
+          "median_matches": 0.0,
+          "median_inliers": 0.0,
+          "median_coverage": 0.0,
+          "median_correlation": 0.17719175040023386
+        },
+        "left_wrist_image->right_wrist_image": {
+          "status": "unavailable",
+          "reason": "opencv_required_for_feature_overlap",
+          "sampled_frames": 31,
+          "ok_frames": 0,
+          "ok_fraction": 0.0,
+          "median_matches": 0.0,
+          "median_inliers": 0.0,
+          "median_coverage": 0.0,
+          "median_correlation": -0.07775770809630729
+        }
+      },
+      "comparable_pairs": [],
+      "comparable_pair_count": 0,
+      "not_comparable_pairs": [
+        "image->left_wrist_image",
+        "image->right_wrist_image",
+        "left_wrist_image->right_wrist_image"
+      ],
+      "all_pairs_unavailable": true
+    },
+    "motion_coupling": {
+      "status": "ok",
+      "reason": "state_visual_motion_coupling",
+      "sample_count": 180,
+      "zero_lag_correlation": 0.253744,
+      "best_lag": 5,
+      "best_abs_correlation": 0.343667,
+      "best_signed_correlation": 0.343667,
+      "lag_correlations": {
+        "-5": 0.118083,
+        "-4": 0.17344,
+        "-3": 0.19042,
+        "-2": 0.18012,
+        "-1": 0.216198,
+        "0": 0.253744,
+        "1": 0.259597,
+        "2": 0.263445,
+        "3": 0.242007,
+        "4": 0.326357,
+        "5": 0.343667
+      },
+      "state_active_visual_quiet_fraction": 0.05,
+      "visual_active_state_quiet_fraction": 0.005555555555555556,
+      "reference_corr_floor": 0.32786949,
+      "reference_state_active_visual_quiet_ceiling": 0.12,
+      "reference_visual_active_state_quiet_ceiling": 0.12
+    },
+    "bimanual_rigidity": {
+      "status": "unavailable",
+      "reason": "state_frame_mode_unknown",
+      "state_frame_mode": "unknown",
+      "constraint_level": "disabled_by_gate"
+    },
+    "root_cause_windows": [
+      {
+        "type": "not_comparable",
+        "reason": "pairwise_overlap_gate_failed"
+      }
+    ],
+    "summary": {
+      "finding_count": 0,
+      "comparable_pair_count": 0,
+      "panel_valid_fraction": 0.0,
+      "motion_coupling_status": "ok",
+      "motion_coupling_best_lag": 5,
+      "motion_coupling_best_abs_correlation": 0.343667,
+      "state_active_visual_quiet_fraction": 0.05,
+      "visual_active_state_quiet_fraction": 0.005555555555555556
+    }
+  },
+  {
+    "episode_index": 16,
+    "task_index": 1,
+    "status": "ok",
+    "main_camera": {
+      "status": "ok",
+      "reason": "downsampled_frame_difference",
+      "duplicate_frame_fraction": 0.0,
+      "median_background_motion": 5.257094860076904
+    },
+    "panel_proxy": {
+      "status": "unavailable",
+      "reason": "insufficient_panel_proxy_support",
+      "valid_fraction": 0.0,
+      "median_area": NaN,
+      "median_aspect_ratio": NaN,
+      "median_center_delta": NaN
+    },
+    "overlap_gates": {
+      "status": "ok",
+      "pairs": {
+        "image->left_wrist_image": {
+          "status": "unavailable",
+          "reason": "opencv_required_for_feature_overlap",
+          "sampled_frames": 30,
+          "ok_frames": 0,
+          "ok_fraction": 0.0,
+          "median_matches": 0.0,
+          "median_inliers": 0.0,
+          "median_coverage": 0.0,
+          "median_correlation": 0.19966108274888006
+        },
+        "image->right_wrist_image": {
+          "status": "unavailable",
+          "reason": "opencv_required_for_feature_overlap",
+          "sampled_frames": 30,
+          "ok_frames": 0,
+          "ok_fraction": 0.0,
+          "median_matches": 0.0,
+          "median_inliers": 0.0,
+          "median_coverage": 0.0,
+          "median_correlation": 0.16872508197234076
+        },
+        "left_wrist_image->right_wrist_image": {
+          "status": "unavailable",
+          "reason": "opencv_required_for_feature_overlap",
+          "sampled_frames": 30,
+          "ok_frames": 0,
+          "ok_fraction": 0.0,
+          "median_matches": 0.0,
+          "median_inliers": 0.0,
+          "median_coverage": 0.0,
+          "median_correlation": -0.1514322507207055
+        }
+      },
+      "comparable_pairs": [],
+      "comparable_pair_count": 0,
+      "not_comparable_pairs": [
+        "image->left_wrist_image",
+        "image->right_wrist_image",
+        "left_wrist_image->right_wrist_image"
+      ],
+      "all_pairs_unavailable": true
+    },
+    "motion_coupling": {
+      "status": "ok",
+      "reason": "state_visual_motion_coupling",
+      "sample_count": 179,
+      "zero_lag_correlation": 0.333886,
+      "best_lag": 4,
+      "best_abs_correlation": 0.527983,
+      "best_signed_correlation": 0.527983,
+      "lag_correlations": {
+        "-5": 0.234205,
+        "-4": 0.229503,
+        "-3": 0.263194,
+        "-2": 0.272297,
+        "-1": 0.291276,
+        "0": 0.333886,
+        "1": 0.351885,
+        "2": 0.383577,
+        "3": 0.492049,
+        "4": 0.527983,
+        "5": 0.458887
+      },
+      "state_active_visual_quiet_fraction": 0.00558659217877095,
+      "visual_active_state_quiet_fraction": 0.0111731843575419,
+      "reference_corr_floor": 0.32786949,
+      "reference_state_active_visual_quiet_ceiling": 0.12,
+      "reference_visual_active_state_quiet_ceiling": 0.12
+    },
+    "bimanual_rigidity": {
+      "status": "unavailable",
+      "reason": "state_frame_mode_unknown",
+      "state_frame_mode": "unknown",
+      "constraint_level": "disabled_by_gate"
+    },
+    "root_cause_windows": [
+      {
+        "type": "not_comparable",
+        "reason": "pairwise_overlap_gate_failed"
+      }
+    ],
+    "summary": {
+      "finding_count": 0,
+      "comparable_pair_count": 0,
+      "panel_valid_fraction": 0.0,
+      "motion_coupling_status": "ok",
+      "motion_coupling_best_lag": 4,
+      "motion_coupling_best_abs_correlation": 0.527983,
+      "state_active_visual_quiet_fraction": 0.00558659217877095,
+      "visual_active_state_quiet_fraction": 0.0111731843575419
+    }
+  },
+  {
+    "episode_index": 17,
+    "task_index": 1,
+    "status": "ok",
+    "main_camera": {
+      "status": "ok",
+      "reason": "downsampled_frame_difference",
+      "duplicate_frame_fraction": 0.0,
+      "median_background_motion": 4.180963039398193
+    },
+    "panel_proxy": {
+      "status": "unavailable",
+      "reason": "insufficient_panel_proxy_support",
+      "valid_fraction": 0.0,
+      "median_area": NaN,
+      "median_aspect_ratio": NaN,
+      "median_center_delta": NaN
+    },
+    "overlap_gates": {
+      "status": "ok",
+      "pairs": {
+        "image->left_wrist_image": {
+          "status": "unavailable",
+          "reason": "opencv_required_for_feature_overlap",
+          "sampled_frames": 34,
+          "ok_frames": 0,
+          "ok_fraction": 0.0,
+          "median_matches": 0.0,
+          "median_inliers": 0.0,
+          "median_coverage": 0.0,
+          "median_correlation": 0.16283762725116488
+        },
+        "image->right_wrist_image": {
+          "status": "unavailable",
+          "reason": "opencv_required_for_feature_overlap",
+          "sampled_frames": 34,
+          "ok_frames": 0,
+          "ok_fraction": 0.0,
+          "median_matches": 0.0,
+          "median_inliers": 0.0,
+          "median_coverage": 0.0,
+          "median_correlation": 0.14940051100558027
+        },
+        "left_wrist_image->right_wrist_image": {
+          "status": "unavailable",
+          "reason": "opencv_required_for_feature_overlap",
+          "sampled_frames": 34,
+          "ok_frames": 0,
+          "ok_fraction": 0.0,
+          "median_matches": 0.0,
+          "median_inliers": 0.0,
+          "median_coverage": 0.0,
+          "median_correlation": 0.06097021543199553
+        }
+      },
+      "comparable_pairs": [],
+      "comparable_pair_count": 0,
+      "not_comparable_pairs": [
+        "image->left_wrist_image",
+        "image->right_wrist_image",
+        "left_wrist_image->right_wrist_image"
+      ],
+      "all_pairs_unavailable": true
+    },
+    "motion_coupling": {
+      "status": "ok",
+      "reason": "state_visual_motion_coupling",
+      "sample_count": 169,
+      "zero_lag_correlation": 0.49471,
+      "best_lag": 5,
+      "best_abs_correlation": 0.580189,
+      "best_signed_correlation": 0.580189,
+      "lag_correlations": {
+        "-5": 0.411992,
+        "-4": 0.413118,
+        "-3": 0.424459,
+        "-2": 0.481596,
+        "-1": 0.497742,
+        "0": 0.49471,
+        "1": 0.531531,
+        "2": 0.553085,
+        "3": 0.534317,
+        "4": 0.573785,
+        "5": 0.580189
+      },
+      "state_active_visual_quiet_fraction": 0.011834319526627219,
+      "visual_active_state_quiet_fraction": 0.0,
+      "reference_corr_floor": 0.32786949,
+      "reference_state_active_visual_quiet_ceiling": 0.12,
+      "reference_visual_active_state_quiet_ceiling": 0.12
+    },
+    "bimanual_rigidity": {
+      "status": "unavailable",
+      "reason": "state_frame_mode_unknown",
+      "state_frame_mode": "unknown",
+      "constraint_level": "disabled_by_gate"
+    },
+    "root_cause_windows": [
+      {
+        "type": "not_comparable",
+        "reason": "pairwise_overlap_gate_failed"
+      }
+    ],
+    "summary": {
+      "finding_count": 0,
+      "comparable_pair_count": 0,
+      "panel_valid_fraction": 0.0,
+      "motion_coupling_status": "ok",
+      "motion_coupling_best_lag": 5,
+      "motion_coupling_best_abs_correlation": 0.580189,
+      "state_active_visual_quiet_fraction": 0.011834319526627219,
+      "visual_active_state_quiet_fraction": 0.0
+    }
+  },
+  {
+    "episode_index": 18,
+    "task_index": 0,
+    "status": "ok",
+    "main_camera": {
+      "status": "ok",
+      "reason": "downsampled_frame_difference",
+      "duplicate_frame_fraction": 0.0,
+      "median_background_motion": 3.1876195669174194
+    },
+    "panel_proxy": {
+      "status": "unavailable",
+      "reason": "insufficient_panel_proxy_support",
+      "valid_fraction": 0.0,
+      "median_area": NaN,
+      "median_aspect_ratio": NaN,
+      "median_center_delta": NaN
+    },
+    "overlap_gates": {
+      "status": "ok",
+      "pairs": {
+        "image->left_wrist_image": {
+          "status": "unavailable",
+          "reason": "opencv_required_for_feature_overlap",
+          "sampled_frames": 31,
+          "ok_frames": 0,
+          "ok_fraction": 0.0,
+          "median_matches": 0.0,
+          "median_inliers": 0.0,
+          "median_coverage": 0.0,
+          "median_correlation": 0.0027065476617097245
+        },
+        "image->right_wrist_image": {
+          "status": "unavailable",
+          "reason": "opencv_required_for_feature_overlap",
+          "sampled_frames": 31,
+          "ok_frames": 0,
+          "ok_fraction": 0.0,
+          "median_matches": 0.0,
+          "median_inliers": 0.0,
+          "median_coverage": 0.0,
+          "median_correlation": 0.15397739261802684
+        },
+        "left_wrist_image->right_wrist_image": {
+          "status": "unavailable",
+          "reason": "opencv_required_for_feature_overlap",
+          "sampled_frames": 31,
+          "ok_frames": 0,
+          "ok_fraction": 0.0,
+          "median_matches": 0.0,
+          "median_inliers": 0.0,
+          "median_coverage": 0.0,
+          "median_correlation": -0.19111601542440465
+        }
+      },
+      "comparable_pairs": [],
+      "comparable_pair_count": 0,
+      "not_comparable_pairs": [
+        "image->left_wrist_image",
+        "image->right_wrist_image",
+        "left_wrist_image->right_wrist_image"
+      ],
+      "all_pairs_unavailable": true
+    },
+    "motion_coupling": {
+      "status": "ok",
+      "reason": "state_visual_motion_coupling",
+      "sample_count": 216,
+      "zero_lag_correlation": 0.411564,
+      "best_lag": 5,
+      "best_abs_correlation": 0.590438,
+      "best_signed_correlation": 0.590438,
+      "lag_correlations": {
+        "-5": 0.252198,
+        "-4": 0.282656,
+        "-3": 0.30113,
+        "-2": 0.326636,
+        "-1": 0.366225,
+        "0": 0.411564,
+        "1": 0.457732,
+        "2": 0.496871,
+        "3": 0.535687,
+        "4": 0.586629,
+        "5": 0.590438
+      },
+      "state_active_visual_quiet_fraction": 0.018518518518518517,
+      "visual_active_state_quiet_fraction": 0.032407407407407406,
+      "reference_corr_floor": 0.32786949,
+      "reference_state_active_visual_quiet_ceiling": 0.12,
+      "reference_visual_active_state_quiet_ceiling": 0.12
+    },
+    "bimanual_rigidity": {
+      "status": "unavailable",
+      "reason": "state_frame_mode_unknown",
+      "state_frame_mode": "unknown",
+      "constraint_level": "disabled_by_gate"
+    },
+    "root_cause_windows": [
+      {
+        "type": "not_comparable",
+        "reason": "pairwise_overlap_gate_failed"
+      }
+    ],
+    "summary": {
+      "finding_count": 0,
+      "comparable_pair_count": 0,
+      "panel_valid_fraction": 0.0,
+      "motion_coupling_status": "ok",
+      "motion_coupling_best_lag": 5,
+      "motion_coupling_best_abs_correlation": 0.590438,
+      "state_active_visual_quiet_fraction": 0.018518518518518517,
+      "visual_active_state_quiet_fraction": 0.032407407407407406
+    }
+  },
+  {
+    "episode_index": 19,
+    "task_index": 0,
+    "status": "ok",
+    "main_camera": {
+      "status": "ok",
+      "reason": "downsampled_frame_difference",
+      "duplicate_frame_fraction": 0.0,
+      "median_background_motion": 3.976163864135742
+    },
+    "panel_proxy": {
+      "status": "unavailable",
+      "reason": "insufficient_panel_proxy_support",
+      "valid_fraction": 0.0,
+      "median_area": NaN,
+      "median_aspect_ratio": NaN,
+      "median_center_delta": NaN
+    },
+    "overlap_gates": {
+      "status": "ok",
+      "pairs": {
+        "image->left_wrist_image": {
+          "status": "unavailable",
+          "reason": "opencv_required_for_feature_overlap",
+          "sampled_frames": 33,
+          "ok_frames": 0,
+          "ok_fraction": 0.0,
+          "median_matches": 0.0,
+          "median_inliers": 0.0,
+          "median_coverage": 0.0,
+          "median_correlation": -0.08497508175692234
+        },
+        "image->right_wrist_image": {
+          "status": "unavailable",
+          "reason": "opencv_required_for_feature_overlap",
+          "sampled_frames": 33,
+          "ok_frames": 0,
+          "ok_fraction": 0.0,
+          "median_matches": 0.0,
+          "median_inliers": 0.0,
+          "median_coverage": 0.0,
+          "median_correlation": 0.11791098270472393
+        },
+        "left_wrist_image->right_wrist_image": {
+          "status": "unavailable",
+          "reason": "opencv_required_for_feature_overlap",
+          "sampled_frames": 33,
+          "ok_frames": 0,
+          "ok_fraction": 0.0,
+          "median_matches": 0.0,
+          "median_inliers": 0.0,
+          "median_coverage": 0.0,
+          "median_correlation": -0.2121875640711425
+        }
+      },
+      "comparable_pairs": [],
+      "comparable_pair_count": 0,
+      "not_comparable_pairs": [
+        "image->left_wrist_image",
+        "image->right_wrist_image",
+        "left_wrist_image->right_wrist_image"
+      ],
+      "all_pairs_unavailable": true
+    },
+    "motion_coupling": {
+      "status": "ok",
+      "reason": "state_visual_motion_coupling",
+      "sample_count": 163,
+      "zero_lag_correlation": 0.370859,
+      "best_lag": 4,
+      "best_abs_correlation": 0.652333,
+      "best_signed_correlation": 0.652333,
+      "lag_correlations": {
+        "-5": 0.115641,
+        "-4": 0.124312,
+        "-3": 0.1577,
+        "-2": 0.260015,
+        "-1": 0.323139,
+        "0": 0.370859,
+        "1": 0.443663,
+        "2": 0.485317,
+        "3": 0.587487,
+        "4": 0.652333,
+        "5": 0.588391
+      },
+      "state_active_visual_quiet_fraction": 0.024539877300613498,
+      "visual_active_state_quiet_fraction": 0.03067484662576687,
+      "reference_corr_floor": 0.32786949,
+      "reference_state_active_visual_quiet_ceiling": 0.12,
+      "reference_visual_active_state_quiet_ceiling": 0.12
+    },
+    "bimanual_rigidity": {
+      "status": "unavailable",
+      "reason": "state_frame_mode_unknown",
+      "state_frame_mode": "unknown",
+      "constraint_level": "disabled_by_gate"
+    },
+    "root_cause_windows": [
+      {
+        "type": "not_comparable",
+        "reason": "pairwise_overlap_gate_failed"
+      }
+    ],
+    "summary": {
+      "finding_count": 0,
+      "comparable_pair_count": 0,
+      "panel_valid_fraction": 0.0,
+      "motion_coupling_status": "ok",
+      "motion_coupling_best_lag": 4,
+      "motion_coupling_best_abs_correlation": 0.652333,
+      "state_active_visual_quiet_fraction": 0.024539877300613498,
+      "visual_active_state_quiet_fraction": 0.03067484662576687
+    }
+  }
+]
