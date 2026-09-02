@@ -1,0 +1,10 @@
+{
+  "input_root": "outputs/ablations/test_dataset_100",
+  "case_count": 100,
+  "success_count": 100,
+  "failure_count": 0,
+  "elapsed_total_sec": 3.371,
+  "throughput_cases_per_sec": 29.665,
+  "mean_case_sec": 0.034,
+  "failures": []
+}

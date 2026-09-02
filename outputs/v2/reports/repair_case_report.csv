@@ -1,0 +1,4 @@
+﻿issue_id,before_score,after_score,before_findings,after_findings,before_geometry_status,after_geometry_status,before_phase_status,after_phase_status,repair_sec,score_delta,finding_delta,evidence
+black_screen,79.0,79.0,1,1,ok,ok,unavailable,unavailable,0.148,0.0,0,"{'frames': 12, 'before_mean': 0.0, 'after_mean': 103.82967952806122}"
+state_nan,79.0,79.0,1,1,ok,ok,unavailable,unavailable,0.15,0.0,0,"{'frames': 4, 'nan_before': 1, 'nan_after': 0}"
+timestamp_non_monotonic,79.0,79.0,1,1,ok,ok,unavailable,unavailable,0.133,0.0,0,"{'frames': 1, 'before': [7.5, 77], 'after': [7.699999809265137, 77]}"

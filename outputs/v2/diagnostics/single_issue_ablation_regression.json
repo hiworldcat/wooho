@@ -1,0 +1,1747 @@
+{
+  "case_count": 23,
+  "expected_case_count": 23,
+  "negative_control": {
+    "path": "初赛数据/鍒濊禌鏁版嵁/鍙傝€冮泦/data/chunk-000/episode_000000.parquet",
+    "finding_count": 0,
+    "family_counts": {},
+    "max_severity": 0.0
+  },
+  "metrics": {
+    "true_positive_cases": 13,
+    "false_negative_cases": 10,
+    "auxiliary_false_positive_findings": 14,
+    "precision": 0.4815,
+    "recall": 0.5652,
+    "f1": 0.52,
+    "mean_interval_iou_on_detected": 0.7047
+  },
+  "thresholds": {
+    "min_recall": 0.55,
+    "min_f1": 0.5,
+    "min_mean_iou": 0.5
+  },
+  "cases": [
+    {
+      "issue_id": "black_screen",
+      "expected_detector_family": "vision_single",
+      "allowed_detector_families": [
+        "vision_illegal",
+        "vision_single"
+      ],
+      "detected": true,
+      "localized": true,
+      "best_interval_iou": 1.0,
+      "expected_span": [
+        77,
+        88
+      ],
+      "finding_count": 5,
+      "family_counts": {
+        "vision_single": 1,
+        "vision_temporal": 4
+      },
+      "official_score_total": 67.56,
+      "legacy_score_total": 65.0,
+      "phase_status": "unavailable",
+      "case_path_resolved": "/root/wooho/outputs/ablations/single_issue_cases/black_screen/episode_000000_black_screen.parquet",
+      "case_path_exists": true,
+      "top_findings": [
+        {
+          "family": "vision_single",
+          "issue_type": "black",
+          "confidence": "高置信异常",
+          "frame_start": 77,
+          "frame_end": 88,
+          "severity": 100.0,
+          "evidence": {
+            "metrics": {
+              "mean": 0.0,
+              "std": 0.0,
+              "sharpness": 0.0,
+              "black_fraction": 1.0,
+              "white_fraction": 0.0,
+              "entropy": -0.0
+            },
+            "component_scores": {
+              "black": 1.0,
+              "white": 0.0,
+              "under_exposed": 1.0,
+              "over_exposed": 0.0,
+              "low_contrast": 1.0,
+              "blur": 1.0,
+              "low_entropy": 1.0
+            },
+            "merged_evidence": [
+              {
+                "metrics": {
+                  "mean": 0.0,
+                  "std": 0.0,
+                  "sharpness": 0.0,
+                  "black_fraction": 1.0,
+                  "white_fraction": 0.0,
+                  "entropy": -0.0
+                },
+                "component_scores": {
+                  "black": 1.0,
+                  "white": 0.0,
+                  "under_exposed": 1.0,
+                  "over_exposed": 0.0,
+                  "low_contrast": 1.0,
+                  "blur": 1.0,
+                  "low_entropy": 1.0
+                }
+              },
+              {
+                "metrics": {
+                  "mean": 0.0,
+                  "std": 0.0,
+                  "sharpness": 0.0,
+                  "black_fraction": 1.0,
+                  "white_fraction": 0.0,
+                  "entropy": -0.0
+                },
+                "component_scores": {
+                  "black": 1.0,
+                  "white": 0.0,
+                  "under_exposed": 1.0,
+                  "over_exposed": 0.0,
+                  "low_contrast": 1.0,
+                  "blur": 1.0,
+                  "low_entropy": 1.0
+                }
+              },
+              {
+                "metrics": {
+                  "mean": 0.0,
+                  "std": 0.0,
+                  "sharpness": 0.0,
+                  "black_fraction": 1.0,
+                  "white_fraction": 0.0,
+                  "entropy": -0.0
+                },
+                "component_scores": {
+                  "black": 1.0,
+                  "white": 0.0,
+                  "under_exposed": 1.0,
+                  "over_exposed": 0.0,
+                  "low_contrast": 1.0,
+                  "blur": 1.0,
+                  "low_entropy": 1.0
+                }
+              },
+              {
+                "metrics": {
+                  "mean": 0.0,
+                  "std": 0.0,
+                  "sharpness": 0.0,
+                  "black_fraction": 1.0,
+                  "white_fraction": 0.0,
+                  "entropy": -0.0
+                },
+                "component_scores": {
+                  "black": 1.0,
+                  "white": 0.0,
+                  "under_exposed": 1.0,
+                  "over_exposed": 0.0,
+                  "low_contrast": 1.0,
+                  "blur": 1.0,
+                  "low_entropy": 1.0
+                }
+              },
+              {
+                "metrics": {
+                  "mean": 0.0,
+                  "std": 0.0,
+                  "sharpness": 0.0,
+                  "black_fraction": 1.0,
+                  "white_fraction": 0.0,
+                  "entropy": -0.0
+                },
+                "component_scores": {
+                  "black": 1.0,
+                  "white": 0.0,
+                  "under_exposed": 1.0,
+                  "over_exposed": 0.0,
+                  "low_contrast": 1.0,
+                  "blur": 1.0,
+                  "low_entropy": 1.0
+                }
+              },
+              {
+                "metrics": {
+                  "mean": 0.0,
+                  "std": 0.0,
+                  "sharpness": 0.0,
+                  "black_fraction": 1.0,
+                  "white_fraction": 0.0,
+                  "entropy": -0.0
+                },
+                "component_scores": {
+                  "black": 1.0,
+                  "white": 0.0,
+                  "under_exposed": 1.0,
+                  "over_exposed": 0.0,
+                  "low_contrast": 1.0,
+                  "blur": 1.0,
+                  "low_entropy": 1.0
+                }
+              },
+              {
+                "metrics": {
+                  "mean": 0.0,
+                  "std": 0.0,
+                  "sharpness": 0.0,
+                  "black_fraction": 1.0,
+                  "white_fraction": 0.0,
+                  "entropy": -0.0
+                },
+                "component_scores": {
+                  "black": 1.0,
+                  "white": 0.0,
+                  "under_exposed": 1.0,
+                  "over_exposed": 0.0,
+                  "low_contrast": 1.0,
+                  "blur": 1.0,
+                  "low_entropy": 1.0
+                }
+              },
+              {
+                "metrics": {
+                  "mean": 0.0,
+                  "std": 0.0,
+                  "sharpness": 0.0,
+                  "black_fraction": 1.0,
+                  "white_fraction": 0.0,
+                  "entropy": -0.0
+                },
+                "component_scores": {
+                  "black": 1.0,
+                  "white": 0.0,
+                  "under_exposed": 1.0,
+                  "over_exposed": 0.0,
+                  "low_contrast": 1.0,
+                  "blur": 1.0,
+                  "low_entropy": 1.0
+                }
+              },
+              {
+                "metrics": {
+                  "mean": 0.0,
+                  "std": 0.0,
+                  "sharpness": 0.0,
+                  "black_fraction": 1.0,
+                  "white_fraction": 0.0,
+                  "entropy": -0.0
+                },
+                "component_scores": {
+                  "black": 1.0,
+                  "white": 0.0,
+                  "under_exposed": 1.0,
+                  "over_exposed": 0.0,
+                  "low_contrast": 1.0,
+                  "blur": 1.0,
+                  "low_entropy": 1.0
+                }
+              },
+              {
+                "metrics": {
+                  "mean": 0.0,
+                  "std": 0.0,
+                  "sharpness": 0.0,
+                  "black_fraction": 1.0,
+                  "white_fraction": 0.0,
+                  "entropy": -0.0
+                },
+                "component_scores": {
+                  "black": 1.0,
+                  "white": 0.0,
+                  "under_exposed": 1.0,
+                  "over_exposed": 0.0,
+                  "low_contrast": 1.0,
+                  "blur": 1.0,
+                  "low_entropy": 1.0
+                }
+              },
+              {
+                "metrics": {
+                  "mean": 0.0,
+                  "std": 0.0,
+                  "sharpness": 0.0,
+                  "black_fraction": 1.0,
+                  "white_fraction": 0.0,
+                  "entropy": -0.0
+                },
+                "component_scores": {
+                  "black": 1.0,
+                  "white": 0.0,
+                  "under_exposed": 1.0,
+                  "over_exposed": 0.0,
+                  "low_contrast": 1.0,
+                  "blur": 1.0,
+                  "low_entropy": 1.0
+                }
+              }
+            ]
+          }
+        },
+        {
+          "family": "vision_temporal",
+          "issue_type": "visual_fast_jump",
+          "confidence": "高置信异常",
+          "frame_start": 76,
+          "frame_end": 77,
+          "severity": 100.0,
+          "evidence": {
+            "max_motion": 100.14583587646484,
+            "high_motion_threshold": 33.87410774230957
+          }
+        },
+        {
+          "family": "vision_temporal",
+          "issue_type": "visual_fast_jump",
+          "confidence": "高置信异常",
+          "frame_start": 88,
+          "frame_end": 89,
+          "severity": 100.0,
+          "evidence": {
+            "max_motion": 94.47576904296875,
+            "high_motion_threshold": 33.87410774230957
+          }
+        },
+        {
+          "family": "vision_temporal",
+          "issue_type": "visual_high_frequency_jitter",
+          "confidence": "高置信异常",
+          "frame_start": 75,
+          "frame_end": 78,
+          "severity": 55.0,
+          "evidence": {
+            "max_motion_accel": 100.14583587646484,
+            "accel_threshold": 23.320537090301514
+          }
+        },
+        {
+          "family": "vision_temporal",
+          "issue_type": "visual_high_frequency_jitter",
+          "confidence": "高置信异常",
+          "frame_start": 87,
+          "frame_end": 90,
+          "severity": 55.0,
+          "evidence": {
+            "max_motion_accel": 94.47576904296875,
+            "accel_threshold": 23.320537090301514
+          }
+        }
+      ]
+    },
+    {
+      "issue_id": "white_screen",
+      "expected_detector_family": "vision_single",
+      "allowed_detector_families": [
+        "vision_illegal",
+        "vision_single"
+      ],
+      "detected": true,
+      "localized": true,
+      "best_interval_iou": 1.0,
+      "expected_span": [
+        77,
+        88
+      ],
+      "finding_count": 5,
+      "family_counts": {
+        "vision_single": 1,
+        "vision_temporal": 4
+      },
+      "official_score_total": 67.56,
+      "legacy_score_total": 65.0,
+      "phase_status": "unavailable",
+      "case_path_resolved": "/root/wooho/outputs/ablations/single_issue_cases/white_screen/episode_000000_white_screen.parquet",
+      "case_path_exists": true,
+      "top_findings": [
+        {
+          "family": "vision_single",
+          "issue_type": "white",
+          "confidence": "高置信异常",
+          "frame_start": 77,
+          "frame_end": 88,
+          "severity": 100.0,
+          "evidence": {
+            "metrics": {
+              "mean": 255.0,
+              "std": 0.0,
+              "sharpness": 0.0,
+              "black_fraction": 0.0,
+              "white_fraction": 1.0,
+              "entropy": -0.0
+            },
+            "component_scores": {
+              "black": 0.0,
+              "white": 1.0,
+              "under_exposed": 0.0,
+              "over_exposed": 1.0,
+              "low_contrast": 1.0,
+              "blur": 1.0,
+              "low_entropy": 1.0
+            },
+            "merged_evidence": [
+              {
+                "metrics": {
+                  "mean": 255.0,
+                  "std": 0.0,
+                  "sharpness": 0.0,
+                  "black_fraction": 0.0,
+                  "white_fraction": 1.0,
+                  "entropy": -0.0
+                },
+                "component_scores": {
+                  "black": 0.0,
+                  "white": 1.0,
+                  "under_exposed": 0.0,
+                  "over_exposed": 1.0,
+                  "low_contrast": 1.0,
+                  "blur": 1.0,
+                  "low_entropy": 1.0
+                }
+              },
+              {
+                "metrics": {
+                  "mean": 255.0,
+                  "std": 0.0,
+                  "sharpness": 0.0,
+                  "black_fraction": 0.0,
+                  "white_fraction": 1.0,
+                  "entropy": -0.0
+                },
+                "component_scores": {
+                  "black": 0.0,
+                  "white": 1.0,
+                  "under_exposed": 0.0,
+                  "over_exposed": 1.0,
+                  "low_contrast": 1.0,
+                  "blur": 1.0,
+                  "low_entropy": 1.0
+                }
+              },
+              {
+                "metrics": {
+                  "mean": 255.0,
+                  "std": 0.0,
+                  "sharpness": 0.0,
+                  "black_fraction": 0.0,
+                  "white_fraction": 1.0,
+                  "entropy": -0.0
+                },
+                "component_scores": {
+                  "black": 0.0,
+                  "white": 1.0,
+                  "under_exposed": 0.0,
+                  "over_exposed": 1.0,
+                  "low_contrast": 1.0,
+                  "blur": 1.0,
+                  "low_entropy": 1.0
+                }
+              },
+              {
+                "metrics": {
+                  "mean": 255.0,
+                  "std": 0.0,
+                  "sharpness": 0.0,
+                  "black_fraction": 0.0,
+                  "white_fraction": 1.0,
+                  "entropy": -0.0
+                },
+                "component_scores": {
+                  "black": 0.0,
+                  "white": 1.0,
+                  "under_exposed": 0.0,
+                  "over_exposed": 1.0,
+                  "low_contrast": 1.0,
+                  "blur": 1.0,
+                  "low_entropy": 1.0
+                }
+              },
+              {
+                "metrics": {
+                  "mean": 255.0,
+                  "std": 0.0,
+                  "sharpness": 0.0,
+                  "black_fraction": 0.0,
+                  "white_fraction": 1.0,
+                  "entropy": -0.0
+                },
+                "component_scores": {
+                  "black": 0.0,
+                  "white": 1.0,
+                  "under_exposed": 0.0,
+                  "over_exposed": 1.0,
+                  "low_contrast": 1.0,
+                  "blur": 1.0,
+                  "low_entropy": 1.0
+                }
+              },
+              {
+                "metrics": {
+                  "mean": 255.0,
+                  "std": 0.0,
+                  "sharpness": 0.0,
+                  "black_fraction": 0.0,
+                  "white_fraction": 1.0,
+                  "entropy": -0.0
+                },
+                "component_scores": {
+                  "black": 0.0,
+                  "white": 1.0,
+                  "under_exposed": 0.0,
+                  "over_exposed": 1.0,
+                  "low_contrast": 1.0,
+                  "blur": 1.0,
+                  "low_entropy": 1.0
+                }
+              },
+              {
+                "metrics": {
+                  "mean": 255.0,
+                  "std": 0.0,
+                  "sharpness": 0.0,
+                  "black_fraction": 0.0,
+                  "white_fraction": 1.0,
+                  "entropy": -0.0
+                },
+                "component_scores": {
+                  "black": 0.0,
+                  "white": 1.0,
+                  "under_exposed": 0.0,
+                  "over_exposed": 1.0,
+                  "low_contrast": 1.0,
+                  "blur": 1.0,
+                  "low_entropy": 1.0
+                }
+              },
+              {
+                "metrics": {
+                  "mean": 255.0,
+                  "std": 0.0,
+                  "sharpness": 0.0,
+                  "black_fraction": 0.0,
+                  "white_fraction": 1.0,
+                  "entropy": -0.0
+                },
+                "component_scores": {
+                  "black": 0.0,
+                  "white": 1.0,
+                  "under_exposed": 0.0,
+                  "over_exposed": 1.0,
+                  "low_contrast": 1.0,
+                  "blur": 1.0,
+                  "low_entropy": 1.0
+                }
+              },
+              {
+                "metrics": {
+                  "mean": 255.0,
+                  "std": 0.0,
+                  "sharpness": 0.0,
+                  "black_fraction": 0.0,
+                  "white_fraction": 1.0,
+                  "entropy": -0.0
+                },
+                "component_scores": {
+                  "black": 0.0,
+                  "white": 1.0,
+                  "under_exposed": 0.0,
+                  "over_exposed": 1.0,
+                  "low_contrast": 1.0,
+                  "blur": 1.0,
+                  "low_entropy": 1.0
+                }
+              },
+              {
+                "metrics": {
+                  "mean": 255.0,
+                  "std": 0.0,
+                  "sharpness": 0.0,
+                  "black_fraction": 0.0,
+                  "white_fraction": 1.0,
+                  "entropy": -0.0
+                },
+                "component_scores": {
+                  "black": 0.0,
+                  "white": 1.0,
+                  "under_exposed": 0.0,
+                  "over_exposed": 1.0,
+                  "low_contrast": 1.0,
+                  "blur": 1.0,
+                  "low_entropy": 1.0
+                }
+              },
+              {
+                "metrics": {
+                  "mean": 255.0,
+                  "std": 0.0,
+                  "sharpness": 0.0,
+                  "black_fraction": 0.0,
+                  "white_fraction": 1.0,
+                  "entropy": -0.0
+                },
+                "component_scores": {
+                  "black": 0.0,
+                  "white": 1.0,
+                  "under_exposed": 0.0,
+                  "over_exposed": 1.0,
+                  "low_contrast": 1.0,
+                  "blur": 1.0,
+                  "low_entropy": 1.0
+                }
+              }
+            ]
+          }
+        },
+        {
+          "family": "vision_temporal",
+          "issue_type": "visual_fast_jump",
+          "confidence": "高置信异常",
+          "frame_start": 76,
+          "frame_end": 77,
+          "severity": 100.0,
+          "evidence": {
+            "max_motion": 154.85415649414062,
+            "high_motion_threshold": 33.87410774230957
+          }
+        },
+        {
+          "family": "vision_temporal",
+          "issue_type": "visual_fast_jump",
+          "confidence": "高置信异常",
+          "frame_start": 88,
+          "frame_end": 89,
+          "severity": 100.0,
+          "evidence": {
+            "max_motion": 160.52423095703125,
+            "high_motion_threshold": 33.87410774230957
+          }
+        },
+        {
+          "family": "vision_temporal",
+          "issue_type": "visual_high_frequency_jitter",
+          "confidence": "高置信异常",
+          "frame_start": 75,
+          "frame_end": 78,
+          "severity": 55.0,
+          "evidence": {
+            "max_motion_accel": 154.85415649414062,
+            "accel_threshold": 23.320537090301514
+          }
+        },
+        {
+          "family": "vision_temporal",
+          "issue_type": "visual_high_frequency_jitter",
+          "confidence": "高置信异常",
+          "frame_start": 87,
+          "frame_end": 90,
+          "severity": 55.0,
+          "evidence": {
+            "max_motion_accel": 160.52423095703125,
+            "accel_threshold": 23.320537090301514
+          }
+        }
+      ]
+    },
+    {
+      "issue_id": "flower_screen",
+      "expected_detector_family": "vision_single",
+      "allowed_detector_families": [
+        "vision_illegal",
+        "vision_single"
+      ],
+      "detected": true,
+      "localized": true,
+      "best_interval_iou": 1.0,
+      "expected_span": [
+        77,
+        88
+      ],
+      "finding_count": 5,
+      "family_counts": {
+        "vision_single": 1,
+        "vision_temporal": 4
+      },
+      "official_score_total": 67.65,
+      "legacy_score_total": 65.0,
+      "phase_status": "unavailable",
+      "case_path_resolved": "/root/wooho/outputs/ablations/single_issue_cases/flower_screen/episode_000000_flower_screen.parquet",
+      "case_path_exists": true,
+      "top_findings": [
+        {
+          "family": "vision_temporal",
+          "issue_type": "visual_fast_jump",
+          "confidence": "高置信异常",
+          "frame_start": 76,
+          "frame_end": 77,
+          "severity": 100.0,
+          "evidence": {
+            "max_motion": 77.76317596435547,
+            "high_motion_threshold": 33.87410774230957
+          }
+        },
+        {
+          "family": "vision_temporal",
+          "issue_type": "visual_fast_jump",
+          "confidence": "高置信异常",
+          "frame_start": 88,
+          "frame_end": 89,
+          "severity": 100.0,
+          "evidence": {
+            "max_motion": 79.57525634765625,
+            "high_motion_threshold": 33.87410774230957
+          }
+        },
+        {
+          "family": "vision_single",
+          "issue_type": "over_exposed",
+          "confidence": "高置信异常",
+          "frame_start": 77,
+          "frame_end": 88,
+          "severity": 87.08,
+          "evidence": {
+            "metrics": {
+              "mean": 126.90901184082031,
+              "std": 73.25504302978516,
+              "sharpness": 2470.149169921875,
+              "black_fraction": 0.0,
+              "white_fraction": 0.0,
+              "entropy": 4.415509342499678
+            },
+            "component_scores": {
+              "black": 0.0,
+              "white": 0.0,
+              "under_exposed": 0.0,
+              "over_exposed": 0.8707860480978842,
+              "low_contrast": 0.0,
+              "blur": 0.0,
+              "low_entropy": 0.1521255628386331
+            },
+            "merged_evidence": [
+              {
+                "metrics": {
+                  "mean": 126.90901184082031,
+                  "std": 73.25504302978516,
+                  "sharpness": 2470.149169921875,
+                  "black_fraction": 0.0,
+                  "white_fraction": 0.0,
+                  "entropy": 4.415509342499678
+                },
+                "component_scores": {
+                  "black": 0.0,
+                  "white": 0.0,
+                  "under_exposed": 0.0,
+                  "over_exposed": 0.8707860480978842,
+                  "low_contrast": 0.0,
+                  "blur": 0.0,
+                  "low_entropy": 0.1521255628386331
+                }
+              },
+              {
+                "metrics": {
+                  "mean": 126.90901184082031,
+                  "std": 73.25504302978516,
+                  "sharpness": 2470.149169921875,
+                  "black_fraction": 0.0,
+                  "white_fraction": 0.0,
+                  "entropy": 4.415509342499678
+                },
+                "component_scores": {
+                  "black": 0.0,
+                  "white": 0.0,
+                  "under_exposed": 0.0,
+                  "over_exposed": 0.8707860480978842,
+                  "low_contrast": 0.0,
+                  "blur": 0.0,
+                  "low_entropy": 0.1521255628386331
+                }
+              },
+              {
+                "metrics": {
+                  "mean": 126.90901184082031,
+                  "std": 73.25504302978516,
+                  "sharpness": 2470.149169921875,
+                  "black_fraction": 0.0,
+                  "white_fraction": 0.0,
+                  "entropy": 4.415509342499678
+                },
+                "component_scores": {
+                  "black": 0.0,
+                  "white": 0.0,
+                  "under_exposed": 0.0,
+                  "over_exposed": 0.8707860480978842,
+                  "low_contrast": 0.0,
+                  "blur": 0.0,
+                  "low_entropy": 0.1521255628386331
+                }
+              },
+              {
+                "metrics": {
+                  "mean": 126.90901184082031,
+                  "std": 73.25504302978516,
+                  "sharpness": 2470.149169921875,
+                  "black_fraction": 0.0,
+                  "white_fraction": 0.0,
+                  "entropy": 4.415509342499678
+                },
+                "component_scores": {
+                  "black": 0.0,
+                  "white": 0.0,
+                  "under_exposed": 0.0,
+                  "over_exposed": 0.8707860480978842,
+                  "low_contrast": 0.0,
+                  "blur": 0.0,
+                  "low_entropy": 0.1521255628386331
+                }
+              },
+              {
+                "metrics": {
+                  "mean": 126.90901184082031,
+                  "std": 73.25504302978516,
+                  "sharpness": 2470.149169921875,
+                  "black_fraction": 0.0,
+                  "white_fraction": 0.0,
+                  "entropy": 4.415509342499678
+                },
+                "component_scores": {
+                  "black": 0.0,
+                  "white": 0.0,
+                  "under_exposed": 0.0,
+                  "over_exposed": 0.8707860480978842,
+                  "low_contrast": 0.0,
+                  "blur": 0.0,
+                  "low_entropy": 0.1521255628386331
+                }
+              },
+              {
+                "metrics": {
+                  "mean": 126.90901184082031,
+                  "std": 73.25504302978516,
+                  "sharpness": 2470.149169921875,
+                  "black_fraction": 0.0,
+                  "white_fraction": 0.0,
+                  "entropy": 4.415509342499678
+                },
+                "component_scores": {
+                  "black": 0.0,
+                  "white": 0.0,
+                  "under_exposed": 0.0,
+                  "over_exposed": 0.8707860480978842,
+                  "low_contrast": 0.0,
+                  "blur": 0.0,
+                  "low_entropy": 0.1521255628386331
+                }
+              },
+              {
+                "metrics": {
+                  "mean": 126.90901184082031,
+                  "std": 73.25504302978516,
+                  "sharpness": 2470.149169921875,
+                  "black_fraction": 0.0,
+                  "white_fraction": 0.0,
+                  "entropy": 4.415509342499678
+                },
+                "component_scores": {
+                  "black": 0.0,
+                  "white": 0.0,
+                  "under_exposed": 0.0,
+                  "over_exposed": 0.8707860480978842,
+                  "low_contrast": 0.0,
+                  "blur": 0.0,
+                  "low_entropy": 0.1521255628386331
+                }
+              },
+              {
+                "metrics": {
+                  "mean": 126.90901184082031,
+                  "std": 73.25504302978516,
+                  "sharpness": 2470.149169921875,
+                  "black_fraction": 0.0,
+                  "white_fraction": 0.0,
+                  "entropy": 4.415509342499678
+                },
+                "component_scores": {
+                  "black": 0.0,
+                  "white": 0.0,
+                  "under_exposed": 0.0,
+                  "over_exposed": 0.8707860480978842,
+                  "low_contrast": 0.0,
+                  "blur": 0.0,
+                  "low_entropy": 0.1521255628386331
+                }
+              },
+              {
+                "metrics": {
+                  "mean": 126.90901184082031,
+                  "std": 73.25504302978516,
+                  "sharpness": 2470.149169921875,
+                  "black_fraction": 0.0,
+                  "white_fraction": 0.0,
+                  "entropy": 4.415509342499678
+                },
+                "component_scores": {
+                  "black": 0.0,
+                  "white": 0.0,
+                  "under_exposed": 0.0,
+                  "over_exposed": 0.8707860480978842,
+                  "low_contrast": 0.0,
+                  "blur": 0.0,
+                  "low_entropy": 0.1521255628386331
+                }
+              },
+              {
+                "metrics": {
+                  "mean": 126.90901184082031,
+                  "std": 73.25504302978516,
+                  "sharpness": 2470.149169921875,
+                  "black_fraction": 0.0,
+                  "white_fraction": 0.0,
+                  "entropy": 4.415509342499678
+                },
+                "component_scores": {
+                  "black": 0.0,
+                  "white": 0.0,
+                  "under_exposed": 0.0,
+                  "over_exposed": 0.8707860480978842,
+                  "low_contrast": 0.0,
+                  "blur": 0.0,
+                  "low_entropy": 0.1521255628386331
+                }
+              },
+              {
+                "metrics": {
+                  "mean": 126.90901184082031,
+                  "std": 73.25504302978516,
+                  "sharpness": 2470.149169921875,
+                  "black_fraction": 0.0,
+                  "white_fraction": 0.0,
+                  "entropy": 4.415509342499678
+                },
+                "component_scores": {
+                  "black": 0.0,
+                  "white": 0.0,
+                  "under_exposed": 0.0,
+                  "over_exposed": 0.8707860480978842,
+                  "low_contrast": 0.0,
+                  "blur": 0.0,
+                  "low_entropy": 0.1521255628386331
+                }
+              }
+            ]
+          }
+        },
+        {
+          "family": "vision_temporal",
+          "issue_type": "visual_high_frequency_jitter",
+          "confidence": "高置信异常",
+          "frame_start": 75,
+          "frame_end": 78,
+          "severity": 55.0,
+          "evidence": {
+            "max_motion_accel": 77.76317596435547,
+            "accel_threshold": 23.320537090301514
+          }
+        },
+        {
+          "family": "vision_temporal",
+          "issue_type": "visual_high_frequency_jitter",
+          "confidence": "高置信异常",
+          "frame_start": 87,
+          "frame_end": 90,
+          "severity": 55.0,
+          "evidence": {
+            "max_motion_accel": 79.57525634765625,
+            "accel_threshold": 23.320537090301514
+          }
+        }
+      ]
+    },
+    {
+      "issue_id": "invalid_image_bytes",
+      "expected_detector_family": "vision_illegal",
+      "allowed_detector_families": [
+        "vision_illegal",
+        "vision_single"
+      ],
+      "detected": true,
+      "localized": true,
+      "best_interval_iou": 1.0,
+      "expected_span": [
+        77,
+        80
+      ],
+      "finding_count": 1,
+      "family_counts": {
+        "vision_illegal": 1
+      },
+      "official_score_total": 74.9,
+      "legacy_score_total": 74.21,
+      "phase_status": "unavailable",
+      "case_path_resolved": "/root/wooho/outputs/ablations/single_issue_cases/invalid_image_bytes/episode_000000_invalid_image_bytes.parquet",
+      "case_path_exists": true,
+      "top_findings": [
+        {
+          "family": "vision_illegal",
+          "issue_type": "image_decode_error",
+          "confidence": "确定异常",
+          "frame_start": 77,
+          "frame_end": 80,
+          "severity": 100.0,
+          "evidence": {
+            "error": "cannot identify image file <_io.BytesIO object at 0x7fa82456ade0>",
+            "merged_evidence": [
+              {
+                "error": "cannot identify image file <_io.BytesIO object at 0x7fa82456ade0>"
+              },
+              {
+                "error": "cannot identify image file <_io.BytesIO object at 0x7fa82456ade0>"
+              },
+              {
+                "error": "cannot identify image file <_io.BytesIO object at 0x7fa82456ade0>"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "issue_id": "state_nan",
+      "expected_detector_family": "state_illegal",
+      "allowed_detector_families": [
+        "state_illegal"
+      ],
+      "detected": true,
+      "localized": true,
+      "best_interval_iou": 1.0,
+      "expected_span": [
+        77,
+        80
+      ],
+      "finding_count": 1,
+      "family_counts": {
+        "state_illegal": 1
+      },
+      "official_score_total": 74.69,
+      "legacy_score_total": 73.99,
+      "phase_status": "unavailable",
+      "case_path_resolved": "/root/wooho/outputs/ablations/single_issue_cases/state_nan/episode_000000_state_nan.parquet",
+      "case_path_exists": true,
+      "top_findings": [
+        {
+          "family": "state_illegal",
+          "issue_type": "non_finite_low_dim_value",
+          "confidence": "确定异常",
+          "frame_start": 77,
+          "frame_end": 80,
+          "severity": 100.0,
+          "evidence": {}
+        }
+      ]
+    },
+    {
+      "issue_id": "state_inf",
+      "expected_detector_family": "state_illegal",
+      "allowed_detector_families": [
+        "state_illegal"
+      ],
+      "detected": true,
+      "localized": true,
+      "best_interval_iou": 1.0,
+      "expected_span": [
+        77,
+        80
+      ],
+      "finding_count": 3,
+      "family_counts": {
+        "state_illegal": 1,
+        "state_temporal": 2
+      },
+      "official_score_total": 67.31,
+      "legacy_score_total": 63.44,
+      "phase_status": "unavailable",
+      "case_path_resolved": "/root/wooho/outputs/ablations/single_issue_cases/state_inf/episode_000000_state_inf.parquet",
+      "case_path_exists": true,
+      "top_findings": [
+        {
+          "family": "state_illegal",
+          "issue_type": "non_finite_low_dim_value",
+          "confidence": "确定异常",
+          "frame_start": 77,
+          "frame_end": 80,
+          "severity": 100.0,
+          "evidence": {}
+        },
+        {
+          "family": "state_temporal",
+          "issue_type": "low_dim_fast_jump_active",
+          "confidence": "疑似异常",
+          "frame_start": 76,
+          "frame_end": 77,
+          "severity": 35.0,
+          "evidence": {
+            "phase": "active",
+            "max_delta": Infinity,
+            "high_delta_threshold": 0.38252071658475684,
+            "reference_count": 2648
+          }
+        },
+        {
+          "family": "state_temporal",
+          "issue_type": "low_dim_fast_jump_active",
+          "confidence": "疑似异常",
+          "frame_start": 80,
+          "frame_end": 81,
+          "severity": 35.0,
+          "evidence": {
+            "phase": "active",
+            "max_delta": Infinity,
+            "high_delta_threshold": 0.38252071658475684,
+            "reference_count": 2648
+          }
+        }
+      ]
+    },
+    {
+      "issue_id": "action_nan",
+      "expected_detector_family": "state_illegal",
+      "allowed_detector_families": [
+        "state_illegal"
+      ],
+      "detected": true,
+      "localized": true,
+      "best_interval_iou": 1.0,
+      "expected_span": [
+        77,
+        80
+      ],
+      "finding_count": 1,
+      "family_counts": {
+        "state_illegal": 1
+      },
+      "official_score_total": 74.9,
+      "legacy_score_total": 74.21,
+      "phase_status": "unavailable",
+      "case_path_resolved": "/root/wooho/outputs/ablations/single_issue_cases/action_nan/episode_000000_action_nan.parquet",
+      "case_path_exists": true,
+      "top_findings": [
+        {
+          "family": "state_illegal",
+          "issue_type": "non_finite_low_dim_value",
+          "confidence": "确定异常",
+          "frame_start": 77,
+          "frame_end": 80,
+          "severity": 100.0,
+          "evidence": {}
+        }
+      ]
+    },
+    {
+      "issue_id": "state_wrong_dim",
+      "expected_detector_family": "state_illegal",
+      "allowed_detector_families": [
+        "state_illegal"
+      ],
+      "detected": true,
+      "localized": true,
+      "best_interval_iou": 0.0,
+      "expected_span": [
+        77,
+        77
+      ],
+      "finding_count": 1,
+      "family_counts": {
+        "state_illegal": 1
+      },
+      "official_score_total": 68.08,
+      "legacy_score_total": 74.4,
+      "phase_status": "unavailable",
+      "case_path_resolved": "/root/wooho/outputs/ablations/single_issue_cases/state_wrong_dim/episode_000000_state_wrong_dim.parquet",
+      "case_path_exists": true,
+      "top_findings": [
+        {
+          "family": "state_illegal",
+          "issue_type": "inconsistent_low_dim_shape",
+          "confidence": "确定异常",
+          "frame_start": null,
+          "frame_end": null,
+          "severity": 100.0,
+          "evidence": {}
+        }
+      ]
+    },
+    {
+      "issue_id": "timestamp_non_monotonic",
+      "expected_detector_family": "temporal_illegal",
+      "allowed_detector_families": [
+        "temporal_illegal"
+      ],
+      "detected": true,
+      "localized": true,
+      "best_interval_iou": 0.3333,
+      "expected_span": [
+        77,
+        77
+      ],
+      "finding_count": 1,
+      "family_counts": {
+        "temporal_illegal": 1
+      },
+      "official_score_total": 74.9,
+      "legacy_score_total": 74.21,
+      "phase_status": "unavailable",
+      "case_path_resolved": "/root/wooho/outputs/ablations/single_issue_cases/timestamp_non_monotonic/episode_000000_timestamp_non_monotonic.parquet",
+      "case_path_exists": true,
+      "top_findings": [
+        {
+          "family": "temporal_illegal",
+          "issue_type": "timestamp_gap_or_reorder",
+          "confidence": "确定异常",
+          "frame_start": 76,
+          "frame_end": 78,
+          "severity": 100.0,
+          "evidence": {
+            "previous_timestamp": 7.599999904632568,
+            "current_timestamp": 7.5,
+            "delta": -0.09999990463256836,
+            "expected_delta": 0.1,
+            "tolerance": 0.034999999999999996,
+            "merged_evidence": [
+              {
+                "previous_timestamp": 7.5,
+                "current_timestamp": 7.800000190734863,
+                "delta": 0.3000001907348633,
+                "expected_delta": 0.1,
+                "tolerance": 0.034999999999999996
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "issue_id": "frame_index_duplicate",
+      "expected_detector_family": "temporal_illegal",
+      "allowed_detector_families": [
+        "temporal_illegal"
+      ],
+      "detected": true,
+      "localized": true,
+      "best_interval_iou": 0.3333,
+      "expected_span": [
+        77,
+        77
+      ],
+      "finding_count": 2,
+      "family_counts": {
+        "temporal_illegal": 2
+      },
+      "official_score_total": 74.3,
+      "legacy_score_total": 74.21,
+      "phase_status": "unavailable",
+      "case_path_resolved": "/root/wooho/outputs/ablations/single_issue_cases/frame_index_duplicate/episode_000000_frame_index_duplicate.parquet",
+      "case_path_exists": true,
+      "top_findings": [
+        {
+          "family": "temporal_illegal",
+          "issue_type": "duplicate_frame_index",
+          "confidence": "确定异常",
+          "frame_start": 76,
+          "frame_end": 76,
+          "severity": 100.0,
+          "evidence": {
+            "previous": 76,
+            "current": 76,
+            "delta": 0
+          }
+        },
+        {
+          "family": "temporal_illegal",
+          "issue_type": "frame_index_gap_or_reorder",
+          "confidence": "确定异常",
+          "frame_start": 76,
+          "frame_end": 78,
+          "severity": 100.0,
+          "evidence": {
+            "previous": 76,
+            "current": 78,
+            "delta": 2
+          }
+        }
+      ]
+    },
+    {
+      "issue_id": "frame_index_skip",
+      "expected_detector_family": "temporal_illegal",
+      "allowed_detector_families": [
+        "temporal_illegal"
+      ],
+      "detected": true,
+      "localized": true,
+      "best_interval_iou": 0.0274,
+      "expected_span": [
+        77,
+        221
+      ],
+      "finding_count": 1,
+      "family_counts": {
+        "temporal_illegal": 1
+      },
+      "official_score_total": 74.9,
+      "legacy_score_total": 74.21,
+      "phase_status": "unavailable",
+      "case_path_resolved": "/root/wooho/outputs/ablations/single_issue_cases/frame_index_skip/episode_000000_frame_index_skip.parquet",
+      "case_path_exists": true,
+      "top_findings": [
+        {
+          "family": "temporal_illegal",
+          "issue_type": "frame_index_gap_or_reorder",
+          "confidence": "确定异常",
+          "frame_start": 76,
+          "frame_end": 80,
+          "severity": 100.0,
+          "evidence": {
+            "previous": 76,
+            "current": 80,
+            "delta": 4
+          }
+        }
+      ]
+    },
+    {
+      "issue_id": "row_reorder",
+      "expected_detector_family": "temporal_illegal",
+      "allowed_detector_families": [
+        "temporal_illegal"
+      ],
+      "detected": true,
+      "localized": true,
+      "best_interval_iou": 0.5,
+      "expected_span": [
+        77,
+        78
+      ],
+      "finding_count": 3,
+      "family_counts": {
+        "temporal_illegal": 3
+      },
+      "official_score_total": 73.7,
+      "legacy_score_total": 74.21,
+      "phase_status": "unavailable",
+      "case_path_resolved": "/root/wooho/outputs/ablations/single_issue_cases/row_reorder/episode_000000_row_reorder.parquet",
+      "case_path_exists": true,
+      "top_findings": [
+        {
+          "family": "temporal_illegal",
+          "issue_type": "frame_index_gap_or_reorder",
+          "confidence": "确定异常",
+          "frame_start": 76,
+          "frame_end": 79,
+          "severity": 100.0,
+          "evidence": {
+            "previous": 76,
+            "current": 78,
+            "delta": 2,
+            "merged_evidence": [
+              {
+                "previous": 77,
+                "current": 79,
+                "delta": 2
+              },
+              {
+                "previous": 78,
+                "current": 77,
+                "delta": -1
+              }
+            ]
+          }
+        },
+        {
+          "family": "temporal_illegal",
+          "issue_type": "global_index_gap_or_reorder",
+          "confidence": "确定异常",
+          "frame_start": 76,
+          "frame_end": 79,
+          "severity": 100.0,
+          "evidence": {
+            "previous": 76,
+            "current": 78,
+            "delta": 2,
+            "merged_evidence": [
+              {
+                "previous": 77,
+                "current": 79,
+                "delta": 2
+              },
+              {
+                "previous": 78,
+                "current": 77,
+                "delta": -1
+              }
+            ]
+          }
+        },
+        {
+          "family": "temporal_illegal",
+          "issue_type": "timestamp_gap_or_reorder",
+          "confidence": "确定异常",
+          "frame_start": 76,
+          "frame_end": 79,
+          "severity": 100.0,
+          "evidence": {
+            "previous_timestamp": 7.599999904632568,
+            "current_timestamp": 7.800000190734863,
+            "delta": 0.20000028610229492,
+            "expected_delta": 0.1,
+            "tolerance": 0.034999999999999996,
+            "merged_evidence": [
+              {
+                "previous_timestamp": 7.699999809265137,
+                "current_timestamp": 7.900000095367432,
+                "delta": 0.20000028610229492,
+                "expected_delta": 0.1,
+                "tolerance": 0.034999999999999996
+              },
+              {
+                "previous_timestamp": 7.800000190734863,
+                "current_timestamp": 7.699999809265137,
+                "delta": -0.10000038146972656,
+                "expected_delta": 0.1,
+                "tolerance": 0.034999999999999996
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "issue_id": "vision_drop_small",
+      "expected_detector_family": "vision_temporal",
+      "allowed_detector_families": [
+        "vision_temporal"
+      ],
+      "detected": false,
+      "localized": false,
+      "best_interval_iou": 0.0,
+      "expected_span": [
+        77,
+        80
+      ],
+      "finding_count": 0,
+      "family_counts": {},
+      "official_score_total": 92.96,
+      "legacy_score_total": 99.17,
+      "phase_status": "unavailable",
+      "case_path_resolved": "/root/wooho/outputs/ablations/single_issue_cases/vision_drop_small/episode_000000_vision_drop_small.parquet",
+      "case_path_exists": true,
+      "top_findings": []
+    },
+    {
+      "issue_id": "vision_drop_large",
+      "expected_detector_family": "vision_temporal",
+      "allowed_detector_families": [
+        "vision_temporal"
+      ],
+      "detected": false,
+      "localized": false,
+      "best_interval_iou": 0.0,
+      "expected_span": [
+        77,
+        106
+      ],
+      "finding_count": 0,
+      "family_counts": {},
+      "official_score_total": 92.72,
+      "legacy_score_total": 98.91,
+      "phase_status": "unavailable",
+      "case_path_resolved": "/root/wooho/outputs/ablations/single_issue_cases/vision_drop_large/episode_000000_vision_drop_large.parquet",
+      "case_path_exists": true,
+      "top_findings": []
+    },
+    {
+      "issue_id": "vision_jump_small",
+      "expected_detector_family": "vision_temporal",
+      "allowed_detector_families": [
+        "vision_temporal"
+      ],
+      "detected": false,
+      "localized": false,
+      "best_interval_iou": 0.0,
+      "expected_span": [
+        55,
+        58
+      ],
+      "finding_count": 0,
+      "family_counts": {},
+      "official_score_total": 93.0,
+      "legacy_score_total": 99.21,
+      "phase_status": "unavailable",
+      "case_path_resolved": "/root/wooho/outputs/ablations/single_issue_cases/vision_jump_small/episode_000000_vision_jump_small.parquet",
+      "case_path_exists": true,
+      "top_findings": []
+    },
+    {
+      "issue_id": "vision_jump_large",
+      "expected_detector_family": "vision_temporal",
+      "allowed_detector_families": [
+        "vision_temporal"
+      ],
+      "detected": false,
+      "localized": false,
+      "best_interval_iou": 0.0,
+      "expected_span": [
+        55,
+        84
+      ],
+      "finding_count": 0,
+      "family_counts": {},
+      "official_score_total": 92.88,
+      "legacy_score_total": 99.09,
+      "phase_status": "unavailable",
+      "case_path_resolved": "/root/wooho/outputs/ablations/single_issue_cases/vision_jump_large/episode_000000_vision_jump_large.parquet",
+      "case_path_exists": true,
+      "top_findings": []
+    },
+    {
+      "issue_id": "state_sensor_delay_small",
+      "expected_detector_family": "vision_state_temporal",
+      "allowed_detector_families": [
+        "state_temporal",
+        "vision_state_temporal",
+        "vision_temporal"
+      ],
+      "detected": false,
+      "localized": false,
+      "best_interval_iou": 0.0,
+      "expected_span": [
+        0,
+        221
+      ],
+      "finding_count": 0,
+      "family_counts": {},
+      "official_score_total": 93.0,
+      "legacy_score_total": 99.21,
+      "phase_status": "unavailable",
+      "case_path_resolved": "/root/wooho/outputs/ablations/single_issue_cases/state_sensor_delay_small/episode_000000_state_sensor_delay_small.parquet",
+      "case_path_exists": true,
+      "top_findings": []
+    },
+    {
+      "issue_id": "state_sensor_delay_large",
+      "expected_detector_family": "vision_state_temporal",
+      "allowed_detector_families": [
+        "state_temporal",
+        "vision_state_temporal",
+        "vision_temporal"
+      ],
+      "detected": false,
+      "localized": false,
+      "best_interval_iou": 0.0,
+      "expected_span": [
+        0,
+        221
+      ],
+      "finding_count": 0,
+      "family_counts": {},
+      "official_score_total": 92.91,
+      "legacy_score_total": 99.11,
+      "phase_status": "unavailable",
+      "case_path_resolved": "/root/wooho/outputs/ablations/single_issue_cases/state_sensor_delay_large/episode_000000_state_sensor_delay_large.parquet",
+      "case_path_exists": true,
+      "top_findings": []
+    },
+    {
+      "issue_id": "video_signal_delay_small",
+      "expected_detector_family": "vision_state_temporal",
+      "allowed_detector_families": [
+        "state_temporal",
+        "vision_state_temporal",
+        "vision_temporal"
+      ],
+      "detected": false,
+      "localized": false,
+      "best_interval_iou": 0.0,
+      "expected_span": [
+        0,
+        221
+      ],
+      "finding_count": 0,
+      "family_counts": {},
+      "official_score_total": 93.0,
+      "legacy_score_total": 99.21,
+      "phase_status": "unavailable",
+      "case_path_resolved": "/root/wooho/outputs/ablations/single_issue_cases/video_signal_delay_small/episode_000000_video_signal_delay_small.parquet",
+      "case_path_exists": true,
+      "top_findings": []
+    },
+    {
+      "issue_id": "video_signal_delay_large",
+      "expected_detector_family": "vision_state_temporal",
+      "allowed_detector_families": [
+        "state_temporal",
+        "vision_state_temporal",
+        "vision_temporal"
+      ],
+      "detected": false,
+      "localized": false,
+      "best_interval_iou": 0.0,
+      "expected_span": [
+        0,
+        221
+      ],
+      "finding_count": 0,
+      "family_counts": {},
+      "official_score_total": 93.0,
+      "legacy_score_total": 99.21,
+      "phase_status": "unavailable",
+      "case_path_resolved": "/root/wooho/outputs/ablations/single_issue_cases/video_signal_delay_large/episode_000000_video_signal_delay_large.parquet",
+      "case_path_exists": true,
+      "top_findings": []
+    },
+    {
+      "issue_id": "action_response_delay",
+      "expected_detector_family": "state_temporal",
+      "allowed_detector_families": [
+        "state_temporal",
+        "vision_state_temporal"
+      ],
+      "detected": false,
+      "localized": false,
+      "best_interval_iou": 0.0,
+      "expected_span": [
+        0,
+        221
+      ],
+      "finding_count": 0,
+      "family_counts": {},
+      "official_score_total": 93.0,
+      "legacy_score_total": 99.21,
+      "phase_status": "unavailable",
+      "case_path_resolved": "/root/wooho/outputs/ablations/single_issue_cases/action_response_delay/episode_000000_action_response_delay.parquet",
+      "case_path_exists": true,
+      "top_findings": []
+    },
+    {
+      "issue_id": "state_high_freq_jitter",
+      "expected_detector_family": "state_temporal",
+      "allowed_detector_families": [
+        "state_temporal",
+        "vision_state_temporal"
+      ],
+      "detected": true,
+      "localized": true,
+      "best_interval_iou": 0.9667,
+      "expected_span": [
+        66,
+        125
+      ],
+      "finding_count": 3,
+      "family_counts": {
+        "state_temporal": 3
+      },
+      "official_score_total": 82.12,
+      "legacy_score_total": 84.77,
+      "phase_status": "unavailable",
+      "case_path_resolved": "/root/wooho/outputs/ablations/single_issue_cases/state_high_freq_jitter/episode_000000_state_high_freq_jitter.parquet",
+      "case_path_exists": true,
+      "top_findings": [
+        {
+          "family": "state_temporal",
+          "issue_type": "low_dim_jitter_or_spike_active",
+          "confidence": "高置信异常",
+          "frame_start": 67,
+          "frame_end": 124,
+          "severity": 100.0,
+          "evidence": {
+            "phase": "active",
+            "max_accel": 0.31965348970025564,
+            "accel_threshold": 0.2608724938966088,
+            "cluster_len": 58,
+            "min_cluster_len": 2,
+            "single_spike_min_score": 95.0,
+            "reference_count": 2636
+          }
+        },
+        {
+          "family": "state_temporal",
+          "issue_type": "geometry_left_oscillatory_jitter",
+          "confidence": "高置信异常",
+          "frame_start": 59,
+          "frame_end": 133,
+          "severity": 100.0,
+          "evidence": {
+            "arm": "left",
+            "metric": "oscillatory_jitter",
+            "window_frames": 11,
+            "direction_reversals": 9,
+            "path_length": 1.1009604383904361,
+            "net_displacement": 0.0049622326095919225,
+            "path_efficiency": 0.004507185214435611,
+            "min_path_length": 0.1729235738194035,
+            "gate": {
+              "rotation6d_layout": "unknown",
+              "state_frame_mode": "unknown",
+              "calibration_mode": "none",
+              "position_unit": "unknown",
+              "temporal_alignment": "performed_in_geometry_module",
+              "strict_calibrated_geometry": false
+            }
+          }
+        },
+        {
+          "family": "state_temporal",
+          "issue_type": "geometry_right_oscillatory_jitter",
+          "confidence": "高置信异常",
+          "frame_start": 58,
+          "frame_end": 133,
+          "severity": 100.0,
+          "evidence": {
+            "arm": "right",
+            "metric": "oscillatory_jitter",
+            "window_frames": 11,
+            "direction_reversals": 9,
+            "path_length": 1.1294755753168828,
+            "net_displacement": 0.0718846648435005,
+            "path_efficiency": 0.06364428449312215,
+            "min_path_length": 0.155720790519961,
+            "gate": {
+              "rotation6d_layout": "unknown",
+              "state_frame_mode": "unknown",
+              "calibration_mode": "none",
+              "position_unit": "unknown",
+              "temporal_alignment": "performed_in_geometry_module",
+              "strict_calibrated_geometry": false
+            }
+          }
+        }
+      ]
+    },
+    {
+      "issue_id": "action_high_freq_jitter",
+      "expected_detector_family": "state_temporal",
+      "allowed_detector_families": [
+        "state_temporal",
+        "vision_state_temporal"
+      ],
+      "detected": false,
+      "localized": false,
+      "best_interval_iou": 0.0,
+      "expected_span": [
+        66,
+        125
+      ],
+      "finding_count": 0,
+      "family_counts": {},
+      "official_score_total": 93.0,
+      "legacy_score_total": 99.21,
+      "phase_status": "unavailable",
+      "case_path_resolved": "/root/wooho/outputs/ablations/single_issue_cases/action_high_freq_jitter/episode_000000_action_high_freq_jitter.parquet",
+      "case_path_exists": true,
+      "top_findings": []
+    }
+  ]
+}

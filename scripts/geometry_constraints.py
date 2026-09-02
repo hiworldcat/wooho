@@ -32,6 +32,72 @@ JITTER_MIN_DIRECTION_REVERSALS = 3
 JITTER_MAX_PATH_EFFICIENCY = 0.35
 JITTER_MIN_PATH_LENGTH_FACTOR = 4.0
 
+MODULE_STATUS_VALUES = ("ok", "warning", "unavailable", "fail")
+MODULE_STATUS_SET = frozenset(MODULE_STATUS_VALUES)
+
+
+def normalize_module_status(value: Any) -> str:
+    status = str(value or "ok")
+    return status if status in MODULE_STATUS_SET else "fail"
+
+
+def collect_module_statuses(diagnostics: dict[str, Any]) -> dict[str, Any]:
+    return {
+        "arms": {
+            arm: normalize_module_status(item.get("status", "ok"))
+            for arm, item in dict(diagnostics.get("arms", {})).items()
+            if isinstance(item, dict)
+        },
+        "bimanual": normalize_module_status(
+            diagnostics.get("bimanual", {}).get("status", "ok")
+            if isinstance(diagnostics.get("bimanual"), dict)
+            else "ok"
+        ),
+        "state_vision": {
+            arm: normalize_module_status(item.get("status", "ok"))
+            for arm, item in dict(diagnostics.get("state_vision", {})).items()
+            if isinstance(item, dict)
+        },
+    }
+
+
+def unavailable_module_statuses(reason: str) -> dict[str, Any]:
+    return {
+        "arms": {arm: "unavailable" for arm in ARM_SPECS},
+        "bimanual": "unavailable",
+        "state_vision": {arm: "unavailable" for arm in ARM_SPECS},
+    }
+
+
+def iter_module_statuses(module_statuses: dict[str, Any]):
+    for value in module_statuses.values():
+        if isinstance(value, dict):
+            for nested in value.values():
+                if isinstance(nested, dict):
+                    yield normalize_module_status(nested.get("status", "ok"))
+                else:
+                    yield normalize_module_status(nested)
+        else:
+            yield normalize_module_status(value)
+
+
+def aggregate_module_statuses(core_status: str, module_statuses: dict[str, Any]) -> str:
+    core = normalize_module_status(core_status)
+    if core in {"fail", "unavailable"}:
+        return core
+    statuses = list(iter_module_statuses(module_statuses))
+    if any(status == "fail" for status in statuses):
+        return "fail"
+    if any(status in {"warning", "unavailable"} for status in statuses):
+        return "warning"
+    return "ok"
+
+
+def summarize_geometry_status(diagnostics: dict[str, Any]) -> str:
+    module_statuses = diagnostics.get("module_statuses")
+    if not isinstance(module_statuses, dict):
+        module_statuses = collect_module_statuses(diagnostics)
+    return aggregate_module_statuses(str(diagnostics.get("core_status", diagnostics.get("status", "ok"))), module_statuses)
 
 @dataclass(frozen=True)
 class ArmSpec:
@@ -346,7 +412,13 @@ def oscillation_windows(
 
 def bimanual_features(arms: dict[str, dict[str, Any]], config: dict[str, Any]) -> dict[str, Any]:
     state_frame_mode = str(config.get("state_frame_mode", "unknown"))
-    if state_frame_mode != "common_world" or not config.get("bimanual_enabled", True):
+    if not config.get("bimanual_enabled", True):
+        return {
+            "status": "unavailable",
+            "reason": "disabled_by_config",
+            "state_frame_mode": state_frame_mode,
+        }
+    if state_frame_mode != "common_world":
         return {
             "status": "unavailable",
             "reason": "state_frame_mode_unknown" if state_frame_mode == "unknown" else "state_frame_mode_not_common_world",
@@ -700,6 +772,14 @@ def inspect_episode_geometry(
         "episode_index": episode,
         "task_index": task_index,
         "status": "ok",
+        "core_status": "ok",
+        "status_enum": list(MODULE_STATUS_VALUES),
+        "status_policy": {
+            "ok": "core and enabled modules completed",
+            "warning": "core completed but at least one submodule is degraded or unavailable",
+            "unavailable": "core geometry could not run",
+            "fail": "a module reported an execution-level failure",
+        },
         "gates": {
             "rotation6d_layout": config.get("rotation6d_layout", "unknown"),
             "state_frame_mode": config.get("state_frame_mode", "unknown"),
@@ -713,17 +793,23 @@ def inspect_episode_geometry(
         "state_vision": {},
     }
     if "state" not in df.columns:
+        diagnostics["core_status"] = "unavailable"
         diagnostics["status"] = "unavailable"
         diagnostics["reason"] = "state_column_missing"
+        diagnostics["module_statuses"] = unavailable_module_statuses("core_unavailable")
         return {"findings": findings, "diagnostics": diagnostics}
     matrix = finite_float_matrix(df["state"])
     if matrix is None or matrix.ndim != 2 or matrix.shape[1] < 20:
+        diagnostics["core_status"] = "unavailable"
         diagnostics["status"] = "unavailable"
         diagnostics["reason"] = "state_matrix_invalid"
+        diagnostics["module_statuses"] = unavailable_module_statuses("core_unavailable")
         return {"findings": findings, "diagnostics": diagnostics}
     if len(matrix) != len(frames):
+        diagnostics["core_status"] = "unavailable"
         diagnostics["status"] = "unavailable"
         diagnostics["reason"] = "state_frame_length_mismatch"
+        diagnostics["module_statuses"] = unavailable_module_statuses("core_unavailable")
         return {"findings": findings, "diagnostics": diagnostics}
 
     arms = {arm: arm_motion_features(matrix, arm, config) for arm in ARM_SPECS}
@@ -735,6 +821,7 @@ def inspect_episode_geometry(
             "median_step": float(np.nanmedian(features["step"])) if len(features["step"]) else 0.0,
             "median_speed": float(np.nanmedian(features["speed"])) if len(features["speed"]) else 0.0,
             "median_angular_speed": float(np.nanmedian(features["omega"])) if np.isfinite(features["omega"]).any() else None,
+            "status": "ok",
         }
         bad = np.where(~legal)[0]
         for start, end in contiguous_ranges(frames[bad], max_gap=1):
@@ -917,6 +1004,17 @@ def inspect_episode_geometry(
             findings,
             diagnostics,
         )
+    else:
+        for arm, spec in ARM_SPECS.items():
+            diagnostics["state_vision"][arm] = {
+                "status": "unavailable",
+                "reason": "disabled_by_config",
+                "view": spec.wrist_view,
+            }
+    diagnostics["module_statuses"] = collect_module_statuses(diagnostics)
+    diagnostics["status"] = summarize_geometry_status(diagnostics)
+    if diagnostics["status"] == "warning" and "reason" not in diagnostics:
+        diagnostics["reason"] = "partial_module_unavailable"
     return {"findings": findings, "diagnostics": diagnostics}
 
 
@@ -957,6 +1055,7 @@ def inspect_state_vision_response(
             "visual_motion_reason": feature_result.get("reason"),
             "duplicate_frame_fraction": float(feature_result.get("duplicate_frame_fraction", 0.0)),
             "lag": lag,
+            "status": "ok",
         }
         if feature_result.get("status") != "ok" or float(feature_result.get("duplicate_frame_fraction", 0.0)) >= 0.35:
             diagnostics["state_vision"][arm]["status"] = "unavailable"

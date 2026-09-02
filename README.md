@@ -9,6 +9,7 @@ multimodal robot data quality detection workflow.
 - `scripts/geometry_constraints.py`: standalone P0 spatial geometry detector for Rotation 6D legality, per-arm SE(3), bimanual gates, and weak State-Vision wrist response checks.
 - `outputs/v2/reports/`: human-readable quality reports and episode scores.
 - `outputs/v2/diagnostics/`: machine-readable findings, baselines, and standards.
+- `outputs/legacy/`: legacy report outputs kept only for compatibility.
 - `赛题.txt`: competition/task description.
 
 ## Notes
@@ -24,11 +25,10 @@ checks, and weak wrist State-Vision responses are reported separately.
 
 ## Run
 
-Use the bundled or local Python environment with `numpy`, `Pillow`, and
-`pyarrow` installed:
+Install the bundled or local Python environment from `requirements.txt`. The v2 pipeline requires explicit reference and target roots:
 
 ```powershell
-python scripts/v2_quality_pipeline.py
+python run_v2_pipeline.py --reference-root "C:\path\to\reference" --target-root "C:\path\to\target"
 ```
 
 Quick geometry smoke test:
@@ -36,5 +36,7 @@ Quick geometry smoke test:
 ```powershell
 python scripts/test_geometry_constraints_smoke.py
 ```
+
+
 
 

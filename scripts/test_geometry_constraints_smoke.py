@@ -41,6 +41,55 @@ def core_checks() -> dict[str, object]:
         config["jitter_max_path_efficiency"],
         0.01,
     )
+    module_status_checks = {
+        "all_ok": geometry_constraints.aggregate_module_statuses(
+            "ok",
+            {
+                "arms": {"left": "ok", "right": "ok"},
+                "bimanual": "ok",
+                "state_vision": {"left": "ok", "right": "ok"},
+            },
+        ),
+        "partial_unavailable": geometry_constraints.aggregate_module_statuses(
+            "ok",
+            {
+                "arms": {"left": "ok", "right": "ok"},
+                "bimanual": "ok",
+                "state_vision": {"left": "ok", "right": "unavailable"},
+            },
+        ),
+        "submodule_warning": geometry_constraints.aggregate_module_statuses(
+            "ok",
+            {
+                "arms": {"left": "ok", "right": "ok"},
+                "bimanual": "warning",
+                "state_vision": {"left": "ok", "right": "ok"},
+            },
+        ),
+        "submodule_fail": geometry_constraints.aggregate_module_statuses(
+            "ok",
+            {
+                "arms": {"left": "ok", "right": "ok"},
+                "bimanual": "ok",
+                "state_vision": {"left": "fail", "right": "ok"},
+            },
+        ),
+        "core_unavailable": geometry_constraints.aggregate_module_statuses(
+            "unavailable",
+            {
+                "arms": {"left": "ok", "right": "ok"},
+                "bimanual": "ok",
+                "state_vision": {"left": "ok", "right": "ok"},
+            },
+        ),
+    }
+    assert module_status_checks == {
+        "all_ok": "ok",
+        "partial_unavailable": "warning",
+        "submodule_warning": "warning",
+        "submodule_fail": "fail",
+        "core_unavailable": "unavailable",
+    }
     return {
         "config": config,
         "rotation6d_legal": bool(precheck["legal"][0]),
@@ -50,6 +99,7 @@ def core_checks() -> dict[str, object]:
         "lag_stability_status": lag.get("lag_stability", {}).get("status"),
         "monotonic_oscillation_windows": len(monotonic_windows),
         "sustained_oscillation_windows": len(oscillating_windows),
+        "module_status_checks": module_status_checks,
     }
 
 
@@ -88,8 +138,58 @@ def parquet_smoke() -> dict[str, object]:
     }
 
 
+def inspect_episode_status_checks() -> dict[str, object]:
+    import pandas as pd
+
+    class Factory:
+        def make(self, *args, **kwargs):
+            return {"args": args, "kwargs": kwargs}
+
+    frames = np.arange(16, dtype=np.int64)
+    state_rows = []
+    for idx in range(len(frames)):
+        left_pos = [idx * 0.001, 0.0, 0.0]
+        left_rot = [1.0, 0.0, 0.0, 0.0, 1.0, 0.0]
+        right_pos = [0.2 + idx * 0.001, 0.0, 0.0]
+        right_rot = [1.0, 0.0, 0.0, 0.0, 1.0, 0.0]
+        state_rows.append(left_pos + left_rot + [0.0] + right_pos + right_rot + [0.0])
+    df = pd.DataFrame(
+        {
+            "frame_index": frames,
+            "episode_index": np.zeros(len(frames), dtype=np.int64),
+            "task_index": np.zeros(len(frames), dtype=np.int64),
+            "state": state_rows,
+        }
+    )
+    config = geometry_constraints.default_geometry_config()
+    config.update({"rotation6d_layout": "columns", "state_frame_mode": "common_world"})
+    result = geometry_constraints.inspect_episode_geometry(
+        df=df,
+        frames=frames,
+        episode=0,
+        task_index=0,
+        views=["image"],
+        image_context={},
+        reference={"stats": {}},
+        config=config,
+        factory=Factory(),
+    )
+    diagnostics = result["diagnostics"]
+    module_statuses = diagnostics["module_statuses"]
+    assert diagnostics["status"] == "warning", diagnostics
+    assert diagnostics["core_status"] == "ok", diagnostics
+    assert module_statuses["state_vision"] == {"left": "unavailable", "right": "unavailable"}, module_statuses
+    assert module_statuses["arms"] == {"left": "ok", "right": "ok"}, module_statuses
+    assert module_statuses["bimanual"] == "ok", module_statuses
+    return {
+        "top_level_status": diagnostics["status"],
+        "reason": diagnostics.get("reason"),
+        "module_statuses": module_statuses,
+    }
+
+
 def main() -> None:
-    payload = {"core": core_checks(), "parquet": parquet_smoke()}
+    payload = {"core": core_checks(), "inspect_episode_status": inspect_episode_status_checks(), "parquet": parquet_smoke()}
     print(json.dumps(payload, ensure_ascii=False, indent=2))
 
 

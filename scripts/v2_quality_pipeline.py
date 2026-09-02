@@ -71,6 +71,10 @@ VISION_JITTER_MAD_MULTIPLIER = 10.0
 STATE_JITTER_MIN_CLUSTER = 2
 STATE_JITTER_CLUSTER_GAP = 2
 STATE_JITTER_SINGLE_SPIKE_MIN_SCORE = 95.0
+PHASE_NAMES = ("start", "active", "end")
+MIN_PHASE_FRAMES = 8
+PHASE_ACTIVITY_P95_MULTIPLIER = 0.65
+PHASE_ACTIVITY_MAD_MULTIPLIER = 2.5
 
 
 @dataclass
@@ -105,6 +109,13 @@ class EpisodeResult:
     length: int
     file: str
     score_total: float
+    legacy_score_total: float
+    score_detection_quality: float
+    score_data_value: float
+    score_engineering_reliability: float
+    scoring_version: str
+    data_value_reasons: list[str]
+    engineering_reliability_reasons: list[str]
     score_structural: float
     score_vision_single: float
     score_vision_vision: float
@@ -118,6 +129,32 @@ class EpisodeResult:
     high_confidence_count: int
     suspicious_count: int
     ood_count: int
+    geometry_status: str = "ok"
+    geometry_reason: str | None = None
+    geometry_module_statuses: dict[str, Any] = field(default_factory=dict)
+    phase_status: str = "unavailable"
+    phase_reason: str | None = None
+    phase_segments: list[dict[str, Any]] = field(default_factory=list)
+
+
+STATUS_COLUMNS = list(geometry_constraints.MODULE_STATUS_VALUES)
+GEOMETRY_REPORT_MODULES = [
+    ("geometry", lambda item: item.geometry_status),
+    ("arms.left", lambda item: dict(item.geometry_module_statuses.get("arms", {})).get("left", "unavailable")),
+    ("arms.right", lambda item: dict(item.geometry_module_statuses.get("arms", {})).get("right", "unavailable")),
+    ("bimanual", lambda item: item.geometry_module_statuses.get("bimanual", "unavailable")),
+    ("state_vision.left", lambda item: dict(item.geometry_module_statuses.get("state_vision", {})).get("left", "unavailable")),
+    ("state_vision.right", lambda item: dict(item.geometry_module_statuses.get("state_vision", {})).get("right", "unavailable")),
+]
+
+
+def normalized_status_counts(counter: Counter[str]) -> dict[str, int]:
+    return {status: int(counter.get(status, 0)) for status in STATUS_COLUMNS}
+
+
+def geometry_module_status(value: Any) -> str:
+    status = str(value or "unavailable")
+    return status if status in geometry_constraints.MODULE_STATUS_SET else "fail"
 
 
 STANDARDS: dict[str, dict[str, str]] = {
@@ -191,6 +228,13 @@ DIMENSION_POINTS = {
     "state": 15.0,
     "temporal": 15.0,
     "cross_modal": 15.0,
+}
+LEGACY_DIMENSION_POINTS = dict(DIMENSION_POINTS)
+OFFICIAL_SCORING_VERSION = "official_70_20_10_v1"
+OFFICIAL_SCORE_POINTS = {
+    "detection_quality": 70.0,
+    "data_value": 20.0,
+    "engineering_reliability": 10.0,
 }
 
 CATEGORY_TO_DIMENSION = {
@@ -533,6 +577,7 @@ def collect_reference_baselines(
     image_motion: dict[str, list[float]] = defaultdict(list)
     image_accel: dict[str, list[float]] = defaultdict(list)
     state_values: dict[str, list[float]] = defaultdict(list)
+    state_row_abs: dict[str, list[float]] = defaultdict(list)
     state_delta: dict[str, list[float]] = defaultdict(list)
     state_accel: dict[str, list[float]] = defaultdict(list)
 
@@ -606,6 +651,56 @@ def collect_reference_baselines(
                 state_accel[f"{task_key}|{column}"].extend(accel.tolist())
 
 
+    phase_state_delta: dict[str, list[float]] = defaultdict(list)
+    phase_state_accel: dict[str, list[float]] = defaultdict(list)
+    phase_episode_summaries: list[dict[str, Any]] = []
+    phase_reference_delta = {key: robust_stats(values) for key, values in state_delta.items()}
+    for path in parquet_files:
+        try:
+            column_names = parquet_column_names(path)
+            wanted = [name for name in ["state", "frame_index", "episode_index", "task_index"] if name in column_names]
+            df = read_parquet_frame(path, wanted)
+        except Exception:
+            continue
+        if len(df) == 0 or "state" not in df.columns:
+            continue
+        matrix = to_float_matrix(df["state"])
+        if matrix is None or matrix.shape[1] < 20 or not np.isfinite(matrix).all():
+            continue
+        episode = int(df["episode_index"].iloc[0]) if "episode_index" in df.columns else None
+        task_index = int(df["task_index"].iloc[0]) if "task_index" in df.columns else None
+        delta = np.linalg.norm(np.diff(matrix, axis=0), axis=1) if len(matrix) > 1 else np.array([], dtype=np.float64)
+        accel = np.linalg.norm(matrix[2:] - 2.0 * matrix[1:-1] + matrix[:-2], axis=1) if len(matrix) > 2 else np.array([], dtype=np.float64)
+        phase_result = phase_transition_labels(delta, phase_reference_delta.get("global|state", {"count": 0}))
+        if phase_result.get("status") != "ok":
+            phase_episode_summaries.append({
+                "episode_index": episode,
+                "task_index": task_index,
+                "length": int(len(matrix)),
+                "phase_status": phase_result.get("status"),
+                "phase_reason": phase_result.get("reason"),
+            })
+            continue
+        labels = np.asarray(phase_result.get("transition_labels", []), dtype=object)
+        accel_labels = labels[1:] if len(labels) > 1 else np.array([], dtype=object)
+        for phase in PHASE_NAMES:
+            delta_mask = labels == phase
+            accel_mask = accel_labels == phase
+            if delta_mask.any():
+                for scope in [f"global|phase:{phase}|state", f"task:{task_index}|phase:{phase}|state"]:
+                    phase_state_delta[scope].extend(delta[delta_mask].tolist())
+            if accel_mask.any():
+                for scope in [f"global|phase:{phase}|state", f"task:{task_index}|phase:{phase}|state"]:
+                    phase_state_accel[scope].extend(accel[accel_mask].tolist())
+        phase_episode_summaries.append({
+            "episode_index": episode,
+            "task_index": task_index,
+            "length": int(len(matrix)),
+            "phase_status": "ok",
+            "phase_reason": phase_result.get("reason"),
+            "phase_segments": phase_result.get("segments", []),
+        })
+
     return {
         "image_metrics": {
             key: {metric: robust_stats(values) for metric, values in metric_map.items()}
@@ -614,8 +709,12 @@ def collect_reference_baselines(
         "image_motion": {key: robust_stats(values) for key, values in image_motion.items()},
         "image_accel": {key: robust_stats(values) for key, values in image_accel.items()},
         "state_values": {key: robust_stats(values) for key, values in state_values.items()},
+        "state_row_abs": {key: robust_stats(values) for key, values in state_row_abs.items()},
         "state_delta": {key: robust_stats(values) for key, values in state_delta.items()},
         "state_accel": {key: robust_stats(values) for key, values in state_accel.items()},
+        "phase_state_delta": {key: robust_stats(values) for key, values in phase_state_delta.items()},
+        "phase_state_accel": {key: robust_stats(values) for key, values in phase_state_accel.items()},
+        "phase_episode_summaries": phase_episode_summaries,
         "expected_image_shape": {key: list(value) for key, value in expected_shape_by_view.items()},
         "reference_policy": {
             "baseline_layers": ["task+view/column", "global+view/column"],
@@ -646,6 +745,107 @@ def baseline_lookup(
     if isinstance(global_stats, dict):
         return global_stats
     return {"count": 0}
+
+
+def reference_stats_ready(stats: dict[str, Any]) -> bool:
+    return isinstance(stats, dict) and int(stats.get("count", 0)) >= 5
+
+
+def reference_lower_threshold(stats: dict[str, Any], key: str = "p05", multiplier: float = 0.5, floor: float = 1e-8) -> float | None:
+    if not reference_stats_ready(stats):
+        return None
+    value = stat_value(stats, key, float("nan"))
+    if not np.isfinite(value):
+        return None
+    return max(floor, float(value) * float(multiplier))
+
+
+def reference_upper_threshold(
+    stats: dict[str, Any],
+    key: str = "p95",
+    quantile_multiplier: float = 1.5,
+    mad_multiplier: float = 8.0,
+) -> float | None:
+    if not reference_stats_ready(stats):
+        return None
+    candidates: list[float] = []
+    for candidate in [
+        stat_value(stats, key, float("nan")) * float(quantile_multiplier),
+        stat_value(stats, "median", 0.0) + float(mad_multiplier) * stat_value(stats, "mad", 0.0),
+        stat_value(stats, "max", float("nan")) * REFERENCE_ENVELOPE_MARGIN,
+    ]:
+        if np.isfinite(candidate):
+            candidates.append(float(candidate))
+    return max(candidates) if candidates else None
+
+
+def phase_transition_labels(delta: np.ndarray, delta_stats: dict[str, Any]) -> dict[str, Any]:
+    if delta.size == 0:
+        return {"status": "unavailable", "reason": "empty_delta", "transition_labels": []}
+    quiet_threshold = reference_lower_threshold(delta_stats, key="p05", multiplier=0.5)
+    active_threshold = reference_upper_threshold(
+        delta_stats,
+        key="p95",
+        quantile_multiplier=PHASE_ACTIVITY_P95_MULTIPLIER,
+        mad_multiplier=PHASE_ACTIVITY_MAD_MULTIPLIER,
+    )
+    if quiet_threshold is None or active_threshold is None or active_threshold <= quiet_threshold:
+        return {
+            "status": "unavailable",
+            "reason": "reference_phase_baseline_missing",
+            "transition_labels": ["unknown"] * int(delta.size),
+        }
+    active_idx = np.where(np.isfinite(delta) & (delta >= active_threshold))[0]
+    if active_idx.size < MIN_PHASE_FRAMES:
+        return {
+            "status": "unavailable",
+            "reason": "reference_active_window_missing",
+            "quiet_threshold": float(quiet_threshold),
+            "active_threshold": float(active_threshold),
+            "transition_labels": ["unknown"] * int(delta.size),
+        }
+    first = int(active_idx[0])
+    last = int(active_idx[-1])
+    if last - first + 1 < MIN_PHASE_FRAMES:
+        return {
+            "status": "unavailable",
+            "reason": "active_window_too_short",
+            "quiet_threshold": float(quiet_threshold),
+            "active_threshold": float(active_threshold),
+            "transition_labels": ["unknown"] * int(delta.size),
+        }
+    labels = np.full(delta.shape, "start", dtype=object)
+    labels[first : last + 1] = "active"
+    labels[last + 1 :] = "end"
+    segments: list[dict[str, Any]] = []
+    for phase in PHASE_NAMES:
+        phase_idx = np.where(labels == phase)[0]
+        if phase_idx.size == 0:
+            continue
+        segments.append(
+            {
+                "phase": phase,
+                "transition_start": int(phase_idx[0]),
+                "transition_end": int(phase_idx[-1]),
+                "transition_count": int(phase_idx.size),
+            }
+        )
+    return {
+        "status": "ok",
+        "reason": "reference_delta_activity_split",
+        "quiet_threshold": float(quiet_threshold),
+        "active_threshold": float(active_threshold),
+        "transition_labels": labels.tolist(),
+        "segments": segments,
+    }
+
+
+def phase_specific_stats(baselines: dict[str, Any], task_index: int | None, phase: str, column: str, section: str = "phase_state_delta") -> dict[str, Any]:
+    stats = baseline_lookup(baselines, section, task_index, f"phase:{phase}", column)
+    if reference_stats_ready(stats):
+        return stats
+    fallback_section = "state_delta" if section == "phase_state_delta" else "state_accel"
+    return baseline_lookup(baselines, fallback_section, task_index, column)
 
 
 def metric_baseline_lookup(
@@ -748,7 +948,14 @@ def inspect_episode(
                 evidence={"file": str(path)},
             )
         )
-        return {"episode_index": episode, "task_index": task_index, "length": length, "file": str(path), "soft_penalties": {}}, findings
+        return {
+            "episode_index": episode,
+            "task_index": task_index,
+            "length": length,
+            "file": str(path),
+            "soft_penalties": {},
+            "phase_detection": {"status": "unavailable", "reason": "empty_episode", "segments": []},
+        }, findings
 
     if expected_meta is not None and length != int(expected_meta.get("length", length)):
         findings.append(
@@ -790,6 +997,7 @@ def inspect_episode(
         "file": str(path),
         "soft_penalties": soft_penalties,
         "geometry_constraints": geometry_result["diagnostics"],
+        "phase_detection": state_context.get("phase_detection", {"status": "unavailable", "reason": "state_not_processed", "segments": []}),
     }, findings
 
 
@@ -1224,6 +1432,7 @@ def inspect_low_dimensional(
     factory: FindingFactory,
 ) -> dict[str, dict[str, Any]]:
     context: dict[str, dict[str, Any]] = {}
+    phase_detection: dict[str, Any] = {"status": "unavailable", "reason": "state_not_processed"}
     for column in LOW_DIM_COLUMNS:
         if column not in df.columns:
             continue
@@ -1264,7 +1473,7 @@ def inspect_low_dimensional(
                 )
             )
         non_finite = np.where(~np.isfinite(matrix).all(axis=1))[0]
-        for start, end in contiguous_ranges(frames[non_finite]):
+        for start_idx, end_idx in contiguous_ranges(frames[non_finite]):
             findings.append(
                 factory.make(
                     "state_illegal",
@@ -1277,12 +1486,12 @@ def inspect_low_dimensional(
                     episode_index=episode,
                     task_index=task_index,
                     column=column,
-                    frame_start=start,
-                    frame_end=end,
+                    frame_start=start_idx,
+                    frame_end=end_idx,
                 )
             )
         impossible = np.where(np.isfinite(matrix).all(axis=1) & (np.max(np.abs(matrix), axis=1) > 1e6))[0]
-        for start, end in contiguous_ranges(frames[impossible]):
+        for start_idx, end_idx in contiguous_ranges(frames[impossible]):
             findings.append(
                 factory.make(
                     "state_illegal",
@@ -1295,21 +1504,20 @@ def inspect_low_dimensional(
                     episode_index=episode,
                     task_index=task_index,
                     column=column,
-                    frame_start=start,
-                    frame_end=end,
+                    frame_start=start_idx,
+                    frame_end=end_idx,
                     evidence={"guardrail_abs_max": 1e6},
                 )
             )
-
         if column in CONSISTENCY_LOW_DIM_COLUMNS:
             value_stats = baseline_lookup(baselines, "state_values", task_index, column)
             row_abs = np.max(np.abs(matrix), axis=1) if matrix.size else np.array([])
-            global_abs_stats = robust_stats(np.abs(matrix[np.isfinite(matrix)]).reshape(-1).tolist()) if matrix.size else {"count": 0}
+            row_abs_stats = baseline_lookup(baselines, "state_row_abs", task_index, column)
             for idx, row_max in enumerate(row_abs):
                 if not np.isfinite(row_max):
                     continue
                 score = max(
-                    100.0 * upper_outlier_score(float(row_max), global_abs_stats, weak_z=6.0, strong_z=12.0),
+                    100.0 * upper_outlier_score(float(row_max), row_abs_stats, weak_z=6.0, strong_z=12.0),
                     100.0 * two_sided_outlier_score(float(np.median(matrix[idx])), value_stats, weak_z=6.0, strong_z=12.0),
                 )
                 if score >= 35:
@@ -1330,11 +1538,29 @@ def inspect_low_dimensional(
                             evidence={"row_abs_max": float(row_max), "value_baseline": value_stats},
                         )
                     )
-
         delta = np.linalg.norm(np.diff(matrix, axis=0), axis=1) if len(matrix) > 1 else np.array([])
         accel = np.linalg.norm(matrix[2:] - 2.0 * matrix[1:-1] + matrix[:-2], axis=1) if len(matrix) > 2 else np.array([])
-        context[column] = {"matrix": matrix, "delta": delta, "accel": accel}
-        inspect_state_temporal(frames, episode, task_index, column, delta, accel, baselines, findings, factory)
+        if column == "state":
+            phase_detection = phase_transition_labels(delta, baseline_lookup(baselines, "state_delta", task_index, column))
+        context[column] = {
+            "matrix": matrix,
+            "delta": delta,
+            "accel": accel,
+            "phase_detection": phase_detection if column == "state" else {"status": "unavailable", "reason": "not_state_column"},
+        }
+        inspect_state_temporal(
+            frames,
+            episode,
+            task_index,
+            column,
+            delta,
+            accel,
+            baselines,
+            findings,
+            factory,
+            phase_detection=phase_detection if column == "state" else None,
+        )
+    context["phase_detection"] = phase_detection
     return context
 
 
@@ -1348,106 +1574,121 @@ def inspect_state_temporal(
     baselines: dict[str, Any],
     findings: list[Finding],
     factory: FindingFactory,
+    phase_detection: dict[str, Any] | None = None,
 ) -> None:
     if delta.size == 0:
         return
-    delta_stats = baseline_lookup(baselines, "state_delta", task_index, column)
-    accel_stats = baseline_lookup(baselines, "state_accel", task_index, column)
-    low_threshold = max(1e-8, stat_value(delta_stats, "p01", 1e-8) * 0.5)
-    high_threshold = max(
-        stat_value(delta_stats, "p99", float(np.max(delta))) * 1.5,
-        stat_value(delta_stats, "median", 0.0) + 8.0 * stat_value(delta_stats, "mad", 0.0),
-        stat_value(delta_stats, "max", float(np.max(delta))) * REFERENCE_ENVELOPE_MARGIN,
-    )
-
-    frozen = np.where(delta <= low_threshold)[0]
-    for start, end in contiguous_ranges(frozen, max_gap=1):
-        run_len = end - start + 1
-        if run_len >= MIN_FREEZE_FRAMES:
-            severity = freeze_duration_severity(run_len)
-            if severity < MIN_FREEZE_REPORT_SEVERITY:
-                continue
-            findings.append(
-                factory.make(
-                    "state_temporal",
-                    "low_dim_freeze_run",
-                    "Low-dimensional state is nearly unchanged for a long window",
-                    "segment",
-                    "state",
-                    severity,
-                    episode_index=episode,
-                    task_index=task_index,
-                    column=column,
-                    frame_start=int(frames[start]),
-                    frame_end=int(frames[min(end + 1, len(frames) - 1)]),
-                    evidence={
-                        "run_length": run_len,
-                        "low_delta_threshold": low_threshold,
-                        "median_delta": float(np.median(delta[start : end + 1])),
-                        "grace_frames": FREEZE_GRACE_FRAMES,
-                        "mild_frames": FREEZE_MILD_FRAMES,
-                        "severe_frames": FREEZE_SEVERE_FRAMES,
-                    },
+    phase_labels = np.asarray(dict(phase_detection or {}).get("transition_labels", []), dtype=object)
+    if phase_labels.size != delta.size or not np.isin(phase_labels, PHASE_NAMES).any():
+        phase_labels = np.full(delta.shape, "active", dtype=object)
+    for phase in PHASE_NAMES:
+        phase_mask = phase_labels == phase
+        if not phase_mask.any():
+            continue
+        phase_delta_stats = phase_specific_stats(baselines, task_index, phase, column, section="phase_state_delta")
+        phase_accel_stats = phase_specific_stats(baselines, task_index, phase, column, section="phase_state_accel")
+        low_threshold = reference_lower_threshold(phase_delta_stats, key="p05", multiplier=0.5)
+        if low_threshold is None:
+            low_threshold = reference_lower_threshold(baseline_lookup(baselines, "state_delta", task_index, column), key="p01", multiplier=0.5) or 1e-8
+        high_threshold = reference_upper_threshold(phase_delta_stats, key="p99", quantile_multiplier=1.5, mad_multiplier=8.0)
+        frozen = np.where(phase_mask & (delta <= low_threshold))[0]
+        for start_idx, end_idx in contiguous_ranges(frozen, max_gap=1):
+            run_len = end_idx - start_idx + 1
+            if run_len >= MIN_FREEZE_FRAMES:
+                severity = freeze_duration_severity(run_len)
+                if severity < MIN_FREEZE_REPORT_SEVERITY:
+                    continue
+                findings.append(
+                    factory.make(
+                        "state_temporal",
+                        f"low_dim_freeze_run_{phase}",
+                        "Low-dimensional state is nearly unchanged for a long window",
+                        "segment",
+                        "state",
+                        severity,
+                        episode_index=episode,
+                        task_index=task_index,
+                        column=column,
+                        frame_start=int(frames[start_idx]),
+                        frame_end=int(frames[min(end_idx + 1, len(frames) - 1)]),
+                        evidence={
+                            "phase": phase,
+                            "run_length": run_len,
+                            "low_delta_threshold": low_threshold,
+                            "median_delta": float(np.median(delta[start_idx : end_idx + 1])),
+                            "grace_frames": FREEZE_GRACE_FRAMES,
+                            "mild_frames": FREEZE_MILD_FRAMES,
+                            "severe_frames": FREEZE_SEVERE_FRAMES,
+                            "reference_count": phase_delta_stats.get("count", 0),
+                        },
+                    )
                 )
-            )
-
-    fast = np.where(delta >= high_threshold)[0]
-    for start, end in contiguous_ranges(fast, max_gap=1):
-        max_delta = float(np.max(delta[start : end + 1]))
-        score = max(35.0, 100.0 * upper_outlier_score(max_delta, delta_stats, weak_z=4.0, strong_z=10.0))
-        findings.append(
-            factory.make(
-                "state_temporal",
-                "low_dim_fast_jump",
-                "Low-dimensional state has an extreme fast jump",
-                "segment",
-                "state",
-                score,
-                episode_index=episode,
-                task_index=task_index,
-                column=column,
-                frame_start=int(frames[start]),
-                frame_end=int(frames[min(end + 1, len(frames) - 1)]),
-                evidence={"max_delta": max_delta, "high_delta_threshold": high_threshold},
-            )
-        )
-
-    if accel.size:
-        accel_threshold = max(
-            stat_value(accel_stats, "p99", float(np.max(accel))) * STATE_JITTER_P99_MULTIPLIER,
-            stat_value(accel_stats, "median", 0.0) + STATE_JITTER_MAD_MULTIPLIER * stat_value(accel_stats, "mad", 0.0),
-            stat_value(accel_stats, "max", float(np.max(accel))) * REFERENCE_ENVELOPE_MARGIN,
-        )
-        spikes = np.where(accel >= accel_threshold)[0]
-        for start, end in contiguous_ranges(spikes, max_gap=STATE_JITTER_CLUSTER_GAP):
-            max_accel = float(np.max(accel[start : end + 1]))
-            score = max(35.0, 100.0 * upper_outlier_score(max_accel, accel_stats, weak_z=4.0, strong_z=10.0))
-            cluster_len = end - start + 1
-            if cluster_len < STATE_JITTER_MIN_CLUSTER and score < STATE_JITTER_SINGLE_SPIKE_MIN_SCORE:
-                continue
-            findings.append(
-                factory.make(
-                    "state_temporal",
-                    "low_dim_jitter_or_spike",
-                    "Low-dimensional state acceleration is an extreme outlier",
-                    "segment",
-                    "state",
-                    score,
-                    episode_index=episode,
-                    task_index=task_index,
-                    column=column,
-                    frame_start=int(frames[start + 1]),
-                    frame_end=int(frames[min(end + 1, len(frames) - 1)]),
-                    evidence={
-                        "max_accel": max_accel,
-                        "accel_threshold": accel_threshold,
-                        "cluster_len": cluster_len,
-                        "min_cluster_len": STATE_JITTER_MIN_CLUSTER,
-                        "single_spike_min_score": STATE_JITTER_SINGLE_SPIKE_MIN_SCORE,
-                    },
+        if high_threshold is not None:
+            fast = np.where(phase_mask & (delta >= high_threshold))[0]
+            for start_idx, end_idx in contiguous_ranges(fast, max_gap=1):
+                max_delta = float(np.max(delta[start_idx : end_idx + 1]))
+                score = max(35.0, 100.0 * upper_outlier_score(max_delta, phase_delta_stats, weak_z=4.0, strong_z=10.0))
+                findings.append(
+                    factory.make(
+                        "state_temporal",
+                        f"low_dim_fast_jump_{phase}",
+                        "Low-dimensional state has an extreme fast jump",
+                        "segment",
+                        "state",
+                        score,
+                        episode_index=episode,
+                        task_index=task_index,
+                        column=column,
+                        frame_start=int(frames[start_idx]),
+                        frame_end=int(frames[min(end_idx + 1, len(frames) - 1)]),
+                        evidence={
+                            "phase": phase,
+                            "max_delta": max_delta,
+                            "high_delta_threshold": high_threshold,
+                            "reference_count": phase_delta_stats.get("count", 0),
+                        },
+                    )
                 )
+        if accel.size:
+            accel_phase_mask = phase_mask[1:] if len(phase_mask) > 1 else np.array([], dtype=bool)
+            accel_threshold = reference_upper_threshold(
+                phase_accel_stats,
+                key="p99",
+                quantile_multiplier=STATE_JITTER_P99_MULTIPLIER,
+                mad_multiplier=STATE_JITTER_MAD_MULTIPLIER,
             )
-
+            if accel_threshold is not None and accel_phase_mask.size:
+                spikes = np.where(accel_phase_mask & (accel >= accel_threshold))[0]
+                for start_idx, end_idx in contiguous_ranges(spikes, max_gap=STATE_JITTER_CLUSTER_GAP):
+                    max_accel = float(np.max(accel[start_idx : end_idx + 1]))
+                    score = max(35.0, 100.0 * upper_outlier_score(max_accel, phase_accel_stats, weak_z=4.0, strong_z=10.0))
+                    cluster_len = end_idx - start_idx + 1
+                    if cluster_len < STATE_JITTER_MIN_CLUSTER and score < STATE_JITTER_SINGLE_SPIKE_MIN_SCORE:
+                        continue
+                    findings.append(
+                        factory.make(
+                            "state_temporal",
+                            f"low_dim_jitter_or_spike_{phase}",
+                            "Low-dimensional state acceleration is an extreme outlier",
+                            "segment",
+                            "state",
+                            score,
+                            episode_index=episode,
+                            task_index=task_index,
+                            column=column,
+                            frame_start=int(frames[start_idx + 1]),
+                            frame_end=int(frames[min(end_idx + 1, len(frames) - 1)]),
+                            evidence={
+                                "phase": phase,
+                                "max_accel": max_accel,
+                                "accel_threshold": accel_threshold,
+                                "cluster_len": cluster_len,
+                                "min_cluster_len": STATE_JITTER_MIN_CLUSTER,
+                                "single_spike_min_score": STATE_JITTER_SINGLE_SPIKE_MIN_SCORE,
+                                "reference_count": phase_accel_stats.get("count", 0),
+                            },
+                        )
+                    )
 
 
 def capped_soft_penalty(values: list[float], cap: float) -> float:
@@ -1565,6 +1806,122 @@ def merge_findings(findings: list[Finding]) -> list[Finding]:
     return sorted(merged, key=lambda item: (item.episode_index if item.episode_index is not None else -1, item.category_id, item.frame_start or -1, item.finding_id))
 
 
+def score_reasons(score: float, max_points: float, reasons: list[str]) -> list[str]:
+    if score >= max_points - 1e-6 and not reasons:
+        return ["full_credit"]
+    return reasons or ["minor_reference_penalties"]
+
+
+def module_status_penalty(status: str, fail: float = 1.5, unavailable: float = 1.0, warning: float = 0.4) -> float:
+    if status == "fail":
+        return fail
+    if status == "unavailable":
+        return unavailable
+    if status == "warning":
+        return warning
+    return 0.0
+
+
+def iter_geometry_statuses(value: Any) -> list[str]:
+    statuses: list[str] = []
+    if isinstance(value, dict):
+        for nested in value.values():
+            statuses.extend(iter_geometry_statuses(nested))
+    else:
+        statuses.append(geometry_module_status(value))
+    return statuses
+
+
+def compute_data_value_score(meta: dict[str, Any], findings: list[Finding], geometry: dict[str, Any]) -> tuple[float, list[str]]:
+    score = OFFICIAL_SCORE_POINTS["data_value"]
+    reasons: list[str] = []
+    length = int(meta.get("length", 0) or 0)
+    if length <= 0:
+        return 0.0, ["empty_episode_has_no_training_value"]
+    if length < 32:
+        deduction = 3.0
+        score -= deduction
+        reasons.append(f"short_episode:-{deduction:g}")
+    if meta.get("task_index") is None:
+        deduction = 2.0
+        score -= deduction
+        reasons.append(f"missing_task_index:-{deduction:g}")
+
+    missing_state = {item.column for item in findings if item.issue_type == "missing_required_column" and item.modality == "state"}
+    if missing_state:
+        deduction = min(5.0, 2.5 * len(missing_state))
+        score -= deduction
+        reasons.append(f"missing_low_dim_columns:{','.join(sorted(str(item) for item in missing_state))}:-{deduction:g}")
+    missing_views = {item.column for item in findings if item.issue_type == "missing_required_column" and item.modality == "vision"}
+    if missing_views:
+        deduction = min(4.0, 1.5 * len(missing_views))
+        score -= deduction
+        reasons.append(f"missing_vision_columns:{','.join(sorted(str(item) for item in missing_views))}:-{deduction:g}")
+
+    phase = dict(meta.get("phase_detection", {}))
+    phase_status = str(phase.get("status") or "unavailable")
+    if phase_status != "ok":
+        deduction = 2.5
+        score -= deduction
+        reasons.append(f"phase_detection_{phase_status}:{phase.get('reason', '')}:-{deduction:g}")
+    elif len(phase.get("segments", [])) < 3:
+        deduction = 1.0
+        score -= deduction
+        reasons.append(f"incomplete_phase_segments:-{deduction:g}")
+
+    module_statuses = iter_geometry_statuses(geometry.get("module_statuses", {}))
+    unavailable_modules = sum(1 for status in module_statuses if status == "unavailable")
+    failed_modules = sum(1 for status in module_statuses if status == "fail")
+    if unavailable_modules or failed_modules:
+        deduction = min(4.0, unavailable_modules * 0.75 + failed_modules * 1.25)
+        score -= deduction
+        reasons.append(f"geometry_submodules_degraded:unavailable={unavailable_modules},fail={failed_modules}:-{deduction:g}")
+
+    severe_findings = sum(1 for item in findings if item.confidence_level in {"确定异常", "高置信异常"})
+    if severe_findings:
+        deduction = min(3.0, severe_findings * 0.25)
+        score -= deduction
+        reasons.append(f"severe_finding_density:{severe_findings}:-{deduction:g}")
+
+    final = round(max(0.0, min(OFFICIAL_SCORE_POINTS["data_value"], score)), 2)
+    return final, score_reasons(final, OFFICIAL_SCORE_POINTS["data_value"], reasons)
+
+
+def compute_engineering_reliability_score(meta: dict[str, Any], findings: list[Finding], geometry: dict[str, Any], soft_penalty_total: float) -> tuple[float, list[str]]:
+    score = OFFICIAL_SCORE_POINTS["engineering_reliability"]
+    reasons: list[str] = []
+    geometry_status = geometry_module_status(geometry.get("status", "ok"))
+    top_penalty = module_status_penalty(geometry_status, fail=3.0, unavailable=2.0, warning=1.0)
+    if top_penalty:
+        score -= top_penalty
+        reasons.append(f"geometry_status_{geometry_status}:-{top_penalty:g}")
+
+    module_penalty = min(4.0, sum(module_status_penalty(status) for status in iter_geometry_statuses(geometry.get("module_statuses", {}))))
+    if module_penalty:
+        score -= module_penalty
+        reasons.append(f"module_status_penalty:-{module_penalty:g}")
+
+    illegal_count = sum(1 for item in findings if item.illegal)
+    if illegal_count:
+        deduction = min(2.0, illegal_count * 0.35)
+        score -= deduction
+        reasons.append(f"illegal_findings:{illegal_count}:-{deduction:g}")
+
+    phase = dict(meta.get("phase_detection", {}))
+    if str(phase.get("status") or "unavailable") == "unavailable":
+        deduction = 1.0
+        score -= deduction
+        reasons.append(f"phase_unavailable:{phase.get('reason', '')}:-{deduction:g}")
+
+    if soft_penalty_total > 0:
+        deduction = min(1.5, soft_penalty_total * 0.25)
+        score -= deduction
+        reasons.append(f"reference_soft_penalties:{soft_penalty_total:g}:-{deduction:g}")
+
+    final = round(max(0.0, min(OFFICIAL_SCORE_POINTS["engineering_reliability"], score)), 2)
+    return final, score_reasons(final, OFFICIAL_SCORE_POINTS["engineering_reliability"], reasons)
+
+
 def score_episode(meta: dict[str, Any], findings: list[Finding]) -> EpisodeResult:
     episode = meta["episode_index"]
     current = [finding for finding in findings if finding.episode_index == episode]
@@ -1583,28 +1940,52 @@ def score_episode(meta: dict[str, Any], findings: list[Finding]) -> EpisodeResul
         dimension: round(max(0.0, points - min(points, penalties_by_dim.get(dimension, 0.0))), 2)
         for dimension, points in DIMENSION_POINTS.items()
     }
-    total = round(sum(scores.values()), 2)
+    legacy_total = round(sum(scores.values()), 2)
+    detection_quality = round(OFFICIAL_SCORE_POINTS["detection_quality"] * legacy_total / 100.0, 2)
+    geometry = dict(meta.get("geometry_constraints", {}))
+    soft_penalty_total = round(float(sum(soft_penalties.values())), 3)
+    data_value, data_value_reasons = compute_data_value_score(meta, current, geometry)
+    engineering_reliability, engineering_reliability_reasons = compute_engineering_reliability_score(
+        meta,
+        current,
+        geometry,
+        soft_penalty_total,
+    )
+    official_total = round(min(100.0, detection_quality + data_value + engineering_reliability), 2)
+    phase = dict(meta.get("phase_detection", {}))
     return EpisodeResult(
         episode_index=int(episode),
         task_index=meta.get("task_index"),
         length=int(meta.get("length", 0)),
         file=str(meta.get("file", "")),
-        score_total=total,
+        score_total=official_total,
+        legacy_score_total=legacy_total,
+        score_detection_quality=detection_quality,
+        score_data_value=data_value,
+        score_engineering_reliability=engineering_reliability,
+        scoring_version=OFFICIAL_SCORING_VERSION,
+        data_value_reasons=data_value_reasons,
+        engineering_reliability_reasons=engineering_reliability_reasons,
         score_structural=scores["structural"],
         score_vision_single=scores["vision_single"],
         score_vision_vision=scores["vision_vision"],
         score_state=scores["state"],
         score_temporal=scores["temporal"],
         score_cross_modal=scores["cross_modal"],
-        soft_penalty_total=round(float(sum(soft_penalties.values())), 3),
+        soft_penalty_total=soft_penalty_total,
         soft_penalties=soft_penalties,
         finding_count=len(current),
         critical_count=sum(1 for item in current if item.confidence_level == "确定异常"),
         high_confidence_count=sum(1 for item in current if item.confidence_level == "高置信异常"),
         suspicious_count=sum(1 for item in current if item.confidence_level == "疑似异常"),
         ood_count=sum(1 for item in current if item.confidence_level == "分布外样本"),
+        geometry_status=geometry_module_status(geometry.get("status", "ok")),
+        geometry_reason=geometry.get("reason"),
+        geometry_module_statuses=dict(geometry.get("module_statuses", {})),
+        phase_status=str(phase.get("status") or "unavailable"),
+        phase_reason=phase.get("reason"),
+        phase_segments=list(phase.get("segments", [])),
     )
-
 
 def write_reports(
     info: dict[str, Any],
@@ -1630,12 +2011,25 @@ def write_reports(
     by_confidence = Counter(item.confidence_level for item in findings)
     by_category = Counter(f"{item.category_id} {item.category_name}" for item in findings)
     dataset_score = round(float(np.mean([item.score_total for item in episode_results])) if episode_results else 0.0, 2)
+    legacy_dataset_score = round(float(np.mean([item.legacy_score_total for item in episode_results])) if episode_results else 0.0, 2)
+    official_component_means = {
+        "detection_quality": round(float(np.mean([item.score_detection_quality for item in episode_results])) if episode_results else 0.0, 2),
+        "data_value": round(float(np.mean([item.score_data_value for item in episode_results])) if episode_results else 0.0, 2),
+        "engineering_reliability": round(float(np.mean([item.score_engineering_reliability for item in episode_results])) if episode_results else 0.0, 2),
+    }
+    phase_status_counts = Counter(item.phase_status for item in episode_results)
     soft_penalty_mean = round(float(np.mean([item.soft_penalty_total for item in episode_results])) if episode_results else 0.0, 3)
     soft_penalty_max = round(max((item.soft_penalty_total for item in episode_results), default=0.0), 3)
     soft_penalty_by_dimension = {
         dimension: round(float(np.mean([item.soft_penalties.get(dimension, 0.0) for item in episode_results])), 3)
         for dimension in sorted(REFERENCE_SOFT_DIM_CAPS)
     }
+    geometry_status_counts = Counter(item.geometry_status for item in episode_results)
+    geometry_module_status_counts: dict[str, dict[str, int]] = {}
+    for module_name, getter in GEOMETRY_REPORT_MODULES:
+        geometry_module_status_counts[module_name] = normalized_status_counts(
+            Counter(geometry_module_status(getter(item)) for item in episode_results)
+        )
 
     report = {
         "version": "v2",
@@ -1647,10 +2041,18 @@ def write_reports(
             "fps": info.get("fps"),
             "tasks": tasks,
             "dataset_quality_score": dataset_score,
+            "legacy_dataset_quality_score": legacy_dataset_score,
         },
         "scoring": {
-            "dimension_points": DIMENSION_POINTS,
-            "episode_score": "100 - merged finding penalties, capped by dimension",
+            "version": OFFICIAL_SCORING_VERSION,
+            "official_points": OFFICIAL_SCORE_POINTS,
+            "official_formula": "score_total = detection_quality(70) + data_value(20) + engineering_reliability(10)",
+            "detection_quality": "70 * legacy six-dimension detector score / 100; finding penalties remain calibrated by legacy dimensions.",
+            "data_value": "Episode utility score from task metadata, modality completeness, phase segmentation availability, geometry-module availability, and severe-finding density.",
+            "engineering_reliability": "Runtime/report reliability score from module status aggregation, illegal findings, phase availability, and reference soft penalties.",
+            "legacy_dimension_points": LEGACY_DIMENSION_POINTS,
+            "legacy_status": "deprecated_breakdown_only",
+            "episode_score": "official 70/20/10 total; legacy six-dimension score is retained as legacy_score_total.",
             "finding_levels": ["确定异常", "高置信异常", "疑似异常", "分布外样本"],
             "merge_rule": "Findings with same episode/category/type/modality/view/column and overlapping or adjacent frame ranges are merged.",
         },
@@ -1661,9 +2063,14 @@ def write_reports(
             "by_category": dict(by_category),
             "episode_score_min": min((item.score_total for item in episode_results), default=0.0),
             "episode_score_max": max((item.score_total for item in episode_results), default=0.0),
+            "official_component_means": official_component_means,
+            "legacy_dataset_quality_score": legacy_dataset_score,
+            "phase_status_counts": normalized_status_counts(phase_status_counts),
             "soft_penalty_mean": soft_penalty_mean,
             "soft_penalty_max": soft_penalty_max,
             "soft_penalty_by_dimension": soft_penalty_by_dimension,
+            "geometry_status_counts": normalized_status_counts(geometry_status_counts),
+            "geometry_module_status_counts": geometry_module_status_counts,
         },
         "episodes": rows,
         "standards": STANDARDS,
@@ -1680,6 +2087,8 @@ def write_reports(
         f"- 总帧数: {info.get('total_frames')}",
         f"- FPS: {info.get('fps')}",
         f"- 数据集质量分: **{dataset_score}/100**",
+        f"- 正式评分口径: `{OFFICIAL_SCORING_VERSION}` = 检测质量 {official_component_means['detection_quality']}/70 + 数据价值 {official_component_means['data_value']}/20 + 工程可靠性 {official_component_means['engineering_reliability']}/10",
+        f"- 旧六维均分: {legacy_dataset_score}/100（仅保留为 legacy breakdown）",
         "",
         "## V2 检测框架",
         "",
@@ -1692,6 +2101,20 @@ def write_reports(
         field_name = f"score_{dimension}"
         mean_score = round(float(np.mean([getattr(item, field_name) for item in episode_results])) if episode_results else 0.0, 2)
         markdown_lines.append(f"| {dimension} | {points:g} | {mean_score} |")
+
+    markdown_lines.extend([
+        "",
+        "## 模块状态",
+        "",
+        "状态枚举: `ok` 正常完成，`warning` 核心完成但存在降级或局部不可用，`unavailable` 核心或子模块无法运行，`fail` 模块执行失败。",
+        "",
+        "| 模块 | ok | warning | unavailable | fail |",
+        "|---|---:|---:|---:|---:|",
+    ])
+    for module_name, counts in geometry_module_status_counts.items():
+        markdown_lines.append(
+            f"| {module_name} | {counts['ok']} | {counts['warning']} | {counts['unavailable']} | {counts['fail']} |"
+        )
 
     markdown_lines.extend([
         "",
@@ -1738,6 +2161,8 @@ def write_reports(
         f"- frames: {info.get('total_frames')}",
         f"- FPS: {info.get('fps')}",
         f"- dataset quality score: **{dataset_score}/100**",
+        f"- official scoring: `{OFFICIAL_SCORING_VERSION}` = detection quality {official_component_means['detection_quality']}/70 + data value {official_component_means['data_value']}/20 + engineering reliability {official_component_means['engineering_reliability']}/10",
+        f"- legacy six-dimension mean: {legacy_dataset_score}/100 (breakdown only)",
         "",
         "## Detection Framework",
         "",
@@ -1751,6 +2176,22 @@ def write_reports(
         field_name = f"score_{dimension}"
         mean_score = round(float(np.mean([getattr(item, field_name) for item in episode_results])) if episode_results else 0.0, 2)
         clean_markdown_lines.append(f"| {dimension} | {points:g} | {mean_score} |")
+
+    clean_markdown_lines.extend(
+        [
+            "",
+            "## Module Status",
+            "",
+            "Status enum: `ok` completed, `warning` core completed with degraded or unavailable submodules, `unavailable` core or submodule could not run, `fail` module execution failed.",
+            "",
+            "| module | ok | warning | unavailable | fail |",
+            "|---|---:|---:|---:|---:|",
+        ]
+    )
+    for module_name, counts in geometry_module_status_counts.items():
+        clean_markdown_lines.append(
+            f"| {module_name} | {counts['ok']} | {counts['warning']} | {counts['unavailable']} | {counts['fail']} |"
+        )
 
     clean_markdown_lines.extend(
         [
@@ -1800,16 +2241,21 @@ def write_reports(
         "",
         "## Overview",
         "",
-        "| episode | task | length | structural | vision_single | vision_vision | state | temporal | cross_modal | total | findings |",
-        "|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|",
+        "| episode | task | length | phase_status | geometry_status | geometry_reason | arms.left | arms.right | bimanual | state_vision.left | state_vision.right | detection_70 | data_value_20 | reliability_10 | official_total | legacy_total | findings |",
+        "|---|---:|---:|---|---|---|---|---|---|---|---|---:|---:|---:|---:|---:|---:|",
     ]
     for result in sorted(episode_results, key=lambda item: item.episode_index):
+        arms = dict(result.geometry_module_statuses.get("arms", {}))
+        state_vision = dict(result.geometry_module_statuses.get("state_vision", {}))
         detail_lines.append(
             "| "
             f"{result.episode_index} | {result.task_index} | {result.length} | "
-            f"{result.score_structural:g} | {result.score_vision_single:g} | {result.score_vision_vision:g} | "
-            f"{result.score_state:g} | {result.score_temporal:g} | {result.score_cross_modal:g} | "
-            f"{result.score_total:g} | {result.finding_count} |"
+            f"{result.phase_status} | {result.geometry_status} | {result.geometry_reason or ''} | "
+            f"{geometry_module_status(arms.get('left'))} | {geometry_module_status(arms.get('right'))} | "
+            f"{geometry_module_status(result.geometry_module_statuses.get('bimanual'))} | "
+            f"{geometry_module_status(state_vision.get('left'))} | {geometry_module_status(state_vision.get('right'))} | "
+            f"{result.score_detection_quality:g} | {result.score_data_value:g} | {result.score_engineering_reliability:g} | "
+            f"{result.score_total:g} | {result.legacy_score_total:g} | {result.finding_count} |"
         )
 
     detail_lines.extend(["", "## Episode Details", ""])
@@ -1821,8 +2267,16 @@ def write_reports(
                 f"- task: {result.task_index}",
                 f"- length: {result.length}",
                 f"- score_total: {result.score_total:g}",
+                f"- official_breakdown: detection_quality {result.score_detection_quality:g}/70, data_value {result.score_data_value:g}/20, engineering_reliability {result.score_engineering_reliability:g}/10",
+                f"- legacy_score_total: {result.legacy_score_total:g}",
+                f"- phase_status: {result.phase_status}",
+                f"- phase_reason: {result.phase_reason or ''}",
+                f"- phase_segments: {json.dumps(result.phase_segments, ensure_ascii=False, sort_keys=True)}",
+                f"- geometry_status: {result.geometry_status}",
+                f"- geometry_reason: {result.geometry_reason or ''}",
+                f"- geometry_module_statuses: {json.dumps(result.geometry_module_statuses, ensure_ascii=False, sort_keys=True)}",
                 (
-                    "- breakdown: "
+                    "- legacy_breakdown: "
                     f"structural {result.score_structural:g}, "
                     f"vision_single {result.score_vision_single:g}, "
                     f"vision_vision {result.score_vision_vision:g}, "

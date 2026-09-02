@@ -1,0 +1,72 @@
+{
+  "case_count": 3,
+  "elapsed_total_sec": 0.91,
+  "mean_repair_sec": 0.144,
+  "mean_score_gain": 0.0,
+  "mean_finding_delta": 0.0,
+  "cases": [
+    {
+      "issue_id": "black_screen",
+      "before_score": 79.0,
+      "after_score": 79.0,
+      "before_findings": 1,
+      "after_findings": 1,
+      "before_geometry_status": "ok",
+      "after_geometry_status": "ok",
+      "before_phase_status": "unavailable",
+      "after_phase_status": "unavailable",
+      "repair_sec": 0.148,
+      "score_delta": 0.0,
+      "finding_delta": 0,
+      "evidence": {
+        "frames": 12,
+        "before_mean": 0.0,
+        "after_mean": 103.82967952806122
+      }
+    },
+    {
+      "issue_id": "state_nan",
+      "before_score": 79.0,
+      "after_score": 79.0,
+      "before_findings": 1,
+      "after_findings": 1,
+      "before_geometry_status": "ok",
+      "after_geometry_status": "ok",
+      "before_phase_status": "unavailable",
+      "after_phase_status": "unavailable",
+      "repair_sec": 0.15,
+      "score_delta": 0.0,
+      "finding_delta": 0,
+      "evidence": {
+        "frames": 4,
+        "nan_before": 1,
+        "nan_after": 0
+      }
+    },
+    {
+      "issue_id": "timestamp_non_monotonic",
+      "before_score": 79.0,
+      "after_score": 79.0,
+      "before_findings": 1,
+      "after_findings": 1,
+      "before_geometry_status": "ok",
+      "after_geometry_status": "ok",
+      "before_phase_status": "unavailable",
+      "after_phase_status": "unavailable",
+      "repair_sec": 0.133,
+      "score_delta": 0.0,
+      "finding_delta": 0,
+      "evidence": {
+        "frames": 1,
+        "before": [
+          7.5,
+          77
+        ],
+        "after": [
+          7.699999809265137,
+          77
+        ]
+      }
+    }
+  ]
+}

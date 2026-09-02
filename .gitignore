@@ -17,3 +17,33 @@ Thumbs.db
 
 *.log
 *.tmp
+
+# Local recovery snapshot and environment export
+remote_backup_20260902/
+environment/
+
+# Network / VPN debug utilities that are not part of the competition deliverable
+dump_motionpro_ui.ps1
+enable_motionpro_adapter*.ps1
+enable_motionpro_pnp_admin.bat
+enable_motionpro_autoconnect.ps1
+extract_motionpro_httpd_strings.ps1
+find_motionpro_logs.ps1
+inspect_motionpro*.ps1
+inspect_proxy_processes.ps1
+motionpro-*.png
+motionpro-*.jpg
+net_tjvpn_diag.ps1
+probe_motionpro_ws*.ps1
+probe_motionpro_ws*.py
+read_motionpro_*.ps1
+restart_clash_verge.ps1
+restart_motionpro_autoconnect.ps1
+run_admin_*.ps1
+run_admin_*.bat
+search_motionpro_api.ps1
+setup_ssh_tjvpn_clash_proxy.ps1
+start_tjvpn_connect.ps1
+tjvpn_split_guard.ps1
+enable_motionpro_adapter_admin.bat
+70-20-10评分标准.txt
