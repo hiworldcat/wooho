@@ -41,6 +41,14 @@ def parse_args() -> argparse.Namespace:
         help="V2 target output directory.",
     )
     parser.add_argument("--expected-episodes", type=int, default=20)
+    parser.add_argument(
+        "--allow-reference-only",
+        action="store_true",
+        help=(
+            "Accept an official reference-only run when the competition provides no "
+            "separate target set. The run must still be marked as negative_control."
+        ),
+    )
     return parser.parse_args()
 
 
@@ -69,10 +77,20 @@ def main() -> None:
     ) as handle:
         score_rows = list(csv.DictReader(handle))
 
-    if manifest.get("dataset_role") != "target":
-        errors.append(f"dataset_role must be target, got {manifest.get('dataset_role')!r}")
-    if manifest.get("same_dataset") is not False:
-        errors.append("reference and target datasets were not kept separate")
+    reference_only_run = (
+        args.allow_reference_only
+        and manifest.get("dataset_role") == "negative_control"
+        and manifest.get("same_dataset") is True
+    )
+    if reference_only_run:
+        warnings.append(
+            "accepted official reference-only run; do not describe it as an independent target set"
+        )
+    else:
+        if manifest.get("dataset_role") != "target":
+            errors.append(f"dataset_role must be target, got {manifest.get('dataset_role')!r}")
+        if manifest.get("same_dataset") is not False:
+            errors.append("reference and target datasets were not kept separate")
     if manifest.get("scoring_version") != EXPECTED_SCORING_VERSION:
         errors.append("run manifest scoring version is not the frozen 70/20/10 version")
 
@@ -112,7 +130,7 @@ def main() -> None:
             errors.append(f"CSV row {row_number} has an empty file path")
         if WINDOWS_ABSOLUTE_PATH.match(file_value) or file_value.startswith("/"):
             errors.append(f"CSV row {row_number} contains an absolute path: {file_value}")
-        if any(marker in file_value for marker in REFERENCE_MARKERS):
+        if any(marker in file_value for marker in REFERENCE_MARKERS) and not reference_only_run:
             errors.append(f"CSV row {row_number} points to the reference dataset: {file_value}")
 
     geometry_counts = summary.get("geometry_status_counts", {})
