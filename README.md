@@ -80,10 +80,26 @@ python scripts/check_submission_readiness.py `
 
 只有检查结果为 `PASS`，且典型异常经过人工复核后，才可将数字和案例写入最终 PPT。
 
+正式提交时可使用两段式流程：
+
+```powershell
+python scripts/run_final_submission.py `
+  --reference-root "参考集目录" `
+  --target-root "官方20条测试集目录"
+
+python scripts/prepare_submission_package.py `
+  --pptx "最终答辩稿.pptx" `
+  --pdf "最终答辩稿.pdf" `
+  --application-form "参赛表.pdf" `
+  --team-name "团队名称" `
+  --project-name "作品名称"
+```
+
+打包脚本只收集白名单源代码与本次正式输出，并自动生成文件清单、SHA256 和上传留证清单。参考数据、测试数据、历史输出与缓存不会进入压缩包。
+
 快速几何测试：
 
 ```powershell
 python scripts/test_geometry_constraints_smoke.py
 python scripts/test_p1_geometry.py
 ```
-

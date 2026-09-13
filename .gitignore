@@ -18,6 +18,10 @@ Thumbs.db
 *.log
 *.tmp
 
+# Final submission artifacts are generated locally and must not be committed.
+dist/
+submission_work/
+
 # Local recovery snapshot and environment export
 remote_backup_20260902/
 environment/

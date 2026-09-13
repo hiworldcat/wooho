@@ -30,3 +30,26 @@
 - [ ] 平台显示提交成功后截图留证，并重新下载检查。
 
 演示视频为可选材料。若尚未完成，不应挤占正式结果与 PPT 收口时间。
+
+## 最终执行命令
+
+正式数据到位后，先运行并校验冻结流程：
+
+```powershell
+python scripts/run_final_submission.py `
+  --reference-root "参考集目录" `
+  --target-root "官方20条测试集目录"
+```
+
+PPT、PDF和参赛表确认后生成最终压缩包：
+
+```powershell
+python scripts/prepare_submission_package.py `
+  --pptx "最终答辩稿.pptx" `
+  --pdf "最终答辩稿.pdf" `
+  --application-form "参赛表.pdf" `
+  --team-name "团队名称" `
+  --project-name "作品名称"
+```
+
+也可使用 `scripts/finalize_submission.ps1` 一次完成正式复测、检查与打包。

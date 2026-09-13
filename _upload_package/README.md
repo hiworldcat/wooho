@@ -50,3 +50,15 @@ python scripts/check_submission_readiness.py `
   --output-root "outputs\target\v2" `
   --expected-episodes 20
 ```
+
+Run the frozen pipeline and readiness check together:
+
+```powershell
+python scripts/run_final_submission.py `
+  --reference-root "C:\path\to\reference" `
+  --target-root "C:\path\to\target"
+```
+
+After the final PPTX, PDF, and application form are ready, use
+`scripts/prepare_submission_package.py` to create a clean ZIP with a manifest,
+SHA256 checksums, and an upload-evidence checklist.
