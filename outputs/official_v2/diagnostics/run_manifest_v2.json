@@ -1,0 +1,10 @@
+{
+  "dataset_role": "negative_control",
+  "reference_dataset": "鍙傝€冮泦",
+  "target_dataset": "鍙傝€冮泦",
+  "same_dataset": true,
+  "output_label": "official_v2",
+  "reference_episode_count": 20,
+  "target_episode_count": 20,
+  "scoring_version": "official_70_20_10_v1"
+}
