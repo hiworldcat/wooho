@@ -7,6 +7,8 @@
 - [ ] `run_manifest_v2.json` 中 `dataset_role` 为 `target`，`same_dataset` 为 `false`。
 - [ ] 正式报告、异常明细和 Episode 评分来自同一次运行。
 - [ ] 执行 `check_submission_readiness.py`，结果为 `PASS`。
+- [ ] 执行 `preflight_submission.py`，依赖、数据结构、内存和磁盘检查为 `PASS`。
+- [ ] 生成 `submission_work/ppt_metrics/PPT_结果回填表.md`。
 - [ ] 人工复核至少三个高置信案例。
 - [ ] PPT 中的轨迹号、帧段、异常数和评分与冻结报告一致。
 
@@ -16,6 +18,7 @@
 - [ ] 100 条合成轨迹明确标注为工程验证数据。
 - [ ] 至少展示一个正式检测案例和一个治理复检案例。
 - [ ] 删除“后续复测”“预计效果”等未完成措辞。
+- [ ] 执行 `check_ppt_consistency.py`，确认无“待回填”和旧工程指标。
 - [ ] 使用常见中文字体并在另一台电脑打开检查。
 - [ ] 修复图表外部链接，确保打开时没有修复提示。
 - [ ] 参赛表、PPT、团队名、作品名和成员信息完全一致。

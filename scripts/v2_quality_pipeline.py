@@ -1188,7 +1188,6 @@ def inspect_images(
         if view not in df.columns:
             continue
         metrics_by_frame: list[dict[str, float] | None] = []
-        grays: list[np.ndarray | None] = []
         hashes: list[str] = []
         motions: list[float] = []
         previous_gray: np.ndarray | None = None
@@ -1199,7 +1198,7 @@ def inspect_images(
                 image = decode_image(value)
                 metric = image_metrics(image)
                 metrics_by_frame.append(metric)
-                grays.append(downsample_gray(image))
+                current_gray = downsample_gray(image)
                 hashes.append(hashlib.sha1(image.tobytes()).hexdigest())
                 if expected_shapes.get(view) and tuple(image.shape) != expected_shapes[view]:
                     findings.append(
@@ -1220,11 +1219,10 @@ def inspect_images(
                         )
                     )
                 if previous_gray is not None:
-                    motions.append(float(np.abs(grays[-1] - previous_gray).mean()))
-                previous_gray = grays[-1]
+                    motions.append(float(np.abs(current_gray - previous_gray).mean()))
+                previous_gray = current_gray
             except Exception as exc:
                 metrics_by_frame.append(None)
-                grays.append(None)
                 hashes.append("")
                 previous_gray = None
                 findings.append(

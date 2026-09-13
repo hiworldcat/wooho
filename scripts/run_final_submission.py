@@ -60,11 +60,33 @@ def main() -> None:
         "--expected-episodes",
         str(args.expected_episodes),
     ]
+    preflight_command = [
+        sys.executable,
+        str(ROOT / "scripts" / "preflight_submission.py"),
+        "--reference-root",
+        str(reference_root),
+        "--target-root",
+        str(target_root),
+        "--output-root",
+        str(output_root),
+        "--expected-episodes",
+        str(args.expected_episodes),
+    ]
+    export_metrics_command = [
+        sys.executable,
+        str(ROOT / "scripts" / "export_ppt_metrics.py"),
+        "--output-root",
+        str(output_root),
+    ]
 
-    print("[1/2] Running frozen target pipeline", flush=True)
+    print("[1/4] Checking environment and dataset structure", flush=True)
+    subprocess.run(preflight_command, cwd=ROOT, check=True)
+    print("[2/4] Running frozen target pipeline", flush=True)
     subprocess.run(pipeline_command, cwd=ROOT, check=True)
-    print("[2/2] Checking submission readiness", flush=True)
+    print("[3/4] Checking submission readiness", flush=True)
     subprocess.run(readiness_command, cwd=ROOT, check=True)
+    print("[4/4] Exporting PPT metrics", flush=True)
+    subprocess.run(export_metrics_command, cwd=ROOT, check=True)
     print("FINAL TARGET RUN: PASS", flush=True)
 
 

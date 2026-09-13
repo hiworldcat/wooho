@@ -8,6 +8,9 @@
 - `scripts/v2_quality_pipeline.py`：V2 检测与 70/20/10 评分主线。
 - `scripts/geometry_constraints.py`：Rotation 6D、单臂 SE(3)、双臂约束和弱 State-Vision 检查。
 - `scripts/check_submission_readiness.py`：正式结果提交前一致性检查。
+- `scripts/preflight_submission.py`：不加载帧内容的依赖、目录、内存与磁盘预检。
+- `scripts/export_ppt_metrics.py`：从冻结报告生成 PPT 结果回填表。
+- `scripts/check_ppt_consistency.py`：阻止带占位符或旧指标的 PPT 进入最终压缩包。
 - `outputs/target/v2/`：正式测试集结果的默认输出目录。
 - `outputs/ablations/`：合成异常与消融验证结果，不属于官方测试集结果。
 
@@ -96,6 +99,18 @@ python scripts/prepare_submission_package.py `
 ```
 
 打包脚本只收集白名单源代码与本次正式输出，并自动生成文件清单、SHA256 和上传留证清单。参考数据、测试数据、历史输出与缓存不会进入压缩包。
+
+需要在正式运行前单独预检时：
+
+```powershell
+python scripts/preflight_submission.py `
+  --reference-root "参考集目录" `
+  --target-root "官方20条测试集目录"
+```
+
+正式运行通过后，`submission_work/ppt_metrics/` 会生成 `ppt_metrics.json` 和
+`PPT_结果回填表.md`。最终打包前，脚本会自动检查 PPT 中是否残留“待回填”、
+旧工程指标或与冻结报告不一致的总分。
 
 快速几何测试：
 

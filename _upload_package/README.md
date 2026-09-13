@@ -8,6 +8,9 @@ a LeRobot v2.1 multimodal robot data quality detection workflow.
 - `run_v2_pipeline.py`: formal command-line entry point.
 - `requirements.txt`: Python dependencies.
 - `scripts/`: v2 quality scoring, geometry checks, and readiness validation.
+- `scripts/preflight_submission.py`: dependency, dataset, memory, and disk checks without loading frames.
+- `scripts/export_ppt_metrics.py`: frozen-result sheet for PPT updates.
+- `scripts/check_ppt_consistency.py`: blocks stale figures and unfinished placeholders.
 - `outputs/target/v2/reports/`: destination for formal human-readable reports.
 - `outputs/target/v2/diagnostics/`: destination for formal machine-readable findings.
 - `赛题.txt`: competition/task description.

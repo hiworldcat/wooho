@@ -20,6 +20,9 @@ SOURCE_FILES = (
     "scripts/geometry_constraints.py",
     "scripts/geometry_config.json",
     "scripts/check_submission_readiness.py",
+    "scripts/check_ppt_consistency.py",
+    "scripts/export_ppt_metrics.py",
+    "scripts/preflight_submission.py",
     "scripts/run_final_submission.py",
     "scripts/run_pipeline_v2.ps1",
 )
@@ -80,6 +83,18 @@ def main() -> None:
     readiness = subprocess.run(readiness_command, cwd=ROOT)
     if readiness.returncode != 0:
         raise SystemExit("submission package blocked: target result is not ready")
+
+    ppt_check_command = [
+        sys.executable,
+        str(ROOT / "scripts" / "check_ppt_consistency.py"),
+        "--pptx",
+        str(args.pptx.resolve()),
+        "--output-root",
+        str(output_root),
+    ]
+    ppt_check = subprocess.run(ppt_check_command, cwd=ROOT)
+    if ppt_check.returncode != 0:
+        raise SystemExit("submission package blocked: PPT does not match frozen results")
 
     package_name = f"{args.contest_name}-{args.team_name}-{args.project_name}"
     destination = args.destination.resolve()
