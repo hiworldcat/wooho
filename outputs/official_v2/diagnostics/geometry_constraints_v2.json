@@ -1,0 +1,2462 @@
+[
+  {
+    "episode_index": 0,
+    "task_index": 0,
+    "status": "warning",
+    "core_status": "ok",
+    "status_enum": [
+      "ok",
+      "warning",
+      "unavailable",
+      "fail"
+    ],
+    "status_policy": {
+      "ok": "core and enabled modules completed",
+      "warning": "core completed but at least one submodule is degraded or unavailable",
+      "unavailable": "core geometry could not run",
+      "fail": "a module reported an execution-level failure"
+    },
+    "gates": {
+      "rotation6d_layout": "unknown",
+      "state_frame_mode": "unknown",
+      "calibration_mode": "none",
+      "position_unit": "unknown",
+      "temporal_alignment": "performed_in_geometry_module",
+      "strict_calibrated_geometry": false
+    },
+    "arms": {
+      "left": {
+        "rotation6d_legal_fraction": 1.0,
+        "median_step": 0.0016795105180450608,
+        "median_speed": 0.016795105180450607,
+        "median_angular_speed": null,
+        "status": "ok"
+      },
+      "right": {
+        "rotation6d_legal_fraction": 1.0,
+        "median_step": 0.002463878885062003,
+        "median_speed": 0.024638788850620028,
+        "median_angular_speed": null,
+        "status": "ok"
+      }
+    },
+    "bimanual": {
+      "status": "unavailable",
+      "reason": "state_frame_mode_unknown",
+      "state_frame_mode": "unknown"
+    },
+    "state_vision": {
+      "left": {
+        "view": "left_wrist_image",
+        "visual_motion_status": "ok",
+        "visual_motion_reason": "feature_tracks",
+        "duplicate_frame_fraction": 0.0,
+        "lag": {
+          "status": "unavailable",
+          "reason": "ambiguous_or_weak_peak",
+          "best_lag": 4,
+          "best_corr": 0.4556383700312923,
+          "second_best_corr": 0.4479589917582492,
+          "peak_margin": 0.007679378273043103,
+          "valid_fraction": 1.0,
+          "visual_excitation": 5.557037811726332,
+          "state_excitation": 0.06060343384447101,
+          "correlations": {
+            "-5": 0.20809205798149008,
+            "-4": 0.25297624665884444,
+            "-3": 0.29168497286782374,
+            "-2": 0.3169389940346823,
+            "-1": 0.3268079579319946,
+            "0": 0.3498331038346406,
+            "1": 0.3754252786021884,
+            "2": 0.40322601524279555,
+            "3": 0.4479589917582492,
+            "4": 0.4556383700312923,
+            "5": 0.4321835328928702
+          }
+        },
+        "status": "ok"
+      },
+      "right": {
+        "view": "right_wrist_image",
+        "visual_motion_status": "ok",
+        "visual_motion_reason": "feature_tracks",
+        "duplicate_frame_fraction": 0.0,
+        "lag": {
+          "status": "unavailable",
+          "reason": "ambiguous_or_weak_peak",
+          "best_lag": 5,
+          "best_corr": 0.22832846021275657,
+          "second_best_corr": 0.22137193047435633,
+          "peak_margin": 0.006956529738400247,
+          "valid_fraction": 1.0,
+          "visual_excitation": 4.493597310036421,
+          "state_excitation": 0.07555231838131105,
+          "correlations": {
+            "-5": 0.13833419112883974,
+            "-4": 0.1292940933238844,
+            "-3": 0.11764844001214933,
+            "-2": 0.12397603014825195,
+            "-1": 0.15873099152999598,
+            "0": 0.22137193047435633,
+            "1": 0.20438809020537924,
+            "2": 0.19399934382355227,
+            "3": 0.21763454398705068,
+            "4": 0.21650360593097287,
+            "5": 0.22832846021275657
+          }
+        },
+        "status": "ok"
+      }
+    },
+    "module_statuses": {
+      "arms": {
+        "left": "ok",
+        "right": "ok"
+      },
+      "bimanual": "unavailable",
+      "state_vision": {
+        "left": "ok",
+        "right": "ok"
+      }
+    },
+    "reason": "partial_module_unavailable"
+  },
+  {
+    "episode_index": 1,
+    "task_index": 1,
+    "status": "warning",
+    "core_status": "ok",
+    "status_enum": [
+      "ok",
+      "warning",
+      "unavailable",
+      "fail"
+    ],
+    "status_policy": {
+      "ok": "core and enabled modules completed",
+      "warning": "core completed but at least one submodule is degraded or unavailable",
+      "unavailable": "core geometry could not run",
+      "fail": "a module reported an execution-level failure"
+    },
+    "gates": {
+      "rotation6d_layout": "unknown",
+      "state_frame_mode": "unknown",
+      "calibration_mode": "none",
+      "position_unit": "unknown",
+      "temporal_alignment": "performed_in_geometry_module",
+      "strict_calibrated_geometry": false
+    },
+    "arms": {
+      "left": {
+        "rotation6d_legal_fraction": 1.0,
+        "median_step": 0.00358377620516094,
+        "median_speed": 0.0358377620516094,
+        "median_angular_speed": null,
+        "status": "ok"
+      },
+      "right": {
+        "rotation6d_legal_fraction": 1.0,
+        "median_step": 0.0026413263979877975,
+        "median_speed": 0.026413263979877977,
+        "median_angular_speed": null,
+        "status": "ok"
+      }
+    },
+    "bimanual": {
+      "status": "unavailable",
+      "reason": "state_frame_mode_unknown",
+      "state_frame_mode": "unknown"
+    },
+    "state_vision": {
+      "left": {
+        "view": "left_wrist_image",
+        "visual_motion_status": "ok",
+        "visual_motion_reason": "feature_tracks",
+        "duplicate_frame_fraction": 0.0,
+        "lag": {
+          "status": "unavailable",
+          "reason": "ambiguous_or_weak_peak",
+          "best_lag": 4,
+          "best_corr": 0.27784063424157696,
+          "second_best_corr": 0.23989137435725946,
+          "peak_margin": 0.03794925988431749,
+          "valid_fraction": 1.0,
+          "visual_excitation": 1.0686851311475039,
+          "state_excitation": 0.06985584252178505,
+          "correlations": {
+            "-5": -0.003531442293410224,
+            "-4": 0.02021192370034752,
+            "-3": 0.06304918057751029,
+            "-2": 0.08658000197579079,
+            "-1": 0.11028188420798408,
+            "0": 0.13013836314580368,
+            "1": 0.13560642448057028,
+            "2": 0.14473390882857293,
+            "3": 0.19987553241879716,
+            "4": 0.27784063424157696,
+            "5": 0.23989137435725946
+          }
+        },
+        "status": "ok"
+      },
+      "right": {
+        "view": "right_wrist_image",
+        "visual_motion_status": "ok",
+        "visual_motion_reason": "feature_tracks",
+        "duplicate_frame_fraction": 0.0,
+        "lag": {
+          "status": "unavailable",
+          "reason": "ambiguous_or_weak_peak",
+          "best_lag": 4,
+          "best_corr": 0.1507237364813966,
+          "second_best_corr": 0.13946357063669002,
+          "peak_margin": 0.011260165844706571,
+          "valid_fraction": 1.0,
+          "visual_excitation": 1.1864169502514414,
+          "state_excitation": 0.050673183132627815,
+          "correlations": {
+            "-5": 0.038257257052723634,
+            "-4": -0.004723212314824467,
+            "-3": -0.01708567752552969,
+            "-2": -0.024893758502161065,
+            "-1": -0.0016395463585789187,
+            "0": 0.08273636036660008,
+            "1": 0.13946357063669002,
+            "2": 0.07781464362043117,
+            "3": 0.09897401614530249,
+            "4": 0.1507237364813966,
+            "5": 0.06863696138541102
+          }
+        },
+        "status": "ok"
+      }
+    },
+    "module_statuses": {
+      "arms": {
+        "left": "ok",
+        "right": "ok"
+      },
+      "bimanual": "unavailable",
+      "state_vision": {
+        "left": "ok",
+        "right": "ok"
+      }
+    },
+    "reason": "partial_module_unavailable"
+  },
+  {
+    "episode_index": 2,
+    "task_index": 0,
+    "status": "warning",
+    "core_status": "ok",
+    "status_enum": [
+      "ok",
+      "warning",
+      "unavailable",
+      "fail"
+    ],
+    "status_policy": {
+      "ok": "core and enabled modules completed",
+      "warning": "core completed but at least one submodule is degraded or unavailable",
+      "unavailable": "core geometry could not run",
+      "fail": "a module reported an execution-level failure"
+    },
+    "gates": {
+      "rotation6d_layout": "unknown",
+      "state_frame_mode": "unknown",
+      "calibration_mode": "none",
+      "position_unit": "unknown",
+      "temporal_alignment": "performed_in_geometry_module",
+      "strict_calibrated_geometry": false
+    },
+    "arms": {
+      "left": {
+        "rotation6d_legal_fraction": 1.0,
+        "median_step": 0.00210765467199491,
+        "median_speed": 0.0210765467199491,
+        "median_angular_speed": null,
+        "status": "ok"
+      },
+      "right": {
+        "rotation6d_legal_fraction": 1.0,
+        "median_step": 0.002406670169046558,
+        "median_speed": 0.02406670169046558,
+        "median_angular_speed": null,
+        "status": "ok"
+      }
+    },
+    "bimanual": {
+      "status": "unavailable",
+      "reason": "state_frame_mode_unknown",
+      "state_frame_mode": "unknown"
+    },
+    "state_vision": {
+      "left": {
+        "view": "left_wrist_image",
+        "visual_motion_status": "ok",
+        "visual_motion_reason": "feature_tracks",
+        "duplicate_frame_fraction": 0.0,
+        "lag": {
+          "status": "unavailable",
+          "reason": "ambiguous_or_weak_peak",
+          "best_lag": 5,
+          "best_corr": 0.3307808576161932,
+          "second_best_corr": 0.3272743605368441,
+          "peak_margin": 0.00350649707934908,
+          "valid_fraction": 1.0,
+          "visual_excitation": 4.56487862020731,
+          "state_excitation": 0.05464758352764783,
+          "correlations": {
+            "-5": 0.1864904508309193,
+            "-4": 0.18201274418152402,
+            "-3": 0.2186582162866122,
+            "-2": 0.28491270064334834,
+            "-1": 0.28419723126879265,
+            "0": 0.2672615185469636,
+            "1": 0.28911138192860614,
+            "2": 0.3090633862084678,
+            "3": 0.3094808078298842,
+            "4": 0.3272743605368441,
+            "5": 0.3307808576161932
+          }
+        },
+        "status": "ok"
+      },
+      "right": {
+        "view": "right_wrist_image",
+        "visual_motion_status": "ok",
+        "visual_motion_reason": "feature_tracks",
+        "duplicate_frame_fraction": 0.0,
+        "lag": {
+          "status": "unavailable",
+          "reason": "ambiguous_or_weak_peak",
+          "best_lag": 4,
+          "best_corr": 0.28565591997661866,
+          "second_best_corr": 0.2745382010222405,
+          "peak_margin": 0.01111771895437813,
+          "valid_fraction": 1.0,
+          "visual_excitation": 3.6457539536058903,
+          "state_excitation": 0.06353966229919979,
+          "correlations": {
+            "-5": -0.0768299526445517,
+            "-4": -0.017284962176681434,
+            "-3": 0.036535486991028036,
+            "-2": 0.11072188718035093,
+            "-1": 0.13450032372910106,
+            "0": 0.1659744906219207,
+            "1": 0.20963247758512307,
+            "2": 0.21621906498318055,
+            "3": 0.2745382010222405,
+            "4": 0.28565591997661866,
+            "5": 0.19898740152210348
+          }
+        },
+        "status": "ok"
+      }
+    },
+    "module_statuses": {
+      "arms": {
+        "left": "ok",
+        "right": "ok"
+      },
+      "bimanual": "unavailable",
+      "state_vision": {
+        "left": "ok",
+        "right": "ok"
+      }
+    },
+    "reason": "partial_module_unavailable"
+  },
+  {
+    "episode_index": 3,
+    "task_index": 1,
+    "status": "warning",
+    "core_status": "ok",
+    "status_enum": [
+      "ok",
+      "warning",
+      "unavailable",
+      "fail"
+    ],
+    "status_policy": {
+      "ok": "core and enabled modules completed",
+      "warning": "core completed but at least one submodule is degraded or unavailable",
+      "unavailable": "core geometry could not run",
+      "fail": "a module reported an execution-level failure"
+    },
+    "gates": {
+      "rotation6d_layout": "unknown",
+      "state_frame_mode": "unknown",
+      "calibration_mode": "none",
+      "position_unit": "unknown",
+      "temporal_alignment": "performed_in_geometry_module",
+      "strict_calibrated_geometry": false
+    },
+    "arms": {
+      "left": {
+        "rotation6d_legal_fraction": 1.0,
+        "median_step": 0.003109800692397824,
+        "median_speed": 0.031098006923978242,
+        "median_angular_speed": null,
+        "status": "ok"
+      },
+      "right": {
+        "rotation6d_legal_fraction": 1.0,
+        "median_step": 0.0022355249725280356,
+        "median_speed": 0.022355249725280354,
+        "median_angular_speed": null,
+        "status": "ok"
+      }
+    },
+    "bimanual": {
+      "status": "unavailable",
+      "reason": "state_frame_mode_unknown",
+      "state_frame_mode": "unknown"
+    },
+    "state_vision": {
+      "left": {
+        "view": "left_wrist_image",
+        "visual_motion_status": "ok",
+        "visual_motion_reason": "feature_tracks",
+        "duplicate_frame_fraction": 0.0,
+        "lag": {
+          "status": "unavailable",
+          "reason": "ambiguous_or_weak_peak",
+          "best_lag": 4,
+          "best_corr": 0.2606834981697244,
+          "second_best_corr": 0.25365283607754074,
+          "peak_margin": 0.0070306620921836704,
+          "valid_fraction": 1.0,
+          "visual_excitation": 1.0483714196772793,
+          "state_excitation": 0.06876086761436863,
+          "correlations": {
+            "-5": 0.020810506541644205,
+            "-4": 0.0033058865683629392,
+            "-3": 0.07731105589562119,
+            "-2": 0.08669295633185274,
+            "-1": 0.1156161941584211,
+            "0": 0.21450534942697527,
+            "1": 0.25365283607754074,
+            "2": 0.23785172300096785,
+            "3": 0.2521585213705097,
+            "4": 0.2606834981697244,
+            "5": 0.20467899758239158
+          }
+        },
+        "status": "ok"
+      },
+      "right": {
+        "view": "right_wrist_image",
+        "visual_motion_status": "ok",
+        "visual_motion_reason": "feature_tracks",
+        "duplicate_frame_fraction": 0.0,
+        "lag": {
+          "status": "unavailable",
+          "reason": "ambiguous_or_weak_peak",
+          "best_lag": 4,
+          "best_corr": 0.15700365645216133,
+          "second_best_corr": 0.1271153023840717,
+          "peak_margin": 0.029888354068089623,
+          "valid_fraction": 1.0,
+          "visual_excitation": 0.9790722785051936,
+          "state_excitation": 0.049398108695238425,
+          "correlations": {
+            "-5": -0.04424926413373559,
+            "-4": -0.03211695562171086,
+            "-3": 0.012886471921823257,
+            "-2": -0.014806296798144993,
+            "-1": -0.04390409493335022,
+            "0": -0.03110848660402842,
+            "1": 0.02420053851895913,
+            "2": 0.06409514694712312,
+            "3": 0.09217720196782024,
+            "4": 0.15700365645216133,
+            "5": 0.1271153023840717
+          }
+        },
+        "status": "ok"
+      }
+    },
+    "module_statuses": {
+      "arms": {
+        "left": "ok",
+        "right": "ok"
+      },
+      "bimanual": "unavailable",
+      "state_vision": {
+        "left": "ok",
+        "right": "ok"
+      }
+    },
+    "reason": "partial_module_unavailable"
+  },
+  {
+    "episode_index": 4,
+    "task_index": 0,
+    "status": "warning",
+    "core_status": "ok",
+    "status_enum": [
+      "ok",
+      "warning",
+      "unavailable",
+      "fail"
+    ],
+    "status_policy": {
+      "ok": "core and enabled modules completed",
+      "warning": "core completed but at least one submodule is degraded or unavailable",
+      "unavailable": "core geometry could not run",
+      "fail": "a module reported an execution-level failure"
+    },
+    "gates": {
+      "rotation6d_layout": "unknown",
+      "state_frame_mode": "unknown",
+      "calibration_mode": "none",
+      "position_unit": "unknown",
+      "temporal_alignment": "performed_in_geometry_module",
+      "strict_calibrated_geometry": false
+    },
+    "arms": {
+      "left": {
+        "rotation6d_legal_fraction": 1.0,
+        "median_step": 0.002469737139739982,
+        "median_speed": 0.024697371397399817,
+        "median_angular_speed": null,
+        "status": "ok"
+      },
+      "right": {
+        "rotation6d_legal_fraction": 1.0,
+        "median_step": 0.0031439167293010784,
+        "median_speed": 0.031439167293010786,
+        "median_angular_speed": null,
+        "status": "ok"
+      }
+    },
+    "bimanual": {
+      "status": "unavailable",
+      "reason": "state_frame_mode_unknown",
+      "state_frame_mode": "unknown"
+    },
+    "state_vision": {
+      "left": {
+        "view": "left_wrist_image",
+        "visual_motion_status": "ok",
+        "visual_motion_reason": "feature_tracks",
+        "duplicate_frame_fraction": 0.0,
+        "lag": {
+          "status": "unavailable",
+          "reason": "ambiguous_or_weak_peak",
+          "best_lag": 3,
+          "best_corr": 0.35624584064835585,
+          "second_best_corr": 0.3554043606602614,
+          "peak_margin": 0.0008414799880944734,
+          "valid_fraction": 1.0,
+          "visual_excitation": 6.564537458121777,
+          "state_excitation": 0.059072773430807364,
+          "correlations": {
+            "-5": 0.1888239547421568,
+            "-4": 0.22645392370396078,
+            "-3": 0.22730497712855022,
+            "-2": 0.2165079690597196,
+            "-1": 0.2577796234174454,
+            "0": 0.273249323887935,
+            "1": 0.2696769596652339,
+            "2": 0.29851139811439775,
+            "3": 0.35624584064835585,
+            "4": 0.3554043606602614,
+            "5": 0.3066842776388624
+          }
+        },
+        "status": "ok"
+      },
+      "right": {
+        "view": "right_wrist_image",
+        "visual_motion_status": "ok",
+        "visual_motion_reason": "feature_tracks",
+        "duplicate_frame_fraction": 0.0,
+        "lag": {
+          "status": "unavailable",
+          "reason": "ambiguous_or_weak_peak",
+          "best_lag": 4,
+          "best_corr": 0.4920647624236962,
+          "second_best_corr": 0.4553902196306203,
+          "peak_margin": 0.03667454279307586,
+          "valid_fraction": 1.0,
+          "visual_excitation": 6.49880513548851,
+          "state_excitation": 0.06961612231287578,
+          "correlations": {
+            "-5": 0.19948599886377774,
+            "-4": 0.20540857308048815,
+            "-3": 0.28135318777436,
+            "-2": 0.3059793101130184,
+            "-1": 0.3090404087638233,
+            "0": 0.33015214491675704,
+            "1": 0.34945596874852286,
+            "2": 0.41472547555196987,
+            "3": 0.4553902196306203,
+            "4": 0.4920647624236962,
+            "5": 0.37290203632931096
+          }
+        },
+        "status": "ok"
+      }
+    },
+    "module_statuses": {
+      "arms": {
+        "left": "ok",
+        "right": "ok"
+      },
+      "bimanual": "unavailable",
+      "state_vision": {
+        "left": "ok",
+        "right": "ok"
+      }
+    },
+    "reason": "partial_module_unavailable"
+  },
+  {
+    "episode_index": 5,
+    "task_index": 0,
+    "status": "warning",
+    "core_status": "ok",
+    "status_enum": [
+      "ok",
+      "warning",
+      "unavailable",
+      "fail"
+    ],
+    "status_policy": {
+      "ok": "core and enabled modules completed",
+      "warning": "core completed but at least one submodule is degraded or unavailable",
+      "unavailable": "core geometry could not run",
+      "fail": "a module reported an execution-level failure"
+    },
+    "gates": {
+      "rotation6d_layout": "unknown",
+      "state_frame_mode": "unknown",
+      "calibration_mode": "none",
+      "position_unit": "unknown",
+      "temporal_alignment": "performed_in_geometry_module",
+      "strict_calibrated_geometry": false
+    },
+    "arms": {
+      "left": {
+        "rotation6d_legal_fraction": 1.0,
+        "median_step": 0.0016103257816429848,
+        "median_speed": 0.016103257816429847,
+        "median_angular_speed": null,
+        "status": "ok"
+      },
+      "right": {
+        "rotation6d_legal_fraction": 1.0,
+        "median_step": 0.0022367513381080723,
+        "median_speed": 0.022367513381080725,
+        "median_angular_speed": null,
+        "status": "ok"
+      }
+    },
+    "bimanual": {
+      "status": "unavailable",
+      "reason": "state_frame_mode_unknown",
+      "state_frame_mode": "unknown"
+    },
+    "state_vision": {
+      "left": {
+        "view": "left_wrist_image",
+        "visual_motion_status": "ok",
+        "visual_motion_reason": "feature_tracks",
+        "duplicate_frame_fraction": 0.0,
+        "lag": {
+          "status": "unavailable",
+          "reason": "ambiguous_or_weak_peak",
+          "best_lag": 4,
+          "best_corr": 0.35880832893190445,
+          "second_best_corr": 0.33637667950392364,
+          "peak_margin": 0.022431649427980815,
+          "valid_fraction": 1.0,
+          "visual_excitation": 4.629525903612375,
+          "state_excitation": 0.07950496903706544,
+          "correlations": {
+            "-5": 0.2117502511821706,
+            "-4": 0.23024234168309668,
+            "-3": 0.2540123288604664,
+            "-2": 0.23899987290355265,
+            "-1": 0.21588935135361084,
+            "0": 0.2054349609155826,
+            "1": 0.2622514500555507,
+            "2": 0.29708106949871466,
+            "3": 0.33637667950392364,
+            "4": 0.35880832893190445,
+            "5": 0.28577975645792625
+          }
+        },
+        "status": "ok"
+      },
+      "right": {
+        "view": "right_wrist_image",
+        "visual_motion_status": "ok",
+        "visual_motion_reason": "feature_tracks",
+        "duplicate_frame_fraction": 0.0,
+        "lag": {
+          "status": "unavailable",
+          "reason": "ambiguous_or_weak_peak",
+          "best_lag": 3,
+          "best_corr": 0.3193338218176221,
+          "second_best_corr": 0.2948805523520889,
+          "peak_margin": 0.024453269465533223,
+          "valid_fraction": 1.0,
+          "visual_excitation": 4.697736947797239,
+          "state_excitation": 0.07745009933444769,
+          "correlations": {
+            "-5": 0.18335564279735828,
+            "-4": 0.17698054967140056,
+            "-3": 0.1868469310135713,
+            "-2": 0.2131820911721801,
+            "-1": 0.22634350243473364,
+            "0": 0.23241509298899934,
+            "1": 0.2214100444973254,
+            "2": 0.2510656857094361,
+            "3": 0.3193338218176221,
+            "4": 0.2948805523520889,
+            "5": 0.2809228907194913
+          }
+        },
+        "status": "ok"
+      }
+    },
+    "module_statuses": {
+      "arms": {
+        "left": "ok",
+        "right": "ok"
+      },
+      "bimanual": "unavailable",
+      "state_vision": {
+        "left": "ok",
+        "right": "ok"
+      }
+    },
+    "reason": "partial_module_unavailable"
+  },
+  {
+    "episode_index": 6,
+    "task_index": 1,
+    "status": "warning",
+    "core_status": "ok",
+    "status_enum": [
+      "ok",
+      "warning",
+      "unavailable",
+      "fail"
+    ],
+    "status_policy": {
+      "ok": "core and enabled modules completed",
+      "warning": "core completed but at least one submodule is degraded or unavailable",
+      "unavailable": "core geometry could not run",
+      "fail": "a module reported an execution-level failure"
+    },
+    "gates": {
+      "rotation6d_layout": "unknown",
+      "state_frame_mode": "unknown",
+      "calibration_mode": "none",
+      "position_unit": "unknown",
+      "temporal_alignment": "performed_in_geometry_module",
+      "strict_calibrated_geometry": false
+    },
+    "arms": {
+      "left": {
+        "rotation6d_legal_fraction": 1.0,
+        "median_step": 0.0024849635488130685,
+        "median_speed": 0.024849635488130684,
+        "median_angular_speed": null,
+        "status": "ok"
+      },
+      "right": {
+        "rotation6d_legal_fraction": 1.0,
+        "median_step": 0.002439973668575003,
+        "median_speed": 0.024399736685750028,
+        "median_angular_speed": null,
+        "status": "ok"
+      }
+    },
+    "bimanual": {
+      "status": "unavailable",
+      "reason": "state_frame_mode_unknown",
+      "state_frame_mode": "unknown"
+    },
+    "state_vision": {
+      "left": {
+        "view": "left_wrist_image",
+        "visual_motion_status": "ok",
+        "visual_motion_reason": "feature_tracks",
+        "duplicate_frame_fraction": 0.0,
+        "lag": {
+          "status": "unavailable",
+          "reason": "ambiguous_or_weak_peak",
+          "best_lag": 5,
+          "best_corr": 0.19608341699831108,
+          "second_best_corr": 0.16563842620513708,
+          "peak_margin": 0.030444990793174004,
+          "valid_fraction": 1.0,
+          "visual_excitation": 0.8465084236813709,
+          "state_excitation": 0.062401058928372055,
+          "correlations": {
+            "-5": -0.010306221241978223,
+            "-4": -0.027162875346073378,
+            "-3": 0.012956481210287762,
+            "-2": 0.08728144108914185,
+            "-1": 0.10282667408160055,
+            "0": 0.12095917849821645,
+            "1": 0.16365612728675202,
+            "2": 0.16563842620513708,
+            "3": 0.13168435670494766,
+            "4": 0.1533769598650234,
+            "5": 0.19608341699831108
+          }
+        },
+        "status": "ok"
+      },
+      "right": {
+        "view": "right_wrist_image",
+        "visual_motion_status": "ok",
+        "visual_motion_reason": "feature_tracks",
+        "duplicate_frame_fraction": 0.0,
+        "lag": {
+          "status": "unavailable",
+          "reason": "ambiguous_or_weak_peak",
+          "best_lag": 4,
+          "best_corr": 0.21235302859098926,
+          "second_best_corr": 0.16082327795765752,
+          "peak_margin": 0.05152975063333173,
+          "valid_fraction": 1.0,
+          "visual_excitation": 0.9649966306751594,
+          "state_excitation": 0.043985444057963785,
+          "correlations": {
+            "-5": 0.09488887168976605,
+            "-4": 0.06802958477659735,
+            "-3": 0.04278918283402646,
+            "-2": 0.013795394692901206,
+            "-1": 0.020360857186231405,
+            "0": 0.05342337859583157,
+            "1": 0.08986507261694898,
+            "2": 0.1059024275159455,
+            "3": 0.14698907893235771,
+            "4": 0.21235302859098926,
+            "5": 0.16082327795765752
+          }
+        },
+        "status": "ok"
+      }
+    },
+    "module_statuses": {
+      "arms": {
+        "left": "ok",
+        "right": "ok"
+      },
+      "bimanual": "unavailable",
+      "state_vision": {
+        "left": "ok",
+        "right": "ok"
+      }
+    },
+    "reason": "partial_module_unavailable"
+  },
+  {
+    "episode_index": 7,
+    "task_index": 0,
+    "status": "warning",
+    "core_status": "ok",
+    "status_enum": [
+      "ok",
+      "warning",
+      "unavailable",
+      "fail"
+    ],
+    "status_policy": {
+      "ok": "core and enabled modules completed",
+      "warning": "core completed but at least one submodule is degraded or unavailable",
+      "unavailable": "core geometry could not run",
+      "fail": "a module reported an execution-level failure"
+    },
+    "gates": {
+      "rotation6d_layout": "unknown",
+      "state_frame_mode": "unknown",
+      "calibration_mode": "none",
+      "position_unit": "unknown",
+      "temporal_alignment": "performed_in_geometry_module",
+      "strict_calibrated_geometry": false
+    },
+    "arms": {
+      "left": {
+        "rotation6d_legal_fraction": 1.0,
+        "median_step": 0.0023527970437381544,
+        "median_speed": 0.023527970437381543,
+        "median_angular_speed": null,
+        "status": "ok"
+      },
+      "right": {
+        "rotation6d_legal_fraction": 1.0,
+        "median_step": 0.0015754681585834383,
+        "median_speed": 0.015754681585834384,
+        "median_angular_speed": null,
+        "status": "ok"
+      }
+    },
+    "bimanual": {
+      "status": "unavailable",
+      "reason": "state_frame_mode_unknown",
+      "state_frame_mode": "unknown"
+    },
+    "state_vision": {
+      "left": {
+        "view": "left_wrist_image",
+        "visual_motion_status": "ok",
+        "visual_motion_reason": "feature_tracks",
+        "duplicate_frame_fraction": 0.0,
+        "lag": {
+          "status": "unavailable",
+          "reason": "ambiguous_or_weak_peak",
+          "best_lag": 3,
+          "best_corr": 0.3776630214781268,
+          "second_best_corr": 0.3667846626562338,
+          "peak_margin": 0.01087835882189303,
+          "valid_fraction": 1.0,
+          "visual_excitation": 4.4395859345793705,
+          "state_excitation": 0.07065914096825644,
+          "correlations": {
+            "-5": 0.2921715611003453,
+            "-4": 0.3023052121414134,
+            "-3": 0.24406641673126844,
+            "-2": 0.19890314030744025,
+            "-1": 0.1604889176275863,
+            "0": 0.18706885327276915,
+            "1": 0.271907213698192,
+            "2": 0.3493017012222536,
+            "3": 0.3776630214781268,
+            "4": 0.3667846626562338,
+            "5": 0.2689388663536362
+          }
+        },
+        "status": "ok"
+      },
+      "right": {
+        "view": "right_wrist_image",
+        "visual_motion_status": "ok",
+        "visual_motion_reason": "feature_tracks",
+        "duplicate_frame_fraction": 0.0,
+        "lag": {
+          "status": "unavailable",
+          "reason": "ambiguous_or_weak_peak",
+          "best_lag": 3,
+          "best_corr": 0.20045435364592393,
+          "second_best_corr": 0.16776233594147605,
+          "peak_margin": 0.03269201770444788,
+          "valid_fraction": 1.0,
+          "visual_excitation": 3.9853714317083346,
+          "state_excitation": 0.08055602819119419,
+          "correlations": {
+            "-5": 0.06440005940839548,
+            "-4": 0.053858905146197414,
+            "-3": 0.07914512677522141,
+            "-2": 0.030264190670267435,
+            "-1": 0.015919876004035657,
+            "0": 0.062406636987834434,
+            "1": 0.10302538675126892,
+            "2": 0.12039463219484321,
+            "3": 0.20045435364592393,
+            "4": 0.16776233594147605,
+            "5": 0.09940588107863092
+          }
+        },
+        "status": "ok"
+      }
+    },
+    "module_statuses": {
+      "arms": {
+        "left": "ok",
+        "right": "ok"
+      },
+      "bimanual": "unavailable",
+      "state_vision": {
+        "left": "ok",
+        "right": "ok"
+      }
+    },
+    "reason": "partial_module_unavailable"
+  },
+  {
+    "episode_index": 8,
+    "task_index": 0,
+    "status": "warning",
+    "core_status": "ok",
+    "status_enum": [
+      "ok",
+      "warning",
+      "unavailable",
+      "fail"
+    ],
+    "status_policy": {
+      "ok": "core and enabled modules completed",
+      "warning": "core completed but at least one submodule is degraded or unavailable",
+      "unavailable": "core geometry could not run",
+      "fail": "a module reported an execution-level failure"
+    },
+    "gates": {
+      "rotation6d_layout": "unknown",
+      "state_frame_mode": "unknown",
+      "calibration_mode": "none",
+      "position_unit": "unknown",
+      "temporal_alignment": "performed_in_geometry_module",
+      "strict_calibrated_geometry": false
+    },
+    "arms": {
+      "left": {
+        "rotation6d_legal_fraction": 1.0,
+        "median_step": 0.0019372836563745222,
+        "median_speed": 0.01937283656374522,
+        "median_angular_speed": null,
+        "status": "ok"
+      },
+      "right": {
+        "rotation6d_legal_fraction": 1.0,
+        "median_step": 0.002041962853329915,
+        "median_speed": 0.02041962853329915,
+        "median_angular_speed": null,
+        "status": "ok"
+      }
+    },
+    "bimanual": {
+      "status": "unavailable",
+      "reason": "state_frame_mode_unknown",
+      "state_frame_mode": "unknown"
+    },
+    "state_vision": {
+      "left": {
+        "view": "left_wrist_image",
+        "visual_motion_status": "ok",
+        "visual_motion_reason": "feature_tracks",
+        "duplicate_frame_fraction": 0.0,
+        "lag": {
+          "status": "unavailable",
+          "reason": "ambiguous_or_weak_peak",
+          "best_lag": 4,
+          "best_corr": 0.41256414382930895,
+          "second_best_corr": 0.4104717956467234,
+          "peak_margin": 0.002092348182585524,
+          "valid_fraction": 1.0,
+          "visual_excitation": 6.217012787982817,
+          "state_excitation": 0.07735507717931359,
+          "correlations": {
+            "-5": 0.17046945163748387,
+            "-4": 0.21355929346501076,
+            "-3": 0.23590762082209984,
+            "-2": 0.25766847058995834,
+            "-1": 0.2875783674474389,
+            "0": 0.2927250942595558,
+            "1": 0.2915007471025756,
+            "2": 0.33514030334439604,
+            "3": 0.4104717956467234,
+            "4": 0.41256414382930895,
+            "5": 0.3947621997327929
+          }
+        },
+        "status": "ok"
+      },
+      "right": {
+        "view": "right_wrist_image",
+        "visual_motion_status": "ok",
+        "visual_motion_reason": "feature_tracks",
+        "duplicate_frame_fraction": 0.0,
+        "lag": {
+          "status": "unavailable",
+          "reason": "ambiguous_or_weak_peak",
+          "best_lag": 3,
+          "best_corr": 0.24211812565845467,
+          "second_best_corr": 0.22382035364880065,
+          "peak_margin": 0.018297772009654018,
+          "valid_fraction": 1.0,
+          "visual_excitation": 3.405170268565416,
+          "state_excitation": 0.08366852958296023,
+          "correlations": {
+            "-5": 0.04242495492497247,
+            "-4": 0.05272917081228633,
+            "-3": 0.04875147040819801,
+            "-2": 0.05976182299155686,
+            "-1": 0.1085533772015509,
+            "0": 0.16482738808680508,
+            "1": 0.2064511633543392,
+            "2": 0.208535658897056,
+            "3": 0.24211812565845467,
+            "4": 0.22382035364880065,
+            "5": 0.15732071749207474
+          }
+        },
+        "status": "ok"
+      }
+    },
+    "module_statuses": {
+      "arms": {
+        "left": "ok",
+        "right": "ok"
+      },
+      "bimanual": "unavailable",
+      "state_vision": {
+        "left": "ok",
+        "right": "ok"
+      }
+    },
+    "reason": "partial_module_unavailable"
+  },
+  {
+    "episode_index": 9,
+    "task_index": 0,
+    "status": "warning",
+    "core_status": "ok",
+    "status_enum": [
+      "ok",
+      "warning",
+      "unavailable",
+      "fail"
+    ],
+    "status_policy": {
+      "ok": "core and enabled modules completed",
+      "warning": "core completed but at least one submodule is degraded or unavailable",
+      "unavailable": "core geometry could not run",
+      "fail": "a module reported an execution-level failure"
+    },
+    "gates": {
+      "rotation6d_layout": "unknown",
+      "state_frame_mode": "unknown",
+      "calibration_mode": "none",
+      "position_unit": "unknown",
+      "temporal_alignment": "performed_in_geometry_module",
+      "strict_calibrated_geometry": false
+    },
+    "arms": {
+      "left": {
+        "rotation6d_legal_fraction": 1.0,
+        "median_step": 0.0019426785918687118,
+        "median_speed": 0.019426785918687118,
+        "median_angular_speed": null,
+        "status": "ok"
+      },
+      "right": {
+        "rotation6d_legal_fraction": 1.0,
+        "median_step": 0.0014434715409602976,
+        "median_speed": 0.014434715409602977,
+        "median_angular_speed": null,
+        "status": "ok"
+      }
+    },
+    "bimanual": {
+      "status": "unavailable",
+      "reason": "state_frame_mode_unknown",
+      "state_frame_mode": "unknown"
+    },
+    "state_vision": {
+      "left": {
+        "view": "left_wrist_image",
+        "visual_motion_status": "ok",
+        "visual_motion_reason": "feature_tracks",
+        "duplicate_frame_fraction": 0.0,
+        "lag": {
+          "status": "unavailable",
+          "reason": "ambiguous_or_weak_peak",
+          "best_lag": 5,
+          "best_corr": 0.5263969666260607,
+          "second_best_corr": 0.498353543139535,
+          "peak_margin": 0.02804342348652572,
+          "valid_fraction": 1.0,
+          "visual_excitation": 7.660588447749619,
+          "state_excitation": 0.06373486540936515,
+          "correlations": {
+            "-5": 0.41935739601013966,
+            "-4": 0.48697355623619654,
+            "-3": 0.4786128784034792,
+            "-2": 0.4667059389738831,
+            "-1": 0.4683149815007977,
+            "0": 0.4738863106831466,
+            "1": 0.498353543139535,
+            "2": 0.4893375588536942,
+            "3": 0.4936147544437303,
+            "4": 0.49237344388946663,
+            "5": 0.5263969666260607
+          }
+        },
+        "status": "ok"
+      },
+      "right": {
+        "view": "right_wrist_image",
+        "visual_motion_status": "ok",
+        "visual_motion_reason": "feature_tracks",
+        "duplicate_frame_fraction": 0.0,
+        "lag": {
+          "status": "unavailable",
+          "reason": "ambiguous_or_weak_peak",
+          "best_lag": 5,
+          "best_corr": 0.5034868392619297,
+          "second_best_corr": 0.4996601904721194,
+          "peak_margin": 0.0038266487898103163,
+          "valid_fraction": 1.0,
+          "visual_excitation": 4.414944656926679,
+          "state_excitation": 0.09620116581335435,
+          "correlations": {
+            "-5": 0.06154080387093454,
+            "-4": 0.07719451930311896,
+            "-3": 0.13162584511873035,
+            "-2": 0.17712890784854302,
+            "-1": 0.21345720047533073,
+            "0": 0.23001308456852584,
+            "1": 0.30098841717965036,
+            "2": 0.35798090294154916,
+            "3": 0.4234454131496996,
+            "4": 0.4996601904721194,
+            "5": 0.5034868392619297
+          }
+        },
+        "status": "ok"
+      }
+    },
+    "module_statuses": {
+      "arms": {
+        "left": "ok",
+        "right": "ok"
+      },
+      "bimanual": "unavailable",
+      "state_vision": {
+        "left": "ok",
+        "right": "ok"
+      }
+    },
+    "reason": "partial_module_unavailable"
+  },
+  {
+    "episode_index": 10,
+    "task_index": 1,
+    "status": "warning",
+    "core_status": "ok",
+    "status_enum": [
+      "ok",
+      "warning",
+      "unavailable",
+      "fail"
+    ],
+    "status_policy": {
+      "ok": "core and enabled modules completed",
+      "warning": "core completed but at least one submodule is degraded or unavailable",
+      "unavailable": "core geometry could not run",
+      "fail": "a module reported an execution-level failure"
+    },
+    "gates": {
+      "rotation6d_layout": "unknown",
+      "state_frame_mode": "unknown",
+      "calibration_mode": "none",
+      "position_unit": "unknown",
+      "temporal_alignment": "performed_in_geometry_module",
+      "strict_calibrated_geometry": false
+    },
+    "arms": {
+      "left": {
+        "rotation6d_legal_fraction": 1.0,
+        "median_step": 0.0027760817357653377,
+        "median_speed": 0.027760817357653376,
+        "median_angular_speed": null,
+        "status": "ok"
+      },
+      "right": {
+        "rotation6d_legal_fraction": 1.0,
+        "median_step": 0.0018920438999793204,
+        "median_speed": 0.018920438999793204,
+        "median_angular_speed": null,
+        "status": "ok"
+      }
+    },
+    "bimanual": {
+      "status": "unavailable",
+      "reason": "state_frame_mode_unknown",
+      "state_frame_mode": "unknown"
+    },
+    "state_vision": {
+      "left": {
+        "view": "left_wrist_image",
+        "visual_motion_status": "ok",
+        "visual_motion_reason": "feature_tracks",
+        "duplicate_frame_fraction": 0.0,
+        "lag": {
+          "status": "unavailable",
+          "reason": "ambiguous_or_weak_peak",
+          "best_lag": 4,
+          "best_corr": 0.38925202026123473,
+          "second_best_corr": 0.3427366435209882,
+          "peak_margin": 0.04651537674024653,
+          "valid_fraction": 1.0,
+          "visual_excitation": 2.3399559169076376,
+          "state_excitation": 0.06907312550225768,
+          "correlations": {
+            "-5": 0.034526270513174716,
+            "-4": 0.08369560099696155,
+            "-3": 0.09781435274875398,
+            "-2": 0.08892943849548778,
+            "-1": 0.12252526977903726,
+            "0": 0.17988519045491014,
+            "1": 0.17019289422596817,
+            "2": 0.24261192527718728,
+            "3": 0.3427366435209882,
+            "4": 0.38925202026123473,
+            "5": 0.3203735150223317
+          }
+        },
+        "status": "ok"
+      },
+      "right": {
+        "view": "right_wrist_image",
+        "visual_motion_status": "ok",
+        "visual_motion_reason": "feature_tracks",
+        "duplicate_frame_fraction": 0.0,
+        "lag": {
+          "status": "unavailable",
+          "reason": "ambiguous_or_weak_peak",
+          "best_lag": 4,
+          "best_corr": 0.1640844603259142,
+          "second_best_corr": 0.14919635005795176,
+          "peak_margin": 0.01488811026796244,
+          "valid_fraction": 1.0,
+          "visual_excitation": 0.8301249291747806,
+          "state_excitation": 0.052338205213430154,
+          "correlations": {
+            "-5": -0.15018133173974818,
+            "-4": -0.12307740561523571,
+            "-3": -0.14420994026191392,
+            "-2": -0.09184287492540763,
+            "-1": -0.12490502550895223,
+            "0": -0.09367122507940286,
+            "1": 0.00949181227304479,
+            "2": 0.04093079050667217,
+            "3": 0.14919635005795176,
+            "4": 0.1640844603259142,
+            "5": 0.0694170965985187
+          }
+        },
+        "status": "ok"
+      }
+    },
+    "module_statuses": {
+      "arms": {
+        "left": "ok",
+        "right": "ok"
+      },
+      "bimanual": "unavailable",
+      "state_vision": {
+        "left": "ok",
+        "right": "ok"
+      }
+    },
+    "reason": "partial_module_unavailable"
+  },
+  {
+    "episode_index": 11,
+    "task_index": 0,
+    "status": "warning",
+    "core_status": "ok",
+    "status_enum": [
+      "ok",
+      "warning",
+      "unavailable",
+      "fail"
+    ],
+    "status_policy": {
+      "ok": "core and enabled modules completed",
+      "warning": "core completed but at least one submodule is degraded or unavailable",
+      "unavailable": "core geometry could not run",
+      "fail": "a module reported an execution-level failure"
+    },
+    "gates": {
+      "rotation6d_layout": "unknown",
+      "state_frame_mode": "unknown",
+      "calibration_mode": "none",
+      "position_unit": "unknown",
+      "temporal_alignment": "performed_in_geometry_module",
+      "strict_calibrated_geometry": false
+    },
+    "arms": {
+      "left": {
+        "rotation6d_legal_fraction": 1.0,
+        "median_step": 0.002645676091416908,
+        "median_speed": 0.02645676091416908,
+        "median_angular_speed": null,
+        "status": "ok"
+      },
+      "right": {
+        "rotation6d_legal_fraction": 1.0,
+        "median_step": 0.0027812783720081616,
+        "median_speed": 0.027812783720081617,
+        "median_angular_speed": null,
+        "status": "ok"
+      }
+    },
+    "bimanual": {
+      "status": "unavailable",
+      "reason": "state_frame_mode_unknown",
+      "state_frame_mode": "unknown"
+    },
+    "state_vision": {
+      "left": {
+        "view": "left_wrist_image",
+        "visual_motion_status": "ok",
+        "visual_motion_reason": "feature_tracks",
+        "duplicate_frame_fraction": 0.0,
+        "lag": {
+          "status": "unavailable",
+          "reason": "ambiguous_or_weak_peak",
+          "best_lag": 4,
+          "best_corr": 0.30655689630334787,
+          "second_best_corr": 0.26579530969572523,
+          "peak_margin": 0.040761586607622635,
+          "valid_fraction": 1.0,
+          "visual_excitation": 5.081219810992479,
+          "state_excitation": 0.07132973377553542,
+          "correlations": {
+            "-5": 0.10610893347041184,
+            "-4": 0.14527186006446194,
+            "-3": 0.10743261626575087,
+            "-2": 0.14532645070766187,
+            "-1": 0.18440311792250208,
+            "0": 0.20002623792299068,
+            "1": 0.2022146286816321,
+            "2": 0.2489189401963287,
+            "3": 0.26579530969572523,
+            "4": 0.30655689630334787,
+            "5": 0.2260914200562973
+          }
+        },
+        "status": "ok"
+      },
+      "right": {
+        "view": "right_wrist_image",
+        "visual_motion_status": "ok",
+        "visual_motion_reason": "feature_tracks",
+        "duplicate_frame_fraction": 0.0,
+        "lag": {
+          "status": "unavailable",
+          "reason": "ambiguous_or_weak_peak",
+          "best_lag": 4,
+          "best_corr": 0.1924151317618832,
+          "second_best_corr": 0.161331298056666,
+          "peak_margin": 0.031083833705217223,
+          "valid_fraction": 1.0,
+          "visual_excitation": 4.312951187603176,
+          "state_excitation": 0.07010658254506717,
+          "correlations": {
+            "-5": 0.058172138103771975,
+            "-4": 0.04422378743368993,
+            "-3": 0.02902311020745616,
+            "-2": 0.036397605725736956,
+            "-1": 0.008038043290768404,
+            "0": 0.045422161674331524,
+            "1": 0.0957872245618507,
+            "2": 0.09615449536718612,
+            "3": 0.161331298056666,
+            "4": 0.1924151317618832,
+            "5": 0.14579105362563902
+          }
+        },
+        "status": "ok"
+      }
+    },
+    "module_statuses": {
+      "arms": {
+        "left": "ok",
+        "right": "ok"
+      },
+      "bimanual": "unavailable",
+      "state_vision": {
+        "left": "ok",
+        "right": "ok"
+      }
+    },
+    "reason": "partial_module_unavailable"
+  },
+  {
+    "episode_index": 12,
+    "task_index": 1,
+    "status": "warning",
+    "core_status": "ok",
+    "status_enum": [
+      "ok",
+      "warning",
+      "unavailable",
+      "fail"
+    ],
+    "status_policy": {
+      "ok": "core and enabled modules completed",
+      "warning": "core completed but at least one submodule is degraded or unavailable",
+      "unavailable": "core geometry could not run",
+      "fail": "a module reported an execution-level failure"
+    },
+    "gates": {
+      "rotation6d_layout": "unknown",
+      "state_frame_mode": "unknown",
+      "calibration_mode": "none",
+      "position_unit": "unknown",
+      "temporal_alignment": "performed_in_geometry_module",
+      "strict_calibrated_geometry": false
+    },
+    "arms": {
+      "left": {
+        "rotation6d_legal_fraction": 1.0,
+        "median_step": 0.002974825660880613,
+        "median_speed": 0.02974825660880613,
+        "median_angular_speed": null,
+        "status": "ok"
+      },
+      "right": {
+        "rotation6d_legal_fraction": 1.0,
+        "median_step": 0.002244836635150988,
+        "median_speed": 0.022448366351509878,
+        "median_angular_speed": null,
+        "status": "ok"
+      }
+    },
+    "bimanual": {
+      "status": "unavailable",
+      "reason": "state_frame_mode_unknown",
+      "state_frame_mode": "unknown"
+    },
+    "state_vision": {
+      "left": {
+        "view": "left_wrist_image",
+        "visual_motion_status": "ok",
+        "visual_motion_reason": "feature_tracks",
+        "duplicate_frame_fraction": 0.0,
+        "lag": {
+          "status": "unavailable",
+          "reason": "ambiguous_or_weak_peak",
+          "best_lag": 3,
+          "best_corr": 0.16418007535173687,
+          "second_best_corr": 0.16201951854378527,
+          "peak_margin": 0.0021605568079516024,
+          "valid_fraction": 1.0,
+          "visual_excitation": 1.4298326298594475,
+          "state_excitation": 0.07043537957425684,
+          "correlations": {
+            "-5": 0.06612718997154847,
+            "-4": 0.02217579564066503,
+            "-3": 0.025489480227862425,
+            "-2": 0.06644882609153673,
+            "-1": 0.10696331347735474,
+            "0": 0.13524021776621084,
+            "1": 0.1547733671338023,
+            "2": 0.15722930620471326,
+            "3": 0.16418007535173687,
+            "4": 0.16201951854378527,
+            "5": 0.07659795224222292
+          }
+        },
+        "status": "ok"
+      },
+      "right": {
+        "view": "right_wrist_image",
+        "visual_motion_status": "ok",
+        "visual_motion_reason": "feature_tracks",
+        "duplicate_frame_fraction": 0.0,
+        "lag": {
+          "status": "unavailable",
+          "reason": "ambiguous_or_weak_peak",
+          "best_lag": 4,
+          "best_corr": 0.34260602476121127,
+          "second_best_corr": 0.21806329548763576,
+          "peak_margin": 0.12454272927357551,
+          "valid_fraction": 1.0,
+          "visual_excitation": 1.831575674470514,
+          "state_excitation": 0.044426153777927725,
+          "correlations": {
+            "-5": 0.04943276808605879,
+            "-4": 0.006267624667926759,
+            "-3": -0.001357459867540408,
+            "-2": 0.005362967503617873,
+            "-1": 0.0833402909415864,
+            "0": 0.11332967612547293,
+            "1": 0.16114338337560377,
+            "2": 0.15940359217003955,
+            "3": 0.21806329548763576,
+            "4": 0.34260602476121127,
+            "5": 0.06869261430018736
+          }
+        },
+        "status": "ok"
+      }
+    },
+    "module_statuses": {
+      "arms": {
+        "left": "ok",
+        "right": "ok"
+      },
+      "bimanual": "unavailable",
+      "state_vision": {
+        "left": "ok",
+        "right": "ok"
+      }
+    },
+    "reason": "partial_module_unavailable"
+  },
+  {
+    "episode_index": 13,
+    "task_index": 0,
+    "status": "warning",
+    "core_status": "ok",
+    "status_enum": [
+      "ok",
+      "warning",
+      "unavailable",
+      "fail"
+    ],
+    "status_policy": {
+      "ok": "core and enabled modules completed",
+      "warning": "core completed but at least one submodule is degraded or unavailable",
+      "unavailable": "core geometry could not run",
+      "fail": "a module reported an execution-level failure"
+    },
+    "gates": {
+      "rotation6d_layout": "unknown",
+      "state_frame_mode": "unknown",
+      "calibration_mode": "none",
+      "position_unit": "unknown",
+      "temporal_alignment": "performed_in_geometry_module",
+      "strict_calibrated_geometry": false
+    },
+    "arms": {
+      "left": {
+        "rotation6d_legal_fraction": 1.0,
+        "median_step": 0.0010673895932067352,
+        "median_speed": 0.010673895932067353,
+        "median_angular_speed": null,
+        "status": "ok"
+      },
+      "right": {
+        "rotation6d_legal_fraction": 1.0,
+        "median_step": 0.00122313129284346,
+        "median_speed": 0.0122313129284346,
+        "median_angular_speed": null,
+        "status": "ok"
+      }
+    },
+    "bimanual": {
+      "status": "unavailable",
+      "reason": "state_frame_mode_unknown",
+      "state_frame_mode": "unknown"
+    },
+    "state_vision": {
+      "left": {
+        "view": "left_wrist_image",
+        "visual_motion_status": "ok",
+        "visual_motion_reason": "feature_tracks",
+        "duplicate_frame_fraction": 0.0,
+        "lag": {
+          "status": "unavailable",
+          "reason": "ambiguous_or_weak_peak",
+          "best_lag": 4,
+          "best_corr": 0.3560017948564337,
+          "second_best_corr": 0.32591756513462866,
+          "peak_margin": 0.030084229721805023,
+          "valid_fraction": 1.0,
+          "visual_excitation": 1.8834245309233668,
+          "state_excitation": 0.059265495028127585,
+          "correlations": {
+            "-5": 0.10968396047686618,
+            "-4": 0.16724793904705101,
+            "-3": 0.18579854826106215,
+            "-2": 0.20819980019840284,
+            "-1": 0.21004943881551114,
+            "0": 0.21066179918056593,
+            "1": 0.19811797496774203,
+            "2": 0.2497891379403831,
+            "3": 0.3073728657330236,
+            "4": 0.3560017948564337,
+            "5": 0.32591756513462866
+          }
+        },
+        "status": "ok"
+      },
+      "right": {
+        "view": "right_wrist_image",
+        "visual_motion_status": "ok",
+        "visual_motion_reason": "feature_tracks",
+        "duplicate_frame_fraction": 0.0,
+        "lag": {
+          "status": "unavailable",
+          "reason": "ambiguous_or_weak_peak",
+          "best_lag": 4,
+          "best_corr": 0.389699695574209,
+          "second_best_corr": 0.36192227498763035,
+          "peak_margin": 0.02777742058657867,
+          "valid_fraction": 1.0,
+          "visual_excitation": 2.986632548272612,
+          "state_excitation": 0.07677227293299371,
+          "correlations": {
+            "-5": 0.0724467604592807,
+            "-4": 0.13255928415585616,
+            "-3": 0.17122749881275548,
+            "-2": 0.19029404842272643,
+            "-1": 0.214441984467325,
+            "0": 0.2321569052958817,
+            "1": 0.25934100092092083,
+            "2": 0.2946981121834765,
+            "3": 0.3315448990325315,
+            "4": 0.389699695574209,
+            "5": 0.36192227498763035
+          }
+        },
+        "status": "ok"
+      }
+    },
+    "module_statuses": {
+      "arms": {
+        "left": "ok",
+        "right": "ok"
+      },
+      "bimanual": "unavailable",
+      "state_vision": {
+        "left": "ok",
+        "right": "ok"
+      }
+    },
+    "reason": "partial_module_unavailable"
+  },
+  {
+    "episode_index": 14,
+    "task_index": 0,
+    "status": "warning",
+    "core_status": "ok",
+    "status_enum": [
+      "ok",
+      "warning",
+      "unavailable",
+      "fail"
+    ],
+    "status_policy": {
+      "ok": "core and enabled modules completed",
+      "warning": "core completed but at least one submodule is degraded or unavailable",
+      "unavailable": "core geometry could not run",
+      "fail": "a module reported an execution-level failure"
+    },
+    "gates": {
+      "rotation6d_layout": "unknown",
+      "state_frame_mode": "unknown",
+      "calibration_mode": "none",
+      "position_unit": "unknown",
+      "temporal_alignment": "performed_in_geometry_module",
+      "strict_calibrated_geometry": false
+    },
+    "arms": {
+      "left": {
+        "rotation6d_legal_fraction": 1.0,
+        "median_step": 0.0021518957221122706,
+        "median_speed": 0.021518957221122705,
+        "median_angular_speed": null,
+        "status": "ok"
+      },
+      "right": {
+        "rotation6d_legal_fraction": 1.0,
+        "median_step": 0.0019944713723741487,
+        "median_speed": 0.019944713723741486,
+        "median_angular_speed": null,
+        "status": "ok"
+      }
+    },
+    "bimanual": {
+      "status": "unavailable",
+      "reason": "state_frame_mode_unknown",
+      "state_frame_mode": "unknown"
+    },
+    "state_vision": {
+      "left": {
+        "view": "left_wrist_image",
+        "visual_motion_status": "ok",
+        "visual_motion_reason": "feature_tracks",
+        "duplicate_frame_fraction": 0.0,
+        "lag": {
+          "status": "unavailable",
+          "reason": "ambiguous_or_weak_peak",
+          "best_lag": 4,
+          "best_corr": 0.338362782241998,
+          "second_best_corr": 0.2899271400730417,
+          "peak_margin": 0.048435642168956294,
+          "valid_fraction": 1.0,
+          "visual_excitation": 3.5563488334417355,
+          "state_excitation": 0.05698011842237783,
+          "correlations": {
+            "-5": 0.031674924524756266,
+            "-4": 0.06962395193915798,
+            "-3": 0.07637385357468143,
+            "-2": 0.08014056377953026,
+            "-1": 0.14893365741590406,
+            "0": 0.18691373090889254,
+            "1": 0.1444827073292316,
+            "2": 0.16703286914889676,
+            "3": 0.2899271400730417,
+            "4": 0.338362782241998,
+            "5": 0.27086532447268935
+          }
+        },
+        "status": "ok"
+      },
+      "right": {
+        "view": "right_wrist_image",
+        "visual_motion_status": "ok",
+        "visual_motion_reason": "feature_tracks",
+        "duplicate_frame_fraction": 0.0,
+        "lag": {
+          "status": "unavailable",
+          "reason": "ambiguous_or_weak_peak",
+          "best_lag": 4,
+          "best_corr": 0.34716419343949384,
+          "second_best_corr": 0.3434803183347483,
+          "peak_margin": 0.0036838751047455487,
+          "valid_fraction": 1.0,
+          "visual_excitation": 2.346602676808834,
+          "state_excitation": 0.07047563146888645,
+          "correlations": {
+            "-5": 0.19654255355625622,
+            "-4": 0.19866831340193408,
+            "-3": 0.22503916660500914,
+            "-2": 0.26014038902733405,
+            "-1": 0.24190933501509843,
+            "0": 0.29147222709572046,
+            "1": 0.24817659308465195,
+            "2": 0.26092611006855804,
+            "3": 0.3434803183347483,
+            "4": 0.34716419343949384,
+            "5": 0.2584209597759978
+          }
+        },
+        "status": "ok"
+      }
+    },
+    "module_statuses": {
+      "arms": {
+        "left": "ok",
+        "right": "ok"
+      },
+      "bimanual": "unavailable",
+      "state_vision": {
+        "left": "ok",
+        "right": "ok"
+      }
+    },
+    "reason": "partial_module_unavailable"
+  },
+  {
+    "episode_index": 15,
+    "task_index": 1,
+    "status": "warning",
+    "core_status": "ok",
+    "status_enum": [
+      "ok",
+      "warning",
+      "unavailable",
+      "fail"
+    ],
+    "status_policy": {
+      "ok": "core and enabled modules completed",
+      "warning": "core completed but at least one submodule is degraded or unavailable",
+      "unavailable": "core geometry could not run",
+      "fail": "a module reported an execution-level failure"
+    },
+    "gates": {
+      "rotation6d_layout": "unknown",
+      "state_frame_mode": "unknown",
+      "calibration_mode": "none",
+      "position_unit": "unknown",
+      "temporal_alignment": "performed_in_geometry_module",
+      "strict_calibrated_geometry": false
+    },
+    "arms": {
+      "left": {
+        "rotation6d_legal_fraction": 1.0,
+        "median_step": 0.002405766473627749,
+        "median_speed": 0.024057664736277493,
+        "median_angular_speed": null,
+        "status": "ok"
+      },
+      "right": {
+        "rotation6d_legal_fraction": 1.0,
+        "median_step": 0.002125217783187059,
+        "median_speed": 0.02125217783187059,
+        "median_angular_speed": null,
+        "status": "ok"
+      }
+    },
+    "bimanual": {
+      "status": "unavailable",
+      "reason": "state_frame_mode_unknown",
+      "state_frame_mode": "unknown"
+    },
+    "state_vision": {
+      "left": {
+        "view": "left_wrist_image",
+        "visual_motion_status": "ok",
+        "visual_motion_reason": "feature_tracks",
+        "duplicate_frame_fraction": 0.0,
+        "lag": {
+          "status": "unavailable",
+          "reason": "ambiguous_or_weak_peak",
+          "best_lag": 4,
+          "best_corr": 0.4925958693450736,
+          "second_best_corr": 0.46667639559613155,
+          "peak_margin": 0.025919473748942046,
+          "valid_fraction": 1.0,
+          "visual_excitation": 3.8623351872432967,
+          "state_excitation": 0.06424111652303564,
+          "correlations": {
+            "-5": 0.3014282119072819,
+            "-4": 0.2825306432034812,
+            "-3": 0.23859517252301585,
+            "-2": 0.2853982559395037,
+            "-1": 0.34562960481276667,
+            "0": 0.38632877565494067,
+            "1": 0.4659154827694426,
+            "2": 0.46667639559613155,
+            "3": 0.4462533224443696,
+            "4": 0.4925958693450736,
+            "5": 0.46264117631769364
+          }
+        },
+        "status": "ok"
+      },
+      "right": {
+        "view": "right_wrist_image",
+        "visual_motion_status": "ok",
+        "visual_motion_reason": "feature_tracks",
+        "duplicate_frame_fraction": 0.0,
+        "lag": {
+          "status": "unavailable",
+          "reason": "ambiguous_or_weak_peak",
+          "best_lag": 4,
+          "best_corr": 0.23769509037139375,
+          "second_best_corr": 0.1958825501997693,
+          "peak_margin": 0.041812540171624446,
+          "valid_fraction": 1.0,
+          "visual_excitation": 1.199279626086354,
+          "state_excitation": 0.04549583731415134,
+          "correlations": {
+            "-5": -0.002482554971238441,
+            "-4": 0.08550966796507245,
+            "-3": 0.12603437551758348,
+            "-2": 0.16257516672571998,
+            "-1": 0.16042438417377905,
+            "0": 0.1809304832880542,
+            "1": 0.18773543908559373,
+            "2": 0.1343104278262833,
+            "3": 0.1733442006741448,
+            "4": 0.23769509037139375,
+            "5": 0.1958825501997693
+          }
+        },
+        "status": "ok"
+      }
+    },
+    "module_statuses": {
+      "arms": {
+        "left": "ok",
+        "right": "ok"
+      },
+      "bimanual": "unavailable",
+      "state_vision": {
+        "left": "ok",
+        "right": "ok"
+      }
+    },
+    "reason": "partial_module_unavailable"
+  },
+  {
+    "episode_index": 16,
+    "task_index": 1,
+    "status": "warning",
+    "core_status": "ok",
+    "status_enum": [
+      "ok",
+      "warning",
+      "unavailable",
+      "fail"
+    ],
+    "status_policy": {
+      "ok": "core and enabled modules completed",
+      "warning": "core completed but at least one submodule is degraded or unavailable",
+      "unavailable": "core geometry could not run",
+      "fail": "a module reported an execution-level failure"
+    },
+    "gates": {
+      "rotation6d_layout": "unknown",
+      "state_frame_mode": "unknown",
+      "calibration_mode": "none",
+      "position_unit": "unknown",
+      "temporal_alignment": "performed_in_geometry_module",
+      "strict_calibrated_geometry": false
+    },
+    "arms": {
+      "left": {
+        "rotation6d_legal_fraction": 1.0,
+        "median_step": 0.0026008102986224153,
+        "median_speed": 0.026008102986224153,
+        "median_angular_speed": null,
+        "status": "ok"
+      },
+      "right": {
+        "rotation6d_legal_fraction": 1.0,
+        "median_step": 0.0026995966117156545,
+        "median_speed": 0.026995966117156545,
+        "median_angular_speed": null,
+        "status": "ok"
+      }
+    },
+    "bimanual": {
+      "status": "unavailable",
+      "reason": "state_frame_mode_unknown",
+      "state_frame_mode": "unknown"
+    },
+    "state_vision": {
+      "left": {
+        "view": "left_wrist_image",
+        "visual_motion_status": "ok",
+        "visual_motion_reason": "feature_tracks",
+        "duplicate_frame_fraction": 0.0,
+        "lag": {
+          "status": "unavailable",
+          "reason": "ambiguous_or_weak_peak",
+          "best_lag": 5,
+          "best_corr": 0.2983810493619186,
+          "second_best_corr": 0.2904068752282504,
+          "peak_margin": 0.007974174133668188,
+          "valid_fraction": 1.0,
+          "visual_excitation": 0.6944118612911555,
+          "state_excitation": 0.07597286379789127,
+          "correlations": {
+            "-5": -0.16007635743772283,
+            "-4": -0.11117550507842784,
+            "-3": -0.08120521575335037,
+            "-2": -0.0010021803477719437,
+            "-1": 0.06960306767665654,
+            "0": 0.11839625212072642,
+            "1": 0.18782933096739168,
+            "2": 0.2177815519467138,
+            "3": 0.2640470191391594,
+            "4": 0.2904068752282504,
+            "5": 0.2983810493619186
+          }
+        },
+        "status": "ok"
+      },
+      "right": {
+        "view": "right_wrist_image",
+        "visual_motion_status": "ok",
+        "visual_motion_reason": "feature_tracks",
+        "duplicate_frame_fraction": 0.0,
+        "lag": {
+          "status": "unavailable",
+          "reason": "ambiguous_or_weak_peak",
+          "best_lag": -5,
+          "best_corr": 0.15187948150883862,
+          "second_best_corr": 0.14796039764573468,
+          "peak_margin": 0.003919083863103939,
+          "valid_fraction": 1.0,
+          "visual_excitation": 0.9465946588898085,
+          "state_excitation": 0.04926909325751432,
+          "correlations": {
+            "-5": 0.15187948150883862,
+            "-4": 0.1330257009906161,
+            "-3": 0.14796039764573468,
+            "-2": 0.11679771821361741,
+            "-1": 0.08772698570394237,
+            "0": 0.10949242102924453,
+            "1": 0.12400645606708809,
+            "2": 0.11843670971154283,
+            "3": 0.13168135641253895,
+            "4": 0.1077097430337639,
+            "5": 0.009949413002257648
+          }
+        },
+        "status": "ok"
+      }
+    },
+    "module_statuses": {
+      "arms": {
+        "left": "ok",
+        "right": "ok"
+      },
+      "bimanual": "unavailable",
+      "state_vision": {
+        "left": "ok",
+        "right": "ok"
+      }
+    },
+    "reason": "partial_module_unavailable"
+  },
+  {
+    "episode_index": 17,
+    "task_index": 1,
+    "status": "warning",
+    "core_status": "ok",
+    "status_enum": [
+      "ok",
+      "warning",
+      "unavailable",
+      "fail"
+    ],
+    "status_policy": {
+      "ok": "core and enabled modules completed",
+      "warning": "core completed but at least one submodule is degraded or unavailable",
+      "unavailable": "core geometry could not run",
+      "fail": "a module reported an execution-level failure"
+    },
+    "gates": {
+      "rotation6d_layout": "unknown",
+      "state_frame_mode": "unknown",
+      "calibration_mode": "none",
+      "position_unit": "unknown",
+      "temporal_alignment": "performed_in_geometry_module",
+      "strict_calibrated_geometry": false
+    },
+    "arms": {
+      "left": {
+        "rotation6d_legal_fraction": 1.0,
+        "median_step": 0.002584887070199486,
+        "median_speed": 0.02584887070199486,
+        "median_angular_speed": null,
+        "status": "ok"
+      },
+      "right": {
+        "rotation6d_legal_fraction": 1.0,
+        "median_step": 0.0016294821564504529,
+        "median_speed": 0.016294821564504527,
+        "median_angular_speed": null,
+        "status": "ok"
+      }
+    },
+    "bimanual": {
+      "status": "unavailable",
+      "reason": "state_frame_mode_unknown",
+      "state_frame_mode": "unknown"
+    },
+    "state_vision": {
+      "left": {
+        "view": "left_wrist_image",
+        "visual_motion_status": "ok",
+        "visual_motion_reason": "feature_tracks",
+        "duplicate_frame_fraction": 0.0,
+        "lag": {
+          "status": "unavailable",
+          "reason": "ambiguous_or_weak_peak",
+          "best_lag": -2,
+          "best_corr": 0.4134402564046337,
+          "second_best_corr": 0.4075181186822519,
+          "peak_margin": 0.005922137722381815,
+          "valid_fraction": 1.0,
+          "visual_excitation": 3.5968322086147992,
+          "state_excitation": 0.06210954995101469,
+          "correlations": {
+            "-5": 0.3294623351109332,
+            "-4": 0.3262180348824685,
+            "-3": 0.3818731702786224,
+            "-2": 0.4134402564046337,
+            "-1": 0.36438041452863923,
+            "0": 0.36221225060723605,
+            "1": 0.4075181186822519,
+            "2": 0.3705810472157536,
+            "3": 0.36854729604507086,
+            "4": 0.3601383294868784,
+            "5": 0.36969627543213146
+          }
+        },
+        "status": "ok"
+      },
+      "right": {
+        "view": "right_wrist_image",
+        "visual_motion_status": "ok",
+        "visual_motion_reason": "feature_tracks",
+        "duplicate_frame_fraction": 0.0,
+        "lag": {
+          "status": "unavailable",
+          "reason": "ambiguous_or_weak_peak",
+          "best_lag": 4,
+          "best_corr": 0.25701899722366556,
+          "second_best_corr": 0.1569205042463717,
+          "peak_margin": 0.10009849297729387,
+          "valid_fraction": 1.0,
+          "visual_excitation": 0.804592537786814,
+          "state_excitation": 0.04707944209788572,
+          "correlations": {
+            "-5": -0.005815656832835838,
+            "-4": 0.0026602087830312894,
+            "-3": 0.03813424169223334,
+            "-2": 0.020412159862586862,
+            "-1": 0.07316047625412805,
+            "0": 0.1569205042463717,
+            "1": -0.0357576640366135,
+            "2": 0.10285098285619595,
+            "3": 0.13070236461500512,
+            "4": 0.25701899722366556,
+            "5": 0.041566933737682034
+          }
+        },
+        "status": "ok"
+      }
+    },
+    "module_statuses": {
+      "arms": {
+        "left": "ok",
+        "right": "ok"
+      },
+      "bimanual": "unavailable",
+      "state_vision": {
+        "left": "ok",
+        "right": "ok"
+      }
+    },
+    "reason": "partial_module_unavailable"
+  },
+  {
+    "episode_index": 18,
+    "task_index": 0,
+    "status": "warning",
+    "core_status": "ok",
+    "status_enum": [
+      "ok",
+      "warning",
+      "unavailable",
+      "fail"
+    ],
+    "status_policy": {
+      "ok": "core and enabled modules completed",
+      "warning": "core completed but at least one submodule is degraded or unavailable",
+      "unavailable": "core geometry could not run",
+      "fail": "a module reported an execution-level failure"
+    },
+    "gates": {
+      "rotation6d_layout": "unknown",
+      "state_frame_mode": "unknown",
+      "calibration_mode": "none",
+      "position_unit": "unknown",
+      "temporal_alignment": "performed_in_geometry_module",
+      "strict_calibrated_geometry": false
+    },
+    "arms": {
+      "left": {
+        "rotation6d_legal_fraction": 1.0,
+        "median_step": 0.0014270183081962875,
+        "median_speed": 0.014270183081962873,
+        "median_angular_speed": null,
+        "status": "ok"
+      },
+      "right": {
+        "rotation6d_legal_fraction": 1.0,
+        "median_step": 0.002260280901738414,
+        "median_speed": 0.02260280901738414,
+        "median_angular_speed": null,
+        "status": "ok"
+      }
+    },
+    "bimanual": {
+      "status": "unavailable",
+      "reason": "state_frame_mode_unknown",
+      "state_frame_mode": "unknown"
+    },
+    "state_vision": {
+      "left": {
+        "view": "left_wrist_image",
+        "visual_motion_status": "ok",
+        "visual_motion_reason": "feature_tracks",
+        "duplicate_frame_fraction": 0.0,
+        "lag": {
+          "status": "unavailable",
+          "reason": "ambiguous_or_weak_peak",
+          "best_lag": 4,
+          "best_corr": 0.3393209694218946,
+          "second_best_corr": 0.294367883979776,
+          "peak_margin": 0.04495308544211862,
+          "valid_fraction": 1.0,
+          "visual_excitation": 4.846906002610922,
+          "state_excitation": 0.06232568613814866,
+          "correlations": {
+            "-5": 0.14223342074801626,
+            "-4": 0.1658300165433396,
+            "-3": 0.1965117383846753,
+            "-2": 0.21416769139658035,
+            "-1": 0.19876803078406102,
+            "0": 0.23084097184355123,
+            "1": 0.25417070450994955,
+            "2": 0.2715960335618576,
+            "3": 0.294367883979776,
+            "4": 0.3393209694218946,
+            "5": 0.26714634398231035
+          }
+        },
+        "status": "ok"
+      },
+      "right": {
+        "view": "right_wrist_image",
+        "visual_motion_status": "ok",
+        "visual_motion_reason": "feature_tracks",
+        "duplicate_frame_fraction": 0.0,
+        "lag": {
+          "status": "unavailable",
+          "reason": "ambiguous_or_weak_peak",
+          "best_lag": 4,
+          "best_corr": 0.4174608445861972,
+          "second_best_corr": 0.3570476427820669,
+          "peak_margin": 0.06041320180413029,
+          "valid_fraction": 1.0,
+          "visual_excitation": 6.025290368124843,
+          "state_excitation": 0.08678001689156761,
+          "correlations": {
+            "-5": 0.09465383485879593,
+            "-4": 0.10342875522816272,
+            "-3": 0.10349981779775227,
+            "-2": 0.17269846388039353,
+            "-1": 0.1663465404999745,
+            "0": 0.18633557737177783,
+            "1": 0.20437127155345725,
+            "2": 0.2347027092762847,
+            "3": 0.31106327528984945,
+            "4": 0.4174608445861972,
+            "5": 0.3570476427820669
+          }
+        },
+        "status": "ok"
+      }
+    },
+    "module_statuses": {
+      "arms": {
+        "left": "ok",
+        "right": "ok"
+      },
+      "bimanual": "unavailable",
+      "state_vision": {
+        "left": "ok",
+        "right": "ok"
+      }
+    },
+    "reason": "partial_module_unavailable"
+  },
+  {
+    "episode_index": 19,
+    "task_index": 0,
+    "status": "warning",
+    "core_status": "ok",
+    "status_enum": [
+      "ok",
+      "warning",
+      "unavailable",
+      "fail"
+    ],
+    "status_policy": {
+      "ok": "core and enabled modules completed",
+      "warning": "core completed but at least one submodule is degraded or unavailable",
+      "unavailable": "core geometry could not run",
+      "fail": "a module reported an execution-level failure"
+    },
+    "gates": {
+      "rotation6d_layout": "unknown",
+      "state_frame_mode": "unknown",
+      "calibration_mode": "none",
+      "position_unit": "unknown",
+      "temporal_alignment": "performed_in_geometry_module",
+      "strict_calibrated_geometry": false
+    },
+    "arms": {
+      "left": {
+        "rotation6d_legal_fraction": 1.0,
+        "median_step": 0.002587863399211826,
+        "median_speed": 0.02587863399211826,
+        "median_angular_speed": null,
+        "status": "ok"
+      },
+      "right": {
+        "rotation6d_legal_fraction": 1.0,
+        "median_step": 0.002192587513083565,
+        "median_speed": 0.02192587513083565,
+        "median_angular_speed": null,
+        "status": "ok"
+      }
+    },
+    "bimanual": {
+      "status": "unavailable",
+      "reason": "state_frame_mode_unknown",
+      "state_frame_mode": "unknown"
+    },
+    "state_vision": {
+      "left": {
+        "view": "left_wrist_image",
+        "visual_motion_status": "ok",
+        "visual_motion_reason": "feature_tracks",
+        "duplicate_frame_fraction": 0.0,
+        "lag": {
+          "status": "unavailable",
+          "reason": "ambiguous_or_weak_peak",
+          "best_lag": 3,
+          "best_corr": 0.5064374196610874,
+          "second_best_corr": 0.48678932967244226,
+          "peak_margin": 0.01964808998864509,
+          "valid_fraction": 1.0,
+          "visual_excitation": 4.898337135091425,
+          "state_excitation": 0.07548939140904971,
+          "correlations": {
+            "-5": 0.054634009147573125,
+            "-4": 0.1296129637954897,
+            "-3": 0.18860900637162734,
+            "-2": 0.23489545177977936,
+            "-1": 0.2856068084977606,
+            "0": 0.37512158970929504,
+            "1": 0.39935837139138336,
+            "2": 0.43226931720391876,
+            "3": 0.5064374196610874,
+            "4": 0.48678932967244226,
+            "5": 0.4436208376853513
+          }
+        },
+        "status": "ok"
+      },
+      "right": {
+        "view": "right_wrist_image",
+        "visual_motion_status": "ok",
+        "visual_motion_reason": "feature_tracks",
+        "duplicate_frame_fraction": 0.0,
+        "lag": {
+          "status": "unavailable",
+          "reason": "ambiguous_or_weak_peak",
+          "best_lag": 4,
+          "best_corr": 0.44312736038121375,
+          "second_best_corr": 0.4191348063218313,
+          "peak_margin": 0.023992554059382443,
+          "valid_fraction": 1.0,
+          "visual_excitation": 4.51474405527115,
+          "state_excitation": 0.07713407571920251,
+          "correlations": {
+            "-5": 0.0849206461470763,
+            "-4": 0.09237250351316903,
+            "-3": 0.06790626498862175,
+            "-2": 0.10087665505459746,
+            "-1": 0.13129632551760154,
+            "0": 0.23634933674113573,
+            "1": 0.2679901927475929,
+            "2": 0.34180572496723144,
+            "3": 0.4191348063218313,
+            "4": 0.44312736038121375,
+            "5": 0.29073867006109133
+          }
+        },
+        "status": "ok"
+      }
+    },
+    "module_statuses": {
+      "arms": {
+        "left": "ok",
+        "right": "ok"
+      },
+      "bimanual": "unavailable",
+      "state_vision": {
+        "left": "ok",
+        "right": "ok"
+      }
+    },
+    "reason": "partial_module_unavailable"
+  }
+]
