@@ -1,13 +1,30 @@
-$ErrorActionPreference = "Stop"
+[CmdletBinding()]
+param(
+    [Parameter(Mandatory = $true)]
+    [string]$ReferenceRoot,
 
-$python = "C:\Users\zwd\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe"
+    [Parameter(Mandatory = $true)]
+    [string]$TargetRoot,
+
+    [string]$OutputRoot,
+    [string]$Python = "python"
+)
+
+$ErrorActionPreference = "Stop"
 $root = Split-Path -Parent $PSScriptRoot
+if ([string]::IsNullOrWhiteSpace($OutputRoot)) {
+    $OutputRoot = Join-Path $root "outputs\target\v2"
+}
 
 $env:PYTHONUTF8 = "1"
 $env:PYTHONIOENCODING = "utf-8"
 $env:PYTHONPATH = $PSScriptRoot
 [Console]::OutputEncoding = [System.Text.UTF8Encoding]::new()
 
-& $python -X utf8 (Join-Path $PSScriptRoot "v2_quality_pipeline.py") --geometry-config (Join-Path $PSScriptRoot "geometry_config.json")
+& $Python -X utf8 (Join-Path $root "run_v2_pipeline.py") `
+    --reference-root $ReferenceRoot `
+    --target-root $TargetRoot `
+    --output-root $OutputRoot `
+    --geometry-config (Join-Path $PSScriptRoot "geometry_config.json")
 
-Write-Host "V2 pipeline completed. Reports are under $root\outputs\v2"
+Write-Host "V2 pipeline completed. Reports are under $OutputRoot"

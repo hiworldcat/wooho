@@ -1,0 +1,36 @@
+name: Submission checks
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Compile Python sources
+        run: python -m compileall -q run_v2_pipeline.py scripts _upload_package/run_v2_pipeline.py _upload_package/scripts
+
+      - name: Run geometry smoke tests
+        run: |
+          python scripts/test_geometry_constraints_smoke.py
+          python scripts/test_p1_geometry.py
+
+      - name: Run submission workflow smoke test
+        run: python scripts/test_submission_workflow.py
