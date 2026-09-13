@@ -3,6 +3,8 @@
 This package contains the runnable V2 pipeline and generated report formats for
 a LeRobot v2.1 multimodal robot data quality detection workflow.
 
+Follow `HANDOFF.md` after receiving the official 20-trajectory dataset.
+
 ## Contents
 
 - `run_v2_pipeline.py`: formal command-line entry point.

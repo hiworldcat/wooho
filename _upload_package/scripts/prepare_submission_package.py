@@ -14,6 +14,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE_FILES = (
     "README.md",
+    "HANDOFF.md",
     "requirements.txt",
     "run_v2_pipeline.py",
     "scripts/v2_quality_pipeline.py",

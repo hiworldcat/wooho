@@ -140,6 +140,8 @@ def main() -> None:
             names = handle.namelist()
             if not any(name.endswith("CHECKSUMS.sha256") for name in names):
                 raise AssertionError("checksums file is missing")
+            if not any(name.endswith("03_源代码/HANDOFF.md") for name in names):
+                raise AssertionError("handoff guide is missing")
             if any("__pycache__" in name or name.endswith(".parquet") for name in names):
                 raise AssertionError("excluded data leaked into the ZIP")
         print("submission workflow smoke test passed")
