@@ -26,11 +26,29 @@ import geometry_constraints
 
 
 ROOT = Path(__file__).resolve().parents[1]
-OUTPUT_ROOT = ROOT / "outputs" / "v2"
+OUTPUT_ROOT = ROOT / "outputs" / "target" / "v2"
 DIAG_ROOT = OUTPUT_ROOT / "diagnostics"
 REPORT_ROOT = OUTPUT_ROOT / "reports"
-DIAG_ROOT.mkdir(parents=True, exist_ok=True)
-REPORT_ROOT.mkdir(parents=True, exist_ok=True)
+
+
+def configure_output_root(output_root: Path) -> None:
+    """Configure one isolated output directory for the current pipeline run."""
+    global OUTPUT_ROOT, DIAG_ROOT, REPORT_ROOT
+    OUTPUT_ROOT = output_root.resolve()
+    DIAG_ROOT = OUTPUT_ROOT / "diagnostics"
+    REPORT_ROOT = OUTPUT_ROOT / "reports"
+    DIAG_ROOT.mkdir(parents=True, exist_ok=True)
+    REPORT_ROOT.mkdir(parents=True, exist_ok=True)
+
+
+def portable_dataset_path(path: Path, dataset_root: Path) -> str:
+    """Return a report-safe path without leaking a machine-specific absolute path."""
+    resolved_path = path.resolve()
+    resolved_root = dataset_root.resolve()
+    try:
+        return resolved_path.relative_to(resolved_root).as_posix()
+    except ValueError:
+        return path.name
 
 def parquet_column_names(path: Path) -> list[str]:
     if pq is not None:
@@ -1993,11 +2011,16 @@ def write_reports(
     baselines: dict[str, Any],
     findings: list[Finding],
     episode_results: list[EpisodeResult],
+    run_manifest: dict[str, Any],
 ) -> None:
     findings_payload = [asdict(item) for item in findings]
     (DIAG_ROOT / "findings_v2.json").write_text(json.dumps(findings_payload, ensure_ascii=False, indent=2), encoding="utf-8")
     (DIAG_ROOT / "reference_baselines_v2.json").write_text(json.dumps(baselines, ensure_ascii=False, indent=2), encoding="utf-8")
     (DIAG_ROOT / "problem_standards_v2.json").write_text(json.dumps(STANDARDS, ensure_ascii=False, indent=2), encoding="utf-8")
+    (DIAG_ROOT / "run_manifest_v2.json").write_text(
+        json.dumps(run_manifest, ensure_ascii=False, indent=2),
+        encoding="utf-8",
+    )
 
     rows = [asdict(item) for item in episode_results]
     csv_path = REPORT_ROOT / "episode_scores_v2.csv"
@@ -2033,6 +2056,7 @@ def write_reports(
 
     report = {
         "version": "v2",
+        "run": run_manifest,
         "dataset": {
             "codebase_version": info.get("codebase_version"),
             "robot_type": info.get("robot_type"),
@@ -2081,6 +2105,10 @@ def write_reports(
     markdown_lines = [
         "# V2 多模态机器人数据质量检测报告",
         "",
+        f"- 数据角色: {run_manifest['dataset_role']}",
+        f"- 参考集标识: {run_manifest['reference_dataset']}",
+        f"- 测试集标识: {run_manifest['target_dataset']}",
+        f"- 输出标识: {run_manifest['output_label']}",
         f"- 数据版本: {info.get('codebase_version')}",
         f"- 机器人类型: {info.get('robot_type')}",
         f"- Episode 数: {len(episode_results)}",
@@ -2138,15 +2166,16 @@ def write_reports(
         "",
         "## 输出文件",
         "",
-        "- `outputs/v2/diagnostics/findings_v2.json`: 标准化异常明细",
-        "- `outputs/v2/diagnostics/reference_baselines_v2.json`: 正常参考集阈值与基线",
-        "- `outputs/v2/diagnostics/problem_standards_v2.json`: 问题定义与判定标准",
-        "- `outputs/v2/reports/episode_scores_v2.csv`: episode 级评分表",
-        "- `outputs/v2/reports/dataset_quality_report_v2.json`: 机器可读完整报告",
-        "- `outputs/v2/reports/dataset_quality_report_v2.md`: 人类可读摘要报告",
+        "- `diagnostics/findings_v2.json`: 标准化异常明细",
+        "- `diagnostics/reference_baselines_v2.json`: 正常参考集阈值与基线",
+        "- `diagnostics/problem_standards_v2.json`: 问题定义与判定标准",
+        "- `diagnostics/run_manifest_v2.json`: 本次运行的数据角色与版本口径",
+        "- `reports/episode_scores_v2.csv`: episode 级评分表",
+        "- `reports/dataset_quality_report_v2.json`: 机器可读完整报告",
+        "- `reports/dataset_quality_report_v2_zh.md`: 中文摘要报告",
     ])
-    md_path = REPORT_ROOT / "dataset_quality_report_v2.md"
-    md_path.write_text("\n".join(markdown_lines) + "\n", encoding="utf-8")
+    zh_md_path = REPORT_ROOT / "dataset_quality_report_v2_zh.md"
+    zh_md_path.write_text("\n".join(markdown_lines) + "\n", encoding="utf-8")
 
     total_critical = sum(item.critical_count for item in episode_results)
     total_high_confidence = sum(item.high_confidence_count for item in episode_results)
@@ -2155,6 +2184,10 @@ def write_reports(
     clean_markdown_lines = [
         "# V2 Multimodal Robot Data Quality Report",
         "",
+        f"- dataset role: {run_manifest['dataset_role']}",
+        f"- reference dataset: {run_manifest['reference_dataset']}",
+        f"- target dataset: {run_manifest['target_dataset']}",
+        f"- output label: {run_manifest['output_label']}",
         f"- dataset version: {info.get('codebase_version')}",
         f"- robot type: {info.get('robot_type')}",
         f"- episodes: {len(episode_results)}",
@@ -2218,15 +2251,18 @@ def write_reports(
             "",
             "## Output Files",
             "",
-            "- `outputs/v2/diagnostics/findings_v2.json`: normalized merged findings",
-            "- `outputs/v2/diagnostics/reference_baselines_v2.json`: reference baselines and thresholds",
-            "- `outputs/v2/diagnostics/problem_standards_v2.json`: problem definitions and decision rules",
-            "- `outputs/v2/reports/episode_scores_v2.csv`: episode-level score table",
-            "- `outputs/v2/reports/dataset_quality_report_v2.json`: machine-readable complete report",
-            "- `outputs/v2/reports/dataset_quality_report_v2.md`: human-readable summary report",
-            "- `outputs/v2/reports/episode_quality_report_v2_detail.md`: episode-level detail report",
+            "- `diagnostics/findings_v2.json`: normalized merged findings",
+            "- `diagnostics/reference_baselines_v2.json`: reference baselines and thresholds",
+            "- `diagnostics/problem_standards_v2.json`: problem definitions and decision rules",
+            "- `diagnostics/run_manifest_v2.json`: run role and version manifest",
+            "- `reports/episode_scores_v2.csv`: episode-level score table",
+            "- `reports/dataset_quality_report_v2.json`: machine-readable complete report",
+            "- `reports/dataset_quality_report_v2.md`: English summary report",
+            "- `reports/dataset_quality_report_v2_zh.md`: Chinese summary report",
+            "- `reports/episode_quality_report_v2_detail.md`: episode-level detail report",
         ]
     )
+    md_path = REPORT_ROOT / "dataset_quality_report_v2.md"
     md_path.write_text("\n".join(clean_markdown_lines) + "\n", encoding="utf-8")
 
     findings_by_episode: dict[int, list[Finding]] = defaultdict(list)
@@ -2326,25 +2362,46 @@ def write_reports(
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Run the v2 quality pipeline.")
-    parser.add_argument("--reference-root", type=Path, default=None)
-    parser.add_argument("--target-root", type=Path, default=None)
+    parser.add_argument(
+        "--reference-root",
+        type=Path,
+        required=True,
+        help="Normal reference dataset root used only to calibrate baselines.",
+    )
+    parser.add_argument(
+        "--target-root",
+        type=Path,
+        required=True,
+        help="Target/test dataset root used only for detection and scoring.",
+    )
+    parser.add_argument(
+        "--output-root",
+        type=Path,
+        default=ROOT / "outputs" / "target" / "v2",
+        help="Isolated destination for this run. Defaults to outputs/target/v2.",
+    )
     parser.add_argument("--geometry-config", type=Path, default=None)
+    parser.add_argument(
+        "--allow-same-dataset",
+        action="store_true",
+        help="Allow identical roots only for an explicit negative-control run.",
+    )
     return parser.parse_args()
 
 
 def main() -> None:
     args = parse_args()
-    reference_root = args.reference_root
-    target_root = args.target_root
-    if reference_root is None and target_root is None:
-        reference_root = ROOT
-        target_root = ROOT
-    elif reference_root is None:
-        reference_root = target_root
-    elif target_root is None:
-        target_root = reference_root
-
-    assert reference_root is not None and target_root is not None
+    reference_root = args.reference_root.resolve()
+    target_root = args.target_root.resolve()
+    output_root = args.output_root.resolve()
+    same_dataset = reference_root == target_root
+    if same_dataset and not args.allow_same_dataset:
+        raise SystemExit(
+            "reference-root and target-root resolve to the same directory. "
+            "Use separate datasets for a formal run, or pass --allow-same-dataset "
+            "only for an explicit negative-control run."
+        )
+    configure_output_root(output_root)
 
     reference_info, reference_tasks, reference_episodes, reference_parquet_files = load_dataset(reference_root)
     target_info, tasks, episodes, parquet_files = load_dataset(target_root)
@@ -2373,6 +2430,7 @@ def main() -> None:
         episode_from_path = safe_episode_from_path(path)
         expected_meta = episodes_meta.get(episode_from_path) if episode_from_path is not None else None
         episode_meta, findings = inspect_episode(path, target_info, expected_meta, views, baselines, factory)
+        episode_meta["file"] = portable_dataset_path(path, target_root)
         if episode_meta["episode_index"] is None and episode_from_path is not None:
             episode_meta["episode_index"] = episode_from_path
         episode_metas.append(episode_meta)
@@ -2382,7 +2440,17 @@ def main() -> None:
     episode_results = [score_episode(meta, merged_findings) for meta in sorted(episode_metas, key=lambda item: item["episode_index"])]
     geometry_payload = [meta.get("geometry_constraints", {}) for meta in sorted(episode_metas, key=lambda item: item["episode_index"])]
     (DIAG_ROOT / "geometry_constraints_v2.json").write_text(json.dumps(geometry_payload, ensure_ascii=False, indent=2), encoding="utf-8")
-    write_reports(target_info, tasks, baselines, merged_findings, episode_results)
+    run_manifest = {
+        "dataset_role": "negative_control" if same_dataset else "target",
+        "reference_dataset": reference_root.name,
+        "target_dataset": target_root.name,
+        "same_dataset": same_dataset,
+        "output_label": output_root.name,
+        "reference_episode_count": len(reference_parquet_files),
+        "target_episode_count": len(parquet_files),
+        "scoring_version": OFFICIAL_SCORING_VERSION,
+    }
+    write_reports(target_info, tasks, baselines, merged_findings, episode_results, run_manifest)
 
     dataset_score = round(float(np.mean([item.score_total for item in episode_results])) if episode_results else 0.0, 2)
     print(f"v2 episodes_checked: {len(episode_results)}")
@@ -2394,8 +2462,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-
-
-
-
-

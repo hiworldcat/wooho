@@ -1,0 +1,11 @@
+{
+  "state_frame_mode": "unknown",
+  "position_unit": "unknown",
+  "rotation6d_layout": "unknown",
+  "calibration_mode": "none",
+  "state_vision_enabled": true,
+  "bimanual_enabled": true,
+  "max_lag": 5,
+  "lag_stability_window": 21,
+  "lag_stability_step": 5
+}
