@@ -111,6 +111,14 @@ def parquet_smoke() -> dict[str, object]:
 
     from v2_quality_pipeline import load_dataset, image_views_from_info, FindingFactory
 
+    # The repository intentionally does not carry the official dataset. Keep
+    # the geometry smoke test useful in CI and on a fresh checkout by treating
+    # the absent dataset as a skip; run the full parquet checks when data is
+    # supplied locally.
+    dataset_root = Path(__file__).resolve().parents[1]
+    if not any(dataset_root.rglob("info.json")) or not any(dataset_root.rglob("data/**/*.parquet")):
+        return {"status": "skipped", "reason": "dataset_unavailable"}
+
     info, _tasks, _episodes, parquet_files = load_dataset()
     config = geometry_constraints.default_geometry_config(info)
     reference = geometry_constraints.fit_geometry_reference(parquet_files[:3], config)
