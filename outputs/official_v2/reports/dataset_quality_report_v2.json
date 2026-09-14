@@ -2,8 +2,8 @@
   "version": "v2",
   "run": {
     "dataset_role": "negative_control",
-    "reference_dataset": "鍙傝€冮泦",
-    "target_dataset": "鍙傝€冮泦",
+    "reference_dataset": "参考集",
+    "target_dataset": "参考集",
     "same_dataset": true,
     "output_label": "official_v2",
     "reference_episode_count": 20,

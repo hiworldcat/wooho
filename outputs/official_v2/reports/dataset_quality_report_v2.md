@@ -1,8 +1,8 @@
 # V2 Multimodal Robot Data Quality Report
 
 - dataset role: negative_control
-- reference dataset: 鍙傝€冮泦
-- target dataset: 鍙傝€冮泦
+- reference dataset: 参考集
+- target dataset: 参考集
 - output label: official_v2
 - dataset version: v2.1
 - robot type: panda

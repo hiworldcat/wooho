@@ -14,12 +14,13 @@ PPT 回填到最终打包的完整命令和停止条件。
 - `scripts/preflight_submission.py`：不加载帧内容的依赖、目录、内存与磁盘预检。
 - `scripts/export_ppt_metrics.py`：从冻结报告生成 PPT 结果回填表。
 - `scripts/check_ppt_consistency.py`：阻止带占位符或旧指标的 PPT 进入最终压缩包。
-- `outputs/target/v2/`：正式测试集结果的默认输出目录。
+- `outputs/official_v2/`：本次官方 20 条标准参考轨迹的冻结验证结果。
+- `outputs/target/v2/`：未来获得独立目标集时的默认输出目录。
 - `outputs/ablations/`：合成异常与消融验证结果，不属于官方测试集结果。
 
 仓库中历史提交已有的 `outputs/v2/`、`outputs/reports/`、`outputs/diagnostics/`
 和 `_upload_package/outputs/` 仅作为 2026-09-03 的历史快照保留。它们混有参考集负对照和旧检测器结果，
-不得直接作为最终提交证据。正式结果必须重新生成到 `outputs/target/v2/`。
+不得直接作为最终提交证据。本次初赛证据以 `outputs/official_v2/` 为准。
 
 ## 环境
 
@@ -31,9 +32,28 @@ python -m pip install -r requirements.txt
 
 原始比赛数据不提交到 Git。`初赛数据/` 和全部 Parquet 文件已被忽略。
 
-## 正式运行
+## 数据模式
 
-参考集只用于校准阈值，测试集只用于检测与评分。两个目录必须显式提供且不能相同：
+官方本次只提供 20 条标准参考轨迹，没有另发独立测试集。因此仓库中的
+`outputs/official_v2/` 是对官方参考集的全流程复跑与自一致性验证，不应描述为
+“独立测试集成绩”。复现本次结果时，显式启用同集负对照模式并使用独立输出目录：
+
+```powershell
+python run_v2_pipeline.py `
+  --reference-root "C:\path\to\official-20" `
+  --target-root "C:\path\to\official-20" `
+  --output-root "outputs\official_v2" `
+  --geometry-config "scripts\geometry_config.json" `
+  --allow-same-dataset
+
+python scripts/check_submission_readiness.py `
+  --output-root "outputs\official_v2" `
+  --expected-episodes 20 `
+  --allow-reference-only
+```
+
+若复赛另发独立目标集，则参考集只用于校准阈值，目标集只用于检测与评分，
+两个目录必须显式提供且不能相同：
 
 ```powershell
 python run_v2_pipeline.py `
@@ -51,15 +71,15 @@ python run_v2_pipeline.py `
   -TargetRoot "C:\path\to\target"
 ```
 
-程序默认拒绝将同一目录同时作为参考集和测试集。只有运行明确的正常集负对照时，
-才允许添加 `--allow-same-dataset`，并且必须使用独立输出目录。
+程序默认拒绝将同一目录同时作为参考集和目标集。只有复现本次官方参考集验证时，
+才允许添加 `--allow-same-dataset`，并且必须使用 `outputs/official_v2/` 等独立输出目录。
 
 ## 输出
 
 一次正式运行会生成：
 
 ```text
-outputs/target/v2/
+outputs/official_v2/
 ├── diagnostics/
 │   ├── findings_v2.json
 │   ├── geometry_constraints_v2.json
@@ -74,19 +94,21 @@ outputs/target/v2/
     └── episode_scores_v2.csv
 ```
 
-报告中的轨迹文件名使用相对于测试集根目录的路径，不记录本机绝对路径。
+报告中的轨迹文件名使用相对于数据集根目录的路径，不记录本机绝对路径。
 
 ## 提交前检查
 
 ```powershell
 python scripts/check_submission_readiness.py `
-  --output-root "outputs\target\v2" `
-  --expected-episodes 20
+  --output-root "outputs\official_v2" `
+  --expected-episodes 20 `
+  --allow-reference-only
 ```
 
-只有检查结果为 `PASS`，且典型异常经过人工复核后，才可将数字和案例写入最终 PPT。
+只有检查结果为 `PASS` 后，才可将数字写入最终 PPT。本次结果应统一称为
+“官方参考集验证”；若发现异常案例，还须先人工复核再展示。
 
-正式提交时可使用两段式流程：
+未来获得独立目标集时，可使用两段式正式运行流程：
 
 ```powershell
 python scripts/run_final_submission.py `
@@ -97,13 +119,14 @@ python scripts/prepare_submission_package.py `
   --pptx "最终答辩稿.pptx" `
   --pdf "最终答辩稿.pdf" `
   --application-form "参赛表.pdf" `
+  --output-root "outputs\target\v2" `
   --team-name "团队名称" `
   --project-name "作品名称"
 ```
 
 打包脚本只收集白名单源代码与本次正式输出，并自动生成文件清单、SHA256 和上传留证清单。参考数据、测试数据、历史输出与缓存不会进入压缩包。
 
-需要在正式运行前单独预检时：
+未来获得独立目标集并正式运行前，可单独预检：
 
 ```powershell
 python scripts/preflight_submission.py `
